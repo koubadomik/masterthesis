@@ -7,7 +7,7 @@ image: blang/latex
 compile_pdf:
   stage: build
   image: timnn/texlive  # use a Docker image for LaTeX from https://hub.docker.com/
-  script: ls /pdfs -halt 
+  script: ls pdfs -halt 
   #script: pdflatex Hron-thesis-2009.tex  # build the pdf just as you would on your computer
   artifacts:
     paths: 
