@@ -1,0 +1,24 @@
+# This file is a template, and might need editing before it works on your project.
+# use docker image with latex preinstalled
+# since there is no official latex image, use https://github.com/blang/latex-docker
+# possible alternative: https://github.com/natlownes/docker-latex
+image: blang/latex
+
+compile_pdf:
+  stage: build
+  image: timnn/texlive  # use a Docker image for LaTeX from https://hub.docker.com/
+  script: pdflatex main.tex  # build the pdf just as you would on your computer
+  artifacts:
+    paths: 
+      - main.pdf  # instruct GitLab to keep the main.pdf file
+
+pages:
+  stage: deploy
+  script:
+    - mkdir public  # create a folder called public
+    - cp main.pdf public  # copy the pdf file into the public folder
+  artifacts:
+    paths: 
+      - public  # instruct GitLab to keep the public folder
+  only: 
+    - master  # deploy the pdf only for commits made to the master branch 
