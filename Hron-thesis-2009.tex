@@ -1,0 +1,149 @@
+\documentclass[11pt,twoside,a4paper]{book}  
+\usepackage[czech, english]{babel}
+\usepackage[T1]{fontenc} 				% pouzije EC fonty
+\usepackage[utf8]{inputenc} 			% utf8 kódování vstupu 
+\usepackage[square, numbers]{natbib}	% sazba pouzite literatury
+\usepackage{fancyhdr}					% tisk hlaviček a patiček stránek
+\usepackage{nomencl} 					% umožňuje snadno definovat zkratky a jejich seznam
+
+\usepackage{charter}					% font
+\usepackage{pdfpages}					% inserting pdfs
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% informace o práci
+\newcommand\WorkTitle{Analyzing the execution of malware in a sandbox using hierarchical multiple instance learning}
+\newcommand\FirstandFamilyName{Bc. Dominik Kouba}
+\newcommand\Supervisor{doc. Ing. Tomáš Pevný, Ph.D.}
+\newcommand\TypeOfWork{Master's Thesis}		
+\newcommand\StudProgram{Open Informatics}
+\newcommand\StudBranch{Cyber security}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% imports
+\usepackage{graphicx}					% pro vkládání obrázků
+\usepackage{k336_thesis_macros} 		% specialni makra pro formatovani DP a BP
+\usepackage[
+pdftitle={\WorkTitle},				% nastaví v informacích o pdf název
+pdfauthor={\FirstandFamilyName},	% nastaví v informacích o pdf autora
+colorlinks=true,					% před tiskem doporučujeme nastavit na false, aby odkazy a url nebyly šedé při ČB tisku
+breaklinks=true,
+urlcolor=red,
+citecolor=blue,
+linkcolor=blue,
+unicode=true,
+]
+{hyperref}								% pro zobrazování "prokliknutelných" linků 
+
+% rozšiřující importy
+\usepackage{listings} 			%slouží pro tisk zdrojových kódů se syntax higlighting
+\usepackage{algorithmicx} 		%slouží pro zápis algoritmů
+\usepackage{algpseudocode} 		%slouží pro výpis pseudokódu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% příkazy šablony
+\makenomenclature			% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
+\let\oldUrl\url				% url adresy budou zobrazeny: <url> 
+\renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vaše vlastní příkazy
+\newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
+\newcommand*{\nom}[2]{#1\nomenclature{#1}{#2}} 			% usnadňuje zápis zkratek : SZ
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vlastní dokument
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\selectlanguage{english}
+	\translate
+
+	% Assignment
+	{
+		\includepdf[pages=-]{pdfs/zadani.pdf}
+		\newpage
+	}
+
+	% Title page 
+	\coverpagestarts
+
+	% Acknowledgements 
+	\acknowledgements
+	\noindent
+	Zde můžete napsat své poděkování, pokud chcete a máte komu děkovat.
+
+	% Declaration 
+	\declaration{In Prague on May 15, 2021}
+
+ 	%Abstract 
+	\abstractpage
+
+	Translation of Czech abstract into English.
+
+	\vglue60mm
+
+	\noindent{\Huge \textbf{Abstrakt}}
+	\vskip 2.75\baselineskip
+
+	\noindent
+	Abstrakt práce by měl velmi stručně vystihovat její obsah. Tedy čím se práce zabývá a co je jejím výsledkem/přínosem.
+
+	\noindent
+	Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% obsahy a seznamy
+	\tableofcontents		% Obsah / Table of Contents 
+
+	% pokud v práci nejsou obrázky nebo tabulky - odstraňte jejich seznam
+	\listoffigures			% Obsah / Table of Contents 
+	\listoftables			% Seznam tabulek / List of Tables
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	% TEXT
+	\mainbodystarts
+
+	%Chapters
+	\include{chapters/introduction.tex}
+	%\include{original/original.tex}
+	%\include{original/obrazky.tex}
+
+
+	%Biblio
+	\bibliographystyle{alpha}
+	%\bibliographystyle{csplainnat}
+	%bibliographystyle{plain}
+	% \bibliographystyle{psc}
+	%\bibliographystyle{apalike}
+	{
+	\bibliography{bib/Master_thesis}
+	}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	% APPENDIX
+	\appendix	
+
+	\printnomenclature
+	\label{apx:zkratky}
+
+	\chapter{Obsah přiloženého CD}
+	\textbf{\large Tato příloha je povinná pro každou práci. Každá práce musí totiž obsahovat přiložené CD. Viz dále.}
+
+	% Může vypadat například takto. Váš seznam samozřejmě bude odpovídat typu vaší práce. (viz \cite{infodp}):
+
+	% \begin{figure}[h]
+	% \begin{center}
+	% \includegraphics[width=14cm]{figures/seznamcd}
+	% \caption{Seznam přiloženého CD --- příklad}
+	% \label{fig:seznamcd}
+	% \end{center}
+	% \end{figure}
+
+	% Na GNU/Linuxu si strukturu přiloženého CD můžete snadno vyrobit příkazem:\\ 
+	% \verb|$ tree . >tree.txt|\\
+	% Ve vzniklém souboru pak stačí pouze doplnit komentáře.
+
+	% Z \textbf{README.TXT} (případne index.html apod.)  musí být rovněž zřejmé, jak programy instalovat, spouštět a jaké požadavky mají tyto programy na hardware.
+
+	% Adresář \textbf{text}  musí obsahovat soubor s vlastním textem práce v PDF nebo PS formátu, který bude později použit pro prezentaci diplomové práce na WWW.
+
+\end{document}
