@@ -7,6 +7,9 @@
 
 # TODO
 
+# Table of contents
+- Write even about unsuccesful attempts, for example data were too complex and we are not able to learn single classifier, so we have to prune the data more
+
 # Useful
 - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
 - https://www.doi2bib.org/
