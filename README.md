@@ -9,6 +9,8 @@
 
 # Table of contents
 - Write even about unsuccesful attempts, for example data were too complex and we are not able to learn single classifier, so we have to prune the data more
+- write about sandboxing theory and everything around
+  - https://cybersecurity.att.com/blogs/labs-research/malware-exploring-mutex-objects
 
 # Useful
 - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
