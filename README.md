@@ -16,6 +16,7 @@
      -  https://bazaar.abuse.ch/api/#upload - API
 - Learning - each part - Hmill, model, experiments, evaluation
 - minibatches why are they randomly sampled from training set?
+   - https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/
 There is even origin of the file
 # Useful
 - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
