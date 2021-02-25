@@ -14,6 +14,8 @@
   -  https://bazaar.abuse.ch/sample/58b16ea474c6ae74987e0704c6af2468b463ef0c8c652777b227900d182655c4/ 
       - some metadata from here?
      -  https://bazaar.abuse.ch/api/#upload - API
+- Learning - each part - Hmill, model, experiments, evaluation
+- minibatches why are they randomly sampled from training set?
 There is even origin of the file
 # Useful
 - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
