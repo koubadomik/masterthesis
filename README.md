@@ -8,19 +8,11 @@
   - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
   - https://www.doi2bib.org/
 
-# TODO
 
-# Table of contents
+# TODO
+- Are there another datasets?? It woiuld be great to compare my results and another
 - Write even about unsuccesful attempts, for example data were too complex and we are not able to learn single classifier, so we have to prune the data more
-- write about sandboxing theory and everything around
-  - https://cybersecurity.att.com/blogs/labs-research/malware-exploring-mutex-objects
-  -  https://bazaar.abuse.ch/sample/58b16ea474c6ae74987e0704c6af2468b463ef0c8c652777b227900d182655c4/ 
-      - some metadata from here?
-     -  https://bazaar.abuse.ch/api/#upload - API
-     - There is even origin of the file
-- Learning - each part - Hmill, model, experiments, evaluation...
-- minibatches why are they randomly sampled from training set?
-   - https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/
+- Use resources stated in thesis assignment
 
 
 # Thesis assignment
@@ -43,7 +35,8 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
 **What, Why, How, Who, When**
 
 1. Introduction - **What** are we trying to do and **Why**. How we are going to describe it.
-   - motivation - ??
+   - motivation
+    - Motivation behind the modelling itself (classifying itself)
    - goals
    - structure of the thesis
 ------------ 
@@ -54,14 +47,15 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - GOALS
     - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
     - Capture behavior of selected malware samples in CapeV2 sandbox and store results
-  - Theory part - types, conditions, bias...
+  - Theory part - types, conditions, bias, Malware types, signatures....
   - Sandboxing
   - Previous experiments
   - Our goal in this part
   - Data collection for ML purposes in general
   - Realization
-    - our infrastructure - distribution, other types of analyses, network infrastructure (marginally, I am not going to use those data, I think)
+    - our infrastructure - distribution, other types of analyses, network infrastructure (marginally, I am not going to use those data, I think, but I performed it and I can write about the risks and so on...)
     - used tools
+    - distrbution
     - pipeline
     - run
     - results
@@ -71,6 +65,11 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
     - Theory
     - Single label, multilabel
     - evaluation of classifiers
+      - Confusion matrix
+      - F-score, train accuracy, test accuracy, loss function, plots
+			- AUC, ROC?
+      - What is important metric during malware classification and why
+    - (Overfitting, early stopping)
   - General approaches to malware classfication - theory
     - based on dynamic/static anysis results...
     - (one of them should be using neural nets - describe deeply usage of loss function in both cases - single label, multi label...)
@@ -85,10 +84,13 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - Usual usage of this type of learning - classification, regression...
   - Our usecase and experiments with this kind of learning in malware classification field (prior)
 - Dataset structure, features and hiden states
+  - What kind of data we have - mention all parts of cuckoo log, mention even virus total reports
   - (theory for basic statistcs, but maybe not)
   - GOALS
     - Analyze captured data. Report basic statistics and choose appropriate features and hidden states for further modelling
   - dataset structure
+    - Bias in practical data like this - security data, what are the influences
+    - Balanced dataset - in term of accuracy metric performance
   - basic statistics - histogram...
   - On Hmill usage - features, hidden states (Section for each, description)
   - Signatures - hidden states
@@ -109,7 +111,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - theory to model explaining and feature extraction
   - Approaches:
     - Existing solutions - avast explainer, other?
-    - Signatures and their implementation, what they identify (Yara and others, used by sandbox...)
+    - Signatures and their implementation (python), what they identify (Yara and others, used by sandbox...)
     - Maybe I can try some alternative approach - simple diff on jsons?
     - Expert view
       - Ask Thorsten to try to explain some patterns and domain specific subjects 
@@ -125,66 +127,74 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - future work
   - thanks to
 
-## Theory:
-- Maware analysis in general
-  - Sandboxing itself
-- Classification problems
-  - single label, multi label
-- Neural nets
-- Hmill
-- Modelling
-  - Training, Testing
-  - Early stopping....
-- Model Evaluation - metrics,...
-- Model Explanation
+# Resources
+- Sandbox
+  - Cuckoo Sandbox Overview and Demo
+  - https://github.com/volatilityfoundation/volatility
+  - The Malware CAPE: Automated Extraction of Configuration and Payloads from Sophisticated Malware
+  - https://medium.com/@soji256/build-a-cape-sandbox-to-analyze-emotet-3d507599dda6
+  - https://en.wikipedia.org/wiki/Portable_Executable
+  - https://github.com/kevoreilly/community
+- Mandlik's work 
+- Pevny's work
+- Multilabel
+  	- https://en.wikipedia.org/wiki/Multi-label_classification
+		- https://stats.stackexchange.com/questions/12702/what-are-the-measure-for-accuracy-of-multilabel-data
+		- https://fluxml.ai/Flux.jl/stable/models/losses/
+		  -  Classical crossentrophy is design to have onehot encoded target, penalty is counted only for true label position
+		  -  Binary crossentrophy https://stackoverflow.com/questions/59336899/which-loss-function-and-metrics-to-use-for-multi-label-classification-with-very
 
-## Infrastructure
-- Distribution part of Cape Sandbox
+- Evaluation
+  - https://www.kdnuggets.com/2017/04/must-know-evaluate-binary-classifier.html
+  - https://medium.com/analytics-vidhya/accuracy-vs-f1-score-6258237beca2
+  - https://sites.icmc.usp.br/gbatista/files/laptec2003.pdf
+  - https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234
+- Early stopping and ovefitting
+  -  https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/
+  - https://medium.com/@yixinsun_56102/understanding-generalization-error-in-machine-learning-e6c03b203036
+- write about sandboxing theory and everything around
+  - https://cybersecurity.att.com/blogs/labs-research/malware-exploring-mutex-objects
+  -  https://bazaar.abuse.ch/sample/58b16ea474c6ae74987e0704c6af2468b463ef0c8c652777b227900d182655c4/ 
+      - some metadata from here?
+     -  https://bazaar.abuse.ch/api/#upload - API
+     - There is even origin of the file
+- minibatches why are they randomly sampled from training set?
+   - https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/
+- Original sources
+  1. Jan Stiborek, Tomáš Pevný, and Martin Rehák. „Multiple instance learning for
+  malware classification“ Expert Syst. Appl. 93, C (March 2018), 346–357, 2018.
+  2. Digit Oktavianto and Iqbal Muhardianto. „Cuckoo Malware Analysis“. Packt
+  Publishing, 2013.
+  3. T. Pevnýand P. Somol, „Using neural network formalism to solve multipleinstance
+  problems,” in International Symposium on Neural Networks, pp.
+  135–142, Springer, 2017.
+  4. S. Mandlik, „Mapping the Internet — Modelling Entity Interactions in Complex
+  Heterogeneous Networks (diploma thesis)“, 2020.
+  5. Wang C., Ding J., Guo T., Cui B. „A Malware Detection Method Based on
+  Sandbox, Binary Instrumentation and Multidimensional Feature Extraction“. In:
+  Barolli L., Xhafa F., Conesa J. (eds) Advances on Broad-Band Wireless
+  Computing, Communication and Applications. BWCCA 2017. Lecture Notes on
+  Data Engineering and Communications Technologies, vol 12. Springer, Cham., 2018.
+- Web sources
+  	- Summary of potential sorces of metadata
+		- Abuse.ch - https://bazaar.abuse.ch/api/#api_key
+		- VirusTotal - https://developers.virustotal.com/v3.0/reference#file-info
+		- Metadefender - https://onlinehelp.opswat.com/mdcloud/3.1_Retrieving_scan_reports_using_a_data_hash.html
+	- Interesting
+		- https://app.any.run/
+		- https://virusscan.jotti.org/
+		- https://virscan.org/
+		- https://mzrst.com/
+		- https://github.com/maliceio/malice
+    - https://www.hybrid-analysis.com/
+    - https://www.shodan.io/
+    - https://www.av-comparatives.org/
+    - https://www.av-test.org/
 
-# Notes:
-- Another experiments with all the stuff - dynamic analyses collection, malware/signatures classification, e. g. Mandlik's work 
-- Bias in practical data like this - security data, what are the influences
-- I should discuss the results
-- Couple of words about
-- Other used sorces like virus total and so on
-- Original signature in python, intution behind the inteerpretation of results
-- Balanced dataset - in term of accuracy metric performance
-- Alternative approaches to classification
-- Malware types, signatures...
-- Previoius work on classification - prior
-- Sample structure
+# Remains:
 - It could be great to have even cleanware samples... (https://researchoutput.csu.edu.au/en/publications/differentiating-malware-from-cleanware-based-on-behavioural-analy)
 
-	- Experiments:
-		-  Single signature
-		-  Multi signature (multilabel)
-			§ Try extract labels, then I can choose only some of signatures
-			§ Use binary cross entrophy, change implemententation of accuracy
-  - Explainning
-		
-	- Evaluation
-		- https://www.kdnuggets.com/2017/04/must-know-evaluate-binary-classifier.html
-		- https://medium.com/analytics-vidhya/accuracy-vs-f1-score-6258237beca2
-		- https://sites.icmc.usp.br/gbatista/files/laptec2003.pdf
-		- https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234
-		- Single label
-			- F-score, train accuracy, test accuracy, loss function, plots
-			- AUC, ROC?
-		- When to stop learning?
-			- Check ovefitting
-	- Is it number of epochs or number of iterations?
-		-  Report it and even time
-		-  Use @epochs?
-	- Early stopping
-		-  https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/
-		-  Hyper parametrs?
-			§ Epochs, iterations,…
-	- Validation set
-		-  Train hyperparameters
-		-  Validate model performace 9early stopping…)
-https://medium.com/@yixinsun_56102/understanding-generalization-error-in-machine-learning-e6c03b203036
 
-## Evaluation
-- Confusion matrix
-
-
+# Concrete NOTES
+## Model evaluation
+- 
