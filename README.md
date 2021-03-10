@@ -2,11 +2,47 @@
 - Author: Domnik Kouba
 - Used template: [here](https://github.com/macekond/k336_sablona)
 - Used VS code and https://github.com/James-Yu/LaTeX-Workshop
+- https://arxiv.org/pdf/1612.04888.pdf
+- https://academia.stackexchange.com/questions/112111/how-to-improve-the-language-of-my-master-thesis-by-myself
 - LATEX
   - https://github.com/dspinellis/latex-advice
   - https://rvprasad.medium.com/a-git-workflow-for-writing-papers-in-latex-4cfb31be4b06
   - /citet, /citep, /citeathor, \cite[p.~8]{LR89}
   - https://www.doi2bib.org/
+
+
+
+# Writing notes
+- Passive or we talking about what wehave done or seen... (checked in Madlik, Pevny)
+
+# Plan
+- DEADLINE: 21.5. 2021 -> have to be handed in printed on Department
+- 8.3. week
+  - single label experiments, multilabel implementation and experiments
+  - chapter about sandboxing,...,collecting data, infrasturcture, pruning...
+- 15.3. week
+  - Explainer usage
+  - chapter about ML aplication in Network security, classifiers
+- 22.3. week
+  - 
+- 29.3. week
+  -
+- 5.4. week
+  - 
+- 12.4. week
+  -
+- 19.4. week
+  - 
+- 26.4 week
+  - 
+- 3.5. week
+  - order printing!
+- 10.5. week
+  - experiments ready, theory ready, adding just results, conclusion, introduction, discussion
+- 17.5. week
+  - English last adjustments, send to print it
+  - 21.5. 2021 - FRIDAY, LAST DAY
+
 
 
 # TODO
@@ -16,6 +52,7 @@
 - Use resources stated in thesis assignment
 - Metrics in multiclass classification and even in multilabel multiclass example
 - Cross validation?
+- Thanks to Mr Mandlik
 
 # Thesis assignment
 The thesis aims to capture and analyze artifacts of malware execution in a protected environment and assess if these artifacts can be used to predict malware functionalities and capabilities. 
@@ -39,6 +76,8 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
 1. Introduction - **What** are we trying to do and **Why**. How we are going to describe it.
    - motivation
     - Motivation behind the modelling itself (classifying itself)
+      - classifying accordig to dynamic analyses, prior arts....
+      - My thesis is more practical, so the main goal is not to compare my results to another ones, but just demonstrate acuuracy of such classifier and everything around like for instance sandboxing, exaplaining
    - goals
    - structure of the thesis
 ------------ 
@@ -98,19 +137,24 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - Signatures - hidden states
   - Features  desription
   - Maybe try to extract more candidates (But I would have to perform several more experiments, but data pruning should not be problem)
+    - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it
 - (I would like to draw the theory at the beginning of each part and then say what practically was done)
 - Modelling
-  - Used technologies, several experiments, pseudocode, hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES?
+  - Used technologies, several experiments, pseudocode, hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, MEntion metacenter (even in thanks part)
   - Modelling - single label classifier
     - GOAL: Using HMill, create models. Report results.
   - Modelling - multi label classifier
     - GOAL: Using HMill, create models. Report results.
   - Performance, early stopping, hyper parameters...
+  - Detectection of some signatures, some not, why - no data; why...
+    - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
+  - (Technical background, used metascenter archicture...)
 - Explaining
   - Goal 
     - identify the artifacts corresponding to different malware behavior. Report results.
     - Investigate which parts of the CapeV2 log are important to different malware behavior. 
-  - theory to model explaining and feature extraction
+    - Why - if I compare it to the information used in signature implementation, I can see if it is using something else or not
+  - theory to model explaining and feature extraction - Big source is document sent by Mr. Pevny from Avast(can I cite it?)
   - Approaches:
     - Existing solutions - avast explainer, other?
     - Signatures and their implementation (python), what they identify (Yara and others, used by sandbox...)
@@ -118,6 +162,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
     - Expert view
       - Ask Thorsten to try to explain some patterns and domain specific subjects 
       - Důležité: predikce signatures a jejich vysvětlení, feedback od Thosrten k vysvětlitelnosti, jestli to jako souhlasí s realitou 
+    - Coclusion could be also that wa are able to find another features not directly connected to original ones which are also used by signature implementation
 - Evaluation and discussion
   - GOAL - Evaluate the results of the experiment. ("Vyhodnoťte", ne "ověřte"!!)
  
@@ -134,7 +179,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
 
 # Resources
 - Malware classification using hmill and its comparison to another approaches
-  - https://pdf.sciencedirectassets.com/271506/1-s2.0-S0957417417X00213/1-s2.0-S0957417417307170/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDyBj8Se%2FpspGjTRG7wTNb3MNwKD9vXXIB3CjmLvPzmNwIhAN%2Fk6IUDRJcqpbW%2FLyaUZ0eHS8yk5G8j1mW4h5YkEP%2BYKr0DCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQAxoMMDU5MDAzNTQ2ODY1Igxqz%2B2GxANt4v%2FuUj8qkQM6ZMY1DTOw7yxSDw7RhlVqc%2BqfbaQZ9H0e0JLicueV1d96WcCmRzQwAfGSS2GTPlW%2BMFJyYs1DAtABhE3tnwI99ZeA95tCV9CxjPFGCJc8V8M6%2F8R2Q6fH0hWyZ%2B4pCbVtjcr%2F6ft84EszEiQmHj6DyLy%2F7cCTXhB3OiTPFEWx%2FPfUq0zwlgSgoRiE3i3WtJFlhP%2B%2FJELmmseb10vB37ci1qGMWvVOBO5kZVAZMcvVhSDaeudc%2Fw2Fn5VOiCbvfTExUwxqJb6nxsKAxc57fkntGdDVl7iRiM9xOexuvKpDU8BuKLleyEkUp8yVx6FKLtnC85V1TW7nHYEh0cO5Y1TkuHE78l8r%2B%2FDm5iooma%2B66SNFT%2BE55AKj4D%2Beu%2FNnEBn1VaY54oilIk1UxuoZIJJ9OoOr1i1usMKukzWoabJFata4%2FHPWEhlKCA97BrzLQ56hA5BobzqDB%2BhGZUR4kiEnQiEqKIs0Wbc1eWLY4WNbCmlLg2ZJGjohgisoXI4cPouTTstHCVxWlvzyE718TGQZWTCJrfmBBjrqAfPsH%2BgWSfzZsvUJ%2Bv85WCHI2MfmQ%2FQARLEVRXK%2F2BrpdFOcIkripQfssYFEeIGOz%2F246oBQA3mPc0NYT%2FvRoWNS4ZW7WazhlG%2FygE6nGbtFfil%2BLnekh9tyZ5BCG1c4iOPrjMZaAOCBGTexg%2FNVrMpy%2F4t7IqOslYIAmDOljHIf4HzgW7BbgmC%2FUjlghTlOH271PVDcx9WWr7hnbBVfRILPm2LsyV89v4jP2RADHCKiTVafcjclo5TQUs4EZD6uO6i%2Bhjbule%2F1AC9jhb0aJKvGBYHsONa3ZLx2db8jyecl81V2%2FjvADzvJEA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210302T161641Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYQAWIGSX2%2F20210302%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d2c570eb37501f94b12d4d31b3200f766df83d297453bb67175424bda2c0aacb&hash=e26708acf069241c8a25ff5e1d9818b0253735fd0e51d99a91f0933465f25015&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0957417417307170&tid=spdf-28109fdb-8953-4a32-adec-d4301b2a369a&sid=eac2c51846482343fa3bfdc5f6bd5f797c65gxrqb&type=client
+  - https://pdf.sciencedirectassets.com/271506/1-s2.0-S0957417417X00213/1-s2.0-S0957417417307170/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDyBj8Se%2FpspGjTRG7wTNb3MNwKD9vXXIB3CjmLvPzmNwIhAN%2Fk6IUDRJcqpbW%2FLyaUZ0eHS8yk5G8j1mW4h5YkEP%2BYKr0DCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQAxoMMDU5MDAzNTQ2ODY1Igxqz%2B2GxANt4v%2FuUj8qkQM6ZMY1DTOw7yxSDw7RhlVqc%2BqfbaQZ9H0e0JLicueV1d96WcCmRzQwAfGSS2GTPlW%2BMFJyYs1DAtABhE3tnwI99ZeA95tCV9CxjPFGCJc8V8M6%2F8R2Q6fH0hWyZ%2B4pCbVtjcr%2F6ft84EszEiQmHj6DyLy%2F7cCTXhB3OiTPFEWx%2FPfUq0zwlgSgoRiE3i3WtJFlhP%2B%2FJELmmseb10vB37ci1qGMWvVOBO5kZVAZMcvVhSDaeudc%2Fw2Fn5VOiCbvfTExUwxqJb6nxsKAxc57fkntGdDVl7iRiM9xOexuvKpDU8BuKLleyEkUp8yVx6FKLtnC85V1TW7nHYEh0cO5Y1TkuHE78l8r%2B%2FDm5iooma%2yyB66SNFT%2BE55AKj4D%2Beu%2FNnEBn1VaY54oilIk1UxuoZIJJ9OoOr1i1usMKukzWoabJFata4%2FHPWEhlKCA97BrzLQ56hA5BobzqDB%2BhGZUR4kiEnQiEqKIs0Wbc1eWLY4WNbCmlLg2ZJGjohgisoXI4cPouTTstHCVxWlvzyE718TGQZWTCJrfmBBjrqAfPsH%2BgWSfzZsvUJ%2Bv85WCHI2MfmQ%2FQARLEVRXK%2F2BrpdFOcIkripQfssYFEeIGOz%2F246oBQA3mPc0NYT%2FvRoWNS4ZW7WazhlG%2FygE6nGbtFfil%2BLnekh9tyZ5BCG1c4iOPrjMZaAOCBGTexg%2FNVrMpy%2F4t7IqOslYIAmDOljHIf4HzgW7BbgmC%2FUjlghTlOH271PVDcx9WWr7hnbBVfRILPm2LsyV89v4jP2RADHCKiTVafcjclo5TQUs4EZD6uO6i%2Bhjbule%2F1AC9jhb0aJKvGBYHsONa3ZLx2db8jyecl81V2%2FjvADzvJEA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210302T161641Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYQAWIGSX2%2F20210302%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d2c570eb37501f94b12d4d31b3200f766df83d297453bb67175424bda2c0aacb&hash=e26708acf069241c8a25ff5e1d9818b0253735fd0e51d99a91f0933465f25015&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0957417417307170&tid=spdf-28109fdb-8953-4a32-adec-d4301b2a369a&sid=eac2c51846482343fa3bfdc5f6bd5f797c65gxrqb&type=client
 
 - Sandbox
   - Cuckoo Sandbox Overview and Demo
