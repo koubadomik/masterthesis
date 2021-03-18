@@ -46,6 +46,7 @@
 
 
 # TODO
+- mention all atempts!! even not succesful, like slow convergence in case of some classifier, report even results
 - Are there another datasets?? It woiuld be great to compare my results and another
   - https://scholar.google.com/scholar?hl=cs&as_sdt=0%2C5&q=malware+classification+&btnG=
 - Write even about unsuccesful attempts, for example data were too complex and we are not able to learn single classifier, so we have to prune the data more
@@ -137,7 +138,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - Signatures - hidden states
   - Features  desription
   - Maybe try to extract more candidates (But I would have to perform several more experiments, but data pruning should not be problem)
-    - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it
+    - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think
 - (I would like to draw the theory at the beginning of each part and then say what practically was done)
 - Modelling
   - Used technologies, several experiments, pseudocode, hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, MEntion metacenter (even in thanks part)
@@ -148,6 +149,10 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - Performance, early stopping, hyper parameters...
   - Detectection of some signatures, some not, why - no data; why...
     - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
+    - we did not care so much about tuning hyper parameters and comparing
+       - We used parameters similar to similar experiments with same framework, 1000/150 look to converge (hopefully)
+       - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
+       - than we experimented with multilabel case - trying to predict more than one signatures at one time
   - (Technical background, used metascenter archicture...)
 - Explaining
   - Goal 
