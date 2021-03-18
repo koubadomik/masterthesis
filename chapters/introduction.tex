@@ -1,2 +1,16 @@
 \chapter{Introduction}
-Hello World!!
+\section{Motivation}
+\todo[inline]{Add after I will have some references, try to summarize it}
+\section{Goals}
+The main goal of this thesis which we are aiming at is to capture and analyze artifacts of dynamic malware analyses and draw conclusions in each part of the process. Due to wide scope of this thesis, we do not aspire to break down each tiny detail of particular part. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps. Those are following:
+
+\begin{enumerate}
+    \item Run several instances of CapeV2 \cite{Cape} sandbox and solve their orchestration for this experiment
+    \item Capture behavior of selected malware samples and store results
+    \item Learn the hierarchical multiple instance learning framework
+    \item Analyze captured data. Report basic statistics and choose appropriate features and hidden states for further modeling
+    \item Using HMill, create models, and identify the artifacts corresponding to different malware behavior, report results
+    \item Investigate which parts of the CapeV2 log are important to different malware behavior
+\end{enumerate}
+
+Text is organized such that each chapter focuses on specific goal from the assignement. Firstly we describe theory and prior work, further our conditions, experiments and conclusions.
