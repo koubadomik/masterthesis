@@ -46,6 +46,7 @@
 
 
 # TODO
+- Division into parts I do not have to have later, this is just convenient to use
 - mention all atempts!! even not succesful, like slow convergence in case of some classifier, report even results
 - Are there another datasets?? It woiuld be great to compare my results and another
   - https://scholar.google.com/scholar?hl=cs&as_sdt=0%2C5&q=malware+classification+&btnG=
@@ -133,6 +134,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
   - dataset structure
     - Bias in practical data like this - security data, what are the influences
     - Balanced dataset - in term of accuracy metric performance
+    - What each part means (including signatures)
   - basic statistics - histogram...
   - On Hmill usage - features, hidden states (Section for each, description)
   - Signatures - hidden states
