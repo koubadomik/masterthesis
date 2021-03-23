@@ -17,28 +17,35 @@
 
 # Plan
 - DEADLINE: 21.5. 2021 -> have to be handed in printed on Department
-- 8.3. week
-  - single label experiments, multilabel implementation and experiments
-  - chapter about sandboxing,...,collecting data, infrasturcture, pruning...
-- 15.3. week
-  - Explainer usage
-  - chapter about ML aplication in Network security, classifiers
 - 22.3. week
-  - 
+  - Close up (code) - Single label and multilabel, have to have results or everything to retrieve them (as much as possible!!) - different kinds of signatures
+    - if multilabel will suck, skip it and just mention experiments and code
+  - Research for chapters
+    - classification, hmill, explain_theory
+    - find sources and ideally read through
+  - Explaining - code
 - 29.3. week
-  -
+  - End up explaining part
+  - Write chapters - data, classification, hmill, explain_theory
 - 5.4. week
-  - 
+  - Chapters - data, model, explain_experiments
 - 12.4. week
-  -
+  - Final discussion about results from 3 chapters
+  - Try to finalize everything so far having
+    - ML stuff
 - 19.4. week
-  - 
+  - Final adjustment in ML par
+  - Research Malware analysis, start writing this chapter
 - 26.4 week
-  - 
+  - Malware analysis chapter and infrastructure
+  - Try to end it up
 - 3.5. week
   - order printing!
+  - introduction, conclusions, discussion (see one note sheet)
+  - code completion - attachement
+  - final adjustments
 - 10.5. week
-  - experiments ready, theory ready, adding just results, conclusion, introduction, discussion
+  - final adjustments
 - 17.5. week
   - English last adjustments, send to print it
   - 21.5. 2021 - FRIDAY, LAST DAY
@@ -104,22 +111,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
     - results
   - Conclusions, comming-outs, summary, discussion
 - Malware classification
-  - Classification problems - binary, multiclass, multilabel...
-    - Theory
-    - Single label, multilabel
-    - evaluation of classifiers
-      - Confusion matrix
-      - F-score, train accuracy, test accuracy, loss function, plots
-			- AUC, ROC?
-      - What is important metric during malware classification and why
-    - (Overfitting, early stopping)
-  - General approaches to malware classfication - theory
-    - based on dynamic/static anysis results...
-    - (one of them should be using neural nets - describe deeply usage of loss function in both cases - single label, multi label...)
-      - hyper parameters...
-      - minibatch gradient descent, gradient descent itself
-
-  - Prior work
+ 
 - Hmill
   - GOALS 
     - Learn the hierarchical multiple instance learning framework (HMill)
@@ -156,6 +148,14 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
        - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
        - than we experimented with multilabel case - trying to predict more than one signatures at one time
   - (Technical background, used metascenter archicture...)
+  - reference Mandlik's and Pevny's works, hopefully similar
+    - Mandlik is reporting
+      - accuracy, f-score
+      - PR curves
+      - ROC curves, ROC with FPR log
+      - AUCOR, AUCPR
+      - For different kinds of signatures
+    - Pevny said - rather less, balance accuracy, roc curve with log scale on x axis (FPR is more inportant for us)
 - Explaining
   - Goal 
     - identify the artifacts corresponding to different malware behavior. Report results.
@@ -170,6 +170,10 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
       - Ask Thorsten to try to explain some patterns and domain specific subjects 
       - Důležité: predikce signatures a jejich vysvětlení, feedback od Thosrten k vysvětlitelnosti, jestli to jako souhlasí s realitou 
     - Coclusion could be also that wa are able to find another features not directly connected to original ones which are also used by signature implementation
+  - Cobclusions here could be
+    - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
+    - again refer to Pevny work
+    - hopefully discussion on if the parts contains something significant according to type of signature and so on, of we can find something else than only the deterministic base which the signatue implementation is checking
 - Evaluation and discussion
   - GOAL - Evaluate the results of the experiment. ("Vyhodnoťte", ne "ověřte"!!)
  
