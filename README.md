@@ -83,97 +83,20 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
 **What, Why, How, Who, When**
 
 1. Introduction - **What** are we trying to do and **Why**. How we are going to describe it.
-   - motivation
-    - Motivation behind the modelling itself (classifying itself)
-      - classifying accordig to dynamic analyses, prior arts....
-      - My thesis is more practical, so the main goal is not to compare my results to another ones, but just demonstrate acuuracy of such classifier and everything around like for instance sandboxing, exaplaining
-   - goals
-   - structure of the thesis
 ------------ 
 - (rather more chapters than two big parts, just remove the top levels if there are only 2)
 - (Each problem - theory, prior, my usecase/application)
 - Malware analysis, infrastructure and data analysis (maybe more chapters, add what ever to appendices, used technology stack...)
-  - Introduction
-  - GOALS
-    - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
-    - Capture behavior of selected malware samples in CapeV2 sandbox and store results
-  - Theory part - types, conditions, bias, Malware types, signatures....
-  - Sandboxing
-  - Previous experiments
-  - Our goal in this part
-  - Data collection for ML purposes in general
-  - Realization
-    - our infrastructure - distribution, other types of analyses, network infrastructure (marginally, I am not going to use those data, I think, but I performed it and I can write about the risks and so on...)
-    - used tools
-    - distrbution
-    - pipeline
-    - run
-    - results
-  - Conclusions, comming-outs, summary, discussion
 - Malware classification
- 
 - Hmill
-  - GOALS 
-    - Learn the hierarchical multiple instance learning framework (HMill)
-  - describe theory, connect it to classical approach
-  - Usual usage of this type of learning - classification, regression...
-  - Our usecase and experiments with this kind of learning in malware classification field (prior)
+
 - Dataset structure, features and hiden states
-  - What kind of data we have - mention all parts of cuckoo log, mention even virus total reports
-  - (theory for basic statistcs, but maybe not)
-  - GOALS
-    - Analyze captured data. Report basic statistics and choose appropriate features and hidden states for further modelling
-  - dataset structure
-    - Bias in practical data like this - security data, what are the influences
-    - Balanced dataset - in term of accuracy metric performance
-    - What each part means (including signatures)
-  - basic statistics - histogram...
-  - On Hmill usage - features, hidden states (Section for each, description)
-  - Signatures - hidden states
-  - Features  desription
-  - Maybe try to extract more candidates (But I would have to perform several more experiments, but data pruning should not be problem)
-    - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think
+
 - (I would like to draw the theory at the beginning of each part and then say what practically was done)
 - Modelling
-  - Used technologies, several experiments, pseudocode, hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, MEntion metacenter (even in thanks part)
-  - Modelling - single label classifier
-    - GOAL: Using HMill, create models. Report results.
-  - Modelling - multi label classifier
-    - GOAL: Using HMill, create models. Report results.
-  - Performance, early stopping, hyper parameters...
-  - Detectection of some signatures, some not, why - no data; why...
-    - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
-    - we did not care so much about tuning hyper parameters and comparing
-       - We used parameters similar to similar experiments with same framework, 1000/150 look to converge (hopefully)
-       - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
-       - than we experimented with multilabel case - trying to predict more than one signatures at one time
-  - (Technical background, used metascenter archicture...)
-  - reference Mandlik's and Pevny's works, hopefully similar
-    - Mandlik is reporting
-      - accuracy, f-score
-      - PR curves
-      - ROC curves, ROC with FPR log
-      - AUCOR, AUCPR
-      - For different kinds of signatures
-    - Pevny said - rather less, balance accuracy, roc curve with log scale on x axis (FPR is more inportant for us)
+  
 - Explaining
-  - Goal 
-    - identify the artifacts corresponding to different malware behavior. Report results.
-    - Investigate which parts of the CapeV2 log are important to different malware behavior. 
-    - Why - if I compare it to the information used in signature implementation, I can see if it is using something else or not
-  - theory to model explaining and feature extraction - Big source is document sent by Mr. Pevny from Avast(can I cite it?)
-  - Approaches:
-    - Existing solutions - avast explainer, other?
-    - Signatures and their implementation (python), what they identify (Yara and others, used by sandbox...)
-    - Maybe I can try some alternative approach - simple diff on jsons?
-    - Expert view
-      - Ask Thorsten to try to explain some patterns and domain specific subjects 
-      - Důležité: predikce signatures a jejich vysvětlení, feedback od Thosrten k vysvětlitelnosti, jestli to jako souhlasí s realitou 
-    - Coclusion could be also that wa are able to find another features not directly connected to original ones which are also used by signature implementation
-  - Cobclusions here could be
-    - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
-    - again refer to Pevny work
-    - hopefully discussion on if the parts contains something significant according to type of signature and so on, of we can find something else than only the deterministic base which the signatue implementation is checking
+
 - Evaluation and discussion
   - GOAL - Evaluate the results of the experiment. ("Vyhodnoťte", ne "ověřte"!!)
  
@@ -181,9 +104,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
 -----------
 
 2. Conclusion
-  - goals and their achivement, results, outputs
-  - future work
-  - thanks to
+
 
 
 
@@ -254,6 +175,7 @@ The thesis aims to capture and analyze artifacts of malware execution in a prote
     - https://www.shodan.io/
     - https://www.av-comparatives.org/
     - https://www.av-test.org/
+
 
 # Remains:
 - It could be great to have even cleanware samples... (https://researchoutput.csu.edu.au/en/publications/differentiating-malware-from-cleanware-based-on-behavioural-analy)

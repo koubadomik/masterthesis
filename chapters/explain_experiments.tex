@@ -1,1 +1,26 @@
 \chapter{Explaining model}
+
+
+mention Thorsten's advice to look at implementation of python signatures and reason why we want to look at it
+
+- Goal 
+- identify the artifacts corresponding to different malware behavior. Report results.
+- Investigate which parts of the CapeV2 log are important to different malware behavior. 
+- Why - if I compare it to the information used in signature implementation, I can see if it is using something else or not
+- theory to model explaining and feature extraction - Big source is document sent by Mr. Pevny from Avast(can I cite it?)
+- Approaches:
+- Existing solutions - avast explainer, other?
+- Signatures and their implementation (python), what they identify (Yara and others, used by sandbox...)
+- Maybe I can try some alternative approach - simple diff on jsons?
+- Expert view
+  - Ask Thorsten to try to explain some patterns and domain specific subjects 
+  - Důležité: predikce signatures a jejich vysvětlení, feedback od Thosrten k vysvětlitelnosti, jestli to jako souhlasí s realitou 
+- Coclusion could be also that wa are able to find another features not directly connected to original ones which are also used by signature implementation
+- Cobclusions here could be
+- Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
+- again refer to Pevny work
+- hopefully discussion on if the parts contains something significant according to type of signature and so on, of we can find something else than only the deterministic base which the signatue implementation is checking
+
+
+
+- discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common

@@ -1,1 +1,40 @@
 \chapter{Modelling classifier}
+
+- Used technologies, several experiments, pseudocode, hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, MEntion metacenter (even in thanks part)
+  - Modelling - single label classifier
+    - GOAL: Using HMill, create models. Report results.
+  - Modelling - multi label classifier
+    - GOAL: Using HMill, create models. Report results.
+  - Performance, early stopping, hyper parameters...
+  - Detectection of some signatures, some not, why - no data; why...
+    - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
+    - we did not care so much about tuning hyper parameters and comparing
+       - We used parameters similar to similar experiments with same framework, 1000/150 look to converge (hopefully)
+       - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
+       - than we experimented with multilabel case - trying to predict more than one signatures at one time
+  - (Technical background, used metascenter archicture...)
+  - reference Mandlik's and Pevny's works, hopefully similar
+    - Mandlik is reporting
+      - Single label - from each signature kind atleast one (but possibly more) - For different kinds of signatures - create it as a part of training itself
+        - Params: empirically and based on previous experiments, no hyper parameters tuning (some of signatures have significant performance with chosen so we did not spend time with that, not goal of this thesis)
+            - samples 80_000, test: 0.5, train: 0.5
+            - minibatch - 1000
+            - neurons - 20
+            - iterations (random subssampling) - 120 (should be sufficient)
+        - before training:
+            - balance of training set - how many positive and negative - DONE
+                - I can use pie graph
+        - At the end of training
+            - metrics: accuracy, balanced accuracy - DONE
+            - curves: prcurve, roccurve (normal and with log on x-axis) - DONE (scores and targets)
+                - roc curve with log scale on x axis (FPR is more inportant for us)
+            - comparative: 
+                - f-score, auroc, auprc - DONE
+                    - I can argument as comparison with Mandlik, if it is going to work
+                - tpr, fpr, acc - DONE
+                    - Jan Stiborek comparison
+                    - I can use use column graphs
+        - multilabel - nice-to-have
+            - mention experiments (several attempts we have) and accuracy per item but only as something as addition - maybe more iteration, because multilabel is just multioutput single label, predicting at once should be possible, for it was not priority
+        
+      

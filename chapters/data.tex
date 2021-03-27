@@ -3,3 +3,19 @@
 reference json grinder and its usage to process data
 
 reference some source that is talking about data in cyber security, resp. on theory part
+
+- What kind of data we have - mention all parts of cuckoo log, mention even virus total reports
+- (theory for basic statistcs, but maybe not)
+- GOALS
+  - data processing, pruning and so on
+  - Analyze captured data. Report basic statistics and choose appropriate features and hidden states for further modelling
+- dataset structure
+  - Bias in practical data like this - security data, what are the influences
+  - Balanced dataset - in term of accuracy metric performance
+  - What each part means (including signatures)
+- basic statistics - histogram...
+- On Hmill usage - features, hidden states (Section for each, description)
+- Signatures - hidden states
+- Features  desription
+- Maybe try to extract more candidates (But I would have to perform several more experiments, but data pruning should not be problem)
+  - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think
