@@ -1,7 +1,43 @@
 \chapter{Malware classification}
 We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using so called signatures. These signatures are deterministically assigned amd usually sign that particular malware example is doing something suspicious (more later). Based on signatures we can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this deterministic way modern approaches from machine learning are often used.
 
-This capture focus on classification problem in general and later in case of malware. We involved more theory and prior work research in following chapters we discuss our case.
+This chapter focus on classification problem in general and later we describe malware classification. We involve more theory and prior work research in following chapters we discuss our case.
+
+
+Previous connection
+- One of conclusions of previous chapter is that that character of data is often structural as graph or tree (json, xml,...)
+Way through this chapter
+- Generally about machine learning challenges and types of tasks
+- Classification models and their evaluation
+- Neural networks
+- Classifying structured data as jsons - models
+- hmill and other techniques - reference next chapter
+- classification task in cyber security
+- Prior on this topic - cyber security!
+Next connection
+- Hmill is one what we want to use to create model of the data for classification
+
+
+\cite{GoodBengCour16}
+Potentially:
+- general points at the beggining
+    - Increasing model sizes
+    - Increasing Accuracy, Complexity and Real-World Impact
+    - Gradient-Based Optimization
+    - Stochastic Gradient Descent
+    - Challenges Motivating Deep Learning
+- More Sure
+    - Supervised X Unsupervised
+    - The Task, T - classification, regression, others exists
+    - The Performance Measure, P
+    - Capacity, Overfitting and Underfitting
+    - Hyperparameters and Validation Sets
+    - Bias and variance - Trading off Bias and Variance to Minimize Mean Squared
+    Error
+
+\cite{Bishop2006}
+ - generally the introduction to classification models
+
 
 - Classification problems - binary, multiclass, multilabel...
 - Theory
@@ -13,13 +49,13 @@ This capture focus on classification problem in general and later in case of mal
         - AUC, ROC?
   - What is important metric during malware classification and why
 
+
+- learning classifier from graph data - json files,...
 - possible models - based mainly on the data structure we have and use case we are modelling (find how to choose proper model)
     - among them even neural networks and refer to mill/hmil in next chapter - connect to goal of this thesis, use this framework to classify malware - go on with next part
 - (one of them should be using neural nets - describe deeply usage of loss function in both cases - single label, multi label...)
 - hyper parameters...
 - minibatch gradient descent, gradient descent itself
-
-
 
 - Machine learning in cyber security in general
 - General approaches to malware classfication - theory
