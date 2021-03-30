@@ -1,7 +1,133 @@
 \chapter{Malware classification}
-We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using so called signatures. These signatures are deterministically assigned amd usually sign that particular malware example is doing something suspicious (more later). Based on signatures we can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this deterministic way modern approaches from machine learning are often used.
+We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using so called signatures. These signatures are deterministically assigned and they usually sign that particular malware sample is doing something suspicious (we will describe later). Based on signatures we can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this deterministic way modern approaches from machine learning are often used.
 
-This chapter focus on classification problem in general and later we describe malware classification. We involve more theory and prior work research in following chapters we discuss our case.
+In this chapter we focus on classification problem in general and later we describe malware classification. We involve more theory and prior work research, in following chapters we discuss our case.
+
+In previous chapter we described different data outputs which are often produces by different kinds of analysis. That why later in this chapter we focus on models which are designed to for such data.
+
+\section{Classification in general}
+\todo{Add some examples of use of ML and AI in cyber security field}
+
+
+\todo{I think we want to aim only on stastistical machine learning, so let's define it at the beginning}
+The largest challenge in machine learning theory is very often used formalism and framework and point of view which we consider. So firstly we would like to summarize where in this tangle we are and where we are going.
+
+As stated by \citet{GoodBengCour16} the usual aproach in distinguishing tasks for machine learning algorithms are most often divided in categories based on expected sample processing result. By sample we mean collection of features which tends to be represented as $$TODO: add vector on R or tensor on R$$. As an example we can introduce images with fixed dimension but in our usecase even serialized json files or pcap files.
+
+In this section we are aiming at standard machine learning approach and tasks formulation, later we will define task which is actual for our work.
+
+\todo{add scheme of machine learning algorithm in classical manner, so features to hidden states (sometimes label) mapping, define some formalism for math signing}
+
+\paragraph{Usual and most seen categories are:}
+\begin{enumerate}
+    \item Classfication \todo{describe, add some math}
+    \item Regression \todo{describe, add some math}
+\end{enumerate}
+
+There are other categories like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009} which is quite often seen in cyber security field \todo{add example of this kind of task in cyber security https://link.springer.com/article/10.1007/s10994-014-5473-9}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}.
+
+Based on presence of hidden states and other conditions we can further distinguish between supervised and unsupervised learning tasks. \cite{zhang2020dive}. One of the biggest challenges of machine learning nowadays are labelled data, where every sample consists of features and appropriate hidden state - dataset for supervised learning. That is one reason why we want to be able to face even situations where the hidden states are not presented - dataset for unsupervised learning. \todo{add some paper where they talk about challenges like this} Those situations we can very often see in cyber security field because in principle attacker or any kind of distractor often wants to hide acts such that protector is not able to identify. So the hidden state itself could be assigned rather based on further data collection or never.\todo{find something about unsupervised learning in cyber security as an example https://technative.io/why-unsupervised-machine-learning-is-the-future-of-cybersecurity/, https://ieeexplore.ieee.org/abstract/document/8268746?casa_token=ctNKO2pD640AAAAA:XoFuD8SHvbzMszA1nHciHIiaetBCG7fN47zUNZDMYv2D5oZUqhGuq9FF_ETI9Rhf7QtsTYagkw, https://arxiv.org/abs/1812.07858}.
+There are also cases where we talk about semi-supervised learning \todo{define it and reference some source for example GoodBeng is mentioning it}.
+
+\todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
+
+The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
+
+Later we will mention other examples of tasks mainly different in the assumtions for input data.
+
+\todo{Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
+
+Our task is to classify samples so in further writing as model we reference classification model.
+
+train, test, validation and hyperparameters, overfitting, underfitting (https://www.deeplearningbook.org/contents/ml.html)
+
+
+\section{Classification models}
+There are various approaches to classification. In this section we describe some of basic models and their usual output and its intepretation. 
+
+reference discriminative models because this paper is talking about it also - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761 and we will work with that in further sections
+
+Mention on what kind of optimization it stands
+https://analyticsindiamag.com/7-types-classification-algorithms/
+https://www.edureka.co/blog/classification-algorithms/#typesofclassificationalgorithms
+https://dzone.com/articles/introduction-to-classification-algorithms
+
+\section{Model Evaluation}
+Based on what we are solving and what we want to comapare to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of classifier we have. The classifier itself is just blackbox which we are evaluating based on simply classificcation results.
+Mention training and learning case and metrics in different context
+general measures
+nice-to-have: early stopping based on metrics like those
+https://www.researchgate.net/profile/Mohammad-Hossin/publication/275224157_A_Review_on_Evaluation_Metrics_for_Data_Classification_Evaluations/links/57b2c95008ae95f9d8f6154f/A-Review-on-Evaluation-Metrics-for-Data-Classification-Evaluations.pdf
+
+measures important in cyber security
+https://scholarcommons.usf.edu/cgi/viewcontent.cgi?article=1005&context=mca
+https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
+https://owasp.org/www-community/controls/Intrusion_Detection
+On the other hand I will write even my own reasoning in particular in domain of cyber security what does it mean to misclassify as positive or negative example...
+In majority of papers like this https://core.ac.uk/download/pdf/77064684.pdf, they just state what they use fo accuracy and done. Or here :D https://core.ac.uk/download/pdf/80994982.pdf
+this is aiming at false positives in cyber security https://ieeexplore.ieee.org/document/7560382
+Goal obviously is to keep high false negative and lowen false positive beacuse both metrics are really important in network security
+https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf - section fn and fp
+
+
+
+\section{Data characteristics}
+Model which we choose for given task is based on several facts like domain which we are dealing with and mainly on the data we have.
+Input to usual model is binary vector or rather tensor, but those tensor could be encoding of different things
+Basic point of view is to distinguish between two basic types of variables - continous and discrete (https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
+Highlevel view will refer to images, time series, graphs (json...), just binary...
+Maybe we can talk about fixed dimension, various dimension
+
+Write more about json files and generally describe graph inputs
+
+\section{Neural Nets}
+In the section models \todo{reference} we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach.
+
+Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. \todo{examples of use and some reference to this statement, https://stats.stackexchange.com/questions/467103/do-neural-networks-make-assumptions-about-data-and-when-to-use-standardization}.
+general even math!
+https://www.deeplearningbook.org/contents/ml.html
+http://neuralnetworksanddeeplearning.com/chap1.html
+http://playground.tensorflow.org/#activation=relu&batchSize=30&dataset=spiral&regDataset=reg-plane&learningRate=0.3&regularizationRate=0&noise=0&networkShape=4,2&seed=0.87951&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false
+
+optimization theory, gradient descent, stochastic gradient descent, backprop
+cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
+https://stats.stackexchange.com/questions/186091/what-loss-function-should-i-use-for-binary-detection-in-face-non-face-detection
+
+Loss functions and nets used for classification
+https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
+
+\section{Classifying based on graph structured data}
+Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned our data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. 
+\subsection{Problem}
+https://www.quora.com/What-is-structured-data-in-the-context-of-machine-learning
+
+https://www.naftaliharris.com/blog/machine-learning-json/
+
+\subsection{Prior}
+https://arxiv.org/pdf/1506.05163.pdf
+https://arxiv.org/pdf/1911.08756v3.pdf
+https://www.cs.uoregon.edu/Reports/AREA-201706-Riazi.pdf
+https://core.ac.uk/download/pdf/11011889.pdf
+Hmill
+Graphical models
+Graph neural networks
+See in Mandlik
+
+\section{Classification in cyber security, classifying malwawre}
+Finally we can not skip our domain and results in this field. 
+Kinds of classifications in cyber security and their description
+Intrusion detection, network traffic attacks and anomalies and malware X cleanware classification,...
+Problems of cyber security field
+SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
+https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf
+https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
+
+\subsection{Problem}
+\subsection{Prior}
+Mandlik
+Pevny
+
+
 
 
 Previous connection
@@ -11,7 +137,7 @@ Way through this chapter
 - Classification models and their evaluation
 - Neural networks
 - Classifying structured data as jsons - models
-- hmill and other techniques - reference next chapter
+    - hmill and other techniques - reference next chapter
 - classification task in cyber security
 - Prior on this topic - cyber security!
 Next connection
@@ -70,11 +196,7 @@ Our goal is not to compare, mentions are just for reference to similar work, men
 nice-to have:
 - (Overfitting, early stopping)
 
-
-
-\todo[inline]{
-    Remainders:
-    Malware analysis results could be used
-    Following data collection and processing next task is  
-    Based on type of analysis and characteristics of collected data
-}
+Remainders:
+Malware analysis results could be used
+Following data collection and processing next task is  
+Based on type of analysis and characteristics of collected data}
