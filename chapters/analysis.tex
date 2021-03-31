@@ -1,5 +1,35 @@
 \chapter{Malware analysis}
-First phase of our work is about running chosen sandbox to capture sigificant number of analysis results for further use. This task could be divided into two subtask - building infrastructure and data collection. Due to the fact that we would like to collect more than $50 000$ samples and usual analysis take $5$ minutes we will need more than one active instance so the distribution is another challenge.
+The data which we are performing analysis on are malware analysis results. Specifically those are dynamic analysis of running Portable executable (PE) files in sandbox environment. In this chapter we cover theory of malware analysis and everything related. \todo{add some motivation example or latest results... - known malware attacks..}
+
+Philosophy could be walking around risk management, probability of risk and resulting damage...
+Maybe something about truth and its protection in the world of lies and fake news
+Confidentiality, integrity and availability
+
+
+\section{Malware}
+Generally types of attacks and just the intro, to settle the malware into wider context
+Definition of cleanware and malware
+Types, Families
+
+\section{Portable executable files}
+
+\section{Malware analysis}
+introduction
+\subsection{Dynamic}
+\subsection{Static}
+
+\section{Sandboxing}
+existing solutions and results...
+\section{Produced data}
+
+\section{Challenges}
+Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general)
+
+\section{Prior}
+works about malware analysis
+works that collected data for machine learning purposes
+Mandlik, Stiborek, everybody who used cuckoo or other sandbox data
+
 
 
 
@@ -18,13 +48,10 @@ Next connection
 
 
 
-http://venom630.free.fr/pdf/Practical_Malware_Analysis.pdf
+
 - see references in thesis assignment
 
-PE files...
 
-
-- Introduction
 - GOALS
   - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
   - Capture behavior of selected malware samples in CapeV2 sandbox and store results
