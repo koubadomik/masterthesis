@@ -1,31 +1,47 @@
 \chapter{Data structure, features and hidden states}
+So far we know that sandbox output can is quite rich. There even such experiments that used machine learning algorithms on all the produced data but we would like to use some subset. In this chapter we describe our reasoning on choosing feature vector and hidden states.
+
+Final result of data collection - no internet samples (maybe mention at the end of prevous chapter), I did collect some, but did not use them in further parts because priority was not to have everything
+
+Technology - Julia
+  - describe why and basic features and advantages and cons
+
+
+How many samples, size...
+Summarize what we know from previous sections and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants
+we can even mention virustotal reports here
+
+Get several reasonings for some parts of analysis, what we want and we do not, also we can compare it to Stiborek and other works (for example Mandlik had quite straight-forward dataset and we know that it worked), we can really investigate the whole output and present ideas. Also we can try to specify the requirements for our model (quite big amount of data and we have to demonstrate on device we have)
+
+
+Detail descriptions of candidates, for example describe signatures and give example and at once slightly say why the signatures could be interesting (based on behavior like this we can validate model, such that it is using the proper part of report, but we can see whatever else which looks like malicious)
+
+At the end we can have more variants, but at the end we did examine two and that should not be a problem
+
+Data processing
+extracting desired parts
+Is there something else in processing?
+Pruning jsons in Julia...
+
+Basic statistics for various parts and variants
+  - signature histogram (balanced )
+  - ...
+  - a lot of Emotet (maybe should be on another place)
+  - - Balanced dataset - in term of accuracy metric performance
+  - Bias - - Bias in practical data like this - security data, what are the influences (as an example could be ip addresses...)
+
+
+After data investigation and processing we are moving to modelling. This statement is truth even physically such big data amounts we have to solve on bigger cluster like cesnet.metacenter.
 
 
 Previous connection
-- Follow up statements about data in cybersecurity, follow prevous chapter with choosing relevant parts of logs
-Way through this chapter
-TODO
+- Follow up statements about data in cybersecurity, follow previous chapter with choosing relevant parts of logs
+Way through this chapter, we do not use internet access data, because we did not have it at right time, no internet data are sufficient for our further experimentation
 Next connection
 - Chosen data will be used for further experiments
 
 
-
-reference json grinder and its usage to process data
-
 reference some source that is talking about data in cyber security, resp. on theory part
+  
+  
 
-- What kind of data we have - mention all parts of cuckoo log, mention even virus total reports
-- (theory for basic statistcs, but maybe not)
-- GOALS
-  - data processing, pruning and so on
-  - Analyze captured data. Report basic statistics and choose appropriate features and hidden states for further modelling
-- dataset structure
-  - Bias in practical data like this - security data, what are the influences
-  - Balanced dataset - in term of accuracy metric performance
-  - What each part means (including signatures)
-- basic statistics - histogram...
-- On Hmill usage - features, hidden states (Section for each, description)
-- Signatures - hidden states
-- Features  desription
-- Maybe try to extract more candidates (But I would have to perform several more experiments, but data pruning should not be problem)
-  - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think
