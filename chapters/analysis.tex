@@ -1,35 +1,77 @@
 \chapter{Malware analysis}
 The data which we are performing analysis on are malware analysis results. Specifically those are dynamic analysis of running Portable executable (PE) files in sandbox environment. In this chapter we cover theory of malware analysis and everything related. \todo{add some motivation example or latest results... - known malware attacks..}
 
-Philosophy could be walking around risk management, probability of risk and resulting damage...
+Philosophy could be walking around risk management, probability of risk and resulting damage... Maybe more examples of situations where we know how much it cost (Cambridge analytica, ransomware...)
 Maybe something about truth and its protection in the world of lies and fake news
 Confidentiality, integrity and availability
+
+Use found books or post-hoc go through some articles and formulate the motivation part...
+
+
+\section{Challenges}
+Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
+
+https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
+https://www.readitquik.com/articles/security-2/cybersecurity-challenges-that-need-to-be-on-your-radar-right-now/
 
 
 \section{Malware}
 Generally types of attacks and just the intro, to settle the malware into wider context
 Definition of cleanware and malware
 Types, Families
+https://en.wikipedia.org/wiki/Malware
+Find in books!
 
 \section{Portable executable files}
+Malware is defined widely and is not limited to specific kind of file format. In our research we decided to investigate only Portable Executable (PE) files. It is because we want to create dataset of malware running on windows machines with no extra extension. 
+
+In general we can find various filetypes. In list below we list some examples with basic principle how particular type is used for system intrusion or harm. From the definition of malicious code we can derive that whichever filetype could by used but some are more usual than another (easier to use).
+\begin{enumerate}
+  \item Portable executable
+  \item Portable Document Format
+  \item Microsoft office formats
+  \item Compressed
+\end{enumerate}
+
+https://en.wikipedia.org/wiki/Portable_Executable
+https://docs.microsoft.com/en-us/windows/win32/debug/pe-format
+https://github.com/corkami/pics/blob/master/binary/pe101/README.md
 
 \section{Malware analysis}
 introduction
+
+https://en.wikipedia.org/wiki/Malware_analysis
+Find in books!
+
 \subsection{Dynamic}
+https://publications.sba-research.org/publications/malware_survey.pdf
+https://link.springer.com/article/10.1007/s11416-007-0074-9
 \subsection{Static}
+
 
 \section{Sandboxing}
 existing solutions and results...
-\section{Produced data}
+find basics in books
 
-\section{Challenges}
-Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general)
+
+\section{Produced data}
+mention signatures
+usual format which are produced by sandbox and what we can find there
+Reference even docs - no problem, not only books and papers
+Conclusion should be that those data are complicated and their structure also keep some information (order, structure...), that is why we want to focus on structured data and especially json.
+
 
 \section{Prior}
 works about malware analysis
 works that collected data for machine learning purposes
 Mandlik, Stiborek, everybody who used cuckoo or other sandbox data
 
+file:///C:/Users/domia/Downloads/Imad-Saiida-IJCNIS-V11-N6-1.pdf
+https://web.archive.org/web/20160418151823/http://www.ijarcsse.com/docs/papers/Volume_3/4_April2013/V3I4-0371.pdf
+https://reader.elsevier.com/reader/sd/pii/S1383762120301442?token=81F1AB06FF0FE40D1B7745234269280FCF2CB0979140E84DB35D6E04A2C622FE6EDA2DE4DA0630E1D73044E3D84A722F&originRegion=eu-west-1&originCreation=20210401090943
+https://iopscience.iop.org/article/10.1088/1742-6596/1140/1/012042/pdf
+file:///C:/Users/domia/Downloads/JCIT4024PPL.pdf
+https://dl.acm.org/doi/abs/10.1145/2046614.2046618?casa_token=MXpfHiylCZcAAAAA:szRMPWfKXTl4wxP2-h32eknCg5dzM2t7RxGjywiJDksmT5FqcUY7pPrIBZchv26HUe3Lwubu5Hru
 
 
 
@@ -44,13 +86,6 @@ Way through this chapter
 - prior
 Next connection
 - We are interested in modeling the data using modern approaches, we know that the data are often structured somehow and that is what we will solve
-
-
-
-
-
-- see references in thesis assignment
-
 
 - GOALS
   - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
