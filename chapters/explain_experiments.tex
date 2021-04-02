@@ -1,8 +1,29 @@
 \chapter{Explaining model}
+Finally, we present specific method for hierarchical model explanation. One of goals of this thesis is to identify artifacts corresponding to different malware behavior. By artifacts we mean whatever what is among features of our model. Results are based on two things. Firstly we build on statistical method for model explanation (reference chapter). Secondly we are drawing conslusions after presenting those results to expert and then having discussion.
+
+Motivation about mention Thorsten's advice to look at implementation of python signatures and reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
+discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
+
+(This chapter should have simmilar structure as models before)
+
+Used technologies
+  - previous
+  - ExplainMill
+  (reference all the repositories - even cuckoo comminity)
+
+What we used - specific method (follow explanation theory) - we are choosing only samples where the model is above some confidence and explanation is per sample, we have several explanations to see some trend; we did follow results in Pevny's work, we did not experiment with different kinds of explainers
+
+take signature groups and compare their code to explanation, from each signature type (rest get to the Appendix)
+report explanation and even some information from logs!!
+- Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
+
+discuss particular results and try to connect it to models (results have to be real, it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
+Compare the results to Pevny's Explaner results
 
 
-take signature groups and compare their code to explanation
-
+hopefully discussion on if the parts contains something significant according to type of signature and so on, or we can find something else than only the deterministic base which the signatue implementation is checking
+Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
+Connect to motivation part of this chapter
 
 Previous connection
 - We are trying to explain previously trained models
@@ -13,26 +34,11 @@ Next connection
 - Next will be conclusions and final statements, we can summarize results of explanation with respect to different models
 
 
-mention Thorsten's advice to look at implementation of python signatures and reason why we want to look at it
-
 - Goal 
 - identify the artifacts corresponding to different malware behavior. Report results.
 - Investigate which parts of the CapeV2 log are important to different malware behavior. 
-- Why - if I compare it to the information used in signature implementation, I can see if it is using something else or not
-- theory to model explaining and feature extraction - Big source is document sent by Mr. Pevny from Avast(can I cite it?)
-- Approaches:
-- Existing solutions - avast explainer, other?
-- Signatures and their implementation (python), what they identify (Yara and others, used by sandbox...)
-- Maybe I can try some alternative approach - simple diff on jsons?
+
 - Expert view
   - Ask Thorsten to try to explain some patterns and domain specific subjects 
-  - Důležité: predikce signatures a jejich vysvětlení, feedback od Thosrten k vysvětlitelnosti, jestli to jako souhlasí s realitou 
-- Coclusion could be also that wa are able to find another features not directly connected to original ones which are also used by signature implementation
-- Cobclusions here could be
-- Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
-- again refer to Pevny work
-- hopefully discussion on if the parts contains something significant according to type of signature and so on, of we can find something else than only the deterministic base which the signatue implementation is checking
 
 
-
-- discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
