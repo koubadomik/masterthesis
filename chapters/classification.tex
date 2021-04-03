@@ -37,14 +37,15 @@ Assume very usual situation that before the learning we receive set of examples 
 \end{enumerate}
 We are usualy working with set of examples which we later divide into different subsets e.g. \ \emph{training, testing, validation set}. \
 One of the biggest challenges of machine learning nowadays are labelled data, because labellig itself is often not part of sample and has to be added post-hoc like in case of images (marking where on image is some object). Sometimes it is not possible for example in cyber security often we do not know what label should be presented because situation is just too complex. It is because in principle attacker or any kind of distractor often wants to hide acts such that the protector is not able to identify it. So the hidden state itself could be assigned rather based on further data collection or never. Examples of unsupervised learniing in cyber security are \cite{Alom2017}, where authors present deep unsupervised learning techniques during intrusion detection.
-\todo{SSU slides first slide 5 and mention even empirical risk minimization and second slide 2}
-\todo{we can say examples of particular types and cite some articles and even examples of algorithms}
+
+\section{Learning}
+\todo{SSU slides first slide 5 (assumptions) and mention even empirical risk (expected risk/loss or sometimes called generalization error) minimization and second slide 2}
+\todo{mention generative and discriminative learning as a learning approaches, motivation https://stats.stackexchange.com/questions/12421/generative-vs-discriminative, simpler version}
 
 \paragraph{Loss function}
 Loss funtion denotes objective of our optimization task during learning, $$\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$$. Usually we compute output for each example such that it shows us penalization on particular examples $$\ell(y, h(\hat{y}))$$.
 
 \paragraph{Learning algorithm}
-\todo{maybe we can mention generative and discriminative learning}
 Process of learning we can reference as searching optimal $$h(x)$$. With the knowledge of distribution $$p(x,y)$$ the task would be much simpler but the distribution is unknown and we have only examples drawn randomly with respect to that. The learning algorithm is process. Input of this process are training examples and and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, intercept, slope, which are tuned during learning process. Given observed sample this model is able to provide prediction as estimate of sample state $$\hat{y}$$. We can see it as approximation of original unknown generating process another words estimate of $$h$$. \
 Learning algorithm is often not able to output all possible $$h$$, choosing the algorithm we choose also $$\mathcal{H}$$ as hypothesis space and result is $$h \in \mathcal{H}$$. Important is also that algorithm is using the data to learn, so not every time it is able to converge to possibly best $$h_{\mathcal{H}}* \in \mathcal{H}$$.
 
@@ -75,22 +76,45 @@ The oposite point of view on non-ideal datasets are those where features are mis
 
 Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
 
-\section{Classification models and algorithm}
-There are various approaches to classification. In this section we describe some of basic models and their usual output and its intepretation. 
+\section{Classification models and algorithms}
+As we want to focus on classification let us introduce several algorithm which are common in training classification models. In previous section we defined learning and two different approaches - \emph{generative} and \emph{discriminative learning} algorithms are also divided into these two groups.
+\todo{in all cases we can have reference and short definition, describe some of basic models and their usual output and its intepretation and also loss function, Mention on what kind of optimization it is doing}
+\paragraph{Discriminative}
+SVM
+Decision Trees
+Logistic regression
+Neural Nets - will be defined rigorosly later
 
-reference discriminative models because this paper is talking about it also - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761 and we will work with that in further sections
+\paragraph{Generative}
+Naive Bayes
+Fisher's linear discriminant
 
-Mention on what kind of optimization it stands
-https://analyticsindiamag.com/7-types-classification-algorithms/
-https://www.edureka.co/blog/classification-algorithms/#typesofclassificationalgorithms
-https://dzone.com/articles/introduction-to-classification-algorithms
+\section{Loss functions}
+In classification problems we usualy use one of two loss functions:
+\todo{define, reference - https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/ and also we can reference some original paper, refer even natural language intepretation of particular loss function and usual usage (hinge is SVM,...)}
+Cross-Entrophy (and logit version, binary version)
+Hinge Loss
 
 \section{Model Evaluation}
-Based on what we are solving and what we want to comapare to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of classifier we have. The classifier itself is just blackbox which we are evaluating based on simply classificcation results.
-Mention training and learning case and metrics in different context
-general measures
-nice-to-have: early stopping based on metrics like those
-https://www.researchgate.net/profile/Mohammad-Hossin/publication/275224157_A_Review_on_Evaluation_Metrics_for_Data_Classification_Evaluations/links/57b2c95008ae95f9d8f6154f/A-Review-on-Evaluation-Metrics-for-Data-Classification-Evaluations.pdf
+Based on what we are solving and what we want to comapre to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
+When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. \todo{reference bias X variance tradeoff in the beginning of this chapter}
+Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the result model.
+
+\paragraph{Loss function}
+As we defined earlier loss function is our objective, so the value of our objective has its own meaning and possible interpretation. \todo{try to define what does it mean by particular loss functions} Loss function value is often monitor directly during learning process.
+
+\paragraph{Confusion matrix}
+Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. Definition of confusion matrix is for binary classifier because of its convenience but generalization for more complex classifications is possible. Common problems in binary classification are formulated in the way that $$y \in \{positive, negative\}$$. As an example we can introduce classification that a patient has cancer or not. All $$(x,y)$$ where $$y=positive$$ we call positive examples and oposite examples are called negative.
+\todo{balanced dataset definition}
+\todo{confusion matrix table as example}
+
+\todo{list of metrics with formula and interpretation}
+accuracy, false positive rate, false negative rate, balanced accuracy error rate, precision, recall, f-score
+\cite{Hossin2015}
+
+\paragraph{Derived curves}
+ROC, AUC \cite{Fawcett2006}
+PRC, AUPRC \cite{Flach2015}
 
 measures important in cyber security
 https://scholarcommons.usf.edu/cgi/viewcontent.cgi?article=1005&context=mca
@@ -116,7 +140,11 @@ Write more about json files and generally describe graph inputs
 \section{Neural Nets}
 In the section models \todo{reference} we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach.
 
+regularization and other related techniques
+
 Minibatches (random subsampling...), hyper parameters
+
+generalization mistake and definition of different kinds of errors (maybe this should be at the beginning)
 
 Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. \todo{examples of use and some reference to this statement, https://stats.stackexchange.com/questions/467103/do-neural-networks-make-assumptions-about-data-and-when-to-use-standardization}.
 general even math!
