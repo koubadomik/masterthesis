@@ -1,48 +1,81 @@
 \chapter{Malware classification}
-We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using so called signatures. These signatures are deterministically assigned and they usually sign that particular malware sample is doing something suspicious (we will describe later). Based on signatures we can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this deterministic way modern approaches from machine learning are often used.
+We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more \todo{reference previous chapter}. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using some kind of \emph{stickers}. These \emph{stickers} are often deterministically assigned and they usually sign that particular malware sample is doing something suspicious (we will describe later in detail). Based on this information sandbox (or ourselves) can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this very (often deterministic) way modern approaches from machine learning are often used. One of our goal is to perform such techniques on the data we collect. At first in this chapter we will build theoretical knowledge for its later application.
 
-In this chapter we focus on classification problem in general and later we describe malware classification. We involve more theory and prior work research, in following chapters we discuss our case.
-
-In previous chapter we described different data outputs which are often produces by different kinds of analysis. That why later in this chapter we focus on models which are designed to for such data.
+In this chapter we focus on classification problem in general and in second part we describe even malware classification situation. In previous chapter we described different data outputs which are often produces by different kinds of analysis. The one we concentrate on is structured output, e.g.\ \emph{JSON}. That is why we mention models which are designed for such data later in this chapter.
 
 \section{Classification in general}
-\todo{Add some examples of use of ML and AI in cyber security field}
-
-
+\todo{Add some examples of use of ML and AI in cyber security field and challenges - https://arxiv.org/abs/1812.07858}
 \todo{I think we want to aim only on stastistical machine learning, so let's define it at the beginning}
+\todo{do not forget to cite this great web - https://machinelearningmastery.com}
+
 The largest challenge in machine learning theory is very often used formalism and framework and point of view which we consider. So firstly we would like to summarize where in this tangle we are and where we are going.
 
-As stated by \citet{GoodBengCour16} the usual aproach in distinguishing tasks for machine learning algorithms are most often divided in categories based on expected sample processing result. By sample we mean collection of features which tends to be represented as $$TODO: add vector on R or tensor on R$$. As an example we can introduce images with fixed dimension but in our usecase even serialized json files or pcap files.
+\say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis we give it a test set of examples that are distinct from the training set.} \citeauthor{Russell2009}
 
-In this section we are aiming at standard machine learning approach and tasks formulation, later we will define task which is actual for our work.
+After short look into several sources we can find varigated kinds of machine learning or just learning as \cite{Russell2009} says. Very often the weakest sources mix several perspectives and they are talking about a lot of types.
 
-\todo{add scheme of machine learning algorithm in classical manner, so features to hidden states (sometimes label) mapping, define some formalism for math signing}
+At first let us state that the main field of our interest in machine learning theory begin in statistical machine learning. Where we are aiming at optimization of predictive function to fit our training and perform well on testing data. As oposite we can see for example symbolic learning where we are more interested in symbolic knowledge representation, often human-readable. This approach is older sometimes called \emph{GOFAI} \cite{Haugeland1985}. This kind of learning is not going through such a huge upswing as statistical branch.
 
-\paragraph{Usual and most seen categories are:}
+Generally speaking we want to find prediction strategy or as earlier said hypothesis that perform well on the training data and extrapolates even on testing data. Let us define basic terms based on \cite{Franc2020}.
+
+\todo{ In this section we are aiming at standard machine learning approach and tasks formulation, later we will define task which is actual for our work. add scheme of machine learning algorithm in classical manner, so features to hidden states (sometimes label) mapping, define some formalism for math signing}
+\todo{we should define machine learning algorithm and model and how it relates to the hypothesis itself}
+
+\paragraph{Sample}
+By sample we mean collection of features which tends to be represented as $$x \in \mathbb{R}^{n}$$, where $$x_i$$ is called often called feature and $$x$$ is called sample or example \cite{GoodBengCour16}. We can also generalize this definition for tensors.
+This is often just the finish of our way, in real word we can see object features as $$x \in \mathcal{X}$$, where $$x$$ could be categorical variables, scalar, real valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. Then we might be also interested in feature extraction and its application for our real world data. The reason why we want to work with real valued tensors is that the majority of our methods are based on numerical computation and optimization. \todo{last sentence is quite vague we can say something about feature extraction}
+\paragraph{States}
+By state we mean the subject of our prediction, represented often as $$y \in \mathcal{Y}$$, where $$y$$ can be whatever what we enumerated by $$x$$ (images, documents, real values...). States are sometimes also called labels or targets. 
+\paragraph{Prediction strategy, hypothesis}
+Hypothesis we define as $$h:\mathcal{Y} \rightarrow \mathcal{X}$$. The output of prediction strategy we denote as $$h(x)=\hat{y}$$ on the contrary real state we denote as above just $$y$$.
+\paragraph{Example}
+Assume very usual situation that before the learning we receive set of examples to learn from. Based on what we receive we can distinguish between several types of learning. \
 \begin{enumerate}
-    \item Classfication \todo{describe, add some math}
-    \item Regression \todo{describe, add some math}
+    \item \emph{Supervised learning} - example denotes pair $$(x,y)$$, where $$x\in \mathcal{X}$$ and $$y\in \mathcal{Y}$$. 
+    \item \emph{Unsupervised learning} - example denotes $$x\in \mathcal{X}$$
+    \item \emph{Semi-supervised learning} - example could be one of the possibilities above
 \end{enumerate}
+We are usualy working with set of examples which we later divide into different subsets e.g. \ \emph{training, testing, validation set}. \
+One of the biggest challenges of machine learning nowadays are labelled data, because labellig itself is often not part of sample and has to be added post-hoc like in case of images (marking where on image is some object). Sometimes it is not possible for example in cyber security often we do not know what label should be presented because situation is just too complex. It is because in principle attacker or any kind of distractor often wants to hide acts such that the protector is not able to identify it. So the hidden state itself could be assigned rather based on further data collection or never. Examples of unsupervised learniing in cyber security are \cite{Alom2017}, where authors present deep unsupervised learning techniques during intrusion detection.
+\todo{SSU slides first slide 5 and mention even empirical risk minimization and second slide 2}
+\todo{we can say examples of particular types and cite some articles and even examples of algorithms}
 
-There are other categories like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009} which is quite often seen in cyber security field \todo{add example of this kind of task in cyber security https://link.springer.com/article/10.1007/s10994-014-5473-9}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}.
+\paragraph{Loss function}
+Loss funtion denotes objective of our optimization task during learning, $$\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$$. Usually we compute output for each example such that it shows us penalization on particular examples $$\ell(y, h(\hat{y}))$$.
 
-Based on presence of hidden states and other conditions we can further distinguish between supervised and unsupervised learning tasks. \cite{zhang2020dive}. One of the biggest challenges of machine learning nowadays are labelled data, where every sample consists of features and appropriate hidden state - dataset for supervised learning. That is one reason why we want to be able to face even situations where the hidden states are not presented - dataset for unsupervised learning. \todo{add some paper where they talk about challenges like this} Those situations we can very often see in cyber security field because in principle attacker or any kind of distractor often wants to hide acts such that protector is not able to identify. So the hidden state itself could be assigned rather based on further data collection or never.\todo{find something about unsupervised learning in cyber security as an example https://technative.io/why-unsupervised-machine-learning-is-the-future-of-cybersecurity/, https://ieeexplore.ieee.org/abstract/document/8268746?casa_token=ctNKO2pD640AAAAA:XoFuD8SHvbzMszA1nHciHIiaetBCG7fN47zUNZDMYv2D5oZUqhGuq9FF_ETI9Rhf7QtsTYagkw, https://arxiv.org/abs/1812.07858}.
-There are also cases where we talk about semi-supervised learning \todo{define it and reference some source for example GoodBeng is mentioning it}.
+\paragraph{Learning algorithm}
+\todo{maybe we can mention generative and discriminative learning}
+Process of learning we can reference as searching optimal $$h(x)$$. With the knowledge of distribution $$p(x,y)$$ the task would be much simpler but the distribution is unknown and we have only examples drawn randomly with respect to that. The learning algorithm is process. Input of this process are training examples and and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, intercept, slope, which are tuned during learning process. Given observed sample this model is able to provide prediction as estimate of sample state $$\hat{y}$$. We can see it as approximation of original unknown generating process another words estimate of $$h$$. \
+Learning algorithm is often not able to output all possible $$h$$, choosing the algorithm we choose also $$\mathcal{H}$$ as hypothesis space and result is $$h \in \mathcal{H}$$. Important is also that algorithm is using the data to learn, so not every time it is able to converge to possibly best $$h_{\mathcal{H}}* \in \mathcal{H}$$.
 
+Later we enumerate couple of learning algorithms. Choose of the algorithm is based on various factors like input data format, presence of states in training examples and other.
+
+\todo{challenges train, test, validation and hyperparameters, overfitting, underfitting (https://www.deeplearningbook.org/contents/ml.html), maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
+
+
+\section{Machine learning tasks}
+There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples we have but also according to the $$\mathcal{Y}$$.
+
+\paragraph{Regression}
+In this case $$y \in \mathcal{Y}$$ is continous-valued tensor, most often $$\mathcal{y} \in \mathbb{R}^{n}$$. An example could be prediction of impact of some attack expressed as score. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record. \cite{Jaganathan2015}
+
+\paragraph{Classification}
+In this case $$y \in \mathcal{Y}$$ is categorical tensor, in most cases $$\mathcal{y} \in \{1,\dots,\mathcal{C}\}$$, where $$\{1,\dots,\mathcal{C}\}$$ is just encoding for real world values like \emph{man} and \emph{woman} and similar. If $$\mathcal{C}$$ is $$2$$, than we call it \emph{binary classification} and if $$\mathcal{C}>2$$ we call it \emph{multiclass classification}. As defined generally we can see tensors, so we can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, we can also classify into hierarchical related classes \cite{zhang2020dive}. \
+Important is that we did not state what is the output of specific classification model. Given $$x$$ it might output $$\hat{y}$$ which will be directly ecoded class but it might output even probability distribution over classses \cite{GoodBengCour16}. This distribution might be later interpreted and used during learning.
+Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
+
+
+\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. \
+Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting everything which is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
+
+\subsection{Challenges}
+\todo{more like nice-to-have}
+The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
 \todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
 
-The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
+Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
 
-Later we will mention other examples of tasks mainly different in the assumtions for input data.
-
-\todo{Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
-
-Our task is to classify samples so in further writing as model we reference classification model.
-
-train, test, validation and hyperparameters, overfitting, underfitting (https://www.deeplearningbook.org/contents/ml.html)
-
-
-\section{Classification models}
+\section{Classification models and algorithm}
 There are various approaches to classification. In this section we describe some of basic models and their usual output and its intepretation. 
 
 reference discriminative models because this paper is talking about it also - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761 and we will work with that in further sections
