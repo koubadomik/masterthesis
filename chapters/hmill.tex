@@ -7,9 +7,9 @@ At first let us describe and define problem of \emph{Multiple instance learning}
 
 The most cited original article in this field is \citet{Dietterich1997}, it is not the very first formulation of such problem (it is in \cite{Keeler1991}) but fist usage of term \emph{Multiple instance learning}.
 
-On figure \todo{reference figure} we can see basic idea behind \emph{Mill} problem. Standard learning described in chapter \todo{ref chapter} we can see as special case of \emph{Mill}. Compared to defined formalism we have to change definition of \emph{example} \todo{ref section example in chapter 1}. 
+On figure \todo{reference figure} we can see basic idea behind \emph{Mill} problem. Standard learning described in chapter \todo{ref chapter} we can see as a special case of \emph{Mill}. Compared to defined formalism we have to change definition of \emph{example} \todo{ref section example in chapter 1}. 
 \paragraph{Example}
-Firstly we for our puprose we assume that we are in \emph{supervised} setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances}. Its length is $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$.
+Firstly we for our puprose we assume that we are in \emph{supervised} setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances} and usually lives in standard feature space $$x_i \in \mathbb{R}^{n}$$. Its length is $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$. Now we can see that standard learning is just \emph{Mill} problem where holds $$|b| = 1$$.
 
 For the purposes of our thesis we assume mill classification problem so $$|\mathcal{Y}|$$ is finite. One more additional note is that some researches and even the original has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance label} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} so even we do.
 
@@ -17,16 +17,19 @@ For the purposes of our thesis we assume mill classification problem so $$|\math
 
 \todo{image of standard setting vs mill setting}
 
-Mention simple example with keys and then some real world examples (not only pevny and Mandlik).
+\todo{if we would like to have some fancy figure we can try something with keys}
 
+The motivation example in original paper \cite{Dietterich1997} is formulated in following way. Imagine we have keys and some of them unlock specific door and some of them not (no other choice). Important is that we do not have access to the door. In standard learning is our goal to learn classification model which consumes key and outputs if it is able to open or not. But in \emph{multiple instance learning} setting we receive whole chains of several keys and without checking every single key we have to classify if the whole chain is able to open the door.
 
-- https://www.ics.uci.edu/~rickl/publications/1997-aij.pdf
-- Definition, simple example and formalism
-    - https://www.ics.uci.edu/~rickl/publications/1997-aij.pdf - First term appearance, problem definition, example
-    - assumptions - https://en.wikipedia.org/wiki/Multiple_instance_learning (Be aware, I think those are not true all at once...), also algorithm list is presented, could be mentioned, and other interesting references like problem generalization
-        - between modern approaches mention adapting of single instance algorithms
-    - Solutions paradigms, problem examples - https://reader.elsevier.com/reader/sd/pii/S0004370213000581?token=CFE39482CE50EAB37819E58C916355FFEB127B223C806C52A7FB11B383542ABFC678FDA51CE6772A6812FD9366C86666
+More on this topis we can find in \cite{Amores2013} where we can find formulated paradigms of solving such issues.
 
+\todo{List paradigm and shortly describe and add some examples of solutions - cite}
+
+\todo{some real world examples (not only pevny and Mandlik).}
+
+\todo{Last solution describe neural net architecture - cite Somol, Pevny, Dedic (3 papers) and even Mandlik with the notation on page 14,15}
+\todo{Mention Zaheer with deep sets}
+\todo{Add own figure of neural net architecture}
 
 - Prior experiments
     - Add something from another domain
@@ -36,24 +39,28 @@ Mention simple example with keys and then some real world examples (not only pev
         - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761
         - Stiborek - https://reader.elsevier.com/reader/sd/pii/S0957417417307170?token=492DD375F9C6F2836E0F6B394FAA2BC3E6663F3EFD26E24D7295DBFDCB870D23C3B120BCCC9731B0E6399BEFEE29C4A2
 
+        - https://arxiv.org/pdf/2002.04059.pdf - Pevny, Dedic
+        - https://arxiv.org/pdf/1906.00764.pdf - Pevny Kovarik, 
+        - https://papers.nips.cc/paper/2017/file/f22e4747da1aa27e363d86d40ff442fe-Paper.pdf - same idea, but different name (just marginally)
 
 \section{HMILL framework}
+The idea of the neural net architecture by \todo{ref names Somol and Pevny} was followed by \todo{ref Mandlik and Pevny}. This led to formulation of \emph{HMill framework} in \cite{Mandlik2020} which refers to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models. Inspite the fact that the hierarchical learning is generalization of standard learning we can cover quite complicated structured data (which is later used by us).
+
 - Framework definition
-    - start from Pevny and Somol
     - go to Mandlik
-- prior
-    - Pevny, somol, Mandlik
-        - https://link.springer.com/content/pdf/10.1007%2F978-3-319-59072-1.pdf (somol, pevny)
-        - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761
-    - https://arxiv.org/pdf/2002.04059.pdf - Pevny, Dedic
-    - https://arxiv.org/pdf/1906.00764.pdf - Pevny Kovarik, 
-    - https://papers.nips.cc/paper/2017/file/f22e4747da1aa27e363d86d40ff442fe-Paper.pdf - same idea, but different name (just marginally)
+- prior will be sufficient
+    - Mandlik's results using the framework
+    - https://arxiv.org/pdf/2002.04059.pdf
 
+The conclusion of this chapter and maybe the most significant conslusion for our work is that it is possible to use \emph{HMill framework} to classify tree-structured data e.g. \ \emph{JSON} documents. \citeauthor{Mandlik2020} presents convincing results (for example on \emph{device identification} example) and that is why this framework is directly in assignment of this thesis.
 
-Regardless of quite comprehensive theory which we are trying to cover in this part of the thesis hmill framework is still not all what we used (not made up of course). Our goal is quite cross-cutting and the model we are going to train we want also explain. What we mean by explanation we describe in next chapter.
+Regardless of quite comprehensive theory which is covered in this part of the thesis, \emph{HMill} framework is still not everything. Our goal is quite cross-cutting and the model we are going to train we want also explain. What we mean by explanation we describe in next chapter.
 
 %---------------------REMAINING-------------------------------------
 
+HMILL:
+- assumptions - https://en.wikipedia.org/wiki/Multiple_instance_learning (Be aware, I think those are not true all at once...), also algorithm list is presented, could be mentioned, and other interesting references like problem generalization
+- between modern approaches mention adapting of single instance algorithms
 
 Previous connection
 - We focus on structured data and our tool is hmill, let's describe it
