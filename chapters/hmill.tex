@@ -1,17 +1,33 @@
 \chapter{Hierarchical Multiple Instance learning}
-The goal of this thesis is to use specifically hmill learning to classify malware samples. Using it we want to  build on the prior work in this area. \todo{add references}
+The goal of this thesis is to use specifically hierarchical multiple instance learning to classify malware samples. Using it we want to follow the prior work in this area \cite{Mandlik2020}.
+In this chapter we describe multiple instance learning as extended approach compared to previus chapter. In the second part we will describe hierarchical multiple instance learning framework as modelling tool to model tree-structured data. Finally, we will address its usage in malware classification and other applications in cyber security field.
 
-In this chapter we describe Hmill framework and use cases where this kind of learning was involved. Then we will address its usage in malware classification and other applications in cyber security field.
-
-\section{Multiple instance learning}
+\section{Multiple instance learning - Mill}
 At first let us describe and define problem of \emph{Multiple instance learning} its origin and formalism.
+
+The most cited original article in this field is \citet{Dietterich1997}, it is not the very first formulation of such problem (it is in \cite{Keeler1991}) but fist usage of term \emph{Multiple instance learning}.
+
+On figure \todo{reference figure} we can see basic idea behind \emph{Mill} problem. Standard learning described in chapter \todo{ref chapter} we can see as special case of \emph{Mill}. Compared to defined formalism we have to change definition of \emph{example} \todo{ref section example in chapter 1}. 
+\paragraph{Example}
+Firstly we for our puprose we assume that we are in \emph{supervised} setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances}. Its length is $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$.
+
+For the purposes of our thesis we assume mill classification problem so $$|\mathcal{Y}|$$ is finite. One more additional note is that some researches and even the original has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance label} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} so even we do.
+
+\todo{I have to mention some citations the theory I built on top of Mandlik and Amores!}
+
+\todo{image of standard setting vs mill setting}
+
+Mention simple example with keys and then some real world examples (not only pevny and Mandlik).
+
+
 - https://www.ics.uci.edu/~rickl/publications/1997-aij.pdf
-- History - shortly https://proceedings.neurips.cc/paper/1990/file/e46de7e1bcaaced9a54f1e9d0d2f800d-Paper.pdf (first mentions)
 - Definition, simple example and formalism
     - https://www.ics.uci.edu/~rickl/publications/1997-aij.pdf - First term appearance, problem definition, example
     - assumptions - https://en.wikipedia.org/wiki/Multiple_instance_learning (Be aware, I think those are not true all at once...), also algorithm list is presented, could be mentioned, and other interesting references like problem generalization
         - between modern approaches mention adapting of single instance algorithms
     - Solutions paradigms, problem examples - https://reader.elsevier.com/reader/sd/pii/S0004370213000581?token=CFE39482CE50EAB37819E58C916355FFEB127B223C806C52A7FB11B383542ABFC678FDA51CE6772A6812FD9366C86666
+
+
 - Prior experiments
     - Add something from another domain
     - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
@@ -36,7 +52,7 @@ At first let us describe and define problem of \emph{Multiple instance learning}
 
 Regardless of quite comprehensive theory which we are trying to cover in this part of the thesis hmill framework is still not all what we used (not made up of course). Our goal is quite cross-cutting and the model we are going to train we want also explain. What we mean by explanation we describe in next chapter.
 
-
+%---------------------REMAINING-------------------------------------
 
 
 Previous connection

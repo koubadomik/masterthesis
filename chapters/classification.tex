@@ -108,37 +108,36 @@ Most significant metrics are derived from very straight-forward concept of \emph
 \todo{balanced dataset definition}
 \todo{confusion matrix table as example}
 
-\todo{list of metrics with formula and interpretation}
+\todo{list of metrics with formula and interpretation and usage}
 accuracy, false positive rate, false negative rate, balanced accuracy error rate, precision, recall, f-score
 \cite{Hossin2015}
+https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
 
 \paragraph{Derived curves}
 ROC, AUC \cite{Fawcett2006}
 PRC, AUPRC \cite{Flach2015}
+and their difference
 
-measures important in cyber security
-https://scholarcommons.usf.edu/cgi/viewcontent.cgi?article=1005&context=mca
-https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
-https://owasp.org/www-community/controls/Intrusion_Detection
-On the other hand I will write even my own reasoning in particular in domain of cyber security what does it mean to misclassify as positive or negative example...
-In majority of papers like this https://core.ac.uk/download/pdf/77064684.pdf, they just state what they use fo accuracy and done. Or here :D https://core.ac.uk/download/pdf/80994982.pdf
-this is aiming at false positives in cyber security https://ieeexplore.ieee.org/document/7560382
-Goal obviously is to keep high false negative and lowen false positive beacuse both metrics are really important in network security
-https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf - section fn and fp
+\paragraph{In Cyber Security}
+The main point which we are walking around is Cyber Security. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
 
+For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $$accuracy=0.8$$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
 
+\todo{add formula for geometrical mean}
 
-\section{Data characteristics}
-Model which we choose for given task is based on several facts like domain which we are dealing with and mainly on the data we have.
-Input to usual model is binary vector or rather tensor, but those tensor could be encoding of different things
-Basic point of view is to distinguish between two basic types of variables - continous and discrete (https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
-Highlevel view will refer to images, time series, graphs (json...), just binary...
-Maybe we can talk about fixed dimension, various dimension
+During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
 
-Write more about json files and generally describe graph inputs
+Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
 
+As result, further in this thesis we will work with imbalanced data. We use several metrics mentioned above especially \cite{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \cite{PR curve}.
+%----------------------------------------------
 \section{Neural Nets}
-In the section models \todo{reference} we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach.
+In the section models we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to build the formalism for the rest of the thesis.
+
+- motivation
+- approach, notation
+
+\todo{image}
 
 regularization and other related techniques
 
@@ -159,25 +158,34 @@ https://stats.stackexchange.com/questions/186091/what-loss-function-should-i-use
 Loss functions and nets used for classification
 https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
 
-\section{Classifying based on graph structured data}
-Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned our data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. 
+\section{Classifying based on graph-structured data}
+Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. We are able to perform some kind of feature extraction but in the structure itself is a lot information also. \todo{reference Pevny's work where he mention exactly this}
 \subsection{Problem}
 https://www.quora.com/What-is-structured-data-in-the-context-of-machine-learning
 
 https://www.naftaliharris.com/blog/machine-learning-json/
 
-\subsection{Prior}
-https://arxiv.org/pdf/1506.05163.pdf
-https://arxiv.org/pdf/1911.08756v3.pdf
-https://www.cs.uoregon.edu/Reports/AREA-201706-Riazi.pdf
-https://core.ac.uk/download/pdf/11011889.pdf
+\subsection{Approaches and prior}
 Hmill
 Graphical models
 Graph neural networks
     Also seen here file:///C:/Users/domia/Downloads/Explainability_ICML2021.pdf
 See in Mandlik
+prior
+    https://arxiv.org/pdf/1506.05163.pdf
+    https://arxiv.org/pdf/1911.08756v3.pdf
+    https://www.cs.uoregon.edu/Reports/AREA-201706-Riazi.pdf
+    https://core.ac.uk/download/pdf/11011889.pdf
 
-\section{Classification in cyber security, classifying malwawre}
+
+\section{Classification in cyber security, classifying malwawre} %% HIGH PRIORITY
+In this section we want to relate our work to other articles and show prior work. The field of cyber security experience a lot of machine learning applications. The biggest trend is in fraud detection, cloud security and also IoT. But some of them are also in the field of malware research and malware classification.
+
+
+
+\subsection{Problem}
+\subsection{Prior}
+
 file:///C:/Users/domia/Downloads/CoRR2018_submission_v3.pdf
 https://www.sciencedirect.com/science/article/pii/S1084804519303868
 Finally we can not skip our domain and results in this field. 
@@ -208,14 +216,21 @@ Recurrent networks - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=71
 
 HMILL in cyber security - https://arxiv.org/pdf/2002.04059.pdf, mandlik, Pevny
 
-\subsection{Problem}
-\subsection{Prior}
-
 
 \todo{add conclusion of this chapter and connection to next chapter - hmill}
 
 
+%%--------------------------------REMAINING----------------------------------------------
+Remaninders:
 
+\section{Data characteristics}
+Model which we choose for given task is based on several facts like domain which we are dealing with and mainly on the data we have.
+Input to usual model is binary vector or rather tensor, but those tensor could be encoding of different things
+Basic point of view is to distinguish between two basic types of variables - continous and discrete (https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
+Highlevel view will refer to images, time series, graphs (json...), just binary...
+Maybe we can talk about fixed dimension, various dimension
+
+Write more about json files and generally describe graph inputs
 
 Previous connection
 - One of conclusions of previous chapter is that that character of data is often structural as graph or tree (json, xml,...)
