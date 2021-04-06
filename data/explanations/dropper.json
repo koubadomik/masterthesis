@@ -1,0 +1,164 @@
+[
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\actives.exe\" C:\\Users\\comp\\AppData\\Local\\Temp\\be85e39b7eab861500c7.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\actives.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Generation"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "write_files": [
+            "C:\\Program Files (x86)\\Google\\Update\\Download\\{8A69D345-D564-463C-AFF1-A69D9E530F96}\\85.0.4183.83\\85.0.4183.83_chrome_installer.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{7A88E0A6-3E28-4435-B7F6-CF6C06D28E17}\\WpadDecisionTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Install\\Host.exe "
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Install\\Host.exe"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\NetWire\\HostId"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\gonsebc"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Generation"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c929200d0410ea735f40.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ]
+]

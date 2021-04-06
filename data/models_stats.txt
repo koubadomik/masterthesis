@@ -1,0 +1,159 @@
+DIRECT CLUES SHOULD BE
+antidebug_setunhandledexceptionfilter
+    balance of training set
+        training - 18256
+        testing - 18251
+    Confusion Matrix - (18251, 21749, 17723, 21513, 236, 528)
+    accuracy - 0.9809
+    balanced accuracy - 0.9801095023696456
+    f-score - 0.9789008561170945
+    auroc - 0.9980799703182659
+    auprc - 0.8711538335756147
+    fnr - 0.02892992164812887
+    fpr - 0.010851073612579889
+    loss - 0.053635925
+copies_self
+    balance of training set
+        training - 7213
+        testing - 7150
+    Confusion Matrix  - (7150, 32850, 6259, 31935, 915, 891)
+    accuracy  - 0.95485
+    balanced  accuracy - 0.9237653670530384
+    f-score  - 0.8739179000279252
+    auroc  - 0.9834477099759854
+    auprc  - 0.9197509061811758
+    fnr  - 0.12461538461538461
+    fpr  - 0.027853881278538814
+    loss - 0.13167547
+deletes_self
+    balance of training set
+        training - 10810
+        testing - 10699
+    Confusion Matrix - (10699, 29301, 10647, 29244, 57, 52)
+    accuracy - 0.997275
+    balanced accuracy - 0.9965972032936061
+    f-score - 0.9949072559921507
+    auroc - 0.9999381195144045
+    auprc - 0.9997446237828109
+    fnr - 0.004860267314702308
+    fpr - 0.0019453260980853897
+    loss - 0.008196561
+enumerates_running_processes  - If we have enough time this model we should rerun it has only 70 iterations
+    balance of training set
+        training - 6355
+        testing - 6385
+    Confusion Matrix - 
+    accuracy - 
+    balanced accuracy - 
+    f-score - 
+    auroc - 
+    auprc - 
+    fnr - 
+    fpr - 
+    loss -
+stealth_timeout
+    balance of training set
+        training - 8207
+        testing - 8443
+    Confusion Matrix - (8443, 31557, 5649, 29533, 2024, 2794
+    accuracy - 0.87955
+    balanced accuracy - 0.7010424422933731
+    f-score - 0.8024685320852456
+    auroc - 0.794356953140166
+    auprc - 0.9295742522181831
+    fnr - 0.06413790918021359
+    fpr - 0.3309250266492953
+    loss - 0.26266864
+uses_windows_utilities
+    balance of training set
+        training - 7015
+        testing - 6975
+    Confusion Matrix - (6975, 33025, 6430, 32826, 199, 545)
+    accuracy - 0.9814
+    balanced accuracy - 0.9579190306029699
+    f-score - 0.9453102028815055
+    auroc - 0.9963980627254433
+    auprc - 0.9873049546403997
+    fnr - 0.07813620071684588
+    fpr - 0.006025738077214232
+    loss - 0.056913294
+removes_zoneid_ads
+    balance of training set
+        training - 11030
+        testing - 11087
+    Confusion Matrix - (11087, 28913, 11083, 28912, 1, 4)
+    accuracy - 0.999875
+    balanced accuracy - 
+    f-score - 0.9997744801768075
+    auroc - 0.9999997161203974
+    auprc - 0.999909068517275
+    fnr - 0.0003607828988905926
+    fpr - 3.45865181752153e-5
+    loss - 0.00083479175
+
+NO DIRECT CLUES
+antisandbox_sleep
+    balance of training set
+        training - 15780
+        testing - 15690
+    Confusion Matrix - (15690, 24310, 15113, 23690, 620, 577)
+    accuracy - 0.970075
+    balanced accuracy - 0.9688605381047175
+    f-score - 0.9619068834929828
+    auroc - 0.9933264879313364
+    auprc - 0.9857508962783083
+    fnr - 0.036775015933715745
+    fpr - 0.025503907856849032
+    loss - 0.08727715
+dropper
+    balance of training set
+        training - 6175
+        testing -  6075
+    Confusion Matrix - (6075, 33925, 5184, 32845, 1080, 891)
+    accuracy - 0.950725
+    balanced accuracy - 0.9107492016703513
+    f-score - 0.8402625820568929,
+    auroc - 0.9822542682204285
+    auprc - 0.9019353410578737
+    fnr - 0.14666666666666667
+    fpr - 0.0318349299926308
+    loss - 0.124550655
+invalid_authenticode_signature
+    balance of training set
+        training - 6175
+        testing - 6075
+    Confusion Matrix - (14295, 25705, 4746, 22803, 2902, 9549)
+    accuracy - 0.688725
+    balanced accuracy - 0.6095539367996681
+    f-score - 0.4325753087545003
+    auroc - 0.7144270896160744
+    auprc - 0.6083861899286894
+    fnr - 0.6679958027282267
+    fpr - 0.11289632367243727
+    loss - 0.5691154
+packer_entropy
+    balance of training set
+        training - 8866
+        testing - 8851
+    Confusion Matrix - (8851, 31149, 2232, 29811, 1338, 6619)
+    accuracy - 0.801075
+    balanced accuracy - 0.6046100327407203
+    f-score - 0.35939135335319217
+    auroc - 0.7756733076182033
+    auprc - 0.5176520456657797
+    fnr - 0.7478251045079652
+    fpr - 0.04295483001059424
+    loss - 0.4364625
+stealth_network
+    balance of training set
+        training - 26307
+        testing - 26443
+    Confusion Matrix - (26443, 13557, 26242, 12075, 1482, 201)
+    accuracy - 0.957925
+    balanced accuracy - 0.9415412620332458
+    f-score - 0.968929421972788
+    auroc - 0.9776615965882026 
+    auprc - 0.9866017966181733
+    fnr - 0.007601255530764285
+    fpr - 0.10931622040274397
+    loss - 0.13761398

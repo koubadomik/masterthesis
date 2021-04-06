@@ -1,0 +1,435 @@
+[
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocHandler"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\RegisterWanAdapters"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\1ofe1msj.sxf\\Chrome\\Default\\Cookies"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{1B1CAD8C-2DAB-11D2-B604-00104B703EFD}\\InprocServer32"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Officex"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\475dce40\\67f29a3e\\a4\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winhttp.dll.WinHttpReceiveResponse"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{00020424-0000-0000-C000-000000000046}\\InprocServer32\\ThreadingModel"
+          ],
+          "mutexes": [
+            "Local\\16764F0F-7493-0575-0C5E-F1B007496C14"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{00020420-0000-0000-C000-000000000046}\\InprocServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\InProcServer32\\LoadWithoutCOM"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "resolved_apis": [
+            "drprov.dll.NPGetConnection"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\abwmdzq"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\UseDomainNameDevolution"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{1B1CAD8C-2DAB-11D2-B604-00104B703EFD}\\TreatAs"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{AA100484-44D5-4645-AE40-7E59555F9B26}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\DnsSecureNameQueryFallback"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InprocServer32"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocServer32\\InprocServer32"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{95B6D49E-A079-4D87-BBF8-5F8AD8FC8FEB}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\QueryIpMatching"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocHandler32"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@%SystemRoot%\\system32\\eapqec.dll,-102"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\napagent\\Qecs\\79621\\Version"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\icardie\\netcfgx.exe\""
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\icardie\\netcfgx.exe.2.Manifest"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"netsh\" wlan show profile"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\CustomMarshalers\\bf7543cf66d5e98c310acc1c63db721d\\CustomMarshalers.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\EnableDAForAllNetworks"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Nls\\ExtendedLocale\\en"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\SysWOW64\\rundll32.exe \"C:\\Users\\comp\\AppData\\Local\\Fers\\bsynmls.mbc\",RunDLL"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW",
+            "advapi32.dll.CryptAcquireContextA"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{2A1C9EB2-DF62-4154-B800-63278FCB8037}\\ProxyStubClsid32\\(Default)"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{82157FAB-8460-4E39-94C9-F70D5F2DAD14}\\WpadDecisionTime"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{846ee342-7039-11de-9d20-806e6f6e6963}\\DhcpDomain"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\5hapqdvk.kkn\\Chrome\\Default\\Cookies"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocServer32\\InprocServer32",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}\\QueryAdapterName"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\RegistrationEnabled"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{1B1CAD8C-2DAB-11D2-B604-00104B703EFD}\\InprocServer32\\(Default)"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}\\RegistrationEnabled"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.EventRegister",
+            "wshtcpip.dll.WSHJoinLeaf"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{1B1CAD8C-2DAB-11D2-B604-00104B703EFD}\\InprocServer32"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\DynamicServerQueryOrder"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "resolved_apis": [
+            "wshtcpip.dll.WSHGetWildcardSockaddr"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{1B1CAD8C-2DAB-11D2-B604-00104B703EFD}\\InprocServer32\\(Default)"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\goymyhs"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{DAB69A6A-4D2A-4D44-94BF-E0091898C881}"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\SortOrderIndex"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+            "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP"
+          ],
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW"
+          ],
+          "files": [
+            "\\??\\PIPE\\srvsvc"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Tracing\\explorer_RASAPI32\\EnableFileTracing",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\MulticastSenderFlags"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\RegistrationMaxAddressCount"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Kind.Document\\InfoTip"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\4E15.bin"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocHandler"
+          ],
+          "mutexes": [
+            "Local\\16764F0F-7493-0575-0C5E-F1B007496C14"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{D30C1661-CDAF-11D0-8A3E-00C04FC9E26E}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ]
+]

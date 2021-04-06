@@ -24,7 +24,7 @@ Is there something else in processing?
 Pruning jsons in Julia...
 
 Basic statistics for various parts and variants
-  - signature histogram (balanced )
+  - signature histogram (balanced) - histogram.csv
   - ...
   - a lot of Emotet (maybe should be on another place)
   - - Balanced dataset - in term of accuracy metric performance
@@ -43,5 +43,51 @@ Next connection
 
 reference some source that is talking about data in cyber security, resp. on theory part
   
-  
 
+
+Explaining:
+  Reasoning:
+  - compare
+    code - original sample
+    code - only summary part
+
+    (nice-to-have, I do not have it, I can show just example of original sample, I do not think this is important), locally I can check it by hand
+
+    code - explanation
+  - discuss explanation
+  - report 
+      explanations, example of code, avarage size of explanation compared to average size of samples
+      parameters - used explainer, confidence...
+
+  - compare code and data part of original signature with the original report (if we can find there something) and then with explanation
+  - compare it in case of original report and in case of 
+
+
+
+Using:
+
+DIRECTLY in output
+	- API calls - are in in summary part
+		○ "injection_rwx" 28251
+		○ "antidebug_setunhandledexceptionfilter" 18223
+		○ "removes_zoneid_ads" 11070
+		○ "deletes_self" 10805
+		○ "stealth_timeout" 8253
+		○ "enumerates_running_processes" 6324
+		○ "injection_runpe"  5542
+  - Files - are in summary part
+		○ "copies_self" 7137
+	- Commands - are in summary part
+		○ "uses_windows_utilities" 6987
+
+NOT DIRECTLY in output
+	- Processes - not directly in summary part
+		○ "dropper"  6045
+	- Time - not directly in summary part
+		○ "antisandbox_sleep" 15810
+	- AuthSign - not directly in summary part
+		○ "invalid_authenticode_signature" 14346
+	- Entrophy - not directly in summary part
+		○ "packer_entropy" 8815
+	- Combinations - 
+    "stealth_network" 26430
