@@ -1,0 +1,44 @@
+{
+  "executed_commands": [
+    [
+      "\"C:\\Windows\\System32\\schtasks.exe\" /Create /TN \"Updates\\InNHNJvJUCH\" /XML \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp8378.tmp\"",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      1
+    ]
+  ],
+  "mutexes": [
+    [
+      "StikyNot_yakuza",
+      2
+    ]
+  ],
+  "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Microsoft OneDrive",
+      2
+    ]
+  ],
+  "write_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\SyncHost.exe",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\InNHNJvJUCH.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      1
+    ]
+  ],
+  "delete_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      2
+    ]
+  ]
+}

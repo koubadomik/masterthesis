@@ -1,4 +1,4 @@
-DIRECT CLUES SHOULD BE
+DIRECT CLUES SHOULD BE (did not check if the exact subject of signature is in the sample, it is quite complex but the category is in json summary part)
 antidebug_setunhandledexceptionfilter
     balance of training set
         training - 18256
@@ -12,6 +12,38 @@ antidebug_setunhandledexceptionfilter
     fnr - 0.02892992164812887
     fpr - 0.010851073612579889
     loss - 0.053635925
+    Explanation
+        metrics
+        reasoning
+            code - filter_apinames = set(["SetUnhandledExceptionFilter"])
+                Enables an application to supersede the top-level exception handler of each thread of a process. 
+                After calling this function, if an exception occurs in a process that is not being debugged, and the exception makes it to the unhandled exception filter, that filter will call the exception filter function specified by the lpTopLevelExceptionFilter parameter
+            Explanation
+                samples above confidence
+                    60
+                Repeatedly seen in explanation
+                    APIS
+                        "kernel32.dll.IsProcessorFeaturePresent" 23
+                            Determines whether the specified processor feature is supported by the current computer.
+                        "sechost.dll.LookupAccountNameLocalW" 3
+                            https://windows10dll.nirsoft.net/sechost_dll.html - nothing suspicious
+                    keys
+                        "DisableUserModeCallbackFilter" 2
+                    read-keys
+                        DisableUserModeCallbackFilter 9
+                            https://stackoverflow.com/questions/49372987/is-there-a-way-to-get-disableusermodecallbackfilter-to-work-in-windows-10
+                            It's supposed to allow exceptions thrown from user-mode code to propagate across user/kernel boundaries, and it had a hotfix on earlier Windows versions up to Windows 7, but I can't seem seem to be able to get it working on more recent versions.
+
+                    read_files
+                        "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch" 4
+                            These files are essentially a cache of the CAS (Code Access Security) demands of your application's code. They allow the in-built security system of the CLR to resolve the security demands of your code slightly quicker.
+                            https://stackoverflow.com/questions/533824/what-does-the-file-security-config-cch-do-with-the-clr
+                        "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll" 4
+                            https://www.processlibrary.com/en/directory/files/system.windows.forms.ni/65719/
+                        "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config" 3
+                            
+                
+
 copies_self
     balance of training set
         training - 7213
@@ -25,6 +57,41 @@ copies_self
     fnr  - 0.12461538461538461
     fpr  - 0.027853881278538814
     loss - 0.13167547
+    Explanation
+        metrics
+        reasoning
+            code - 
+                checking if between dropped files is current file
+            Explanation
+                samples above confidence
+                    4
+                Repeatedly seen in explanation
+                      "mutexes": [
+                            [
+                            "StikyNot_yakuza",
+                                obviously intended mutex https://www.google.com/search?q=StikyNot_yakuza&sxsrf=ALeKk03vb2Vtquus41wNtfRqgf0qKHjU1Q%3A1617795079880&ei=B5htYPKMNcW5kwX8qJ3gBQ&oq=StikyNot_yakuza&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECc6BwgjELADECdQyL8DWMbAA2D4wQNoAXAAeACAAVuIAfABkgEBM5gBAKABAaoBB2d3cy13aXrIAQHAAQE&sclient=gws-wiz&ved=0ahUKEwiyrLiohOzvAhXF3KQKHXxUB1wQ4dUDCA0&uact=5
+                            2
+                            ]
+                        ],
+                        "write_keys": [
+                            [
+                            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Microsoft OneDrive",
+                            2
+                            ]
+                        ],
+                        "write_files": [
+                            [
+                            "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\SyncHost.exe",
+                            2
+                            ]
+                        "delete_files": [
+                            [
+                            "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+                            2
+                            ]
+
+
+
 deletes_self
     balance of training set
         training - 10810
@@ -38,6 +105,21 @@ deletes_self
     fnr - 0.004860267314702308
     fpr - 0.0019453260980853897
     loss - 0.008196561
+    Explanation
+        metrics
+        reasoning
+            code - 
+                filter_apinames = set(["NtDeleteFile","DeleteFileA", "DeleteFileW", "MoveFileWithProgressW","MoveFileWithProgressTransactedW"])
+                checking that current binary is deleted in any way (the most often check parameter of calls)
+            Explanation
+                samples above confidence
+                    49
+                Repeatedly seen in explanation
+                    Nothing repeated but all files are in delete files (49 occurences) - for example in case of antidebug_setunhandledexceptionfilter it was only 1/6
+
+
+
+
 enumerates_running_processes  - If we have enough time this model we should rerun it has only 70 iterations
     balance of training set
         training - 6355
@@ -51,6 +133,8 @@ enumerates_running_processes  - If we have enough time this model we should reru
     fnr - 
     fpr - 
     loss -
+
+
 stealth_timeout
     balance of training set
         training - 8207
@@ -64,6 +148,17 @@ stealth_timeout
     fnr - 0.06413790918021359
     fpr - 0.3309250266492953
     loss - 0.26266864
+    Explanation
+        metrics
+        reasoning
+            code - sequence of api calls determining that Possible date expiration check, exits too soon after checking local time
+            Explanation
+                samples above confidence
+                    1
+                Repeatedly seen in explanation
+                    Skipped, one explanation only (quite weak model)
+                    
+
 uses_windows_utilities
     balance of training set
         training - 7015
@@ -77,6 +172,29 @@ uses_windows_utilities
     fnr - 0.07813620071684588
     fpr - 0.006025738077214232
     loss - 0.056913294
+    Explanation
+        metrics
+        reasoning
+            code - checks if windows usual commands are used
+                "attrib",
+                "copy",
+                "dir ",
+                "dir.exe",
+                "echo"
+                "erase",
+                "fsutil",
+                "getmac",
+                "ipconfig"
+                ...
+            Explanation
+                samples above confidence
+                    13
+                Repeatedly seen in explanation
+                    13 executed commands, for each observation
+                    significantly stronger command section
+
+
+
 removes_zoneid_ads
     balance of training set
         training - 11030
@@ -90,6 +208,37 @@ removes_zoneid_ads
     fnr - 0.0003607828988905926
     fpr - 3.45865181752153e-5
     loss - 0.00083479175
+    Explanation
+        metrics
+        reasoning
+            code - 
+                filter_apinames = set(["DeleteFileA","DeleteFileW"])
+                if call["api"].startswith("DeleteFile") and self.get_argument(call, "FileName").endswith(":Zone.Identifier"):
+            Explanation
+                samples above confidence
+                    55
+                Repeatedly seen in explanation
+                     "files": [
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\LocationApi\\sdiagnhost.exe:Zone.Identifier",
+                        1
+                        ],
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\Netplwiz\\pnrpnsp.exe:Zone.Identifier",
+                        1
+                        ],
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\HOSTNAME\\KBDTH2.exe:Zone.Identifier",
+                        1
+                        ],
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\CPFilters\\serialui.exe:Zone.Identifier",
+                        1
+                        ],
+
+                        ...
+
+
 
 NO DIRECT CLUES
 antisandbox_sleep
@@ -105,6 +254,45 @@ antisandbox_sleep
     fnr - 0.036775015933715745
     fpr - 0.025503907856849032
     loss - 0.08727715
+    Explanation
+        metrics
+        reasoning
+            code - 
+                "A process attempted to delay the analysis task.":
+            Explanation
+                samples above confidence
+                    20
+                Repeatedly seen in explanation
+                    "executed_commands": [
+                        [
+                        "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP",
+                        8
+                        ], 
+                        [
+                        "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+                        3
+                        ],
+                    "write_keys": [
+                        [
+                        "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting",
+                        6
+                        ],
+                    "write_files": [
+                        [
+                        "\\Device\\LanmanDatagramReceiver",
+                        4
+                        ],
+                    "read_files": [
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data",
+                        3
+                        ],
+                        [
+                        "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll",
+                        3
+                        ],
+
+
 dropper
     balance of training set
         training - 6175
@@ -118,6 +306,42 @@ dropper
     fnr - 0.14666666666666667
     fpr - 0.0318349299926308
     loss - 0.124550655
+    Explanation
+        metrics
+        reasoning
+            code - 
+                "Drops a binary and executes it"
+
+            Explanation
+                samples above confidence
+                    8
+                Repeatedly seen in explanation
+                    "executed_commands": [
+                            [
+                            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+                            3
+                            ],
+                            [
+                            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe",
+                            2
+                            ],
+                    "mutexes": [
+                            [
+                            "IESQMMUTEX_0_208",
+                            5
+                            ],
+                            [
+                            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}",
+                            2
+                            ]
+                    "write_files": [
+                            [
+                            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+                            4
+                            ],
+
+
+
 invalid_authenticode_signature
     balance of training set
         training - 6175
@@ -144,6 +368,8 @@ packer_entropy
     fnr - 0.7478251045079652
     fpr - 0.04295483001059424
     loss - 0.4364625
+
+
 stealth_network
     balance of training set
         training - 26307
@@ -157,3 +383,20 @@ stealth_network
     fnr - 0.007601255530764285
     fpr - 0.10931622040274397
     loss - 0.13761398
+    Explanation
+        metrics
+        reasoning
+            code - 
+                "Network activity detected but not expressed in API logs"
+
+            Explanation
+                samples above confidence
+                    43
+                Repeatedly seen in explanation
+                    A lot distinct things, unique
+                    
+                      "files": [
+                        [
+                        "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
+                        6
+                        ],
