@@ -25,7 +25,7 @@ Generally speaking we want to find prediction strategy or as earlier said hypoth
 By sample we mean collection of features which tends to be represented as $$x \in \mathbb{R}^{n}$$, where $$x_i$$ is called often called feature and $$x$$ is called sample or example \cite{GoodBengCour16}. We can also generalize this definition for tensors.
 This is often just the finish of our way, in real word we can see object features as $$x \in \mathcal{X}$$, where $$x$$ could be categorical variables, scalar, real valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. Then we might be also interested in feature extraction and its application for our real world data. The reason why we want to work with real valued tensors is that the majority of our methods are based on numerical computation and optimization. \todo{last sentence is quite vague we can say something about feature extraction}
 \paragraph{States}
-By state we mean the subject of our prediction, represented often as $$y \in \mathcal{Y}$$, where $$y$$ can be whatever what we enumerated by $$x$$ (images, documents, real values...). States are sometimes also called labels or targets. 
+By state we mean the subject of our prediction, represented often as $$y \in \mathcal{Y}$$, where $$\mathcal{Y}$$ is often called \emph{state space} can be whatever what we enumerated by $$\mathcal{X}$$ (images, documents, real values...). States are sometimes also called labels or targets. 
 \paragraph{Prediction strategy, hypothesis}
 Hypothesis we define as $$h:\mathcal{Y} \rightarrow \mathcal{X}$$. The output of prediction strategy we denote as $$h(x)=\hat{y}$$ on the contrary real state we denote as above just $$y$$.
 \paragraph{Example}
