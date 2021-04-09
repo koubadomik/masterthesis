@@ -3,13 +3,16 @@ So far we know that sandbox output can be quite rich. There re even such experim
 
 The input for us to this chapter are collected malware analysis results from previous part. The expected output is reasoning on what we can use as features for \emph{hmill} model. This decision should be based on the data we have and even on experience from prior work (reference Mandlik, Pevny, Stiborek and maybe even others and really compare my decisions with them)
 
+\todo{Final result of data collection - no internet samples (maybe mention at the end of previous chapter), I did collect some, but did not use them in further parts because priority was not to have everything}
 The outputs of the analysis are quite comprehensive, but we have only some setup. We did collect much more than we can use. Regarding this fact we were not able to use data with internet connection because its collection is quite complicated and at the time we wanted examine it we did not have it. Their analysis is in future work same as data from static analysis (Virus total). These data are still part of our data set and was big part of our job so far. So the subject of our research is sandox output.
+
+Summary of the data set - How many samples, size...
 
 Among goals of this thesis is to investigate different parts of sandbox output responsible for some kinds of behavior. This is why we aim at the parts of log where we can see behavior of target malware sample. Those are:
 \begin{enumerate}
   \item \emph{pcap reports} - network traffic report
   \item \emph{memory dump} - dump of RAM memory
-  \item \emph{bingraph} - \todo{based on the paper}
+  \item \emph{bingraph} - \todo{based on the paper https://ieeexplore.ieee.org/document/6461015 - bingraph}
   \item \emph{behavioral logs} - in raw form (usually bson)
   \item \emph{files} - dropped files
   \item \emph{CAPE} - \todo{investigate configurations and https://www.youtube.com/watch?v=qEwBGGgWgOM} extracted payload
@@ -20,10 +23,13 @@ Among goals of this thesis is to investigate different parts of sandbox output r
 \todo{checkout some web interface example, if there is something else, and even configuration files}
 
 
-paragraph about each and resoning on if we can use it or not)
-https://ieeexplore.ieee.org/document/6461015 - bingraph
+paragraph about each and resoning on if we can use it or not, and what kind of analysis can be based on particular part (I think we enumerated almost all parts of original log)
 
 
+Reasoning on choice of apropriate input based on our preference (json report contains all significant things, we do not want to investigate network particular and we do not aim at something specific)
+- here they used json reports - file:///C:/Users/domia/Downloads/088851962.pdf, file:///C:/Users/domia/Downloads/TSP_CMC_40145.pdf, https://core.ac.uk/download/pdf/237431148.pdf, https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8262998
+
+Describe parts of json report
 JSON report parts \todo{describe that json report is quite comprehensive and contain even earlier mentioned outputs} \todo{to appendix we should add some example of report.json}
 - size vary a lot, could be from 10MB to GBs
 lack of docs - https://github.com/cuckoosandbox/cuckoo/issues/2458
@@ -59,28 +65,53 @@ lack of docs - https://github.com/cuckoosandbox/cuckoo/issues/2458
 "strings - extracted strings (static analysis technique)
 "suricata - network detection Suricata tool log
 "target - sample details
-"malfamily_tag" - 
+"malfamily_tag"
 "signatures - list of signatures and their data
 "malscore"
 "ttps
 
+\todo{add sections of report from virus total and its features}
+https://developers.virustotal.com/v3.0/reference#files
+
+
+\section{Features and states for classification}
+In chapter \todo{ref chapter classification} we defined \emph{features} and \emph{states}. Our goal \todo{do not forget to add goals to each chapter and go through the trash below each chapter!!} is to try train classifier from so we need to find appropriate $$\mathcal{X}, \mathcal{Y}$$. Following our statements we will find them in \emph{report.json} and in \emph{virustotal.json}. More then one possibilites are stated. Based on further conditions we are going to train models on some of combination/s of \emph{features} and \emph{states}.
+
+List candidates and reasoning
+
+\subsection{States}
+We know that our samples are malware (or should be) \todo{clarify it in thesis, reference section about abuse.ch!} so it does not make sense to try \emph{malware X cleanware} classification \todo{reference section where I am trying to describe different types of samples classification}. The classification classes has to be related to the malwaware itself, its attributes or features.
+
+From the behavioral log we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioral features or combination of behavioral and static features. 
+
+Assigning \emph{malware family} is very complex task \todo{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6107902}, often we involve behavior of the sample, similarity to other samples. Potential model could attempt to generalize \todo{https://www.google.com/search?q=how+malware+family+is+assigned&oq=how+malware+family+is+assigned&aqs=chrome..69i57.6391j0j7&sourceid=chrome&ie=UTF-8} assignment process and point out features which could be used in stochastic way (not as usual static assignment \todo{some citation}). \todo{reference malware families in malware chapter (first)}
+
+Signatures most often tells us what sandbox or other tools observed - special kind of behavior, static features like encryption \dots \todo{more about them we say in chapter on modelling, or maybe here give example of code and signature detection and data part (and all parts) and to appendix we can add more, with reference to the repository} We can see them as local detectors checking particular feature in malware analysis result. Potential model could again generalize their assignment or even investigate other malicious sign that are often connected with some signatures - find new signatures.
+
+Malware score is defined in a lot of papers \todo{https://ieeexplore.ieee.org/document/8666454, http://dodccrp.org/events/6th_ICCRTS/Tracks/Papers/Track7/105_tr7.pdf, malware score to google} and it is crucial problem of these metrics. On the other hand potential classifier could assign score based on more complex decision and we could observe where it is against original assignment or intended by human. On the other hand this is quite risky because even the original label assignment (malscore assignement) is not so clear.
+
+
+\subsection{Features}
+We want to follow to the assumption that our state candidates are somehow related to the behavior of malware sample. That is why in this case we will choose some subset of original \emph{report.json}.
+From the log we can extract infromation about samples, state candidates and everything not related to behavior. Two things remain - network and behavior part. In our dataset we do not have relevant network traffic due to the data collection details mentioned above so we take into consideration only behavior part of original report.
+
+Brief description and example (if was not given earlier)
+"behavior
+    "processes, "processtree  - list of processes related to malware run with details (api name, arguments...)
+    "summary
+        "files
+        "read_files
+        "write_files
+        "delete_files
+        "keys
+        "read_keys
+        "resolved_apis    
+    "enhanced - detail sequence of events (library loading, api calls with parameters...)
+
+As features could be used the whole part or just segments. We have to be aware of potential bias like timestamps which are in enhanced and processes parts.
 
 
 
-Reasoning on choice of apropriate input
-- here they used json reports - file:///C:/Users/domia/Downloads/088851962.pdf, file:///C:/Users/domia/Downloads/TSP_CMC_40145.pdf, https://core.ac.uk/download/pdf/237431148.pdf, https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8262998
-
-Complete description of the output of the sandbox is in appenix \todo{reference}.
-
-
-
-Final result of data collection - no internet samples (maybe mention at the end of previous chapter), I did collect some, but did not use them in further parts because priority was not to have everything
-
-Technology - Julia
-  - describe why and basic features and advantages and cons
-
-
-How many samples, size...
 Summarize what we know from previous sections and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants
 we can even mention virustotal reports here
 
@@ -118,26 +149,13 @@ Next connection
 
 reference some source that is talking about data in cyber security, resp. on theory part
   
+Technology - Julia
+  - describe why and basic features and advantages and cons
 
 
-Explaining:
-  Reasoning:
-  - compare
-    code - original sample
-    code - only summary part
+%%----------------------------------------------------------------------------------------------
 
-    (nice-to-have, I do not have it, I can show just example of original sample, I do not think this is important), locally I can check it by hand
-
-    code - explanation
-  - discuss explanation
-  - report 
-      explanations, example of code, avarage size of explanation compared to average size of samples
-      parameters - used explainer, confidence...
-
-  - compare code and data part of original signature with the original report (if we can find there something) and then with explanation
-  - compare it in case of original report and in case of 
-
-
+Next chapter - Due to the data quality we are not able to use some of them
 
 Using:
 
