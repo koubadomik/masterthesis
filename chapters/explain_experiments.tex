@@ -4,37 +4,71 @@ Finally, we present specific method for hierarchical model explanation. One of g
 Motivation about mention Thorsten's advice to look at implementation of python signatures and reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
 discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
 
-(This chapter should have simmilar structure as models before)
+Add some philozophiing... (about the risky things, assumptions, reference explanation theory chapter)
 
-Used technologies
+\section{Explainer}
+Based on \todo{chapter about explanation theory}, mention specific setup (confidence level, pruning method...), configuration and pseudocode of the explainer (all steps, extract only positive...) (we derived it from Pevny's paper, we did not experiment with another setups), reference code in attachement
+What we did with output more (aggregation of results), how many explanations we have, (two rounds)
+\section{Results}
+Present result with each examined signature. Example here, then rest to appendix. Report average size of explanation (compare to original reports) and even explanation itself (example) and then top of histogram.
+
+\section{Discussion}
+Per signature
+  \todo{compare explanation to implementation of signature}
+  \todo{try to compare it to data part of original signature, we have to try to extract this part somehow}
+  \todo{summarize each signature, join even the model performance and so the credibility of the explanation}
+  \todo{Compare signature groups - based on the subject of signature and based on the fact if we can find it directly in the report}
+\todo{Discuss results in general}
+  \todo{What conclusions}
+  \todo{What problems, what has to be improved}
+  \todo{What is the result}
+
+Present several results and resoning above.
+We are experiencing two challenges which were mentioned earlier and those are - huge entrophy (take an example path to file for example) leads to big entrophy of explanation and we do not have some special method to determine similarities (some norm or...) (above our scope), confounding variables which we are not able to identify.
+It would be interesting to thing about the second approach - trasparency, to extract explanation for model not for sample, it is really hard to generalize such conslusions
+
+- Admit failures on bias variables, we do not if it is there
+○ Would it be better with more samples?
+○ How to detect that we are predictiong based on some confounding variable (reference theory chapter we should have described it there)...
+- This chapter could be good for the discussion part, just philozophy and show some clues!!
+- Causality X Correlation - cite some literature
+The book of why, Judea Pearl
+
+discuss particular results and try to connect it to models (results have to be real, it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
+
+
+
+Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
+Connect to motivation part of this chapter
+
+I think we can even state that the principle is working and we are able to identify why the model is prediction concerete things, cons of it is the example based explanation, better could be some kind of dataset based explanation
+
+The discussion should be tangled with the dilema - interpretability, explainability, credibility
+
+
+Used technologies (in appendix)
   - previous
   - ExplainMill
   (reference all the repositories - even cuckoo comminity)
 
-What we used - specific method (follow explanation theory) - we are choosing only samples where the model is above some confidence and explanation is per sample, we have several explanations to see some trend; we did follow results in Pevny's work, we did not experiment with different kinds of explainers
 
-take signature groups and compare their code to explanation, from each signature type (rest get to the Appendix)
-report explanation and even some information from logs!!
-- Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
+  %%---------------------
 
-discuss particular results and try to connect it to models (results have to be real, it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
-Compare the results to Pevny's Explaner results
+  hopefully discussion on if the parts contains something significant according to type of signature and so on, or we can find something else than only the deterministic base which the signatue implementation is checking
 
 
-hopefully discussion on if the parts contains something significant according to type of signature and so on, or we can find something else than only the deterministic base which the signatue implementation is checking
-Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
-Connect to motivation part of this chapter
+  Compare the results to Pevny's Explaner results
 
-Previous connection
-- We are trying to explain previously trained models
-Way through this chapter
-- describe steps
-- discuss results
-Next connection
-- Next will be conclusions and final statements, we can summarize results of explanation with respect to different models
+  take signature groups and compare their code to explanation, from each signature type (rest get to the Appendix)
+  report explanation and even some information from logs!!
+  - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
 
 
-- Goal 
+
+
+
+  Describe steps - how many samples we have and how we choose them, how we just draw histogram results and try some reasoning
+  - Goal 
 - identify the artifacts corresponding to different malware behavior. Report results.
 - Investigate which parts of the CapeV2 log are important to different malware behavior. 
 
@@ -42,15 +76,15 @@ Next connection
   - Ask Thorsten to try to explain some patterns and domain specific subjects 
 
 
-I think we can even state that the principle is working and we are able to identify why the model is prediction concerete things, cons of it is the example based explanation, better could be some kind of dataset based explanation
+  What we used - specific method (follow explanation theory) - we are choosing only samples where the model is above some confidence and explanation is per sample, we have several explanations to see some trend; we did follow results in Pevny's work, we did not experiment with different kinds of explainers
+  
 
-This could be something for future work
+(This chapter should have simmilar structure as models before)
 
-Describe steps - how many samples we have and how we choose them, how we just draw histogram results and try some reasoning
-
-- Admit failures on bias variables, we do not if it is there
-○ Would it be better with more samples?
-○ How to detect that we are predictiong based on some confounding variable...
-- This chapter could be good for the discussion part, just philozophy and show some clues!!
-- Causality X Correlation - cite some literature
-The book of why, Judea Pearl
+  Previous connection
+- We are trying to explain previously trained models
+Way through this chapter
+- describe steps
+- discuss results
+Next connection
+- Next will be conclusions and final statements, we can summarize results of explanation with respect to different models

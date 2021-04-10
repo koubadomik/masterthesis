@@ -1,0 +1,312 @@
+{
+  "resolved_apis": [
+    [
+      "user32.dll.SetLayeredWindowAttributes",
+      7
+    ],
+    [
+      "dui70.dll.?Create@DUIXmlParser@DirectUI@@SAJPEAPEAV12@P6APEAVValue@2@PEBGPEAX@Z2P6AX11H2@Z2@Z",
+      2
+    ],
+    [
+      "oleaut32.dll.#25",
+      2
+    ],
+    [
+      "mscoree.dll._CorValidateImage",
+      2
+    ],
+    [
+      "oleaut32.dll.VarNot",
+      1
+    ],
+    [
+      "dui70.dll.??0HWNDElement@DirectUI@@QEAA@XZ",
+      1
+    ],
+    [
+      "dhcpcsvc6.dll.Dhcpv6QueryLeaseInfo",
+      1
+    ],
+    [
+      "dui70.dll.?Insert@Element@DirectUI@@UEAAJPEAPEAV12@II@Z",
+      1
+    ],
+    [
+      "oleaut32.dll.VarDiv",
+      1
+    ],
+    [
+      "oleaut32.dll.#149",
+      1
+    ]
+  ],
+  "keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\DllNXOptions\\diasymreader.dll",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\.NETFramework",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\DllNXOptions\\UseFilter",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane14",
+      1
+    ]
+  ],
+  "executed_commands": [
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      4
+    ],
+    [
+      "\"C:\\Windows\\system32\\notepad.exe\"",
+      3
+    ],
+    [
+      "nltest /domain_trusts /all_trusts",
+      2
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\1ebc266848b3028b297f.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\aee0158a9f836306b64e.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\SysWOW64\\rundll32.exe \"C:\\Users\\comp\\AppData\\Local\\Rdsr\\svss.geg\",RunDLL",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\mfvdsp\\at.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\d9191f748e8c2bb428b2.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\99189406fde88d00bc1e.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "c:\\windows\\system\\explorer.exe",
+      1
+    ]
+  ],
+  "write_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\GTplus\\Time",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@C:\\Windows\\system32\\netshell.dll,-1200",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\DeviceControl\\DevData0",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\LanguageList",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@%SystemRoot%\\system32\\napipsec.dll,-1",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{ADBB83E0-BA05-4247-B12D-9D6DC0F8831F}\\WpadDecisionTime",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\http://broken4.cf/Work4/fre.php",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\http://englee-sg.com/clap/five/fre.php",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@C:\\Windows\\system32\\prnfldr.dll,-8036",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Ikkzowxrduiabx",
+      1
+    ]
+  ],
+  "delete_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\DeviceControl\\DevData1",
+      2
+    ]
+  ],
+  "read_files": [
+    [
+      "C:\\Windows\\Fonts\\staticcache.dat",
+      6
+    ],
+    [
+      "C:\\Windows\\winsxs\\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.18837_none_ec86b8d6858ec0bc\\comctl32.dll",
+      5
+    ],
+    [
+      "\\DEVICE\\NETBT_TCPIP_{3DF8548A-CA81-417C-AD72-445187C06A79}",
+      3
+    ],
+    [
+      "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscorrc.dll",
+      2
+    ],
+    [
+      "C:\\Mirc\\mirc.ini",
+      2
+    ],
+    [
+      "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\diasymreader.dll",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.dat",
+      1
+    ],
+    [
+      "\\DEVICE\\NETBT_TCPIP_{846EE342-7039-11DE-9D20-806E6F6E6963}",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Network\\Connections\\Pbk\\_hiddenPbk\\rasphone.pbk",
+      1
+    ]
+  ],
+  "delete_files": [
+    [
+      "C:\\Documents and Settings\\Mini\\LOCALS~1\\Temp\\Temporary Directory 1 for 2013111512381802850.zip\\2013111812398784524.exe",
+      1
+    ]
+  ],
+  "mutexes": [
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\5d0fe828d087e58c38d1.exe\" ",
+      1
+    ],
+    [
+      "Local\\ZonesLockedCacheCounterMutex",
+      1
+    ]
+  ],
+  "files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
+      12
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000005.db",
+      5
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\cversions.1.db",
+      4
+    ],
+    [
+      "C:\\Windows\\sysnative\\en-US\\Actioncenter.dll.mui",
+      2
+    ],
+    [
+      "C:\\Windows\\sysnative\\Actioncenter.dll.3.Manifest",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Network\\Connections\\Pbk\\_hiddenPbk\\rasphone.pbk",
+      2
+    ],
+    [
+      "C:\\Windows\\System32\\wbem\\wbemdisp.tlb",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chromium\\User Data",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\aee0158a9f836306b64e.EN",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\90084eb0981e040b91c0.dll.124.Manifest",
+      1
+    ]
+  ],
+  "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GRE_Initialize\\DisableMetaFiles",
+      3
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane16",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\LanguagePack\\SurrogateFallback\\Plane12",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\GRE_Initialize\\DisableMetaFiles",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane13",
+      1
+    ]
+  ],
+  "write_files": [
+    [
+      "\\Device\\LanmanDatagramReceiver",
+      3
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\60B249AD-226D-4B72-91E9-758951B2FB48\\run.dat",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\whoami\\fdWSD.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\KBDMONMO\\vaultcli.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\webservices\\clip.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\drprov\\KBDINTAM.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\lpk\\SearchFilterHost.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\takeown\\KBDGAE.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\api-ms-win-core-file-l1-2-0\\DDOIProxy.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\Local Settings:init",
+      1
+    ]
+  ]
+}

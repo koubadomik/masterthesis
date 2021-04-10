@@ -1,0 +1,1452 @@
+[
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDMLT47\\dhcpcore.exe\""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v2.0.50727\\\\\\\\MSBuild.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\advapi32res\\BdeSysprep.exe"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Local State"
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\DnsTest"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log609E.tmp"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log609E.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log609E.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ComputerDefaults\\wevtutil.exe\""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\btpanui\\SystemPropertiesPerformance.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{491E922F-5643-4AF4-A7EB-4E7A138D8174}\\Security"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7EA5.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7EA5.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\(Default)",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log67D2.tmp"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log67D2.tmp"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InprocHandler"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\ThreadingModel"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\6da98cc77fc242ef1e97.exe\"",
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{027947E1-D731-11CE-A357-000000000001}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\notepad.exe\""
+          ],
+          "mutexes": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\2cbdede5ce74833cf41b.exe\" "
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6DFC.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6DFC.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\ThreadingModel",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\0ae092d6c1b1378fc208.exe /RSF /ppn:eXl0ZBYXA0pzb2Z8XAk /mnl"
+          ],
+          "read_files": [
+            "C:\\Windows\\System32\\shdocvw.dll"
+          ],
+          "mutexes": [
+            "Local\\ZoneAttributeCacheCounterMutex"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\ProfileList\\S-1-5-21-2237850072-885592287-911325625-1000\\ProfileImagePath"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\41c685ce04c8a2a84b76.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\SHELL32.dll.mui"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\ClassicShell",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\RestrictedAttributes"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\notepad.exe\"",
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\7ff0b93f3ac5f3acfe8f.exe\""
+          ],
+          "mutexes": [
+            "CicLoadWinStaWinSta0",
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}\\ParentFolder"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\c9796b8d207f9f7c38cf.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs"
+          ],
+          "read_files": [
+            "C:\\myapp.exe"
+          ],
+          "mutexes": [
+            "qazwsxedc"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Program Files (x86)\\Internet Explorer\\wmpscfgs.exe C:\\Program Files (x86)\\Internet Explorer\\wmpscfgs.exe"
+          ],
+          "mutexes": [
+            "Global\\wmpproc1998"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\9eb1f39ae32ed2c3289f.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\CFMBUF\\CFMBUF.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\System32\\tzres.dll"
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{9556DC99-828C-11CF-A37E-00AA003240C7}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\9efd700522f5d1588c42.exe\""
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\DynamicServerQueryOrder"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "c:\\windows\\system\\explorer.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Chrome\\SyncHost.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{1B3EA5DC-B587-4786-B4EF-BD1DC332AEAE}\\StreamResourceType"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{A42BA924-B417-4B83-AD34-6F16594B05DA}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "read_files": [
+            "C:\\Windows\\System32\\netutils.dll"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log63EA.tmp"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\Progid"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nltest /domain_trusts /all_trusts"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableAdapterDomainNameRegistration"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\f338a1b80c46346c5e3d.exe\""
+          ],
+          "mutexes": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\f338a1b80c46346c5e3d.exe\" "
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\d55a82ddece8372f6c66.exe\""
+          ],
+          "resolved_apis": [
+            "comctl32.dll.UninitializeFlatSB"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\d55a82ddece8372f6c66.ENU.DLL"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane13"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\3712c1a9e9ab864ee288.exe\""
+          ],
+          "mutexes": [
+            "{F60BE6AD-4059-BA20-7192-F9DE77662BB4}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\RegAsm.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\OcAzJVFfzUE.jpg"
+          ],
+          "read_files": [
+            "C:\\Windows\\WindowsShell.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}\\Security",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\InProcServer32\\LoadWithoutCOM"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\bce8a603f29df1e1c6f5.exe\""
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\amd64_microsoft-windows-m..do-backcompat-tlb20_31bf3856ad364e35_6.1.7601.22012_none_49c4ab6d21d4e912"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\mozilla-temp-files\\italian beastiality hardcore big glans penetration  (Sarah).zip.exe"
+          ],
+          "mutexes": [
+            "mutex666"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{22BDC741-73F0-41DB-9463-E343DEF3E376}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\c32847a186c66ceba1b4.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c32847a186c66ceba1b4.exe"
+          ],
+          "mutexes": [
+            "qazwsxedc"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\REVISED PO RTTW2909RTTW2711 _pdf.exe\""
+          ],
+          "resolved_apis": [
+            "oleaut32.dll.VarSub",
+            "oleaut32.dll.VarOr",
+            "comctl32.dll.FlatSB_GetScrollPos"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\REVISED PO RTTW2909RTTW2711 _pdf.ENU.DLL"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Borland\\Delphi\\Locales",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Nls\\ExtendedLocale\\en-US",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Nls\\Locale\\00000409"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Nls\\ExtendedLocale\\en-US",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\DataStore_V1.0\\Disable",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane2",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane4"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log69E5.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log69E5.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\netmsg.dll"
+          ],
+          "mutexes": [
+            "Global\\{A42BA924-B417-4B83-AD34-6F16594B05DA}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Dnscache\\Parameters\\MaxCachedSockets"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\90a86c29ca395bf1508c.exe\" 2 2600 33792812"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\2SPx.tmp"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane3"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\8be3a12afbda2ded7cb2.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs"
+          ],
+          "read_files": [
+            "C:\\Windows\\System32\\en-US\\odbcint.dll.mui"
+          ],
+          "mutexes": [
+            "qazwsxedc"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\fd25d39f3f2eeec2ecf1.exe\"",
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Windows Update.exe\""
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6428.tmp"
+          ],
+          "read_files": [
+            "C:\\Windows\\Globalization\\Sorting\\sortdefault.nls"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\ProgramData\\S53N0YF2WQ1R72TQVH640609W\\_60b249ad-226d-4b72-91e9-758951b2fb482526604305.zip"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "c:\\windows\\system\\explorer.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe"
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{3EB685DB-65F9-4CF6-A03A-E3EF65729F3D}\\PublishExpandedPath"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}",
+            "Global\\{A42BA924-B417-4B83-AD34-6F16594B05DA}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\1ea5c9ec2560f27cc930.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\1ea5c9ec2560f27cc930.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\LanguagePack\\SurrogateFallback\\Plane8"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\PO 30091.exe\" 2 2824 6024312"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscordacwks.dll"
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\SearchList"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "c:\\windows\\system\\explorer.exe"
+          ],
+          "write_files": [
+            "C:\\Windows\\system\\explorer.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\~DF82161FD8B7708CC3.TMP"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7501.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7501.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\(Default)",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6735.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6735.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\ProxyStubClsid32\\(Default)",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDGR1\\IDStore.exe\""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6BBA.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6BBA.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\System.HideOnDesktop"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6B6C.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6B6C.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log630F.tmp"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log630F.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{B196B286-BAB4-101A-B69C-00AA00341D07}\\InprocServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7F22.tmp"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log7F22.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\(Default)",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\ProxyStubClsid32\\(Default)",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe"
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}\\InfoTip"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log637C.tmp"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log637C.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\ThreadingModel"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\51308355\\dtcqsj.pif\" luvkgvlmt.njp"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\ieframe.dll.mui"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{DE92C1C7-837F-4F69-A3BB-86E631204A23}\\ParsingName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\ProgramData\\\\x394\\x3b5\\x3c5\\x3c4\\x3ad\\x3c1\\x3b1\\xea7\\xeb1\\xe99\\xe88\\xeb1\\xe99\\x623\\x62e\\x9b8\\x9cb\\x9ae\\x9ac\\x9be\\x9b0\\x628\\x627CC;\\x2188\\x2188\\x2188;;\\x631\\x627\\x41f\\x43e\\x43d\\x435\\x434\\x435\\x459\\x430\\x43a\\x644\\x625\\x62b\\x646\\x64a\\x646.exe "
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\vbc.exe\" /stext \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmpDE5A.tmp\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.LocalAlloc"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\machine.config"
+          ],
+          "mutexes": [
+            "Global\\.net clr networking"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}\\DisableAdapterDomainName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\592a99b61b8a8154c3de.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\592a99b61b8a8154c3de.exe"
+          ],
+          "mutexes": [
+            "qazwsxedc"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\59385a15d951fe34cfc2.exe /C",
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\mpr.dll.mui"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\c4e3b7895136d2ec586f.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c4e3b7895136d2ec586f.exe"
+          ],
+          "resolved_apis": [
+            "oleaut32.dll.VarCmp",
+            "comctl32.dll.FlatSB_GetScrollPos"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\BF783B\\BCDB0B.lck"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Borland\\Locales",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Nls\\CustomLocale\\en-US"
+          ],
+          "started_services": [
+            "VaultSvc"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane16"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6021.tmp"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\ThreadingModel"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\de1d1aff1d7ab3891374.exe\""
+          ],
+          "resolved_apis": [
+            "oleaut32.dll.VarCyFromStr"
+          ],
+          "read_files": [
+            "C:\\Windows\\Fonts\\staticcache.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\InstallRoot"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "mutexes": [
+            "Global\\{ebebb95b-836f-4d8b-92f1-dafac3cec9d8}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{F3CE0F7C-4901-4ACC-8648-D5D44B04EF8F}\\ParsingName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\5f4235a07c86cc4904b5.exe\""
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W"
+          ],
+          "mutexes": [
+            "Global\\{A42BA924-B417-4B83-AD34-6F16594B05DA}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{432A1DA5-3888-4B9A-A734-CFF1E448C5B9}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\netutils\\clfsw32.exe\""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\wlansec\\psr.exe\""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\0fad6f2f565db26ddca9.exe /C"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\160fda9fa56538b2c61a.exe /C"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\SysWOW64\\diskperf.exe\""
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\Attributes"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\PING.EXE.mui"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "c:\\windows\\system\\explorer.exe"
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe"
+          ],
+          "mutexes": [
+            "StikyNot_yakuza"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "nltest /domain_trusts /all_trusts"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{22BDC741-73F0-41DB-9463-E343DEF3E376}\\InProcServer32\\ThreadingModel"
+          ]
+        }
+      }
+    }
+  ]
+]
