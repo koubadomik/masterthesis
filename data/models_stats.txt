@@ -145,15 +145,15 @@ enumerates_running_processes  - If we have enough time this model we should reru
     balance of training set
         training - 6355
         testing - 6385
-    Confusion Matrix - 
-    accuracy - 
-    balanced accuracy - 
-    f-score - 
-    auroc - 
-    auprc - 
-    fnr - 
-    fpr - 
-    loss -
+    Confusion Matrix - (6362, 33638, 6043, 33419, 219, 319)
+    accuracy - 0.98655
+    balanced accuracy - 0.9716740204838994
+    f-score - 0.957382762991128
+    auroc - 0.9958759156026934
+    auprc - 0.9885391050471798
+    fnr - 0.050141464948129516
+    fpr - 0.006510494084071586
+    loss - 0.04144602
 
 
 stealth_timeout

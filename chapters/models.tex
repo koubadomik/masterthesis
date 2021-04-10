@@ -52,6 +52,7 @@ The reason why we categorize the signature in such manner is that we would like 
 \section{Model}
 Describe mathematically what are features and labels and that we perform binary classification. Mention multilabel just marginally.
 mention even multilabel as addition (in principle it should be possible but for us it was not priority)
+- mention experiments (several attempts we have) and accuracy per item but only as something as addition - maybe more iteration, because multilabel is just multioutput single label, predicting at once should be possible, for it was not priority
 
 \section{Modelling experiments}
 Technology stack we used to train \emph{hmill} model is described in \todo{reference the appendix}. Important is that we unsuccesfuly experimented with multithreading in \emph{Julia} so the resulting model was trained only on one CPU.
@@ -74,30 +75,35 @@ Main difference from \cite{Mandlik} is \emph{minibatch size} and \emph{number of
 \todo{we may: Connect to the chapter about classification generally - hmill model, what specifically we use}
 
 \section{Results}
-evaluation metrics (and library used), compare to another authors (if necessary, maybe not)
+Chosen metrics are based on metrics which are reported by similar papers \todo{reference Pevny, Madlik and Stiborek}. We also follow the chapter \todo{reference classification chapter} where we mentioned classifiers in cyber security field. The calculation was supported by \emph{EvalMetrics.jl} \todo{reference appendix}.
+
+\todo{report table of metrics including the balance of dataset (pie graph?) and at least one graph}
+Other metrics and graphs could be seen in appendix \todo{add appendix with all the data - graphs, additional metrics}
+\todo{we can compare to others but not necessary}
 
 \section{Discussion}
-Each group or each signature in particular.
+Each group or each signature in particular. Our expectation compared to real results.
 
+Compare signatures among them
 
+- technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically (point of discussion)
 
+\todo{If not enough data and discussion, we could try to discuss the data part of signature and original sample and how it corresponds to the performance of our models}
 
 Describe general intention and direction of reasoning - what we want to find in models, success criteria
 We expect that net will be working on samples where the subject of signature is directly in the report, hopefully. Than that in such situation we can find something else. Finally, in case that the signature subject is not easily observable from report, we can find something else or just say ok, we are not able.
 
-- with enhanced part and without it
-  - Report some results per signature (some reference in appendices) report even balancing of data set for particular signature
-  - comment each
-  - compare to similar experiments (there are experiments with also data from sandbox)
+Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
+check overfitting - Pevny said that balanced accuracy on training set
 
+Conclusion of this chapter is that we are able to train \emph{hmill} classifier which is able to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has similar or better performance than original paper \cite{Mandlik2020}, compared by \emph{f1score}. Obviously we are able to classify only some of signature with such performace and even we should not be too much for the copmarison because original author had different dataset. But our goal was to train the classifier and then explain it so we are able to examine trained classifiers and that is following.
 
+\todo{among appendices technologie add even (Technical background, used metascenter archicture...) and even the script
+- used technologies - add to appendix as in previous chapter
+  - \todo{reference JsonGrinder, Mill, EvalMetrics...}
+  - reference, describe functioning
 
-To appendix add everything, for example even extracted schema...
-
-
-- I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think (try to find between models...)
-
-reference json grinder and its usage to process data
+%%-----------------------------------------------
 
 - Used technologies, several experiments, pseudocode (algorithm), hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, Mention metacenter (even in thanks part)
   - Modelling - single label classifier
@@ -135,20 +141,21 @@ reference json grinder and its usage to process data
                     - Jan Stiborek comparison
                     - I can use use column graphs
         - multilabel - nice-to-have
-            - mention experiments (several attempts we have) and accuracy per item but only as something as addition - maybe more iteration, because multilabel is just multioutput single label, predicting at once should be possible, for it was not priority
+
+
+- I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think (try to find between models...)
+
+reference json grinder and its usage to process data
+
+- with enhanced part and without it
+  - Report some results per signature (some reference in appendices) report even balancing of data set for particular signature
+  - comment each
+  - compare to similar experiments (there are experiments with also data from sandbox)
 
 
 
-Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
+To appendix add everything, for example even extracted schema...
 
-check overfitting - Pevny said that balanced accuracy on training set
-
-
-- used technologies - add to appendix as in previous chapter
-  - \todo{reference JsonGrinder, Mill, EvalMetrics...}
-  - reference, describe functioning
-
-%%-----------------------------------------------
 Describe data loading and modelling, split conditions, random minibatch... - reference code in attachment, we did follow parameters in similar models (Mandlik, identification.jl) and it was starting point, describe parameters and conditions, we can also dump tree of extractor and corresponding model
 
 
