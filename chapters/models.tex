@@ -1,14 +1,86 @@
 \chapter{Modelling classifier}
-Following previous chapter we want to present our way of modelling and results we have. The main goal of this part is to train the models based on prior experiments, not strictly perform long sequence of experiments and compare to prior. On the other hand we would like to present similar metrics comparing to our collages. We did not model all variants mentioned in previous chapter, we concentrated on at least one working model. 
+Following previous chapter we want to present our way of modelling and results we have. The main goal of this part is to train the models based on prior experiments, not strictly perform long sequence of experiments and compare to prior. On the other hand we would like to present similar metrics comparing to our colleges. We did not model all variants mentioned in previous chapter, we concentrated on at least one working model and then we move on to model explaining experiments.
 
-- Follow the chapter about classification generally - hmill model, what specifically we use
+In previous chapter we formulated several possibilities for model output and input. We use \emph{hmill} framework for data modelling \todo{reference hmill chapter}. From \emph{states} and \emph{features} in question we started with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. Our reasoning is based on the fact that the signatures are assigned based on some usually atomic fact, for example presence of some api call in log. If we choose part of behavior log where this information is presented, we should be able to evaluate model's prediction. Also we want to see if the model is able to generalize the knowledge and maybe come up with some new explanation of particular signature or just things which go with the original subject of particular signature. More complex labels like malware family or malware score are something what we can explore later. We assume that the assignement of those is often supported by signatures themselves and it should be better to explore the original cause of the whole chain.
 
-- used technologies
-  - \todo{reference JsonGrinder, Mill, EvalMetrics...}
-  - reference, describe functioning
+\section{Behavior as feature vector}
+After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive and we will not be able to train the model. \todo{some better arguments}. If the model would be still to complex to train in our conditions we omit also the \emph{enhanced part}.
 
-Describe data loading and modelling, split conditions, random minibatch... - reference code in attachment, we did follow parameters in similar models (Mandlik, identification.jl) and it was starting point, describe parameters and conditions, we can also dump tree of extractor and corresponding model
-  - mention even multilabel as addition (in principle it should be possible but for us it was not priority)
+\section{Signatures as labels}
+Brief description of signatures is in previous chapter \todo{ref chapter data}. Signatures are assigned to each sample based on its behavior. In figure \todo{add histogram visualization with percentage, not exact numbers} There is a histogram where we can observe frequency of each signature in our dataset.
+
+From the original histogram we have chosen most seen signatures starting with \emph{injection_rwx} (because \emph{dynamic_funciton_loading} is almost everywhere). In the figure \todo{add table of resulting signatures or another pie graph} we can see our candidates. 
+Next task is to try to investigate what the implementation of particular signature is about and try to create groups for further conclusion making. \emph{Python} implementation of each signture is processing the output of sandbox and generates boolean values signing that the subject of particular signature is presented in sample behavioral log. Subject of the signature can be api calls, dropped files, processes, commands and even something more complex. If the signature implementation returns \emph{True}, we observe instance of this signature in the \emph{signatures} part of \emph{report.json}. The format is following: \todo{add signature structure with example}
+
+We explored two types of grouping aspects. First is the subject of particular signature and then second is if we can see this subject in the behavioral log directly. For instance if the signature implementation is using api calls so the api call list is directly in the log. If it uses entrophy of dropped files, it is not directly in the output. In figures \todo{add example of signature implementation}. Based on those criteria we identified following categories:
+\begin{enumerate}
+  \item Directly in \emph{report.json} in part \emph{summary, enhanced}
+  \begin{itemize}
+    \item API calls
+    \begin{itemize}
+      \item injection_rwx
+      \item antidebug_setunhandledexceptionfilter
+      \item removes_zoneid_ads
+      \item deletes_self
+      \item stealth_timeout
+      \item enumerates_running_processes
+      \item injection_runpe
+    \end{itemize}
+    \item Files
+    \begin{itemize}
+      \item copies_self
+    \end{itemize}
+    \item Commands
+    \begin{itemize}
+      \item uses_windows_utilities
+    \end{itemize}
+  \end{itemize}   
+  \item Not directly in \emph{report.json} in part \emph{summary, enhanced} (it does not matter that no clues can not be there, but just not directly the information is not there)
+  \begin{itemize}
+    \item Processes - \emph{dropper}
+    \item Sleep - \emph{ antisandbox_sleep}
+    \item Entrophy - \emph{packer_entropy}
+    \item Combinations - \emph{stealth_network}
+    \item authsign - \emph{invalid_authenticode_signature}
+  \end{itemize}
+\end{enumerate}
+\todo{add the data below without the frequencies to the structure}
+More detail about each signature is in appendix \todo{add appendix where each signature will by summarized, its implementation and its data part...}
+
+The reason why we categorize the signature in such manner is that we would like to connect those categories with the model performace in the further discussion.
+
+\section{Model}
+Describe mathematically what are features and labels and that we perform binary classification. Mention multilabel just marginally.
+mention even multilabel as addition (in principle it should be possible but for us it was not priority)
+
+\section{Modelling experiments}
+Technology stack we used to train \emph{hmill} model is described in \todo{reference the appendix}. Important is that we unsuccesfuly experimented with multithreading in \emph{Julia} so the resulting model was trained only on one CPU.
+
+First experiments are without reported results because model was to huge to converge, we were not able to train it on hardware we had and with thread limitations. This reality led us to skip one part of feature vector - \emph{enhanced} part. So the resulting model is working with \emph{summary} of original report only. \todo{clarify this in section introductions and so, not to confuse somebody with those ongoing changes}.
+
+Original code of the model is in appendix \todo{reference appendix}. The pseudocode of the whole process can be seen on \todo{add pseudocode of analyser.jl}. It is obviously standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Other interesting fact is that the \emph{hmill} framework API is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library \todo{reference technology stack, where we describe the library a little bit and reference} which is able to accept array of json documents and produce schema \todo{add this schema and extractor to appendix exported} which is then used to create \emph{hmill} object from each json document.
+
+\subsection{Model hyperparameters and dataset attributes}
+In our experiment we do not involve techniques like early stopping or hyperparameter tuning. We build on previous experiments namely on \cite{Mandlik2020} where author used published even set of hyperparameter used. We were not succesful immediately, it took several attempts of our hand-picked adjustments. After each adjustment we tried to train the model and observed convergence of loss function and balanced accuracy on training and testing data. Due to the fact that we did not tuned hyperparameters or anything else, we did not use validation set. In the table \todo{add table of parameters below} we can observe hyperparameters of the model and other training-independent facts.
+
+- samples 80_000, test: 0.5, train: 0.5, random subsampled
+- minibatch - 1000
+- neurons - 20
+- iterations (random subssampling) - 120 (should be sufficient), mention it by each signature particularly because some of jobs did not catch it on time so the number of iterations is smaller
+- optimizer ADAM \todo{reference creator, original citation}
+
+Main difference from \cite{Mandlik} is \emph{minibatch size} and \emph{number of iterations} which worked for us in this changed form. Minibatches are generated randomly from training set in each iteration \todo{reference it in the classification theory part if it is there}.
+
+\todo{we may: Connect to the chapter about classification generally - hmill model, what specifically we use}
+
+\section{Results}
+evaluation metrics (and library used), compare to another authors (if necessary, maybe not)
+
+\section{Discussion}
+Each group or each signature in particular.
+
+
+
 
 Describe general intention and direction of reasoning - what we want to find in models, success criteria
 We expect that net will be working on samples where the subject of signature is directly in the report, hopefully. Than that in such situation we can find something else. Finally, in case that the signature subject is not easily observable from report, we can find something else or just say ok, we are not able.
@@ -19,13 +91,6 @@ We expect that net will be working on samples where the subject of signature is 
   - compare to similar experiments (there are experiments with also data from sandbox)
 
 
-
-Previous connection
-- Based on previously chosen data and described theory of hmill we have chosen technology and tried to train the model in different setups with different data
-Way through this chapter
-
-Next connection
-- Resulting models will be objects of explanation experiments
 
 To appendix add everything, for example even extracted schema...
 
@@ -75,5 +140,64 @@ reference json grinder and its usage to process data
 
 
 Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
-        
-      
+
+check overfitting - Pevny said that balanced accuracy on training set
+
+
+- used technologies - add to appendix as in previous chapter
+  - \todo{reference JsonGrinder, Mill, EvalMetrics...}
+  - reference, describe functioning
+
+%%-----------------------------------------------
+Describe data loading and modelling, split conditions, random minibatch... - reference code in attachment, we did follow parameters in similar models (Mandlik, identification.jl) and it was starting point, describe parameters and conditions, we can also dump tree of extractor and corresponding model
+
+
+If we started with signatures we can report some statistics (basic principle should be presented in previous chapter)
+
+Basic statistics for various parts and variants
+  - signature histogram (balanced) - histogram.csv
+  - ...
+  - a lot of Emotet (maybe should be on another place) (malware family problem I think, mention among potential biases), where is this attribute in the original report?
+  - - Balanced dataset - in term of accuracy metric performance
+  - Bias - - Bias in practical data like this - security data, what are the influences (as an example could be ip addresses...)
+
+Using:
+
+
+
+\todo{In this section we will formulate why we started with signatures (and even ended), also why we started with summary and enhanced and than skipped only to summary part}
+
+Previous connection
+- Based on previously chosen data and described theory of hmill we have chosen technology and tried to train the model in different setups with different data
+Way through this chapter
+
+Next connection
+- Resulting models will be objects of explanation experiments
+
+
+
+DIRECTLY in output
+	- API calls - are in in summary part
+		○ "injection_rwx" 28251
+		○ "antidebug_setunhandledexceptionfilter" 18223
+		○ "removes_zoneid_ads" 11070
+		○ "deletes_self" 10805
+		○ "stealth_timeout" 8253
+		○ "enumerates_running_processes" 6324
+		○ "injection_runpe"  5542
+  - Files - are in summary part
+		○ "copies_self" 7137
+	- Commands - are in summary part
+		○ "uses_windows_utilities" 6987
+
+NOT DIRECTLY in output
+	- Processes - not directly in summary part
+		○ "dropper"  6045
+	- Time - not directly in summary part
+		○ "antisandbox_sleep" 15810
+	- AuthSign - not directly in summary part
+		○ "invalid_authenticode_signature" 14346
+	- Entrophy - not directly in summary part
+		○ "packer_entropy" 8815
+	- Combinations - 
+    "stealth_network" 26430

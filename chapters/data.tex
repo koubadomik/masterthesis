@@ -1,4 +1,5 @@
 \chapter{Data structure, features and states}
+\todo{this cahpter could be absorbed into next chapter if it is too short...}
 So far we know that sandbox output can be quite rich. There re even such experiments that used machine learning algorithms on all the produced data but we would like to use some subset. In this chapter we describe our reasoning on choosing feature vector and hidden states.
 
 The input for us to this chapter are collected malware analysis results from previous part. The expected output is reasoning on what we can use as features for \emph{hmill} model. This decision should be based on the data we have and even on experience from prior work (reference Mandlik, Pevny, Stiborek and maybe even others and really compare my decisions with them)
@@ -7,6 +8,7 @@ The input for us to this chapter are collected malware analysis results from pre
 The outputs of the analysis are quite comprehensive, but we have only some setup. We did collect much more than we can use. Regarding this fact we were not able to use data with internet connection because its collection is quite complicated and at the time we wanted examine it we did not have it. Their analysis is in future work same as data from static analysis (Virus total). These data are still part of our data set and was big part of our job so far. So the subject of our research is sandox output.
 
 Summary of the data set - How many samples, size...
+Also we can try to specify the requirements for our model (quite big amount of data - all the reports), we are not able to process whole outputs, reference hmill capacities on previous experiments (for example in Julia language)
 
 Among goals of this thesis is to investigate different parts of sandbox output responsible for some kinds of behavior. This is why we aim at the parts of log where we can see behavior of target malware sample. Those are:
 \begin{enumerate}
@@ -28,6 +30,9 @@ paragraph about each and resoning on if we can use it or not, and what kind of a
 
 Reasoning on choice of apropriate input based on our preference (json report contains all significant things, we do not want to investigate network particular and we do not aim at something specific)
 - here they used json reports - file:///C:/Users/domia/Downloads/088851962.pdf, file:///C:/Users/domia/Downloads/TSP_CMC_40145.pdf, https://core.ac.uk/download/pdf/237431148.pdf, https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8262998
+
+
+\todo{Summarize what we know from previous sections \todo{especially from analysis part, where we should summarize what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
 
 Describe parts of json report
 JSON report parts \todo{describe that json report is quite comprehensive and contain even earlier mentioned outputs} \todo{to appendix we should add some example of report.json}
@@ -88,6 +93,7 @@ Assigning \emph{malware family} is very complex task \todo{https://ieeexplore.ie
 
 Signatures most often tells us what sandbox or other tools observed - special kind of behavior, static features like encryption \dots \todo{more about them we say in chapter on modelling, or maybe here give example of code and signature detection and data part (and all parts) and to appendix we can add more, with reference to the repository} We can see them as local detectors checking particular feature in malware analysis result. Potential model could again generalize their assignment or even investigate other malicious sign that are often connected with some signatures - find new signatures.
 
+
 Malware score is defined in a lot of papers \todo{https://ieeexplore.ieee.org/document/8666454, http://dodccrp.org/events/6th_ICCRTS/Tracks/Papers/Track7/105_tr7.pdf, malware score to google} and it is crucial problem of these metrics. On the other hand potential classifier could assign score based on more complex decision and we could observe where it is against original assignment or intended by human. On the other hand this is quite risky because even the original label assignment (malscore assignement) is not so clear.
 
 
@@ -108,37 +114,21 @@ Brief description and example (if was not given earlier)
         "resolved_apis    
     "enhanced - detail sequence of events (library loading, api calls with parameters...)
 
-As features could be used the whole part or just segments. We have to be aware of potential bias like timestamps which are in enhanced and processes parts.
+As features could be used the whole section or just segments. We have to be aware of potential bias like timestamps which are in enhanced and processes parts.
+
+\section{Data processing pipeline}
+\todo{add some image}
+After we decided which data parts are useful we used linux tools and Julia language to \todo{reference Julia in appendix technology description and maybe even lazyjson library} extract what we need from original analysis results \todo{reference what we used in bash - if necessary (maybe I can add to attachment bash script with trasformation like that if needed), and reference pruner code in attachements, we should have appendix description of attachments}
+
+After data investigation and processing we are moving to modelling. This statement is truth even physically such big data amounts we have to solve on bigger cluster like cesnet.metacenter. \todo{mention data amount before and after processing pipeline}
 
 
-
-Summarize what we know from previous sections and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants
-we can even mention virustotal reports here
-
-Get several reasonings for some parts of analysis, what we want and we do not, also we can compare it to Stiborek and other works (for example Mandlik had quite straight-forward dataset and we know that it worked), we can really investigate the whole output and present ideas. Also we can try to specify the requirements for our model (quite big amount of data and we have to demonstrate on device we have)
+Technology - Julia (I think I should add this in some appendix, summarize it and reference all sources used)
+  - describe why and basic features and advantages and cons
+  - Also all different codes, documented, refactored
 
 
-Detail descriptions of candidates, for example describe signatures (just describe what they do and sort them to categories according to what they are doing) and give example and at once slightly say why the signatures could be interesting (based on behavior like this we can validate model, such that it is using the proper part of report, but we can see whatever else which looks like malicious)
-
-At the end we can have more variants, but at the end we did examine two and that should not be a problem
-
-Data processing
-extracting desired parts
-Is there something else in processing?
-Pruning jsons in Julia...
-
-
-reference that we did use similar parts as predecessors (Pevny, Mandlik, Stiborek)
-
-Basic statistics for various parts and variants
-  - signature histogram (balanced) - histogram.csv
-  - ...
-  - a lot of Emotet (maybe should be on another place)
-  - - Balanced dataset - in term of accuracy metric performance
-  - Bias - - Bias in practical data like this - security data, what are the influences (as an example could be ip addresses...)
-
-
-After data investigation and processing we are moving to modelling. This statement is truth even physically such big data amounts we have to solve on bigger cluster like cesnet.metacenter.
+%%----------------------------------------------------------------------------------------------
 
 Previous connection
 - Follow up statements about data in cybersecurity, follow previous chapter with choosing relevant parts of logs
@@ -148,39 +138,21 @@ Next connection
 
 
 reference some source that is talking about data in cyber security, resp. on theory part
-  
-Technology - Julia
-  - describe why and basic features and advantages and cons
 
 
-%%----------------------------------------------------------------------------------------------
+Data processing
+extracting desired parts
+Is there something else in processing?
+Pruning jsons in Julia...
+
+reference that we did use similar parts as predecessors (Pevny, Mandlik, Stiborek)
+
+Detail descriptions of candidates, for example describe signatures (just describe what they do and sort them to categories according to what they are doing) and give example and at once slightly say why the signatures could be interesting (based on behavior like this we can validate model, such that it is using the proper part of report, but we can see whatever else which looks like malicious)
+
 
 Next chapter - Due to the data quality we are not able to use some of them
 
-Using:
+Get several reasonings for some parts of analysis, what we want and we do not, also we can compare it to Stiborek and other works (for example Mandlik had quite straight-forward dataset and we know that it worked), we can really investigate the whole output and present ideas. 
 
-DIRECTLY in output
-	- API calls - are in in summary part
-		○ "injection_rwx" 28251
-		○ "antidebug_setunhandledexceptionfilter" 18223
-		○ "removes_zoneid_ads" 11070
-		○ "deletes_self" 10805
-		○ "stealth_timeout" 8253
-		○ "enumerates_running_processes" 6324
-		○ "injection_runpe"  5542
-  - Files - are in summary part
-		○ "copies_self" 7137
-	- Commands - are in summary part
-		○ "uses_windows_utilities" 6987
 
-NOT DIRECTLY in output
-	- Processes - not directly in summary part
-		○ "dropper"  6045
-	- Time - not directly in summary part
-		○ "antisandbox_sleep" 15810
-	- AuthSign - not directly in summary part
-		○ "invalid_authenticode_signature" 14346
-	- Entrophy - not directly in summary part
-		○ "packer_entropy" 8815
-	- Combinations - 
-    "stealth_network" 26430
+At the end we can have more variants, but at the end we did examine two and that should not be a problem

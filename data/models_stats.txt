@@ -18,6 +18,7 @@ TODO:
   - compare it in case of original report and in case of 
 
 
+
 DIRECT CLUES SHOULD BE (did not check if the exact subject of signature is in the sample, it is quite complex but the category is in json summary part)
 antidebug_setunhandledexceptionfilter
     balance of training set
