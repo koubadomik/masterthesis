@@ -29,26 +29,52 @@
   - Write chapters - data, classification, hmill, explain_theory
 - 5.4. week
   - Chapters - data, model, explain_experiments
-- 12.4. week
+
+
+- 12.4. week - DATA, MODELS, EXPLAIN THEORY/Experiments
   - Final discussion about results from 3 chapters
   - Try to finalize everything so far having
     - ML stuff
-- 19.4. week
+
+
+
+- 19.4. week - THEORY (CLASSIFICATION, HMIL, EXPLAINING)
   - Final adjustment in ML par
   - Research Malware analysis, start writing this chapter
-- 26.4 week
+
+
+
+- 26.4 week - MALWARE ANALYSIS
   - Malware analysis chapter and infrastructure
   - Try to end it up
-- 3.5. week
+
+
+- 3.5. week - Document appearence and structure, images, appendices, attachments
   - order printing!
   - introduction, conclusions, discussion (see one note sheet)
   - code completion - attachement
   - final adjustments
+
+Written everything
+
 - 10.5. week
-  - final adjustments
+  - intro, conclusions,...
+  - english!!!
+
+
+
 - 17.5. week
   - English last adjustments, send to print it
+  - 18.5. - send to print, physical attachments
+  - 19.5. - power print order pick up (assignment with signatures, I can scan there to have second copy hopefully!!)
+  - 20.5. Hand in on department
   - 21.5. 2021 - FRIDAY, LAST DAY
+
+
+Hand-in:
+- firstly KOS
+  - assignment is without signatures at the beginning of the thesis
+- two physical copies - one with original assignment with signatures, second with copy of it
 
 
 

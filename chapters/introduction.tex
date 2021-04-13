@@ -1,9 +1,17 @@
 \chapter{Introduction}
 \section{Motivation}
-\todo[inline]{Add after I will have some references, try to summarize it}
-\section{Goals}
-The main goal of this thesis which we are aiming at is to capture and analyze artifacts of dynamic malware analyses and draw conclusions in each part of the process. Due to wide scope of this thesis, we do not aspire to break down each tiny detail of particular part. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps. Those are following:
+Nowadays we face quite strong explosion of machine learning application in various branches of human efforts. We can see applications in biology, chemistry, physics but we often do not have to go so far. These technologies are influencing our daily life. They make our life easier because we do not have to remember everything, what we do not know we just find. On the other hand we can see cases where the fact that algorithms (especially in machine learning) can control ourselves, our decisions, our reasoning, our life.
 
+If we use these computer science tools which are provided for us in good way we are often able to create something what may serve for our protection. Specific thing which is really up to date is detection of threads and frauds in cyber security. Research and application in this particular field is very interesting for one reason and that is motivation. We have to know which side we are standing on and what are the crucial interests of our client. For example in case of fraud detection we know that the investment in this detection is profitable only if the subject (bank, insurance company\dots) solves it above some specific treshold. Not all the frauds are interesting from the financial point of view because solving them costs also a lot of money. If we see it from the ethical point of view every fraud should be punished. Similarly, we can see the fact that often network security, single device security and access control is often seen like something which could be added (and often is) later. Small businesses which are aiming at specific market are not interested in some stuff which very often costs a lot of money and its main impact is preventive. 
+
+So in each of the mention cases we have to start with analysis of costs and benefits and analysis of risks and their probabilites, impact (potential damage). Which is not so obvious in sometimes stricly technically seen branch as cybersecurity.
+
+The subject of this is malware classification which is part of thread/intusion detection. We want to use specific machine learning tool - \emph{hierarchical multiple instance learning} to train classifier on data which we collect during dynamic malware analysis (\emph{sandboxing}). After we train the classifier (or several) we measure its performance and explain its predicitons. By explanation of predicition we mean using statistical method to extract the most important parts of input vector which contributed the most compared to other parts. The model could be used to detect malicious code execution based on its behavior and later the explanation can be used to generalize some of our deterministic ways to detect malware (family assignment, signature marking) or just to explain what is for some specific malware family some generic group of malicious programs.
+
+There are experiments in each part of our task but we would like to examine the whole pipeline to see if we are able to go from plain malware sample to predictor which is explainable. We do not aspire to dig deep in some specific part rather we want to connect each step and identify problems which are in the whole process. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps.
+\todo[inline]{We can add some references}
+\section{Goals}
+From the assignment of this thesis we can extract following particular steps/goal:
 \begin{enumerate}
     \item Run several instances of CapeV2 \cite{Cape} sandbox and solve their orchestration for this experiment
     \item Capture behavior of selected malware samples and store results
@@ -13,8 +21,20 @@ The main goal of this thesis which we are aiming at is to capture and analyze ar
     \item Investigate which parts of the CapeV2 log are important to different malware behavior
 \end{enumerate}
 
+The thesis is divided into two main parts. In the first part we focus the theoretical background for each of the tools we use. In the second part we describe usage details, parameters, conditions and other specific things regarding the application of described tools.
+
+The theoretical part starts with the malware analysis theory where we break down the malware itself, types of its analyses and usual output. We continue with the general machine learning backgound which is needed. We follow the basics in next \todo{ref hmill} which is the crucial machine learning framework and tool in our particular use case. Final chapter of the theory part is \todo{ref explaining} where we focus the model interpretabiliy, explainability and main issues of this domain. In each chapter we also reference relevant prior work.
+
+The second part breaks down the use case we have. The first chapter \todo{ref} describes malware analysis sample collection, infrastructure and tools used to do that. Following two chapters contain description of the data and reasoning on how to use it and description of training process - hyperparameters, different models, conditions. Finally, last chapter is \ref{ref expl} where we summarize the model explanation and its results. Crux of the thesis is the dicussion in the chapter \todo{ref chapter models and explaining} where we address the model performance and explanation achievements and problems. We follow this discussion in the conlusion and in the formulation of goals of future work.
+
+\todo{add references to particular chapters}
+
+
+%%---------------------------------------------------------
+The structure of this thesis follows the steps which we defined in assignement but we solve theoretical point of view and our use case into two parts of this thesis.
 Text is organized such that each chapter focuses on specific goal from the assignement. Firstly we describe theory and prior work, further our conditions, experiments and conclusions.
 
+The main goal of this thesis which we are aiming at is to capture and analyze artifacts of dynamic malware analyses and draw conclusions in each part of the process. 
 
 - motivation
 - Motivation behind the modelling itself (classifying itself)

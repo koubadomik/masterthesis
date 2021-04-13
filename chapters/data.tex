@@ -1,6 +1,6 @@
 \chapter{Data structure, features and states}
 \todo{this cahpter could be absorbed into next chapter if it is too short...}
-So far we know that sandbox output can be quite rich. There re even such experiments that used machine learning algorithms on all the produced data but we would like to use some subset. In this chapter we describe our reasoning on choosing feature vector and hidden states.
+So far we know that sandbox output can be quite rich. There re even such experiments that used machine learning algorithms on all the produced data but we would like to use some subset. In this chapter we describe our reasoning on choosing features and hidden states for our \emph{hmill} classifier.
 
 The input for us to this chapter are collected malware analysis results from previous part. The expected output is reasoning on what we can use as features for \emph{hmill} model. This decision should be based on the data we have and even on experience from prior work (reference Mandlik, Pevny, Stiborek and maybe even others and really compare my decisions with them)
 
@@ -34,7 +34,7 @@ Reasoning on choice of apropriate input based on our preference (json report con
 
 \todo{Summarize what we know from previous sections \todo{especially from analysis part, where we should summarize what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
 
-Describe parts of json report
+Describe parts of json report (define json notation in short paragraph)
 JSON report parts \todo{describe that json report is quite comprehensive and contain even earlier mentioned outputs} \todo{to appendix we should add some example of report.json}
 - size vary a lot, could be from 10MB to GBs
 lack of docs - https://github.com/cuckoosandbox/cuckoo/issues/2458
