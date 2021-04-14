@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Introduction} \label{chap:intro}
 \section{Motivation}
 Nowadays we face quite strong explosion of machine learning application in various branches of human efforts. We can see applications in biology, chemistry, physics but we often do not have to go so far. These technologies are influencing our daily life. They make our life easier because we do not have to remember everything, what we do not know we just find. On the other hand we can see cases where the fact that algorithms (especially in machine learning) can control ourselves, our decisions, our reasoning, our life.
 
@@ -6,10 +6,10 @@ If we use these computer science tools which are provided for us in good way we 
 
 So in each of the mention cases we have to start with analysis of costs and benefits and analysis of risks and their probabilites, impact (potential damage). Which is not so obvious in sometimes stricly technically seen branch as cybersecurity.
 
-The subject of this is malware classification which is part of thread/intusion detection. We want to use specific machine learning tool - \emph{hierarchical multiple instance learning} to train classifier on data which we collect during dynamic malware analysis (\emph{sandboxing}). After we train the classifier (or several) we measure its performance and explain its predicitons. By explanation of predicition we mean using statistical method to extract the most important parts of input vector which contributed the most compared to other parts. The model could be used to detect malicious code execution based on its behavior and later the explanation can be used to generalize some of our deterministic ways to detect malware (family assignment, signature marking) or just to explain what is for some specific malware family some generic group of malicious programs.
+The subject of this thesis is malware classification which is part of thread/intusion detection. We want to use specific machine learning tool - \emph{hierarchical multiple instance learning} to train classifier on data which we collect during dynamic malware analysis (\emph{sandboxing}). After we train the classifier (or several) we measure its performance and explain its predicitons. By explanation of predicition we mean using statistical method to extract the most important parts of input vector which contributed the most compared to other parts. The model could be used to detect malicious code execution based on its behavior and later the explanation can be used to generalize some of our deterministic ways to detect malware (family assignment, signature marking) or just to explain what is for some specific malware family some generic group of malicious programs.
 
 There are experiments in each part of our task but we would like to examine the whole pipeline to see if we are able to go from plain malware sample to predictor which is explainable. We do not aspire to dig deep in some specific part rather we want to connect each step and identify problems which are in the whole process. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps.
-\todo[inline]{We can add some references}
+\todo{We can add some references}
 \section{Goals}
 From the assignment of this thesis we can extract following particular steps/goal:
 \begin{enumerate}
@@ -23,22 +23,20 @@ From the assignment of this thesis we can extract following particular steps/goa
 
 The thesis is divided into two main parts. In the first part we focus the theoretical background for each of the tools we use. In the second part we describe usage details, parameters, conditions and other specific things regarding the application of described tools.
 
-The theoretical part starts with the malware analysis theory where we break down the malware itself, types of its analyses and usual output. We continue with the general machine learning backgound which is needed. We follow the basics in next \todo{ref hmill} which is the crucial machine learning framework and tool in our particular use case. Final chapter of the theory part is \todo{ref explaining} where we focus the model interpretabiliy, explainability and main issues of this domain. In each chapter we also reference relevant prior work.
-
-The second part breaks down the use case we have. The first chapter \todo{ref} describes malware analysis sample collection, infrastructure and tools used to do that. Following two chapters contain description of the data and reasoning on how to use it and description of training process - hyperparameters, different models, conditions. Finally, last chapter is \ref{ref expl} where we summarize the model explanation and its results. Crux of the thesis is the dicussion in the chapter \todo{ref chapter models and explaining} where we address the model performance and explanation achievements and problems. We follow this discussion in the conlusion and in the formulation of goals of future work.
-
-\todo{add references to particular chapters}
+The theoretical part starts with the malware analysis theory where we break down the malware itself, types of its analyses and usual output. We continue with the general machine learning backgound which is needed. We follow the basics in next \ref{chap:hmill} which is the crucial machine learning framework and tool in our particular use case. Final chapter of the theory part is \ref{chap:expth} where we focus the model interpretabiliy, explainability and main issues of this domain. In each chapter we also reference relevant prior work.
+\
+The second part breaks down the use case we have. The first chapter \ref{chap:infrastructure} describes malware analysis sample collection, infrastructure and tools used to do that. Following two chapters contain description of the data and reasoning on how to use it and description of training process - hyperparameters, different models, conditions. Finally, last chapter is \ref{chap:expex} where we summarize the model explanation and its results. Crux of the thesis is the dicussion in the chapters \ref{chap:models} and \ref{chap:expex}where we address the model performance and explanation achievements and problems. We follow this discussion in the conlusion and in the formulation of goals of future work.
 
 
 %%---------------------------------------------------------
-The structure of this thesis follows the steps which we defined in assignement but we solve theoretical point of view and our use case into two parts of this thesis.
-Text is organized such that each chapter focuses on specific goal from the assignement. Firstly we describe theory and prior work, further our conditions, experiments and conclusions.
+% The structure of this thesis follows the steps which we defined in assignement but we solve theoretical point of view and our use case into two parts of this thesis.
+% Text is organized such that each chapter focuses on specific goal from the assignement. Firstly we describe theory and prior work, further our conditions, experiments and conclusions.
 
-The main goal of this thesis which we are aiming at is to capture and analyze artifacts of dynamic malware analyses and draw conclusions in each part of the process. 
+% The main goal of this thesis which we are aiming at is to capture and analyze artifacts of dynamic malware analyses and draw conclusions in each part of the process. 
 
-- motivation
-- Motivation behind the modelling itself (classifying itself)
-  - classifying accordig to dynamic analyses, prior arts....
-  - My thesis is more practical, so the main goal is not to compare my results to another ones, but just demonstrate acuuracy of such classifier and everything around like for instance sandboxing, exaplaining
-- goals
-- structure of the thesis
+% - motivation
+% - Motivation behind the modelling itself (classifying itself)
+%   - classifying accordig to dynamic analyses, prior arts....
+%   - My thesis is more practical, so the main goal is not to compare my results to another ones, but just demonstrate acuuracy of such classifier and everything around like for instance sandboxing, exaplaining
+% - goals
+% - structure of the thesis

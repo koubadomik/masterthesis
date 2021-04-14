@@ -4,13 +4,17 @@
 \usepackage[utf8]{inputenc} 			% utf8 kódování vstupu 
 \usepackage[square, numbers]{natbib}	% sazba pouzite literatury
 \usepackage{fancyhdr}					% tisk hlaviček a patiček stránek
-\usepackage{nomencl} 					% umožňuje snadno definovat zkratky a jejich seznam
+% \usepackage{nomencl} 					% umožňuje snadno definovat zkratky a jejich seznam
+\usepackage[acronym]{glossaries}
 
 \usepackage{charter}					% font
 \usepackage{pdfpages}					% inserting pdfs
-\usepackage{todonotes}
+% \usepackage[chapter]{easy-todo}
+% \usepackage{todonotes}
 \usepackage{pgfplots}
 \usepackage{dirtytalk}
+
+\setlength\parindent{0pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,15 +48,22 @@ unicode=true,
 \usepackage{algpseudocode} 		%slouží pro výpis pseudokódu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % příkazy šablony
-\makenomenclature			% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
+% \makenomenclature			% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
 \let\oldUrl\url				% url adresy budou zobrazeny: <url> 
 \renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
 \newtheorem{definition}{Definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeglossaries
+\newacronym{gcd}{GCD}{Least Common Multiple}
+\newacronym{lcm}{LCM}{Least Common Multiple}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % vaše vlastní příkazy
-\newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
-\newcommand*{\nom}[2]{#1\nomenclature{#1}{#2}} 			% usnadňuje zápis zkratek : SZ
+% \newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
+% \newcommand*{\nom}[2]{#1\nomenclature{#1}{#2}} 			% usnadňuje zápis zkratek : SZ
+
+\newcommand\todo[1]{\textcolor{red}{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % vlastní dokument
@@ -73,26 +84,34 @@ unicode=true,
 	% Acknowledgements 
 	\acknowledgements
 	\noindent
-	Zde můžete napsat své poděkování, pokud chcete a máte komu děkovat.
+	My deepest gratitude goes to my supervisor doc.~Ing.~Tomáš Pevný,~Ph.D. for giving me advice and helping me overcome struggles during this journey. I also sincerely thank to doc.~Mgr.~Branislav Bošanský,~Ph.D., Ing.~Thorsten Sick and Ing. Josef Liška for their advice and encouragement. Finally, I wish to extend my special thanks to my family.
+
+	\noindent\rule{\textwidth}{0.4pt}
+
+	\noindent Computational resources were supplied by the project "e-Infrastruktura CZ" (e-INFRA LM2018140) provided within the program Projects of Large Research, Development and Innovations Infrastructures. This support was very beneficial.
+
 
 	% Declaration 
 	\declaration{In Prague on May 15, 2021}
 
  	%Abstract 
 	\abstractpage
+	In this thesis we focus process of malware classification based on behavioral analysis - sandboxing. We design pipeline which collect malware samples from defined sources, train classifier, evaluate and perform prediction explanation. The main goal is to implement whole process report results and address problems which we indentify. As malware sample source we used https://bazaar.abuse.ch/ and for its analysis we used sandbox CAPEv2. We use distributed setup of the sandbox run which we implement and the dataset has $80000$ samples. From the sandbox log we extract json report and its behavior part we use to train binary classifiers. As labels we use the presence of specific signature which are also in beahvior log. We use \emph{hierarchival multiple instance learning} model which is designed to solve even tree-structured data input (like JSON documents) as we can see from the prior work. The model itself is built based on input data structure and the underlying model are artificial neural nets. Based on the type of signature the classifiers have different performance but majority of them shows results above 95\% AUC. We discuss result in the case of each particular signature. Finally we examine the predictions of the classifier using \emph{hmill explaniner} which is tool designed to use statistical method to derive subsample from original sample which has the strongest contribution to resulting prediction of classifier. The results show us that explanation sometime correlate with the original signature implementation and even with our intuition. On the other hand we do not take the confounding variable existence lightly and we discuss results with sufficient distance. Main issue here is big data entrophy which causes big variance in explanations which are performed per sample. So each sample could be explained in very different way than another despite using the same classifier. \
+	
+	\vspace{5mm}
 
-	In this thesis we focus process of malware classification based on behavioral analysis - sandboxing. We design pipeline which collect malware samples from defined sources, train classifier, evaluate and perform prediction explanation. The main goal is to implement whole process report results and address problems which we indentify. As malware sample source we used https://bazaar.abuse.ch/ and for its analysis we used sandbox CAPEv2. We use distributed setup of the sandbox run which we implement and the dataset has $$80000$$ samples. From the sandbox log we extract json report and its behavior part we use to train binary classifiers. As labels we use the presence of specific signature which are also in beahvior log. We use \emph{hierarchival multiple instance learning} model which is designed to solve even tree-structured data input (like JSON documents) as we can see from the prior work. The model itself is built based on input data structure and the underlying model are artificial neural nets. Based on the type of signature the classifiers have different performance but majority of them shows results above 95\% AUC. We discuss result in the case of each particular signature. Finally we examine the predictions of the classifier using \emph{hmill explaniner} which is tool designed to use statistical method to derive subsample from original sample which has the strongest contribution to resulting prediction of classifier. The results show us that explanation sometime correlate with the original signature implementation and even with our intuition. On the other hand we do not take the confounding variable existence lightly and we discuss results with sufficient distance. Main issue here is big data entrophy which causes big variance in explanations which are performed per sample. So each sample could be explained in very different way than another despite using the same classifier.
+	\noindent Keywords: \emph{Multilple instance learning, cybersecurity, malware}
 
-	\vglue60mm
-
-	\noindent{\Huge \textbf{Abstrakt}}
-	\vskip 2.75\baselineskip
-
-	\noindent
-	Abstrakt práce by měl velmi stručně vystihovat její obsah. Tedy čím se práce zabývá a co je jejím výsledkem/přínosem.
+	\let\cleardoublepage\clearpage
 
 	\noindent
-	Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
+	\chapter*{Abstrakt}
+	\noindent
+	In this thesis we focus process of malware classification based on behavioral analysis - sandboxing. We design pipeline which collect malware samples from defined sources, train classifier, evaluate and perform prediction explanation. The main goal is to implement whole process report results and address problems which we indentify. As malware sample source we used https://bazaar.abuse.ch/ and for its analysis we used sandbox CAPEv2. We use distributed setup of the sandbox run which we implement and the dataset has $80000$ samples. From the sandbox log we extract json report and its behavior part we use to train binary classifiers. As labels we use the presence of specific signature which are also in beahvior log. We use \emph{hierarchival multiple instance learning} model which is designed to solve even tree-structured data input (like JSON documents) as we can see from the prior work. The model itself is built based on input data structure and the underlying model are artificial neural nets. Based on the type of signature the classifiers have different performance but majority of them shows results above 95\% AUC. We discuss result in the case of each particular signature. Finally we examine the predictions of the classifier using \emph{hmill explaniner} which is tool designed to use statistical method to derive subsample from original sample which has the strongest contribution to resulting prediction of classifier. The results show us that explanation sometime correlate with the original signature implementation and even with our intuition. On the other hand we do not take the confounding variable existence lightly and we discuss results with sufficient distance. Main issue here is big data entrophy which causes big variance in explanations which are performed per sample. So each sample could be explained in very different way than another despite using the same classifier.
+
+	\vspace{5mm}
+
+	\noindent Keywords: \emph{Multiinstanční hierarchické učení, kyberbezpečnost, malware}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%    
 	% obsahy a seznamy
@@ -108,9 +127,9 @@ unicode=true,
 
 	%Chapters
 	\part{Theory and prior}
-	% \include{chapters/introduction.tex}
+	\include{chapters/introduction.tex}
 	% \include{chapters/analysis.tex}
-	\include{chapters/classification.tex}
+	%\include{chapters/classification.tex}
 	% \include{chapters/hmill.tex}
 	% \include{chapters/explain_theory.tex}
 
@@ -119,11 +138,22 @@ unicode=true,
 	% \include{chapters/data.tex}
 	% \include{chapters/models.tex}
 	% \include{chapters/explain_experiments.tex}
-	% \include{chapters/conclusion.tex}
+	\include{chapters/conclusion.tex}
 	
 	%just to play with latex
-	\include{chapters/sandbox.tex}
+	%\include{chapters/sandbox.tex}
 	
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	% APPENDIX
+	\appendix	
+
+	% \printnomenclature
+	% \label{apx:nomencl}
+	\include{chapters/apendices/stack.tex}
+	\include{chapters/apendices/models.tex}
+
+	\printglossary[type=\acronymtype]
 
 	%Biblio
 	\bibliographystyle{alpha}
@@ -135,15 +165,8 @@ unicode=true,
 	\bibliography{bib/Master_thesis}
 	}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%% 
-	% APPENDIX
-	\appendix	
-
-	\printnomenclature
-	\label{apx:zkratky}
-
-	\chapter{Obsah přiloženého CD}
-	\textbf{\large Tato příloha je povinná pro každou práci. Každá práce musí totiž obsahovat přiložené CD. Viz dále.}
+	% \chapter{Obsah přiloženého CD}
+	% \textbf{\large Tato příloha je povinná pro každou práci. Každá práce musí totiž obsahovat přiložené CD. Viz dále.}
 
 	% Může vypadat například takto. Váš seznam samozřejmě bude odpovídat typu vaší práce. (viz \cite{infodp}):
 

@@ -44,8 +44,8 @@
 	% \Faculty\\
 	{\Large\Department\\}
 	\bigskip
-	{\labelStudProgram: \StudProgram}\\
-	{\labelStudBranch: \StudBranch}\\
+	% {\labelStudProgram: \StudProgram}\\
+	% {\labelStudBranch: \StudBranch}\\
 	\bigskip
 \end{center}
 \newpage
@@ -97,7 +97,7 @@
 Prohlašuji, že jsem předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem o dodržování etických principů při přípravě vysokoškolských závěrečných prací.%
 }{%
 \noindent
-I declare that I elaborated this thesis on my own and that I mentioned all the information sources and literature that have been used in accordance with the Guideline for adhering to ethical principles in the course of elaborating an academic final thesis.%
+I declare that the presented work was developed independently and that I have listed all sources of information used within it in accordance with the methodical instructions for observing the ethical principles in the preparation of university theses.%
 }
 \\[15mm]
 #1 \hfill \hbox to 70mm{\tiny\dotfill}
@@ -118,24 +118,24 @@ I declare that I elaborated this thesis on my own and that I mentioned all the i
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % upravuje výpis seznamu zkratek
-\makeatletter							
-\renewcommand{\thenomenclature}{%
-  \@ifundefined{chapter}%
-  {
-    \section{\nomname}
-   }%
-  {
-    \chapter{\nomname}
-  }%
+% \makeatletter							
+% \renewcommand{\thenomenclature}{%
+%   \@ifundefined{chapter}%
+%   {
+%     \section{\nomname}
+%    }%
+%   {
+%     \chapter{\nomname}
+%   }%
 
-  \nompreamble
-  \list{}{%
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}}
-\makeatother
+%   \nompreamble
+%   \list{}{%
+%     \labelwidth\nom@tempdim
+%     \leftmargin\labelwidth
+%     \advance\leftmargin\labelsep
+%     \itemsep\nomitemsep
+%     \let\makelabel\nomlabel}}
+% \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % výpis typu práce
@@ -168,7 +168,7 @@ I declare that I elaborated this thesis on my own and that I mentioned all the i
 		 \typeout{Title: \WorkTitle}
 		 \typeout{Supervisor: \Supervisor}
 		 \typeout{***************************************************}
-		 \newcommand\Department{Department of Computer Science and Engineering}
+		 \newcommand\Department{Department of Computer Science}
 		 \newcommand\Faculty{Faculty of Electrical Engineering}
 		 \newcommand\University{Czech Technical University in Prague}
 		 \newcommand\labelSupervisor{Supervisor}

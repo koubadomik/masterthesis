@@ -1,4 +1,4 @@
-\chapter{Malware classification}
+\chapter{Malware classification} \label{chap:classification}
 We can expose a lot of information from malware analysis result. It contains api calls, network requests, downloaded payload and much more \todo{reference previous chapter}. This could be used to explain directly what is going on during the run. Sandbox itself is often labelling malware samples using some kind of \emph{stickers}. These \emph{stickers} are often deterministically assigned and they usually sign that particular malware sample is doing something suspicious (we will describe later in detail). Based on this information sandbox (or ourselves) can later distinguish between different kinds of malware or between malware and cleanware - classify. Besides this very (often deterministic) way modern approaches from machine learning are often used. One of our goal is to perform such techniques on the data we collect. At first in this chapter we will build theoretical knowledge for its later application.
 
 In this chapter we focus on classification problem in general and in second part we describe even malware classification situation. In previous chapter we described different data outputs which are often produces by different kinds of analysis. The one we concentrate on is structured output, e.g.\ \emph{JSON}. That is why we mention models which are designed for such data later in this chapter.
@@ -230,84 +230,84 @@ HMILL in cyber security - https://arxiv.org/pdf/2002.04059.pdf, mandlik, Pevny
 %%--------------------------------REMAINING----------------------------------------------
 %%--------------------------------REMAINING----------------------------------------------
 %%--------------------------------REMAINING----------------------------------------------
-Remaninders:
+% Remaninders:
 
-\section{Data characteristics}
-Model which we choose for given task is based on several facts like domain which we are dealing with and mainly on the data we have.
-Input to usual model is binary vector or rather tensor, but those tensor could be encoding of different things
-Basic point of view is to distinguish between two basic types of variables - continous and discrete (https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
-Highlevel view will refer to images, time series, graphs (json...), just binary...
-Maybe we can talk about fixed dimension, various dimension
+% \section{Data characteristics}
+% Model which we choose for given task is based on several facts like domain which we are dealing with and mainly on the data we have.
+% Input to usual model is binary vector or rather tensor, but those tensor could be encoding of different things
+% Basic point of view is to distinguish between two basic types of variables - continous and discrete (https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
+% Highlevel view will refer to images, time series, graphs (json...), just binary...
+% Maybe we can talk about fixed dimension, various dimension
 
-Write more about json files and generally describe graph inputs
+% Write more about json files and generally describe graph inputs
 
-Previous connection
-- One of conclusions of previous chapter is that that character of data is often structural as graph or tree (json, xml,...)
-Way through this chapter
-- Generally about machine learning challenges and types of tasks
-- Classification models and their evaluation
-- Neural networks
-- Classifying structured data as jsons - models
-    - hmill and other techniques - reference next chapter
-- classification task in cyber security
-- Prior on this topic - cyber security!
-Next connection
-- Hmill is one what we want to use to create model of the data for classification
-
-
-\cite{GoodBengCour16}
-Potentially:
-- general points at the beggining
-    - Increasing model sizes
-    - Increasing Accuracy, Complexity and Real-World Impact
-    - Gradient-Based Optimization
-    - Stochastic Gradient Descent
-    - Challenges Motivating Deep Learning
-- More Sure
-    - Supervised X Unsupervised
-    - The Task, T - classification, regression, others exists
-    - The Performance Measure, P
-    - Capacity, Overfitting and Underfitting
-    - Hyperparameters and Validation Sets
-    - Bias and variance - Trading off Bias and Variance to Minimize Mean Squared
-    Error
-
-\cite{Bishop2006}
- - generally the introduction to classification models
+% Previous connection
+% - One of conclusions of previous chapter is that that character of data is often structural as graph or tree (json, xml,...)
+% Way through this chapter
+% - Generally about machine learning challenges and types of tasks
+% - Classification models and their evaluation
+% - Neural networks
+% - Classifying structured data as jsons - models
+%     - hmill and other techniques - reference next chapter
+% - classification task in cyber security
+% - Prior on this topic - cyber security!
+% Next connection
+% - Hmill is one what we want to use to create model of the data for classification
 
 
-- Classification problems - binary, multiclass, multilabel...
-- Theory
-- Single label, multilabel
+% \cite{GoodBengCour16}
+% Potentially:
+% - general points at the beggining
+%     - Increasing model sizes
+%     - Increasing Accuracy, Complexity and Real-World Impact
+%     - Gradient-Based Optimization
+%     - Stochastic Gradient Descent
+%     - Challenges Motivating Deep Learning
+% - More Sure
+%     - Supervised X Unsupervised
+%     - The Task, T - classification, regression, others exists
+%     - The Performance Measure, P
+%     - Capacity, Overfitting and Underfitting
+%     - Hyperparameters and Validation Sets
+%     - Bias and variance - Trading off Bias and Variance to Minimize Mean Squared
+%     Error
 
-- evaluation of classifiers - more or less independent on model choose
-  - Confusion matrix
-  - F-score, train accuracy, test accuracy, loss function, plots
-        - AUC, ROC?
-  - What is important metric during malware classification and why
-
-
-- learning classifier from graph data - json files,...
-- possible models - based mainly on the data structure we have and use case we are modelling (find how to choose proper model)
-    - among them even neural networks and refer to mill/hmil in next chapter - connect to goal of this thesis, use this framework to classify malware - go on with next part
-- (one of them should be using neural nets - describe deeply usage of loss function in both cases - single label, multi label...)
-- hyper parameters...
-- minibatch gradient descent, gradient descent itself
-
-- Machine learning in cyber security in general
-- General approaches to malware classfication - theory
-    - classifying type of malware or some kind of behavior X classifying malware Vs. cleanware
-    - based on dynamic/static anysis results...
-    - get to neural network and finally to mill - stiborek and other applications in cyber security (Mandlik, Pevny, Dedic...) and reference next chapter.
+% \cite{Bishop2006}
+%  - generally the introduction to classification models
 
 
-- Prior work
-Our goal is not to compare, mentions are just for reference to similar work, mention practical papers used above
+% - Classification problems - binary, multiclass, multilabel...
+% - Theory
+% - Single label, multilabel
 
-nice-to have:
-- (Overfitting, early stopping)
+% - evaluation of classifiers - more or less independent on model choose
+%   - Confusion matrix
+%   - F-score, train accuracy, test accuracy, loss function, plots
+%         - AUC, ROC?
+%   - What is important metric during malware classification and why
 
-Remainders:
-Malware analysis results could be used
-Following data collection and processing next task is  
-Based on type of analysis and characteristics of collected data}
+
+% - learning classifier from graph data - json files,...
+% - possible models - based mainly on the data structure we have and use case we are modelling (find how to choose proper model)
+%     - among them even neural networks and refer to mill/hmil in next chapter - connect to goal of this thesis, use this framework to classify malware - go on with next part
+% - (one of them should be using neural nets - describe deeply usage of loss function in both cases - single label, multi label...)
+% - hyper parameters...
+% - minibatch gradient descent, gradient descent itself
+
+% - Machine learning in cyber security in general
+% - General approaches to malware classfication - theory
+%     - classifying type of malware or some kind of behavior X classifying malware Vs. cleanware
+%     - based on dynamic/static anysis results...
+%     - get to neural network and finally to mill - stiborek and other applications in cyber security (Mandlik, Pevny, Dedic...) and reference next chapter.
+
+
+% - Prior work
+% Our goal is not to compare, mentions are just for reference to similar work, mention practical papers used above
+
+% nice-to have:
+% - (Overfitting, early stopping)
+
+% Remainders:
+% Malware analysis results could be used
+% Following data collection and processing next task is  
+% Based on type of analysis and characteristics of collected data}
