@@ -13,6 +13,9 @@
 % \usepackage{todonotes}
 \usepackage{pgfplots}
 \usepackage{dirtytalk}
+\usepackage{amsfonts}
+\usepackage{subcaption}
+\usepackage{algorithm}
 
 \setlength\parindent{0pt}
 
@@ -46,23 +49,18 @@ unicode=true,
 \usepackage{listings} 			%slouží pro tisk zdrojových kódů se syntax higlighting
 \usepackage{algorithmicx} 		%slouží pro zápis algoritmů
 \usepackage{algpseudocode} 		%slouží pro výpis pseudokódu
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % příkazy šablony
-% \makenomenclature			% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
 \let\oldUrl\url				% url adresy budou zobrazeny: <url> 
 \renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
 \newtheorem{definition}{Definition}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeglossaries
-\newacronym{gcd}{GCD}{Least Common Multiple}
-\newacronym{lcm}{LCM}{Least Common Multiple}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% vaše vlastní příkazy
-% \newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
-% \newcommand*{\nom}[2]{#1\nomenclature{#1}{#2}} 			% usnadňuje zápis zkratek : SZ
-
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +127,7 @@ unicode=true,
 	\part{Theory and prior}
 	\include{chapters/introduction.tex}
 	% \include{chapters/analysis.tex}
-	%\include{chapters/classification.tex}
+	\include{chapters/classification.tex}
 	% \include{chapters/hmill.tex}
 	% \include{chapters/explain_theory.tex}
 
@@ -153,7 +151,7 @@ unicode=true,
 	\include{chapters/apendices/stack.tex}
 	\include{chapters/apendices/models.tex}
 
-	\printglossary[type=\acronymtype]
+	\include{chapters/acronyms.tex}
 
 	%Biblio
 	\bibliographystyle{alpha}

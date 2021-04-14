@@ -10,7 +10,7 @@ In this chapter we focus on classification problem in general and in second part
 
 The largest challenge in machine learning theory is very often used formalism and framework and point of view which we consider. So firstly we would like to summarize where in this tangle we are and where we are going.
 
-\say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis we give it a test set of examples that are distinct from the training set.} \citeauthor{Russell2009}
+\say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis we give it a test set of examples that are distinct from the training set.} \cite{Russell2009}
 
 After short look into several sources we can find varigated kinds of machine learning or just learning as \cite{Russell2009} says. Very often the weakest sources mix several perspectives and they are talking about a lot of types.
 
@@ -22,202 +22,203 @@ Generally speaking we want to find prediction strategy or as earlier said hypoth
 \todo{we should define machine learning algorithm and model and how it relates to the hypothesis itself}
 
 \paragraph{Sample}
-By sample we mean collection of features which tends to be represented as $$x \in \mathbb{R}^{n}$$, where $$x_i$$ is called often called feature and $$x$$ is called sample or example \cite{GoodBengCour16}. We can also generalize this definition for tensors.
-This is often just the finish of our way, in real word we can see object features as $$x \in \mathcal{X}$$, where $$x$$ could be categorical variables, scalar, real valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. Then we might be also interested in feature extraction and its application for our real world data. The reason why we want to work with real valued tensors is that the majority of our methods are based on numerical computation and optimization. \todo{last sentence is quite vague we can say something about feature extraction}
+By sample we mean collection of features which tends to be represented as $x\in\mathbb{R}^{n}$, where $x_i$ is called often called feature and $x$ is called sample or example \cite{GoodBengCour16}. We can also generalize this definition for tensors.
+
+This is often just the finish of our way, in real word we can see object features as $x \in \mathcal{X}$, where $x$ could be categorical variables, scalar, real valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. Then we might be also interested in feature extraction and its application for our real world data. The reason why we want to work with real valued tensors is that the majority of our methods are based on numerical computation and optimization. \todo{last sentence is quite vague we can say something about feature extraction}
 \paragraph{States}
-By state we mean the subject of our prediction, represented often as $$y \in \mathcal{Y}$$, where $$\mathcal{Y}$$ is often called \emph{state space} can be whatever what we enumerated by $$\mathcal{X}$$ (images, documents, real values...). States are sometimes also called labels or targets. 
+By state we mean the subject of our prediction, represented often as $y \in \mathcal{Y}$, where $\mathcal{Y}$ is often called \emph{state space} can be whatever what we enumerated by $\mathcal{X}$ (images, documents, real values...). States are sometimes also called labels or targets. 
 \paragraph{Prediction strategy, hypothesis}
-Hypothesis we define as $$h:\mathcal{Y} \rightarrow \mathcal{X}$$. The output of prediction strategy we denote as $$h(x)=\hat{y}$$ on the contrary real state we denote as above just $$y$$.
+Hypothesis we define as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy we denote as $h(x)=\hat{y}$ on the contrary real state we denote as above just $y$.
 \paragraph{Example}
 Assume very usual situation that before the learning we receive set of examples to learn from. Based on what we receive we can distinguish between several types of learning. \
 \begin{enumerate}
-    \item \emph{Supervised learning} - example denotes pair $$(x,y)$$, where $$x\in \mathcal{X}$$ and $$y\in \mathcal{Y}$$. 
-    \item \emph{Unsupervised learning} - example denotes $$x\in \mathcal{X}$$
+    \item \emph{Supervised learning} - example denotes pair $(x,y)$, where $x\in \mathcal{X}$ and $y\in \mathcal{Y}$. 
+    \item \emph{Unsupervised learning} - example denotes $x\in \mathcal{X}$
     \item \emph{Semi-supervised learning} - example could be one of the possibilities above
 \end{enumerate}
 We are usualy working with set of examples which we later divide into different subsets e.g. \ \emph{training, testing, validation set}. \
 One of the biggest challenges of machine learning nowadays are labelled data, because labellig itself is often not part of sample and has to be added post-hoc like in case of images (marking where on image is some object). Sometimes it is not possible for example in cyber security often we do not know what label should be presented because situation is just too complex. It is because in principle attacker or any kind of distractor often wants to hide acts such that the protector is not able to identify it. So the hidden state itself could be assigned rather based on further data collection or never. Examples of unsupervised learniing in cyber security are \cite{Alom2017}, where authors present deep unsupervised learning techniques during intrusion detection.
 
-\section{Learning}
-\todo{SSU slides first slide 5 (assumptions) and mention even empirical risk (expected risk/loss or sometimes called generalization error) minimization and second slide 2}
-\todo{mention generative and discriminative learning as a learning approaches, motivation https://stats.stackexchange.com/questions/12421/generative-vs-discriminative, simpler version}
+% \section{Learning}
+% \todo{SSU slides first slide 5 (assumptions) and mention even empirical risk (expected risk/loss or sometimes called generalization error) minimization and second slide 2}
+% \todo{mention generative and discriminative learning as a learning approaches, motivation https://stats.stackexchange.com/questions/12421/generative-vs-discriminative, simpler version}
 
-\paragraph{Loss function}
-Loss funtion denotes objective of our optimization task during learning, $$\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$$. Usually we compute output for each example such that it shows us penalization on particular examples $$\ell(y, h(\hat{y}))$$.
+% \paragraph{Loss function}
+% Loss funtion denotes objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually we compute output for each example such that it shows us penalization on particular examples $\ell(y, h(\hat{y}))$.
 
-\paragraph{Learning algorithm}
-Process of learning we can reference as searching optimal $$h(x)$$. With the knowledge of distribution $$p(x,y)$$ the task would be much simpler but the distribution is unknown and we have only examples drawn randomly with respect to that. The learning algorithm is process. Input of this process are training examples and and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, intercept, slope, which are tuned during learning process. Given observed sample this model is able to provide prediction as estimate of sample state $$\hat{y}$$. We can see it as approximation of original unknown generating process another words estimate of $$h$$. \
-Learning algorithm is often not able to output all possible $$h$$, choosing the algorithm we choose also $$\mathcal{H}$$ as hypothesis space and result is $$h \in \mathcal{H}$$. Important is also that algorithm is using the data to learn, so not every time it is able to converge to possibly best $$h_{\mathcal{H}}* \in \mathcal{H}$$.
+% \paragraph{Learning algorithm}
+% Process of learning we can reference as searching optimal $h(x)$. With the knowledge of distribution $p(x,y)$ the task would be much simpler but the distribution is unknown and we have only examples drawn randomly with respect to that. The learning algorithm is process. Input of this process are training examples and and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, intercept, slope, which are tuned during learning process. Given observed sample this model is able to provide prediction as estimate of sample state $\hat{y}$. We can see it as approximation of original unknown generating process another words estimate of $h$. \
+% Learning algorithm is often not able to output all possible $h$, choosing the algorithm we choose also $\mathcal{H}$ as hypothesis space and result is $h \in \mathcal{H}$. Important is also that algorithm is using the data to learn, so not every time it is able to converge to possibly best $h_{\mathcal{H}}* \in \mathcal{H}$.
 
-Later we enumerate couple of learning algorithms. Choose of the algorithm is based on various factors like input data format, presence of states in training examples and other.
+% Later we enumerate couple of learning algorithms. Choose of the algorithm is based on various factors like input data format, presence of states in training examples and other.
 
-\todo{challenges train, test, validation and hyperparameters, overfitting, underfitting (https://www.deeplearningbook.org/contents/ml.html), maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
-
-
-\section{Machine learning tasks}
-There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples we have but also according to the $$\mathcal{Y}$$.
-
-\paragraph{Regression}
-In this case $$y \in \mathcal{Y}$$ is continous-valued tensor, most often $$\mathcal{y} \in \mathbb{R}^{n}$$. An example could be prediction of impact of some attack expressed as score. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record. \cite{Jaganathan2015}
-
-\paragraph{Classification}
-In this case $$y \in \mathcal{Y}$$ is categorical tensor, in most cases $$\mathcal{y} \in \{1,\dots,\mathcal{C}\}$$, where $$\{1,\dots,\mathcal{C}\}$$ is just encoding for real world values like \emph{man} and \emph{woman} and similar. If $$\mathcal{C}$$ is $$2$$, than we call it \emph{binary classification} and if $$\mathcal{C}>2$$ we call it \emph{multiclass classification}. As defined generally we can see tensors, so we can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, we can also classify into hierarchical related classes \cite{zhang2020dive}. \
-Important is that we did not state what is the output of specific classification model. Given $$x$$ it might output $$\hat{y}$$ which will be directly ecoded class but it might output even probability distribution over classses \cite{GoodBengCour16}. This distribution might be later interpreted and used during learning.
-Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
+% \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting (https://www.deeplearningbook.org/contents/ml.html), maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
 
 
-\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. \
-Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting everything which is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
+% \section{Machine learning tasks}
+% There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples we have but also according to the $\mathcal{Y}$.
 
-\subsection{Challenges}
-\todo{more like nice-to-have}
-The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
-\todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
+% \paragraph{Regression}
+% In this case $y \in \mathcal{Y}$ is continous-valued tensor, most often $\mathcal{y} \in \mathbb{R}^{n}$. An example could be prediction of impact of some attack expressed as score. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record. \cite{Jaganathan2015}
 
-Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
-
-\section{Classification models and algorithms}
-As we want to focus on classification let us introduce several algorithm which are common in training classification models. In previous section we defined learning and two different approaches - \emph{generative} and \emph{discriminative learning} algorithms are also divided into these two groups.
-\todo{in all cases we can have reference and short definition, describe some of basic models and their usual output and its intepretation and also loss function, Mention on what kind of optimization it is doing}
-\paragraph{Discriminative}
-SVM
-Decision Trees
-Logistic regression
-Neural Nets - will be defined rigorosly later
-
-\paragraph{Generative}
-Naive Bayes
-Fisher's linear discriminant
-
-\section{Loss functions}
-In classification problems we usualy use one of two loss functions:
-\todo{define, reference - https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/ and also we can reference some original paper, refer even natural language intepretation of particular loss function and usual usage (hinge is SVM,...)}
-Cross-Entrophy (and logit version, binary version)
-Hinge Loss
-
-\section{Model Evaluation}
-Based on what we are solving and what we want to comapre to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
-When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. \todo{reference bias X variance tradeoff in the beginning of this chapter}
-Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the result model.
-
-\paragraph{Loss function}
-As we defined earlier loss function is our objective, so the value of our objective has its own meaning and possible interpretation. \todo{try to define what does it mean by particular loss functions} Loss function value is often monitor directly during learning process.
-
-\paragraph{Confusion matrix}
-Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. Definition of confusion matrix is for binary classifier because of its convenience but generalization for more complex classifications is possible. Common problems in binary classification are formulated in the way that $$y \in \{positive, negative\}$$. As an example we can introduce classification that a patient has cancer or not. All $$(x,y)$$ where $$y=positive$$ we call positive examples and oposite examples are called negative.
-\todo{balanced dataset definition}
-\todo{confusion matrix table as example}
-
-\todo{list of metrics with formula and interpretation and usage}
-accuracy, false positive rate, false negative rate, balanced accuracy error rate, precision, recall, f-score
-\cite{Hossin2015}
-https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
-
-\paragraph{Derived curves}
-ROC, AUC \cite{Fawcett2006}
-PRC, AUPRC \cite{Flach2015}
-and their difference
-
-\paragraph{In Cyber Security}
-The main point which we are walking around is Cyber Security. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
-
-For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $$accuracy=0.8$$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
-
-\todo{add formula for geometrical mean}
-
-During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
-
-Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
-
-As result, further in this thesis we will work with imbalanced data. We use several metrics mentioned above especially \cite{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \cite{PR curve}.
-%----------------------------------------------
-\section{Neural Nets}
-In the section models we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to build the formalism for the rest of the thesis.
-
-- motivation
-- approach, notation
-
-\todo{image}
-
-regularization and other related techniques
-
-Minibatches (random subsampling...), hyper parameters
-
-generalization mistake and definition of different kinds of errors (maybe this should be at the beginning)
-
-Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. \todo{examples of use and some reference to this statement, https://stats.stackexchange.com/questions/467103/do-neural-networks-make-assumptions-about-data-and-when-to-use-standardization}.
-general even math!
-https://www.deeplearningbook.org/contents/ml.html
-http://neuralnetworksanddeeplearning.com/chap1.html
-http://playground.tensorflow.org/#activation=relu&batchSize=30&dataset=spiral&regDataset=reg-plane&learningRate=0.3&regularizationRate=0&noise=0&networkShape=4,2&seed=0.87951&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false
-
-optimization theory, gradient descent, stochastic gradient descent, backprop
-cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
-https://stats.stackexchange.com/questions/186091/what-loss-function-should-i-use-for-binary-detection-in-face-non-face-detection
-
-Loss functions and nets used for classification
-https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
-
-\section{Classifying based on graph-structured data}
-Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. We are able to perform some kind of feature extraction but in the structure itself is a lot information also. \todo{reference Pevny's work where he mention exactly this}
-\subsection{Problem}
-https://www.quora.com/What-is-structured-data-in-the-context-of-machine-learning
-
-https://www.naftaliharris.com/blog/machine-learning-json/
-
-\subsection{Approaches and prior}
-Hmill
-Graphical models
-Graph neural networks
-    Also seen here file:///C:/Users/domia/Downloads/Explainability_ICML2021.pdf
-See in Mandlik
-prior
-    https://arxiv.org/pdf/1506.05163.pdf
-    https://arxiv.org/pdf/1911.08756v3.pdf
-    https://www.cs.uoregon.edu/Reports/AREA-201706-Riazi.pdf
-    https://core.ac.uk/download/pdf/11011889.pdf
+% \paragraph{Classification}
+% In this case $y \in \mathcal{Y}$ is categorical tensor, in most cases $\mathcal{y} \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is just encoding for real world values like \emph{man} and \emph{woman} and similar. If $\mathcal{C}$ is $2$, than we call it \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. As defined generally we can see tensors, so we can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, we can also classify into hierarchical related classes \cite{zhang2020dive}. \
+% Important is that we did not state what is the output of specific classification model. Given $x$ it might output $\hat{y}$ which will be directly ecoded class but it might output even probability distribution over classses \cite{GoodBengCour16}. This distribution might be later interpreted and used during learning.
+% Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
 
 
-\section{Classification in cyber security, classifying malwawre} %% HIGH PRIORITY
-In this section we want to relate our work to other articles and show prior work. The field of cyber security experience a lot of machine learning applications. The biggest trend is in fraud detection, cloud security and also IoT. But some of them are also in the field of malware research and malware classification.
+% \emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. \
+% Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting everything which is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
+
+% \subsection{Challenges}
+% \todo{more like nice-to-have}
+% The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
+% \todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
+
+% Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
+
+% \section{Classification models and algorithms}
+% As we want to focus on classification let us introduce several algorithm which are common in training classification models. In previous section we defined learning and two different approaches - \emph{generative} and \emph{discriminative learning} algorithms are also divided into these two groups.
+% \todo{in all cases we can have reference and short definition, describe some of basic models and their usual output and its intepretation and also loss function, Mention on what kind of optimization it is doing}
+% \paragraph{Discriminative}
+% SVM
+% Decision Trees
+% Logistic regression
+% Neural Nets - will be defined rigorosly later
+
+% \paragraph{Generative}
+% Naive Bayes
+% Fisher's linear discriminant
+
+% \section{Loss functions}
+% In classification problems we usualy use one of two loss functions:
+% \todo{define, reference - https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/ and also we can reference some original paper, refer even natural language intepretation of particular loss function and usual usage (hinge is SVM,...)}
+% Cross-Entrophy (and logit version, binary version)
+% Hinge Loss
+
+% \section{Model Evaluation}
+% Based on what we are solving and what we want to comapre to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
+% When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. \todo{reference bias X variance tradeoff in the beginning of this chapter}
+% Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the result model.
+
+% \paragraph{Loss function}
+% As we defined earlier loss function is our objective, so the value of our objective has its own meaning and possible interpretation. \todo{try to define what does it mean by particular loss functions} Loss function value is often monitor directly during learning process.
+
+% \paragraph{Confusion matrix}
+% Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. Definition of confusion matrix is for binary classifier because of its convenience but generalization for more complex classifications is possible. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example we can introduce classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and oposite examples are called negative.
+% \todo{balanced dataset definition}
+% \todo{confusion matrix table as example}
+
+% \todo{list of metrics with formula and interpretation and usage}
+% accuracy, false positive rate, false negative rate, balanced accuracy error rate, precision, recall, f-score
+% \cite{Hossin2015}
+% https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
+
+% \paragraph{Derived curves}
+% ROC, AUC \cite{Fawcett2006}
+% PRC, AUPRC \cite{Flach2015}
+% and their difference
+
+% \paragraph{In Cyber Security}
+% The main point which we are walking around is Cyber Security. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
+
+% For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $accuracy=0.8$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
+
+% \todo{add formula for geometrical mean}
+
+% During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
+
+% Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
+
+% As result, further in this thesis we will work with imbalanced data. We use several metrics mentioned above especially \cite{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \cite{PR curve}.
+% %----------------------------------------------
+% \section{Neural Nets}
+% In the section models we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to build the formalism for the rest of the thesis.
+
+% - motivation
+% - approach, notation
+
+% \todo{image}
+
+% regularization and other related techniques
+
+% Minibatches (random subsampling...), hyper parameters
+
+% generalization mistake and definition of different kinds of errors (maybe this should be at the beginning)
+
+% Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. \todo{examples of use and some reference to this statement, https://stats.stackexchange.com/questions/467103/do-neural-networks-make-assumptions-about-data-and-when-to-use-standardization}.
+% general even math!
+% https://www.deeplearningbook.org/contents/ml.html
+% http://neuralnetworksanddeeplearning.com/chap1.html
+% http://playground.tensorflow.org/#activation=relu&batchSize=30&dataset=spiral&regDataset=reg-plane&learningRate=0.3&regularizationRate=0&noise=0&networkShape=4,2&seed=0.87951&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false
+
+% optimization theory, gradient descent, stochastic gradient descent, backprop
+% cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
+% https://stats.stackexchange.com/questions/186091/what-loss-function-should-i-use-for-binary-detection-in-face-non-face-detection
+
+% Loss functions and nets used for classification
+% https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
+
+% \section{Classifying based on graph-structured data}
+% Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. We are able to perform some kind of feature extraction but in the structure itself is a lot information also. \todo{reference Pevny's work where he mention exactly this}
+% \subsection{Problem}
+% https://www.quora.com/What-is-structured-data-in-the-context-of-machine-learning
+
+% https://www.naftaliharris.com/blog/machine-learning-json/
+
+% \subsection{Approaches and prior}
+% Hmill
+% Graphical models
+% Graph neural networks
+%     Also seen here file:///C:/Users/domia/Downloads/Explainability_ICML2021.pdf
+% See in Mandlik
+% prior
+%     https://arxiv.org/pdf/1506.05163.pdf
+%     https://arxiv.org/pdf/1911.08756v3.pdf
+%     https://www.cs.uoregon.edu/Reports/AREA-201706-Riazi.pdf
+%     https://core.ac.uk/download/pdf/11011889.pdf
+
+
+% \section{Classification in cyber security, classifying malwawre} %% HIGH PRIORITY
+% In this section we want to relate our work to other articles and show prior work. The field of cyber security experience a lot of machine learning applications. The biggest trend is in fraud detection, cloud security and also IoT. But some of them are also in the field of malware research and malware classification.
 
 
 
-\subsection{Problem}
-\subsection{Prior}
+% \subsection{Problem}
+% \subsection{Prior}
 
-file:///C:/Users/domia/Downloads/CoRR2018_submission_v3.pdf
-https://www.sciencedirect.com/science/article/pii/S1084804519303868
-Finally we can not skip our domain and results in this field. 
-Kinds of classifications in cyber security and their description
-Intrusion detection, network traffic attacks and anomalies and malware X cleanware classification,...
-We can classify different things like malware X cleanware, malware family (not so useful in detection but in further learning)
-Problems of cyber security field
-Based on Dynamic, static, other kind of input data...
-SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
-https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf (eventually their references - some interesting research results, good for prior)
-https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
-https://arxiv.org/pdf/1910.11376.pdf
+% file:///C:/Users/domia/Downloads/CoRR2018_submission_v3.pdf
+% https://www.sciencedirect.com/science/article/pii/S1084804519303868
+% Finally we can not skip our domain and results in this field. 
+% Kinds of classifications in cyber security and their description
+% Intrusion detection, network traffic attacks and anomalies and malware X cleanware classification,...
+% We can classify different things like malware X cleanware, malware family (not so useful in detection but in further learning)
+% Problems of cyber security field
+% Based on Dynamic, static, other kind of input data...
+% SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
+% https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf (eventually their references - some interesting research results, good for prior)
+% https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
+% https://arxiv.org/pdf/1910.11376.pdf
 
-If I finally go through this summary report I will be save with this part hopefully - https://www.jstor.org/stable/resrep22692?seq=53#metadata_info_tab_contents, this is great summary for modern approaches and papers in cybersec, I can use it even somewhere else for example in intro of this chapter and whole thesis
-For example one part was focused on types of classifiers - in machine learning is quite big difference between zero-days and known malware...
+% If I finally go through this summary report I will be save with this part hopefully - https://www.jstor.org/stable/resrep22692?seq=53#metadata_info_tab_contents, this is great summary for modern approaches and papers in cybersec, I can use it even somewhere else for example in intro of this chapter and whole thesis
+% For example one part was focused on types of classifiers - in machine learning is quite big difference between zero-days and known malware...
 
-Using N-grams in detection https://www.researchgate.net/publication/262366662_A_Close_Look_on_n_-Grams_in_Intrusion_Detection_Anomaly_Detection_vs_Classification
+% Using N-grams in detection https://www.researchgate.net/publication/262366662_A_Close_Look_on_n_-Grams_in_Intrusion_Detection_Anomaly_Detection_vs_Classification
 
-Malware classification in more detail
+% Malware classification in more detail
 
-not so interesting can be added between other examples - https://www.researchgate.net/publication/312964059_Malware_Classification_Based_on_Dynamic_Behavior, https://link.springer.com/content/pdf/10.1631/FITEE.1601325.pdf, https://dspace.cvut.cz/bitstream/handle/10467/87850/F3-DP-2020-Dvorak-Stepan-dvorast6.pdf?sequence=-1&isAllowed=y (mention graph neural networks)
+% not so interesting can be added between other examples - https://www.researchgate.net/publication/312964059_Malware_Classification_Based_on_Dynamic_Behavior, https://link.springer.com/content/pdf/10.1631/FITEE.1601325.pdf, https://dspace.cvut.cz/bitstream/handle/10467/87850/F3-DP-2020-Dvorak-Stepan-dvorast6.pdf?sequence=-1&isAllowed=y (mention graph neural networks)
 
-Using static analysis https://dl.acm.org/doi/pdf/10.1145/2402599.2402604?casa_token=Kv3xJb3iPssAAAAA:rm6bhWnusg7eEvalXNveaJXILphAxhpZHGS6OxpDk36na4q5u9RpZ3gM83IMQWq1QQ0aEIVoeyZN
+% Using static analysis https://dl.acm.org/doi/pdf/10.1145/2402599.2402604?casa_token=Kv3xJb3iPssAAAAA:rm6bhWnusg7eEvalXNveaJXILphAxhpZHGS6OxpDk36na4q5u9RpZ3gM83IMQWq1QQ0aEIVoeyZN
 
-family classification - https://arxiv.org/pdf/1912.11249v1.pdf
+% family classification - https://arxiv.org/pdf/1912.11249v1.pdf
 
-Recurrent networks - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7178304
+% Recurrent networks - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7178304
 
-HMILL in cyber security - https://arxiv.org/pdf/2002.04059.pdf, mandlik, Pevny
+% HMILL in cyber security - https://arxiv.org/pdf/2002.04059.pdf, mandlik, Pevny
 
 
-\todo{add conclusion of this chapter and connection to next chapter - hmill}
+% \todo{add conclusion of this chapter and connection to next chapter - hmill}
 
 
 
