@@ -1,15 +1,24 @@
 \chapter{Modelling classifier} \label{chap:models}
-Following previous chapter we want to present our way of modelling and results we have. The main goal of this part is to train the models based on prior experiments, not strictly perform long sequence of experiments and compare to prior. On the other hand we would like to present similar metrics comparing to our colleges. We did not model all variants mentioned in previous chapter, we concentrated on at least one working model and then we move on to model explaining experiments.
+In this chapter we want to present our \emph{hmill} models and their results. Our goal is to train the models using hyperparameters based on prior experiments with \emph{hmill} framework. We are not going to perform hyper parameter tuning and other robust techniques, our goal is to demonstrate that it is possible to train such model and later explain it. We do not aim to strictly perform long sequence of experiments and compare to prior. On the other hand we would like to present similar metrics of evaluation. 
 
-In previous chapter we formulated several possibilities for model output and input. We use \emph{hmill} framework for data modelling \todo{reference hmill chapter}. From \emph{states} and \emph{features} in question we started with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. Our reasoning is based on the fact that the signatures are assigned based on some usually atomic fact, for example presence of some api call in log. If we choose part of behavior log where this information is presented, we should be able to evaluate model's prediction. Also we want to see if the model is able to generalize the knowledge and maybe come up with some new explanation of particular signature or just things which go with the original subject of particular signature. More complex labels like malware family or malware score are something what we can explore later. We assume that the assignement of those is often supported by signatures themselves and it should be better to explore the original cause of the whole chain.
+We do not model all variants of features and states mentioned in previous chapter, we concentrate on at least one working model and then we move on to model explaining experiments.
+
+In previous chapter we formulated several possibilities for model output and input. We use \emph{hmill} framework for data modelling (\ref{chap:hmill}). From \emph{states} and \emph{features} in question we started with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. 
+
+Our reasoning about states is based on the fact that the signatures are usually assigned based on some atomic fact, for example presence of some api call in log. If we choose states which are part of behavioral log where this information is presented, we should be able to evaluate model's prediction or draw some conclusions based on it. 
+
+Also we want to see if the model is able to generalize the knowledge and maybe come up with some new explanation of particular signature or just things which go with the original subject of particular signature. By subject we mean the subset of log based on which presence the sandbox assigned current signature.
+
+More complex labels like malware family or malware score are something what we can explore later. We assume that the assignement of those is often supported by signatures themselves and it should be better to explore the original cause of the whole chain.
 
 \section{Behavior as feature vector}
-After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive and we will not be able to train the model. \todo{some better arguments}. If the model would be still to complex to train in our conditions we omit also the \emph{enhanced part}.
+After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive and we will not be able to train the model with the hardware resources we have. \todo{some better arguments}. If the model would be still to complex to train under our conditions we omit also the \emph{enhanced part}. At such case we would lost mainly the information about the order of events because the summary part only lists occurences of artifacts (api calls, commands\dots).
 
-\section{Signatures as labels}
-Brief description of signatures is in previous chapter \todo{ref chapter data}. Signatures are assigned to each sample based on its behavior. In figure \todo{add histogram visualization with percentage, not exact numbers} There is a histogram where we can observe frequency of each signature in our dataset.
+\section{Signatures as states}
+Brief description of signatures is in previous chapter (\ref{chap:data}). Signatures are assigned to each sample based on its behavior. In \ref{app:histogram} we can see histogram of the most frequent signatures in our dataset. 
 
-From the original histogram we have chosen most seen signatures starting with \emph{injection_rwx} (because \emph{dynamic_funciton_loading} is almost everywhere). In the figure \todo{add table of resulting signatures or another pie graph} we can see our candidates. 
+From the original histogram we choose specific subset based on the frequency (not too much and too little), presence of implementation in python repository (not all of them we were able to find) \todo{some better arguments,...}. In the \ref{app:frequecies} we can see our candidates and their frequencies in dataset.
+
 Next task is to try to investigate what the implementation of particular signature is about and try to create groups for further conclusion making. \emph{Python} implementation of each signture is processing the output of sandbox and generates boolean values signing that the subject of particular signature is presented in sample behavioral log. Subject of the signature can be api calls, dropped files, processes, commands and even something more complex. If the signature implementation returns \emph{True}, we observe instance of this signature in the \emph{signatures} part of \emph{report.json}. The format is following: \todo{add signature structure with example}
 
 We explored two types of grouping aspects. First is the subject of particular signature and then second is if we can see this subject in the behavioral log directly. For instance if the signature implementation is using api calls so the api call list is directly in the log. If it uses entrophy of dropped files, it is not directly in the output. In figures \todo{add example of signature implementation}. Based on those criteria we identified following categories:
@@ -111,107 +120,107 @@ Conclusion of this chapter is that we are able to train \emph{hmill} classifier 
 
   
 %%-----------------------------------------------
-
-- Used technologies, several experiments, pseudocode (algorithm), hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, Mention metacenter (even in thanks part)
-  - Modelling - single label classifier
-    - GOAL: Using HMill, create models. Report results.
-  - Modelling - multi label classifier
-    - GOAL: Using HMill, create models. Report results.
-  - Performance, early stopping, hyper parameters...
-  - Detectection of some signatures, some not, why - no data; why...
-    - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
-    - we did not care so much about tuning hyper parameters and comparing
-       - We used parameters similar to similar experiments with same framework, 1000/150 look to converge (hopefully)
-       - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
-       - than we experimented with multilabel case - trying to predict more than one signatures at one time
-  - (Technical background, used metascenter archicture...)
-  - reference Mandlik's and Pevny's works, hopefully similar
-    - Mandlik is reporting
-      - Single label - from each signature kind atleast one (but possibly more) - For different kinds of signatures - create it as a part of training itself
-        - Params: empirically and based on previous experiments, no hyper parameters tuning (some of signatures have significant performance with chosen so we did not spend time with that, not goal of this thesis)
-            - samples 80_000, test: 0.5, train: 0.5
-            - minibatch - 1000
-            - neurons - 20
-            - iterations (random subssampling) - 120 (should be sufficient), mention it by each signature particularly because some of jobs did not catch it on time so the number of iterations is smaller
-            - optimizer ADAM
-        - before training:
-            - balance of training set - how many positive and negative - DONE
-                - I can use pie graph
-        - At the end of training
-            - metrics: accuracy, balanced accuracy - DONE
-            - curves: prcurve, roccurve (normal and with log on x-axis) - DONE (scores and targets)
-                - roc curve with log scale on x axis (FPR is more inportant for us)
-            - comparative: 
-                - f-score, auroc, auprc - DONE
-                    - I can argument as comparison with Mandlik, if it is going to work
-                - tpr, fpr, acc - DONE
-                    - Jan Stiborek comparison
-                    - I can use use column graphs
-        - multilabel - nice-to-have
-
-
-- I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think (try to find between models...)
-
-reference json grinder and its usage to process data
-
-- with enhanced part and without it
-  - Report some results per signature (some reference in appendices) report even balancing of data set for particular signature
-  - comment each
-  - compare to similar experiments (there are experiments with also data from sandbox)
+% In figure \todo{add histogram visualization with percentage, not exact numbers} There is a histogram where we can observe frequency of each signature in our dataset.
+% - Used technologies, several experiments, pseudocode (algorithm), hyper parameters, report evaluation metrics,types of classifiers used (motivation for that) COMPARISON WITH PRIOR ALTERNATIVES (I think it is not so necessary our goal is more explaining of the model?, Mention metacenter (even in thanks part)
+%   - Modelling - single label classifier
+%     - GOAL: Using HMill, create models. Report results.
+%   - Modelling - multi label classifier
+%     - GOAL: Using HMill, create models. Report results.
+%   - Performance, early stopping, hyper parameters...
+%   - Detectection of some signatures, some not, why - no data; why...
+%     - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically
+%     - we did not care so much about tuning hyper parameters and comparing
+%        - We used parameters similar to similar experiments with same framework, 1000/150 look to converge (hopefully)
+%        - we experimented with different kind of signatures (statistically even functionally) - describe the kinds (report all results, compare using f-score or FNR, FPR for example)
+%        - than we experimented with multilabel case - trying to predict more than one signatures at one time
+%   - (Technical background, used metascenter archicture...)
+%   - reference Mandlik's and Pevny's works, hopefully similar
+%     - Mandlik is reporting
+%       - Single label - from each signature kind atleast one (but possibly more) - For different kinds of signatures - create it as a part of training itself
+%         - Params: empirically and based on previous experiments, no hyper parameters tuning (some of signatures have significant performance with chosen so we did not spend time with that, not goal of this thesis)
+%             - samples 80_000, test: 0.5, train: 0.5
+%             - minibatch - 1000
+%             - neurons - 20
+%             - iterations (random subssampling) - 120 (should be sufficient), mention it by each signature particularly because some of jobs did not catch it on time so the number of iterations is smaller
+%             - optimizer ADAM
+%         - before training:
+%             - balance of training set - how many positive and negative - DONE
+%                 - I can use pie graph
+%         - At the end of training
+%             - metrics: accuracy, balanced accuracy - DONE
+%             - curves: prcurve, roccurve (normal and with log on x-axis) - DONE (scores and targets)
+%                 - roc curve with log scale on x axis (FPR is more inportant for us)
+%             - comparative: 
+%                 - f-score, auroc, auprc - DONE
+%                     - I can argument as comparison with Mandlik, if it is going to work
+%                 - tpr, fpr, acc - DONE
+%                     - Jan Stiborek comparison
+%                     - I can use use column graphs
+%         - multilabel - nice-to-have
 
 
+% - I tried to choose enhanced and summary part but it was too much and enhanced part contains bias like timestamp and so on, so I decided to choose only summary part and later only segments from it, using whole summary lead us to really slow convergence...I think (try to find between models...)
 
-To appendix add everything, for example even extracted schema...
+% reference json grinder and its usage to process data
 
-Describe data loading and modelling, split conditions, random minibatch... - reference code in attachment, we did follow parameters in similar models (Mandlik, identification.jl) and it was starting point, describe parameters and conditions, we can also dump tree of extractor and corresponding model
-
-
-If we started with signatures we can report some statistics (basic principle should be presented in previous chapter)
-
-Basic statistics for various parts and variants
-  - signature histogram (balanced) - histogram.csv
-  - ...
-  - a lot of Emotet (maybe should be on another place) (malware family problem I think, mention among potential biases), where is this attribute in the original report?
-  - - Balanced dataset - in term of accuracy metric performance
-  - Bias - - Bias in practical data like this - security data, what are the influences (as an example could be ip addresses...)
-
-Using:
+% - with enhanced part and without it
+%   - Report some results per signature (some reference in appendices) report even balancing of data set for particular signature
+%   - comment each
+%   - compare to similar experiments (there are experiments with also data from sandbox)
 
 
 
-\todo{In this section we will formulate why we started with signatures (and even ended), also why we started with summary and enhanced and than skipped only to summary part}
+% To appendix add everything, for example even extracted schema...
 
-Previous connection
-- Based on previously chosen data and described theory of hmill we have chosen technology and tried to train the model in different setups with different data
-Way through this chapter
-
-Next connection
-- Resulting models will be objects of explanation experiments
+% Describe data loading and modelling, split conditions, random minibatch... - reference code in attachment, we did follow parameters in similar models (Mandlik, identification.jl) and it was starting point, describe parameters and conditions, we can also dump tree of extractor and corresponding model
 
 
+% If we started with signatures we can report some statistics (basic principle should be presented in previous chapter)
 
-DIRECTLY in output
-	- API calls - are in in summary part
-		○ "injection_rwx" 28251
-		○ "antidebug_setunhandledexceptionfilter" 18223
-		○ "removes_zoneid_ads" 11070
-		○ "deletes_self" 10805
-		○ "stealth_timeout" 8253
-		○ "enumerates_running_processes" 6324
-		○ "injection_runpe"  5542
-  - Files - are in summary part
-		○ "copies_self" 7137
-	- Commands - are in summary part
-		○ "uses_windows_utilities" 6987
+% Basic statistics for various parts and variants
+%   - signature histogram (balanced) - histogram.csv
+%   - ...
+%   - a lot of Emotet (maybe should be on another place) (malware family problem I think, mention among potential biases), where is this attribute in the original report?
+%   - - Balanced dataset - in term of accuracy metric performance
+%   - Bias - - Bias in practical data like this - security data, what are the influences (as an example could be ip addresses...)
 
-NOT DIRECTLY in output
-	- Processes - not directly in summary part
-		○ "dropper"  6045
-	- Time - not directly in summary part
-		○ "antisandbox_sleep" 15810
-	- AuthSign - not directly in summary part
-		○ "invalid_authenticode_signature" 14346
-	- Entrophy - not directly in summary part
-		○ "packer_entropy" 8815
-	- Combinations - 
-    "stealth_network" 26430
+% Using:
+
+
+
+% \todo{In this section we will formulate why we started with signatures (and even ended), also why we started with summary and enhanced and than skipped only to summary part}
+
+% Previous connection
+% - Based on previously chosen data and described theory of hmill we have chosen technology and tried to train the model in different setups with different data
+% Way through this chapter
+
+% Next connection
+% - Resulting models will be objects of explanation experiments
+
+
+
+% DIRECTLY in output
+% 	- API calls - are in in summary part
+% 		○ "injection_rwx" 28251
+% 		○ "antidebug_setunhandledexceptionfilter" 18223
+% 		○ "removes_zoneid_ads" 11070
+% 		○ "deletes_self" 10805
+% 		○ "stealth_timeout" 8253
+% 		○ "enumerates_running_processes" 6324
+% 		○ "injection_runpe"  5542
+%   - Files - are in summary part
+% 		○ "copies_self" 7137
+% 	- Commands - are in summary part
+% 		○ "uses_windows_utilities" 6987
+
+% NOT DIRECTLY in output
+% 	- Processes - not directly in summary part
+% 		○ "dropper"  6045
+% 	- Time - not directly in summary part
+% 		○ "antisandbox_sleep" 15810
+% 	- AuthSign - not directly in summary part
+% 		○ "invalid_authenticode_signature" 14346
+% 	- Entrophy - not directly in summary part
+% 		○ "packer_entropy" 8815
+% 	- Combinations - 
+%     "stealth_network" 26430
