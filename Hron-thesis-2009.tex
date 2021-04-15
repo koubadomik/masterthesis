@@ -17,9 +17,12 @@
 \usepackage{subcaption}
 \usepackage{algorithm}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+
 \setlength\parindent{0pt}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % informace o práci
 \newcommand\WorkTitle{Analyzing the execution of malware in a sandbox using hierarchical multiple instance learning}
@@ -54,8 +57,6 @@ unicode=true,
 
 \newlist{abbrv}{itemize}{1}
 \setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % příkazy šablony
 \let\oldUrl\url				% url adresy budou zobrazeny: <url> 
@@ -127,16 +128,16 @@ unicode=true,
 	\part{Theory and prior}
 	\include{chapters/introduction.tex}
 	% \include{chapters/analysis.tex}
-	\include{chapters/classification.tex}
+	%\include{chapters/classification.tex}
 	% \include{chapters/hmill.tex}
 	% \include{chapters/explain_theory.tex}
 
 	\part{Usecase and experiments}
 	% \include{chapters/infrastructure.tex}
-	% \include{chapters/data.tex}
+	\include{chapters/data.tex}
 	% \include{chapters/models.tex}
 	% \include{chapters/explain_experiments.tex}
-	\include{chapters/conclusion.tex}
+	%\include{chapters/conclusion.tex}
 	
 	%just to play with latex
 	%\include{chapters/sandbox.tex}
