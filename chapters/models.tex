@@ -158,48 +158,92 @@ In the table \ref{tab:hyperparams} we can observe hyperparameters of the model a
 
 Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations} which worked for us in this changed form. Data used in their case were of much smaller scale (\emph{device id}) which could be the reason.
 
+The number of \emph{iterations} we setup so that we observe reasonable convergence. We did not challenged this parameter, we expect further convergence. We checked overfitting by monitoring difference between accuracy on training and testing data. They does not differ significantly.
+
 \section{Results}
 Chosen metrics are based on metrics which are reported by similar papers \todo{reference Pevny, Madlik and Stiborek}. We also follow the chapter \ref{chap:classification} where we mentioned classifiers in cyber security field and their pitfalls. The calculation was supported by \emph{EvalMetrics.jl} library (\ref{app:technologies}).
 
-% \todo{report table of metrics including the balance of dataset (pie graph?) and at least one graph}
-% Other metrics and graphs could be seen in appendix \todo{add appendix with all the data - graphs, additional metrics}
-% \todo{we can compare to others but not necessary}
+\begin{table}[h]
+  \centering
+  \caption{Models performance (values rounded for 3 decimal spaces)}
+  % \begin{tabular}{p{5cm}p{3cm}p{3cm}p{3cm}} 
+  \begin{tabular}{llll}
+      \toprule
+      \textbf{Signature} &
+      \textbf{Bal. acc.} &
+      \textbf{FNR} &
+      \textbf{FPR}
+      \\
+      \midrule
+      antidebug setunhandledexceptionfilter & $0.9801$ & $0.0289$ & $0.0109$ \\
+      \midrule
+      copiesself & $0.924$ & $0.125$ & $0.0279$ \\
+      \midrule
+      deletesself & $0.997$ & $0.005$ & $0.002$ \\
+      \midrule
+      enumeratesrunningprocesses & $0.972$ & $0.050$ & $0.007$ \\
+      \midrule
+      stealthtimeout & $0.701$ & $0.064$ & $0.331$ \\
+      \midrule
+      useswindowsutilities & $0.958$ & $0.078$ & $0.006$ \\
+      \midrule
+      removeszoneidads & $0.999$ & $0.000$ & $0.000$ \\
+      \midrule
+      antisandboxsleep & $0.969$ & $0.037$ & $0.026$ \\
+      \midrule
+      dropper & $0.911$ & $0.147$ & $0.032$ \\
+      \midrule
+      invalidauthenticodesignature & $0.607$ & $0.668$ & $0.113$ \\
+      \midrule
+      packerentropy & $0.605$ & $0.748$ & $0.043$ \\
+      \midrule
+      stealthnetwork & $0.942$ & $0.008$ & $0.109$ \\
+      \bottomrule
+  \end{tabular}
+  \label{tab:models_res}
+\end{table}
 
-% \section{Discussion}
-% Each group or each signature in particular. Our expectation compared to real results.
+Results of experiments could be seen in \ref{tab:models_res}, there are also some visualizations in \ref{app:models}.
 
-% Compare signatures among them
+\section{Discussion}
+% Compare signatures
 
 % - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically (point of discussion)
 
-% \todo{If not enough data and discussion, we could try to discuss the data part of signature and original sample and how it corresponds to the performance of our models}
-
 % Describe general intention and direction of reasoning - what we want to find in models, success criteria
 % We expect that net will be working on samples where the subject of signature is directly in the report, hopefully. Than that in such situation we can find something else. Finally, in case that the signature subject is not easily observable from report, we can find something else or just say ok, we are not able.
+Each group or each signature in particular. Our expectation compared to real results.
 
-% Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
-% check overfitting - Pevny said that balanced accuracy on training set
-
-% Conclusion of this chapter is that we are able to train \emph{hmill} classifier which is able to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has similar or better performance than original paper \cite{Mandlik2020}, compared by \emph{f1score}. Obviously we are able to classify only some of signature with such performace and even we should not be too much for the copmarison because original author had different dataset. But our goal was to train the classifier and then explain it so we are able to examine trained classifiers and that is following.
-
-% \todo{among appendices technologie add even (Technical background, used metascenter archicture...) and even the script
-% - used technologies - add to appendix as in previous chapter
-%   - \todo{reference JsonGrinder, Mill, EvalMetrics...}
-%   - reference, describe functioning
-
-% Mention multilabel just marginally.
-% mention even multilabel as addition (in principle it should be possible but for us it was not priority)
-% - mention experiments (several attempts we have) and accuracy per item but only as something as addition - maybe more iteration, because multilabel is just multioutput single label, predicting at once should be possible, for it was not priority
+We performed also several experiments with more general multilabel classifier but we did not observe convergence under our resource conditions.
 
 
-% in conclusion clarify that we did not used only summary part of json
-% \todo{clarify this in section introductions and so, not to confuse somebody with those ongoing changes}.
+Conclusion of this chapter is that we are able to train \emph{hmill} classifier to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has significant performance more than $90\%$ as balanced accuracy for majority of signatures and this is sufficient for further explaining experiments. Such models should have strong confidence for us to be able to choose some samples for explainer (\ref{chap:explain}). Obviously we are able to classify only some of signatures with such performace which we mentioned in discussion.
+
+
+
+
+
+
+
 
 
 
 %NICE TO HAVE
+% in conclusion clarify that we did not used only summary part of json
+% \todo{clarify this in section introductions and so, not to confuse somebody with those ongoing changes}.
 % \todo{we may: Connect to the chapter about classification generally - hmill model, what specifically we use}
+% \todo{If not enough data and discussion, we could try to discuss the data part of signature and original sample and how it corresponds to the performance of our models}
+% \todo{we can compare to others but not necessary}
+% \todo{report table of metrics including the balance of dataset (pie graph?) and at least one graph}
+% Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
 %%-----------------------------------------------
+
+% But our goal was to train the classifier and then explain it so we are able to examine trained classifiers and that was succesful.
+
+% Mention multilabel just marginally.
+% mention even multilabel as addition (in principle it should be possible but for us it was not priority)
+% - mention experiments (several attempts we have) and accuracy per item but only as something as addition - maybe more iteration, because multilabel is just multioutput single label, predicting at once should be possible, for it was not priority
+% check overfitting - Pevny said that balanced accuracy on training set
 % Minibatches are generated randomly from training set in each iteration \todo{reference it in the classification theory part if it is there}.
 
 % In figure \todo{add histogram visualization with percentage, not exact numbers} There is a histogram where we can observe frequency of each signature in our dataset.
