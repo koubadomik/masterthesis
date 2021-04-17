@@ -1,0 +1,82 @@
+{
+  "write_files": [
+    [
+      "\\Device\\Http\\Communication",
+      4
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.dat",
+      1
+    ]
+  ],
+  "resolved_apis": [
+    [
+      "kernel32.dll.GetCurrentDirectoryA",
+      1
+    ]
+  ],
+  "executed_commands": [
+    [
+      "\"netsh\" wlan show profile",
+      2
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\ba38f08588d75d7ffd05.exe\" \"ba38f08588d75d7ffd05.exe\" ENABLE",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\27a964b4.bat\" \"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\601a6c06.bat\" \"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\200050ef.bat\" \"",
+      1
+    ],
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\aqh8CCB.tmp.bat\" \"C:\\Users\\comp\\AppData\\Local\\Temp\\64ba451d54f12c21b09f.exe\"\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\718911fd690b4d08b8f2.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\ceb633e338c6ec948ae1.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c schtasks /create /tn HTNSPQ.exe /tr C:\\Users\\comp\\AppData\\Roaming\\Windata\\PFKESG.exe /sc minute /mo 1",
+      1
+    ],
+    [
+      "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\42cd987e407ae82bd2be.exe\"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\Dfwmn.exe\" \"Dfwmn.exe\" ENABLE",
+      1
+    ]
+  ],
+  "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Tracing\\JNEwqQ_RASMANCS\\FileTracingMask",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}\\MaxNumberOfAddressesToRegister",
+      1
+    ]
+  ]
+}

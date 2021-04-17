@@ -1,0 +1,1716 @@
+[
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\cscript\\dpnsvr.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\a930ccba2c5b6e146036.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\msdtcuiu\\msieftp.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\PortableDeviceApi\\dataclen.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\mtxlegih\\KBDINPUN.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dmrc\\btpanui.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\618e0e8da4700e6ed2f8.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\WantsUniversalDelegate"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\RstrtMgr\\api-ms-win-core-util-l1-1-0.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\drmmgrtn\\EhStorShell.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\HideInWebView"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\mpr\\KBDBGPH1.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\forfiles\\fltLib.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\UseInProcHandlerCache",
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{A5268B8E-7DB5-465b-BAB7-BDCDA39A394A}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@C:\\Windows\\system32\\netshell.dll,-1200"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\usbceip\\EhStorPwdMgr.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\ef41c26328181e0f1723.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\juftdri"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\2eafd204076978f8a4a3.exe"
+          ],
+          "resolved_apis": [
+            "dui70.dll.?SetXMLFromResource@DUIXmlParser@DirectUI@@QEAAJIPEAUHINSTANCE__@@0@Z"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\connect\\WfHC.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\426168bd7d482f0ffa8f.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{DAB69A6A-4D2A-4D44-94BF-E0091898C881}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\slwga\\asycfilt.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\a48465f198c2d256c186.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\sbe\\NlsLexicons0045.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f3e898e8fa4fa582743d.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{A5268B8E-7DB5-465b-BAB7-BDCDA39A394A}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1201"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\api-ms-win-core-string-l1-1-0\\NlsData003e.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData0002\\kbdnec.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\Progid"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\mssrch\\spp.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\48855c511fc6a4d3699a.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\HasNavigationEnum"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\taskcomp\\msmpeg2adec.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\url\\EhStorShell.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\{28636AA6-953D-11D2-B5D6-00C04FD918D0} 34"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\QueryForOverlay"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData0011\\powercfg.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\INETRES\\netshell.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{01979c6a-42fa-414c-b8aa-eee2c8202018}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ipsmsnap\\XpsRasterService.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\e6751d14e3450f3721e7.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{2227A280-3AEA-1069-A2DE-08002B30309D}\\{B725F130-47EF-101A-A5F1-02608C9EEBAC} 10"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\fdProxy\\SyncInfrastructure.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\32104572d54a4b01d143.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\" /c timeout /t 5 && del \"C:\\Users\\comp\\AppData\\Local\\Temp\\cdf3c63a92c375d97abe.exe\" && del \"C:\\Users\\comp\\AppData\\Local\\Temp\\cdf3c63a92c375d97abe.exe.config\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\cdf3c63a92c375d97abe.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\shdocvw\\ntkrnlpa.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\shdocvw\\ntkrnlpa.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\NonEnum\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\SystemFileAssociations\\.exe\\NeverShowExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\wdi\\cliconfg.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\7e5e572472d6643012cd.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\NonEnum\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\compobj\\ntprint.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\bd2cc1cf72659aa04208.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dmrc\\P2PGraph.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData0047\\mtxoci.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dhcpcore6\\BioCredProv.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\control\\AtBroker.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\icardie\\crypt32.exe"
+          ],
+          "resolved_apis": [
+            "oleaut32.dll.LPSAFEARRAY_UserUnmarshal64"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\NoOplock",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\WantsAliasedNotifications"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\mfplat\\asferror.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c4c8b25dbd655a6b4645.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.106\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\BF783B\\BCDB0B.lck"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\39a11ebe497f08da1113.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\rasdlg\\Robocopy.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\efsutil\\msvidc32.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\rasdlg\\Robocopy.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\certutil\\dmocx.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f01bc7b09d0bd4487eb1.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\XPSSHHDR\\licmgr10.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\67b640b40c19119a78f7.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\HideFolderVerbs"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\proquota\\icmui.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msiexec\\signdrv.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\HasNavigationEnum"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\QueryForOverlay"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dplayx\\pdhui.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\hh\\FXSAPI.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDNO1\\IMJP10K.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\ClassicShell"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\BF783B\\BCDB0B.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\79ad5e5d0615e447f3cb.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\sud\\shfolder.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\09bf5d1463426b978c40.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{01979c6a-42fa-414c-b8aa-eee2c8202018}.check.100"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\cryptdlg\\KBDAZE.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\9f4cb51a9fb076090ae8.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\ForceCopyACLWithFile"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Internet Explorer\\Security\\DisableSecuritySettingsCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\provsvc\\mapi32.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\02e69c7446aa64a1cb00.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{01979c6a-42fa-414c-b8aa-eee2c8202018}\\LastKnownState"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\olecli32\\rasadhlp.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\ccdba36f120b72adb839.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\mswdat10\\msscp.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3f3cc735d997397d0abd.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\NlsLexicons000a\\SystemPropertiesPerformance.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\357dbcc7edc7634a6f25.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.101"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\davhlpr\\autoconv.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\bitsprx4\\mmcshext.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\mgmtapi\\dplaysvr.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\IasMigPlugin\\QCLIPROV.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\SystemPropertiesProtection\\msjetoledb40.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\adsldp\\NlsData0010.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\pnidui\\LocationApi.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f7d81137a0cd115aef0d.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSuperHidden"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\rasctrs\\api-ms-win-core-errorhandling-l1-1-0.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\1802556ba3a33cb441c5.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\NoFileFolderJunction"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDDIV1\\Magnify.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\2698e3ebb0350cf89d8b.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\netcfgx\\SSShim.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\d1ccaed0473235dd1938.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\UseInProcHandlerCache"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\chsbrkr\\iscsidsc.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\e35febdf53bebc6bb453.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{11CD958A-C507-4EF3-B3F2-5FD9DFBD2C78}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msctfui\\odtext32.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\0068699b3d05e289f18c.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ndishc\\msutb.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\diantz\\dvdupgrd.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\clb\\iscsium.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{A5268B8E-7DB5-465b-BAB7-BDCDA39A394A}\\LastKnownState"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\advapi32\\NlsData0018.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\advapi32\\NlsData0018.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\sqlceqp30.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\WantsParseDisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\20515859.bat\"       \"C:\\Users\\comp\\AppData\\Local\\Temp\\f055effd1f500e383d3d.exe\"   \""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f055effd1f500e383d3d.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\PortableDeviceApi\\dataclen.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\e23cc9f7846381c569e4.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\VAN\\{E1DE74AD-C368-4104-ADB1-57D00577247A}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dsdmo\\perfos.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dsdmo\\perfos.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\ucrtbase\\wlanmsm.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\sqlwid\\authfwcfg.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\aa8795271186e04bfa60.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\radardt\\UserAccountControlSettings.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\shlwapi\\kbd101c.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\System.ItemNameDisplay"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\Time Zones\\Pacific Standard Time\\Dynamic DST\\2007"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDINBE1\\apds.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\a57b2179f059305c91c9.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\SystemFileAssociations\\.exe\\AlwaysShowExt"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\SortOrderIndex"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dot3gpui\\sppinst.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDINBE1\\user32.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.101\\CheckSetting"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\IsShortcut"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\comres\\wextract.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\9f7c431af40f923923f7.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\extrac32\\msyuv.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\724d811b82fc03fe98d8.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\CallForAttributes"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dpnhpast\\msshooks.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\help\\pstorsvc.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\DontPrettyPath",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\UseOutOfProcHandlerCache"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{B196B286-BAB4-101A-B69C-00AA00341D07}\\InprocServer32\\ThreadingModel"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\srvcli\\KBDCA.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msexcl40\\dskquota.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsLexicons0c1a\\FXSAPI.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDSG\\mimefilt.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDSG\\mimefilt.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\sppcc\\dpnhpast.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\sxproxy\\KBDDIV1.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\sxproxy\\KBDDIV1.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\WantsFORPARSING",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\NoOplock"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Wpc\\themeui.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\FXSEXT32\\wscisvif.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\0999942f3df97b6c6d00.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData001d\\KBDNO1.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\8d3351e08ddd65cd28aa.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\d3dramp\\drvinst.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3970c08ae51e7fb7e4ad.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideIcons"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\MapNetDriveVerbs"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\PortableDeviceClassExtension\\rdrleakdiag.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\wshirda\\traffic.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.101"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\msvfw32\\pcwum.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\53e327e5eb7373ea39a6.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1001"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ntprint\\wsmplpxy.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\ac65d1bf806756596377.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\UseInProcHandlerCache"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{DAB69A6A-4D2A-4D44-94BF-E0091898C881}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\at\\api-ms-win-core-localization-l1-1-0.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\d14b78a5dd18a1b0c5d6.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\QueryForOverlay"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\d3d10core\\mshtml.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\439dcacef75529851a8c.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\1804"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dcomcnfg\\shlwapi.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\091e8e0b1ce566d8a538.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\xolehlp\\rasplap.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dpapiprovider\\spwinsat.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\Explorer"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{01979c6a-42fa-414c-b8aa-eee2c8202018}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Sens\\dmutil.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\05056b19f995a73244cc.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\DisableProcessIsolation"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dataclen\\msidle.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\e7f02810522ecca8039f.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\msidcrl30\\oleaccrc.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDINTEL\\api-ms-win-core-fibers-l1-1-0.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\mfc42\\dot3gpui.exe:Zone.Identifier"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InprocHandler32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDLT\\ifsutilx.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3300829c486f69726033.exe"
+          ],
+          "files": [
+            "C:\\Windows\\sysnative\\en-US\\netshell.dll.mui"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\wrapmore\\wrapmore.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f3f0f8469aae4354a979.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\authui\\api-ms-win-core-processthreads-l1-1-1.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\07078074d0004dec8345.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDROST\\api-ms-win-core-processenvironment-l1-1-0.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\MsCtfMonitor\\msi.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\api-ms-win-core-processthreads-l1-1-0\\ie4uinit.exe:Zone.Identifier"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel\\NameSpace\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\rasctrs\\userinit.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\75a5fba6d20323437d9a.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\QueryForOverlay"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDGRLND\\NlsData0039.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msrating\\blackbox.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1004"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\DontPrettyPath",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\HideFolderVerbs"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\wiatrace\\cmmon32.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\spwmp\\odbccr32.exe"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\FirewallAPI\\KBDPO.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\api-ms-win-core-xstate-l2-1-0\\NlsData0049.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\6c046351af83c7f6b41f.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDMAC\\VAN.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\e6378609cf96640b9912.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{11CD958A-C507-4EF3-B3F2-5FD9DFBD2C78}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\PropertySystem\\PropertyHandlers\\.exe\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsLexicons001a\\wscmisetup.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\5f117795488afebbd884.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\ndiscapCfg\\KBDKOR.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\06feb8dd172d37e6414b.exe"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1001"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\perfproc\\d3d8.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\069c943ddca9065547c8.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\prnfldr\\Magnify.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\iasrecst\\netbios.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\WantsParseDisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\netbtugc\\eventcreate.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\1d9102a55e9d2ea1babf.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\SortServer2003Compat\\serwvdrv.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\SortServer2003Compat\\serwvdrv.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\SortServer2003Compat\\serwvdrv.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\netbios\\netbios.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c5949decdc98c1d39c8a.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDMACST\\MFPlay.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\96916b788d583fecff73.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders\\SuppressionPolicy"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dswave\\pid.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\cb3a6281d9a11aed6ad2.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{66742402-F9B9-11D1-A202-0000F81FEDEE}\\DisableProcessIsolation"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\tmpG471.tmp"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\baaf2981e64ed0745b71.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\SystemPropertiesProtection\\oledlg.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\SystemPropertiesProtection\\oledlg.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\Attributes"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\serwvdrv\\dnsapi.exe\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\capiprovider\\api-ms-win-crt-locale-l1-1-0.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\capiprovider\\api-ms-win-crt-locale-l1-1-0.exe:Zone.Identifier"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\HideOnDesktopPerUser"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\write\\KBDUSL.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3359f5cceb8fee2443bc.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\Directory"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData001d\\mtxex.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\90ea545fae3390809cb3.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\TSpkg\\spp.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\77893f68ce72cdec3753.exe"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\1001"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msaatext\\mshta.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dwmapi\\srvcli.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\WantsParseDisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDMAORI\\rpcrt4.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\aaca40c496ee3bf1975d.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders\\{b155bdf8-02f0-451e-9a26-ae317cfd7779}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InProcServer32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Local\\panmap\\networkitemfactory.exe"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3804cbe723b8a33f6081.exe"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\NlsData0020\\cmipnpinstall.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\bb802a9018081ec9c57e.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\ShellEx\\{2F711B17-773C-41D4-93FA-7F23EDCECB66}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\DontPrettyPath"
+          ]
+        }
+      }
+    }
+  ]
+]

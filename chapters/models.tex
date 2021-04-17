@@ -143,6 +143,8 @@ In the table \ref{tab:hyperparams} we can observe hyperparameters of the model a
       iterations & $120$\\
       \midrule
       optimizer & \emph{ADAM} \cite{Kingma2014}\\
+      \midrule
+      loss function & \emph{logit cross entrophy} (\ref{chap:classification})\\
       \bottomrule
   \end{tabular}
   \label{tab:hyperparams}
@@ -213,7 +215,7 @@ Despite of some anomalies which we inspect next chapter the performance of this 
 
 \emph{No direct} group behaves more unexpectedly because the performance in 3 of 5 cases  is above $90$~\%. This we can connect to the particular facts that \emph{antisandboxsleep} uses api calls in more complex way so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR} but its performance is still good for explanations. \emph{Stealthnetwork} should look at network activity which is not among the features.
 
-Good performance of some signatures in this group arouses our interest in the explaining part of those signatures. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy} explanation we should do not take it too seriously due to the performance. Overall the first group has statistically better performance as we expected but this comparison is not relevant so much.
+Good performance of some signatures in this group arouses our interest in the explaining part of those signatures. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy} explanation we should not take it too seriously due to the performance. Overall the first group has statistically better performance as we expected but this comparison is not relevant so much.
 
 We performed also several experiments with more general multilabel classifier but we did not observe convergence under our hardware resource conditions.
 

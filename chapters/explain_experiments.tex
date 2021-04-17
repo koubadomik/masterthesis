@@ -1,90 +1,112 @@
 \chapter{Explaining model} \label{chap:expex}
-Finally, we present specific method for hierarchical model explanation. One of goals of this thesis is to identify artifacts corresponding to different malware behavior. By artifacts we mean whatever what is among features of our model. Results are based on two things. Firstly we build on statistical method for model explanation (reference chapter). Secondly we are drawing conslusions after presenting those results to expert and then having discussion.
+Final part of this thesis is to follow results of previous chapter about models and their performance and examine their explanation using \emph{hmill} explainer \cite{Pevny2020} which we described in \ref{chap:explain}. We address one of goals of this thesis which is to identify artifacts corresponding to different malware behavior. As artifacts we can see whatever what is among features of our model.
 
-Motivation about mention Thorsten's advice to look at implementation of python signatures and reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
-discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
-
-Add some philozophiing... (about the risky things, assumptions, reference explanation theory chapter)
+Experimenting with \emph{hmill} and output of \emph{CAPEv2} sandbox we struggled several times. The crux was to find the way in the signature research. This was done mainly by involving the \emph{Python} implementation of original signatures and the data part of signature in \emph{JSON} report. Those two and performance of models from \ref{chap:models} is building block of further discussion.
 
 \section{Explainer}
-Based on \todo{chapter about explanation theory}, mention specific setup (confidence level, pruning method...), configuration and pseudocode of the explainer (all steps, extract only positive...) (we derived it from Pevny's paper, we did not experiment with another setups), reference code in attachement
-What we did with output more (aggregation of results), how many explanations we have, (two rounds)
-\section{Results}
-Present result with each examined signature. Example here, then rest to appendix. Report average size of explanation (compare to original reports) and even explanation itself (example) and then top of histogram.
+We performed two explainig experiments using \emph{ExplainMill.jl} (described in \ref{app:technologies}). 
 
-\section{Discussion}
-Per signature
-  \todo{compare explanation to implementation of signature}
-  \todo{try to compare it to data part of original signature, we have to try to extract this part somehow}
-  \todo{summarize each signature, join even the model performance and so the credibility of the explanation}
-  \todo{Compare signature groups - based on the subject of signature and based on the fact if we can find it directly in the report}
-\todo{Discuss results in general}
-  \todo{What conclusions}
-  \todo{What problems, what has to be improved}
-  \todo{What is the result}
+Explainer pseudocode is in \ref{algo:explainer}. There is nothing extraordinary we used similar setup as authors of the tool \cite{Pevny2020}. We extracted $100$ examples from testing set in first run and $500$ in second run. We attempted explaining only on positive example which were truly classified into positive class with confidence above specified treshold. The confidence tresholfdwhich we used is $0.99$ for first run and $0.9$ for second run, in both cases we decrement it by $0.1$ if no results was found in data subset.
 
-Present several results and resoning above.
+Each of chosen examples we run explainer on. Authors of original paper did came to conclusion that the \emph{BanzHof values} method shows the best performance and we followed this setup. We involve no clustering method and \emph{:LbyL_HArr} \todo{reference its real name} pruning method (due to some problems with library version compatibility wich led us to accept first working solution regarding clustering and pruning).
+
+We received explanation for each example as a subset of original example in \emph{JSON} format. For some signatures we have tens of explanations using this approach. That is why we involved some additional aggregation. In our case we merged all explanations for one signature into one \emph{JSON} file and for each entry counted its frequencies. Our assumption was that the most general formulation of an exaplanation should contain the most seen entries. This and other we discuss below.
+
+\begin{algorithm}
+  \caption{Explainer steps}\label{algo:explainer}
+  \begin{algorithmic}
+      \Procedure{HmillTrain}{$signature\_name, jsons, hyperparameters$}
+      \State $samples \gets load(jsons)$
+      \State $train,test \gets split(samples)$
+      \State $trnstates,tststates \gets extractstates(train, test)$
+      \State $schema \gets getshema(train)$
+      \State $extractor \gets suggestextractor(schema)$
+      \State $model \gets reflectinmodel(schema, extractor, class\_num, hyperparams)$
+      \State $optimize(model, train, trnstates)$
+      \State $metrics \gets evaluate(model, tststates)$
+      \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\todo{connect to theory in chapter about explainer theory}
+
+
+\section{Results and discussion}
+Original and even aggregated outputs are part of attachment of this thesis \ref{app:attach}. The size of original json file with only behavioral part can be hundreds but even thousands of items (averaged \texttildelow~$3000$ but included even the signature part). Average size of explanation is $3-5$ entries (detail could be see in \ref{app:expl}). In case of low performance signatures like \emph{invalidauthenticodesignature} and \emph{packerentropy} we can see even more than $10$ in both runs.
+
+Number of explanations may vary because the difference in confidence of each model. This is not good in case we are trying to compare explanations and make some statististically oriented conclusion. This comparison is very risky but in the second run we attempted to normalize the number of explanation to be $100$ per signature but in some cases we were not succesful because in subsample was just not enough such samples. Number of explanations for both runs we can also see in \ref{app:expl}.
+
+Detail description of each signature is in \ref{app:signatures} including the details of its implementation. In following discussion we address only specific details.
+
+expectation
+
+We are discussing results after presenting those results to expert and then having discussion. The results are often assumptions and hypothesis because we have to anticipate the risks mentioned in \ref{chap:explain}. Especially the causality X correlation problem and confounding variable existence. We are aiming at descriptions and observation more than drawing conclusion. In some cases we try to formulate hypothesis in any case we can not be sure.
+
+discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
+reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
+
+Results for each signature (present both attempts)
+performance context and what is the strenght of the explanation (is it relevant)
+What it does (implementation) and if we can see it in explanation
+top of histogram.
+hypothesis we can formulate
+
+Final thoughts, what categories we can see based on results and what are main problems, compare the explanation of initial two groups of signatures and even try to say something about different subject groups
+we are able to explain and this part should be further researched - describe particular problems including the type of explaning for this model complexity.
 We are experiencing two challenges which were mentioned earlier and those are - huge entrophy (take an example path to file for example) leads to big entrophy of explanation and we do not have some special method to determine similarities (some norm or...) (above our scope), confounding variables which we are not able to identify.
 It would be interesting to thing about the second approach - trasparency, to extract explanation for model not for sample, it is really hard to generalize such conslusions
+I think we can even state that the principle is working and we are able to identify why the model is predicting some things, cons of it is the example based explanation, better could be some kind of dataset based explanation
 
-- Admit failures on bias variables, we do not if it is there
-○ Would it be better with more samples?
-○ How to detect that we are predictiong based on some confounding variable (reference theory chapter we should have described it there)...
-- This chapter could be good for the discussion part, just philozophy and show some clues!!
-- Causality X Correlation - cite some literature
-The book of why, Judea Pearl
+- Admit failures on bias variables
+  ○ Would it be better with more samples? (some mathematical magic?)
 
-discuss particular results and try to connect it to models (results have to be real, it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
+  reference explain theory properly (mainly the desiderata and interpretable model challenges, assumptions, interpretability, explainability, credibility)
 
+it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
 
+Explanation as another random variable
 
-Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
-Connect to motivation part of this chapter
-
-I think we can even state that the principle is working and we are able to identify why the model is prediction concerete things, cons of it is the example based explanation, better could be some kind of dataset based explanation
-
-The discussion should be tangled with the dilema - interpretability, explainability, credibility
-
-
-Used technologies (in appendix)
-  - previous
-  - ExplainMill
-  (reference all the repositories - even cuckoo comminity)
-
-
+%NICE TO HAVE
+%COMPATE SIGNATURES DATA PART WITH THE EXPLANATION
   %%---------------------
+  % Connect to motivation part of this chapter
+  % Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
+  % Add some philozophiing... (about the risky things, assumptions, reference explanation theory chapter)
+  % Based on \todo{chapter about explanation theory}, mention specific setup (confidence level, pruning method...), configuration and pseudocode of the explainer (all steps, extract only positive...) (we derived it from Pevny's paper, we did not experiment with another setups), reference code in attachement
+  % What we did with output more (aggregation of results), how many explanations we have, (two rounds)
 
-  hopefully discussion on if the parts contains something significant according to type of signature and so on, or we can find something else than only the deterministic base which the signatue implementation is checking
-
-
-  Compare the results to Pevny's Explaner results
-
-  take signature groups and compare their code to explanation, from each signature type (rest get to the Appendix)
-  report explanation and even some information from logs!!
-  - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
-
+  % Motivation about mention Thorsten's advice to look at implementation of python signatures and 
+%   hopefully discussion on if the parts contains something significant according to type of signature and so on, or we can find something else than only the deterministic base which the signatue implementation is checking
 
 
+%   Compare the results to Pevny's Explaner results
+
+%   take signature groups and compare their code to explanation, from each signature type (rest get to the Appendix)
+%   report explanation and even some information from logs!!
+%   - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
 
 
-  Describe steps - how many samples we have and how we choose them, how we just draw histogram results and try some reasoning
-  - Goal 
-- identify the artifacts corresponding to different malware behavior. Report results.
-- Investigate which parts of the CapeV2 log are important to different malware behavior. 
-
-- Expert view
-  - Ask Thorsten to try to explain some patterns and domain specific subjects 
 
 
-  What we used - specific method (follow explanation theory) - we are choosing only samples where the model is above some confidence and explanation is per sample, we have several explanations to see some trend; we did follow results in Pevny's work, we did not experiment with different kinds of explainers
+
+%   Describe steps - how many samples we have and how we choose them, how we just draw histogram results and try some reasoning
+%   - Goal 
+% - identify the artifacts corresponding to different malware behavior. Report results.
+% - Investigate which parts of the CapeV2 log are important to different malware behavior. 
+
+% - Expert view
+%   - Ask Thorsten to try to explain some patterns and domain specific subjects 
+
+
+%   What we used - specific method (follow explanation theory) - we are choosing only samples where the model is above some confidence and explanation is per sample, we have several explanations to see some trend; we did follow results in Pevny's work, we did not experiment with different kinds of explainers
   
 
-(This chapter should have simmilar structure as models before)
+% (This chapter should have simmilar structure as models before)
 
-  Previous connection
-- We are trying to explain previously trained models
-Way through this chapter
-- describe steps
-- discuss results
-Next connection
-- Next will be conclusions and final statements, we can summarize results of explanation with respect to different models
+%   Previous connection
+% - We are trying to explain previously trained models
+% Way through this chapter
+% - describe steps
+% - discuss results
+% Next connection
+% - Next will be conclusions and final statements, we can summarize results of explanation with respect to different models
