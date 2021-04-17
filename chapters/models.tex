@@ -102,25 +102,18 @@ First experiments are without reported results because model was to huge to conv
 
 Original code of the model is in thesis attachment \ref{app:attach}. The pseudocode of the whole process can be seen in \ref{algo:hmillbinary}. It is standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library which is able to accept array of json documents and produce schema (more in \ref{app:technologies}). Schema is then used to create \emph{hmill} structures from each json document. Schema extraxted from our data is in \ref{app:schema}.
 
-\todo{add pseudocode of analyser}
-
 \begin{algorithm}
-  \caption{Dependency Graph Assembly}\label{algo:hmillbinary}
-  \begin{algorithmic}[1]
-      \Procedure{MyProcedure}{}
-      \State $\textit{stringlen} \gets \text{length of }\textit{string}$
-      \State $i \gets \textit{patlen}$
-      \If {$i > \textit{stringlen}$} \Return false
-      \EndIf
-      \State $j \gets \textit{patlen}$
-      \If {$\textit{string}(i) = \textit{path}(j)$}
-      \State $j \gets j-1$.
-      \State $i \gets i-1$.
-      \State \textbf{goto} \emph{loop}.
-      \State \textbf{close};
-      \EndIf
-      \State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
-      \State \textbf{goto} \emph{top}.
+  \caption{Hmill model training}\label{algo:hmillbinary}
+  \begin{algorithmic}
+      \Procedure{HmillTrain}{$signature\_name, jsons, hyperparameters$}
+      \State $samples \gets load(jsons)$
+      \State $train,test \gets split(samples)$
+      \State $trnstates,tststates \gets extractstates(train, test)$
+      \State $schema \gets getshema(train)$
+      \State $extractor \gets suggestextractor(schema)$
+      \State $model \gets reflectinmodel(schema, extractor, class\_num, hyperparams)$
+      \State $optimize(model, train, trnstates)$
+      \State $metrics \gets evaluate(model, tststates)$
       \EndProcedure
   \end{algorithmic}
 \end{algorithm}
