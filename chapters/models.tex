@@ -84,7 +84,7 @@ Based on our reasoning we identified following categories:
     \item Processes - \emph{dropper}
     \item Sleep - \emph{ antisandboxsleep}
     \item Entrophy - \emph{packerentropy}
-    \item Combinations - \emph{stealthnetwork}
+    \item Network - \emph{stealthnetwork}
     \item Authsign - \emph{invalidauthenticodesignature}
   \end{itemize}
 \end{enumerate}
@@ -218,11 +218,9 @@ In case of \emph{direct} category of signatures we observe quite consistent perf
 
 Despite of some anomalies which we inspect next chapter the performance of this signature group is as we expected. Even the \emph{stealthtimeout} we are going to explain on positive examples with high confidence to see what is in the game there.
 
+\emph{No direct} group behaves more unexpectedly because the performance in 3 of 5 cases  is above $90$~\%. This we can connect to the particular facts that \emph{antisandboxsleep} uses api calls in more complex way so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR} but its performance is still good for explanations. \emph{Stealthnetwork} should look at network activity which is not among the features.
 
-
-% Compare signatures
-Each group or each signature in particular. Our expectation compared to real results.
-
+Good performance of some signatures in this group arouses our interest in the explaining part of those signatures. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy} explanation we should do not take it too seriously due to the performance. Overall the first group has statistically better performance as we expected but this comparison is not relevant so much.
 
 We performed also several experiments with more general multilabel classifier but we did not observe convergence under our hardware resource conditions.
 
@@ -239,6 +237,8 @@ In explanation chapter we should examine different categories of signatures base
 
 
 %NICE TO HAVE
+%we can try to play more with some average bal. acc. or FNR and FPR overall dataset and over each group...
+
 % in conclusion clarify that we did not used only summary part of json
 % \todo{clarify this in section introductions and so, not to confuse somebody with those ongoing changes}.
 % \todo{we may: Connect to the chapter about classification generally - hmill model, what specifically we use}
@@ -247,6 +247,9 @@ In explanation chapter we should examine different categories of signatures base
 % \todo{report table of metrics including the balance of dataset (pie graph?) and at least one graph}
 % Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
 %%-----------------------------------------------
+
+% % Compare signatures
+% Each group or each signature in particular. Our expectation compared to real results.
 
 % - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically (point of discussion)
 
