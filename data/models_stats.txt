@@ -365,8 +365,8 @@ dropper
 
 invalid_authenticode_signature
     balance of training set
-        training - 6175
-        testing - 6075
+        training - 14295
+        testing - 
     Confusion Matrix - (14295, 25705, 4746, 22803, 2902, 9549)
     accuracy - 0.688725
     balanced accuracy - 0.6095539367996681

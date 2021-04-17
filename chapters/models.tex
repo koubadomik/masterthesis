@@ -165,60 +165,70 @@ Chosen metrics are based on metrics which are reported by similar papers \todo{r
 
 \begin{table}[h]
   \centering
-  \caption{Models performance (values rounded for 3 decimal spaces)}
+  \caption{Models performance (values rounded for 3 decimal spaces, P denotes positive examples ratio in dataset)}
   % \begin{tabular}{p{5cm}p{3cm}p{3cm}p{3cm}} 
-  \begin{tabular}{llll}
+  \begin{tabular}{lllll}
       \toprule
       \textbf{Signature} &
       \textbf{Bal. acc.} &
       \textbf{FNR} &
-      \textbf{FPR}
+      \textbf{FPR} &
+      \textbf{P [\%]}
       \\
       \midrule
-      antidebug setunhandledexceptionfilter & $0.9801$ & $0.0289$ & $0.0109$ \\
+      antidebug setunhandledexceptionfilter & $0.9801$ & $0.0289$ & $0.0109$ & $45$ \\
       \midrule
-      copiesself & $0.924$ & $0.125$ & $0.0279$ \\
+      copiesself & $0.924$ & $0.125$ & $0.0279$ & $18$ \\
       \midrule
-      deletesself & $0.997$ & $0.005$ & $0.002$ \\
+      deletesself & $0.997$ & $0.005$ & $0.002$ & $27$ \\
       \midrule
-      enumeratesrunningprocesses & $0.972$ & $0.050$ & $0.007$ \\
+      enumeratesrunningprocesses & $0.972$ & $0.050$ & $0.007$ & $16$ \\
       \midrule
-      stealthtimeout & $0.701$ & $0.064$ & $0.331$ \\
+      stealthtimeout & $0.701$ & $0.064$ & $0.331$ & $21$ \\
       \midrule
-      useswindowsutilities & $0.958$ & $0.078$ & $0.006$ \\
+      useswindowsutilities & $0.958$ & $0.078$ & $0.006$ & $18$ \\
       \midrule
-      removeszoneidads & $0.999$ & $0.000$ & $0.000$ \\
+      removeszoneidads & $0.999$ & $0.000$ & $0.000$ & $28$ \\
+      \midrule[0.3pt]
+      \midrule[0.3pt]
+      antisandboxsleep & $0.969$ & $0.037$ & $0.026$ & $39$ \\
       \midrule
-      antisandboxsleep & $0.969$ & $0.037$ & $0.026$ \\
+      dropper & $0.911$ & $0.147$ & $0.032$ & $15$ \\
       \midrule
-      dropper & $0.911$ & $0.147$ & $0.032$ \\
+      invalidauthenticodesignature & $0.607$ & $0.668$ & $0.113$ & $36$ \\
       \midrule
-      invalidauthenticodesignature & $0.607$ & $0.668$ & $0.113$ \\
+      packerentropy & $0.605$ & $0.748$ & $0.043$ & $22$ \\
       \midrule
-      packerentropy & $0.605$ & $0.748$ & $0.043$ \\
-      \midrule
-      stealthnetwork & $0.942$ & $0.008$ & $0.109$ \\
+      stealthnetwork & $0.942$ & $0.008$ & $0.109$ & $66$ \\
       \bottomrule
   \end{tabular}
   \label{tab:models_res}
 \end{table}
 
-Results of experiments could be seen in \ref{tab:models_res}, there are also some visualizations in \ref{app:models}.
+Results of experiments could be seen in \ref{tab:models_res}, table is divided into two groups based on categories presented above. There are also some other visualizations in \ref{app:models}.
 
 \section{Discussion}
+Original signature implementation is deterministically examining the sandbox output and marking some behavior as we stated above. The most significant difference between them regarding the input is that their subject (\emph{api call, file \dots}) is directly among our fetures (\emph{direct}) or it is not there (\emph{not direct}). We could also investigate if the instance of particular subject for instance specific api call not only their list is presented because the signature detect specific list of api calls. But we categorize signature based on the fact if the whole category of subject is presented in output.
+
+Based on this categorization we assume that the performace of signatures in \emph{direct} category have better performance than the ones in \emph{not direct}. Because the algorithm has to converge to something else which is corresponding to positive training examples and this do not have to be straight-forward. But on the other hand we assume that classifier could generalize in such way because that could lead us to some new knowledge in explanation part.
+
+Metrics which we are reporting in \ref{tab:models_res} are robust in case of disbalanced dataset which is also our case. In the table we also include percentage of positive examples to see this disbalance and be able to assess the \emph{FNR} and \emph{FPR}.
+
+In case of \emph{direct} category of signatures we observe quite consistent performance above $95$~\%. \emph{copiesself} signature has $92$~\% which is still sufficient for explaning. This devitaion could be caused by the fact that the original signature is examining dropped files and looking at the fact if current file is among them. But the filename varies of course so the entrophy might by very high and it might cause big \emph{FNR}. \emph{deletesself} might have similar issues but it is determining also according to api calls which could cause that its performance is better. The only significant outlier in this group is \emph{stealthtimeout} signature which examines sequence of api calls which could be quite compicated. After going through some files where this signature was presented we were not able to identify the particular api calls in the original log so the assignment might be much more tricky. The main cause of low accuracy is in this case \emph{FPR}.
+
+Despite of some anomalies which we inspect next chapter the performance of this signature group is as we expected. Even the \emph{stealthtimeout} we are going to explain on positive examples with high confidence to see what is in the game there.
+
+
+
 % Compare signatures
-
-% - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically (point of discussion)
-
-% Describe general intention and direction of reasoning - what we want to find in models, success criteria
-% We expect that net will be working on samples where the subject of signature is directly in the report, hopefully. Than that in such situation we can find something else. Finally, in case that the signature subject is not easily observable from report, we can find something else or just say ok, we are not able.
 Each group or each signature in particular. Our expectation compared to real results.
 
-We performed also several experiments with more general multilabel classifier but we did not observe convergence under our resource conditions.
 
+We performed also several experiments with more general multilabel classifier but we did not observe convergence under our hardware resource conditions.
 
 Conclusion of this chapter is that we are able to train \emph{hmill} classifier to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has significant performance more than $90\%$ as balanced accuracy for majority of signatures and this is sufficient for further explaining experiments. Such models should have strong confidence for us to be able to choose some samples for explainer (\ref{chap:explain}). Obviously we are able to classify only some of signatures with such performace which we mentioned in discussion.
 
+In explanation chapter we should examine different categories of signatures based on their performance. The ones which are with our intuition we should investigate such that they are really using what original signature did. The ones which were unexpectedly bad we should not try to explain because low confidence. The ones which were unexpectedly good we need to explain to see what is the subject which is used the most by the model.
 
 
 
@@ -237,6 +247,12 @@ Conclusion of this chapter is that we are able to train \emph{hmill} classifier 
 % \todo{report table of metrics including the balance of dataset (pie graph?) and at least one graph}
 % Convergence went on we just did not have enough time and performance to run it again and again (maybe I can plot loss function plot to prove that )
 %%-----------------------------------------------
+
+% - technically signatures are deterministic (heuristic) view on the same thing, but in case of machine learning we are traing to target the result statistically (point of discussion)
+
+% Describe general intention and direction of reasoning - what we want to find in models, success criteria
+% We expect that net will be working on samples where the subject of signature is directly in the report, hopefully. Than that in such situation we can find something else. Finally, in case that the signature subject is not easily observable from report, we can find something else or just say ok, we are not able.
+
 
 % But our goal was to train the classifier and then explain it so we are able to examine trained classifiers and that was succesful.
 
