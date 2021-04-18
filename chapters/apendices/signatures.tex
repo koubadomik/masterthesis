@@ -1,5 +1,40 @@
-\chapter{Signatures descriptions} \label{app:signatures}
+\chapter{Signatures descriptions} \label{app:signatures} \label{app:histogram} \label{app:frequecies}
 
-More details about each signature is in appendix \todo{add appendix where each signature will by summarized, its implementation and its data part...}
+For each signature description of what is doing in more detail, what is in data part, plus histogram (in percentage)
 
-Example of its instance in signature part and description of its implementation
+\begin{figure}
+    \centering
+    \begin{subfigure}{.33\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \pie[text=inside, radius=2]{50/Yes, 50/No}
+    \end{tikzpicture}
+      \caption{1a}
+      \label{fig:sfig1}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \pie[text=inside, radius=2]{70/Yes, 30/No}
+    \end{tikzpicture}
+      \caption{1b}
+      \label{fig:sfig2}
+    \end{subfigure}
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \pie[text=inside, radius=2]{20/Yes, 80/No}
+        \end{tikzpicture}
+        \caption{1c}
+        \label{fig:sfig3}
+    \end{subfigure}
+    \caption{plots of....}
+    \label{fig:fig}
+\end{figure}
+
+
+
+%---------------------------------------
+% More details about each signature is in appendix \todo{add appendix where each signature will by summarized, its implementation and its data part...}
+
+% Example of its instance in signature part and description of its implementation
