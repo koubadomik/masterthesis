@@ -1,0 +1,46 @@
+{
+    "machines": [
+        {
+            "ip": "X.Y.Z.170",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "internet"
+        },
+        {
+            "ip": "X.Y.Z.199",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "nointernet"
+        },
+        {
+            "ip": "X.Y.Z.230",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "nointernet"
+        },
+        {
+            "ip": "X.Y.Z.177",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "internet"
+        },
+        {
+            "ip": "X.Y.Z.204",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "internet"
+        },
+        {
+            "ip": "X.Y.Z.237",
+            "enabled": false,
+            "machine_count": 4,
+            "type": "internet"
+        },
+        {
+            "ip": "X.Y.Z.207",
+            "enabled": true,
+            "machine_count": 4,
+            "type": "nointernet"
+        }
+    ]
+}

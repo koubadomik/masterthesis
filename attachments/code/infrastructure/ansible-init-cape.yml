@@ -1,0 +1,79 @@
+---
+- hosts: all
+  remote_user: capecomp1
+  become: yes
+  tasks:
+   - name: Init QEMU
+     script: ~/init.sh qemu
+     register: out
+
+   - debug: var=out.stdout_lines
+
+   - name: Reboot host and wait for it to restart
+     reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+
+   - name: Init VMS
+     script: ~/init.sh vms
+     register: out
+
+   - debug: var=out.stdout_lines
+
+
+   - name: Reboot host and wait for it to restart
+     reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+
+
+   - name: Init SANDBOX
+     script: ~/init.sh sandbox
+     register: out
+
+   - debug: var=out.stdout_lines
+
+   - name: Reboot host and wait for it to restart
+     reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+
+
+   - name: Init DIST
+     script: ~/init.sh dist
+     register: out
+
+   - debug: var=out.stdout_lines
+
+   - name: Reboot host and wait for it to restart
+     reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+
+   - name: Register to master
+     script: ~/init.sh register
+     register: out
+
+   - debug: var=out.stdout_lines
+
+   - name: Start collect script
+     script: ~/init.sh collect
+     register: out
+
+   - debug: var=out.stdout_lines

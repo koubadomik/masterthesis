@@ -1,0 +1,30 @@
+{
+    "54dace35ce2183060e4b86d05c3e891de022fea8dc1e214d95046f5b9d3d6970": {
+        "file": "/mnt/nfs/download2/filtered/sub/54dace35ce2183060e4b86d05c3e891de022fea8dc1e214d95046f5b9d3d6970.exe",
+        "last_submitted": "2021-04-18 14:35:01.836777",
+        "target_machine": "147.32.83.199",
+        "type_active": "",
+        "types": [
+            {
+                "nointernet": 1
+            },
+            {
+                "internet": 1
+            }
+        ]
+    },
+    "688712ba9d6a4b60e7f5169b957af6fab70f81e0657ed1a9222fa86717524e6b": {
+        "file": "/mnt/nfs/download2/filtered/sub/688712ba9d6a4b60e7f5169b957af6fab70f81e0657ed1a9222fa86717524e6b.exe",
+        "last_submitted": "2021-04-18 14:35:04.087001",
+        "target_machine": "147.32.83.199",
+        "type_active": "",
+        "types": [
+            {
+                "internet": 1
+            },
+            {
+                "nointernet": 1
+            }
+        ]
+    }
+}
