@@ -1,0 +1,374 @@
+{
+  "resolved_apis": [
+    [
+      "advapi32.dll.CryptReleaseContext",
+      2
+    ],
+    [
+      "kernel32.dll.FindNextFileA",
+      2
+    ],
+    [
+      "kernel32.dll.GetSystemTimeAsFileTime",
+      2
+    ],
+    [
+      "kernel32.dll.RemoveVectoredContinueHandler",
+      1
+    ],
+    [
+      "kernel32.dll.RegEnumValueW",
+      1
+    ],
+    [
+      "kernel32.dll.RtlCaptureContext",
+      1
+    ],
+    [
+      "uxtheme.dll.GetThemePartSize",
+      1
+    ],
+    [
+      "dui70.dll.?GetGlobalIndex@ClassInfoBase@DirectUI@@UBEIXZ",
+      1
+    ],
+    [
+      "kernel32.dll.GetFileType",
+      1
+    ],
+    [
+      "ws2_32.dll.WSAEventSelect",
+      1
+    ],
+    [
+      "msvcrt.dll._except_handler3",
+      1
+    ],
+    [
+      "kernel32.dll.ExitThread",
+      1
+    ],
+    [
+      "kernel32.dll.SetFilePointer",
+      1
+    ],
+    [
+      "advapi32.dll.CryptAcquireContextW",
+      1
+    ],
+    [
+      "kernel32.dll.GetLogicalDriveStringsA",
+      1
+    ],
+    [
+      "msvcrt.dll.srand",
+      1
+    ],
+    [
+      "oleaut32.dll.DllGetClassObject",
+      1
+    ]
+  ],
+  "executed_commands": [
+    [
+      "dw20.exe -x -s 632",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\00354d04.bat\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\509d1b0a.bat\" \"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\674501da.bat\"",
+      1
+    ]
+  ],
+  "keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{26656EAA-54EB-4E6F-8F85-4F0EF901A406}\\ProxyStubClsid32\\(Default)",
+      2
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\S-1-5-21-2237850072-885592287-911325625-1000\\ProfileImagePath",
+      2
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\CLRLoadLogDir",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\6dc7d4c0\\1c74cc87\\9e\\LastModTime",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\System.Windows.Forms,2.0.0.0,,b77a5c561934e089,MSIL",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3a6a696d\\2620356a\\92\\DisplayName",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\Consent",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Windows Error Reporting\\Consent\\DefaultOverrideBehavior",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\MachineThrottling",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane10",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\DisableImprovedZoneCheck",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{189A9FFB-F02C-4C2A-A7D0-F3DE030208EE}",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Interface\\{BCD1DE7E-2DB1-418B-B047-4A74E101F8C1}",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{EBDD93DF-7CC7-4631-B927-16D55DE80011}\\WpadNetworkName",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\S-1-5-21-2237850072-885592287-911325625-1000",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{55272A00-42CB-11CE-8135-00AA004BB851}\\ProxyStubClsid32\\(Default)",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{2A1C9EB2-DF62-4154-B800-63278FCB8037}\\ProxyStubClsid32\\(Default)",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{3EF4DDC6-E53F-4DE5-9BA6-0D779182D71D}\\WpadDecisionReason",
+      1
+    ]
+  ],
+  "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Tracing\\JNEwqQ_RASMANCS\\FileTracingMask",
+      2
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\NIDependencies",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\Windows Error Reporting\\WMR\\Disable",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\ForceQueue",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\CorporateWerServer",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Reliability Analysis\\RAC\\RacWerSampleTime",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane15",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\ProfileList\\ProgramData",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\ProgramData",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data",
+      1
+    ]
+  ],
+  "mutexes": [
+    [
+      "Global\\bb3bb3ae-3abd-11eb-8795-7aaed4ab00fa",
+      1
+    ],
+    [
+      "IESQMMUTEX_0_208",
+      1
+    ]
+  ],
+  "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{189A9FFB-F02C-4C2A-A7D0-F3DE030208EE}\\WpadNetworkName",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{EBDD93DF-7CC7-4631-B927-16D55DE80011}\\WpadDecisionReason",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{EBDD93DF-7CC7-4631-B927-16D55DE80011}\\WpadNetworkName",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{3EF4DDC6-E53F-4DE5-9BA6-0D779182D71D}\\WpadNetworkName",
+      1
+    ]
+  ],
+  "write_files": [
+    [
+      "C:\\Program Files\\Mozilla Firefox\\uninstall\\helper.exe",
+      3
+    ],
+    [
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\GDIPFONTCACHEV1.DAT",
+      1
+    ],
+    [
+      "C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe",
+      1
+    ],
+    [
+      "C:\\tmp0e97frry\\bin\\flashplayer.exe",
+      1
+    ],
+    [
+      "C:\\tmp0e97frry\\bin\\loader.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Mozilla Firefox\\pingsender.exe",
+      1
+    ],
+    [
+      "C:\\Program Files (x86)\\Google\\Update\\1.3.36.32\\GoogleUpdateOnDemand.exe",
+      1
+    ],
+    [
+      "C:\\tmpbc4nhh6g\\bin\\loader_x64.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Google\\Chrome\\Application\\85.0.4183.83\\chrome_pwa_launcher.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Google\\Chrome\\Application\\85.0.4183.83\\notification_helper.exe",
+      1
+    ],
+    [
+      "C:\\Program Files (x86)\\Google\\Update\\1.3.36.32\\GoogleCrashHandler64.exe",
+      1
+    ],
+    [
+      "C:\\tmp2pjfx1w2\\bin\\loader.exe",
+      1
+    ]
+  ],
+  "files": [
+    [
+      "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\Gdiplus.dll",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\en-US\\iQgrxBtJjzt.resources.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Windows Sidebar\\Gadgets\\SlideShow.Gadget\\en-US\\js\\*",
+      1
+    ],
+    [
+      "C:\\Program Files\\Windows Sidebar\\Shared Gadgets\\*",
+      1
+    ],
+    [
+      "C:\\tmp8w_ftfwl\\modules\\packages\\__pycache__\\*",
+      1
+    ],
+    [
+      "C:\\Program Files\\Windows Sidebar\\Gadgets\\Calendar.Gadget\\en-US\\js\\*",
+      1
+    ],
+    [
+      "C:\\Program Files\\Windows Sidebar\\Gadgets\\CPU.Gadget\\en-US\\css\\*",
+      1
+    ]
+  ],
+  "read_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Network\\Connections\\Pbk\\_hiddenPbk\\rasphone.pbk",
+      2
+    ],
+    [
+      "C:\\Windows\\winsxs\\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23894_none_5c0be957a009922e\\GdiPlus.dll",
+      1
+    ],
+    [
+      "C:\\Windows\\Fonts\\tahoma.ttf",
+      1
+    ],
+    [
+      "C:\\Windows\\System32\\en-US\\wer.dll.mui",
+      1
+    ],
+    [
+      "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\diasymreader.dll",
+      1
+    ],
+    [
+      "C:\\tmpkpyunpkg\\bin\\psexec.exe",
+      1
+    ],
+    [
+      "C:\\tmpkpyunpkg\\bin\\loader_x64.exe",
+      1
+    ],
+    [
+      "C:\\tmp0e97frry\\bin\\loader.exe",
+      1
+    ]
+  ],
+  "delete_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\60B249AD-226D-4B72-91E9-758951B2FB48\\DSL Service\\dslsvc.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\5a3e0bdf.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\674501da.bat",
+      1
+    ]
+  ]
+}

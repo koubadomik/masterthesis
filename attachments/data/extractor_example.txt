@@ -1,0 +1,30 @@
+julia> printtree(extractor)
+Dict
+  └── behavior: Dict
+                  └── summary: Dict
+                                 ├─── created_services: Array of
+                                 │                        └── String
+                                 ├─────── delete_files: Array of
+                                 │                        └── String
+                                 ├──────── delete_keys: Array of
+                                 │                        └── Categorical d = 399
+                                 ├── executed_commands: Array of
+                                 │                        └── String
+                                 ├────────────── files: Array of
+                                 │                        └── String
+                                 ├─────────────── keys: Array of
+                                 │                        └── String
+                                 ├──────────── mutexes: Array of
+                                 │                        └── String
+                                 ├───────── read_files: Array of
+                                 │                        └── String
+                                 ├────────── read_keys: Array of
+                                 │                        └── String
+                                 ├────── resolved_apis: Array of
+                                 │                        └── String
+                                 ├─── started_services: Array of
+                                 │                        └── Categorical d = 9
+                                 ├──────── write_files: Array of
+                                 │                        └── String
+                                 └───────── write_keys: Array of
+                                                          └── Categorical d = 9992

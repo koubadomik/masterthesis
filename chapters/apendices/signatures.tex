@@ -44,6 +44,27 @@
 
 Implementation of signatures could be seen on \url{https://github.com/kevoreilly/community}. The split in the table \ref{tab:signatures_detail} denotes groups mentioned in \chapter{chap:models}.
 
+Signature entry in original report can be seen in \ref{lst:signature_example}
+
+\begin{lstlisting}[language=json, caption={Example of \emph{signature} part entries in \emph{report.json}},captionpos=b, label={lst:signature_example}]
+  {
+    "name": "dead_connect",
+    "description": "Attempts to connect to a dead IP:Port (1 unique times)",
+    "severity": 1,
+    "weight": 0,
+    "confidence": 100,
+    "references": [],
+    "data": [
+      {
+        "IP": "23.238.43.43:80"
+      }
+    ],
+    "new_data": [],
+    "alert": false,
+    "families": []
+  },
+\end{lstlisting}
+
 % \begin{figure}
 %     \centering
 %     \begin{subfigure}{.33\textwidth}

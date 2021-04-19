@@ -1,0 +1,442 @@
+{
+  "executed_commands": [
+    [
+      "\"netsh\" wlan show profile",
+      7
+    ],
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      3
+    ],
+    [
+      "\"C:\\Windows\\system32\\cmd.exe\"",
+      2
+    ],
+    [
+      "Exceptiona firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\server.exe\" \"server.exe\" ENABLE",
+      1
+    ],
+    [
+      "cmd /C mkdir C:\\Windows\\SysWOW64\\hcicbbyc\\",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\systeminfo\\azroleui.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\p2pnetsh\\XpsFilt.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Windows\\system32\\ipconfig.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\PING\\tzutil.exe\"",
+      1
+    ],
+    [
+      "cmd.exe /c ping 127.0.0.1 & del \"C:\\Users\\comp\\AppData\\Local\\Temp\\78AA.tmp\"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\ba38f08588d75d7ffd05.exe\" \"ba38f08588d75d7ffd05.exe\" ENABLE",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\27a964b4.bat\" \"",
+      1
+    ],
+    [
+      "cmd /c ping 8.8.8.8 -n 2 & C:\\Users\\comp\\AppData\\Local\\Temp\\3c7a7e711c9670fc8285.exe 0smz",
+      1
+    ],
+    [
+      "cmd /c ping 8.8.8.8 -n 2 & C:\\Users\\comp\\AppData\\Local\\Temp\\g7z30FF.exe 0smb",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\efsutil\\clbcatq.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\601a6c06.bat\" \"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\nqipjdch.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\200050ef.bat\" \"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\msidle\\shutdown.exe\"",
+      1
+    ],
+    [
+      "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\263d55857a87176a5b71.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\cmd.exe\"  /c TimeOut 1 & Del /F \"C:\\Users\\comp\\AppData\\Local\\Temp\\49fec588a4fcfebc08ff.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\aqh8CCB.tmp.bat\" \"C:\\Users\\comp\\AppData\\Local\\Temp\\64ba451d54f12c21b09f.exe\"\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\718911fd690b4d08b8f2.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "reg  add \"HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\" /v Load /t REG_SZ /d \"C:\\Users\\comp\\AppData\\Local\\Temp\\FolderN\\name.exe.lnk\" /f",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\ceb633e338c6ec948ae1.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c schtasks /create /tn HTNSPQ.exe /tr C:\\Users\\comp\\AppData\\Roaming\\Windata\\PFKESG.exe /sc minute /mo 1",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\cmd.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Robocopy\\runonce.exe\"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\Dfwmn.exe\" \"Dfwmn.exe\" ENABLE",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\cryptext\\dpnet.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\SysWOW64\\cmd.exe /c del \"C:\\Users\\comp\\AppData\\Local\\Temp\\71079b6770db403249eb.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\98789930c85fb348d026.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "C:\\Windows\\System32\\cmd.exe /C timeout /t 60 && SCHTASKS /Create /SC MINUTE /MO 1 /TN \"Service for windows Network Helper updates\" /TR C:\\ProgramData\\NetHelper\\Cache\\EOBoDjyZCJuYLoAlMWwj\\nethelper.exe /F",
+      1
+    ],
+    [
+      "schtasks.exe /create /tn comp /tr \"\\\"C:\\Users\\comp\\AppData\\Local\\_foldernamelocalappdata_\\gptext32.exe\\\" arguments\" /sc MINUTE /mo 1",
+      1
+    ],
+    [
+      "cmd /C mkdir C:\\Windows\\SysWOW64\\ezcqmkr\\",
+      1
+    ],
+    [
+      "\"C:\\Windows\\system32\\cmd.exe\" /c \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmpda314875.bat\"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\e0eb32674b1267d64b27.exe\" \"e0eb32674b1267d64b27.exe\" ENABLE",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\wusa.exe\"",
+      1
+    ],
+    [
+      "cmd /C mkdir C:\\Windows\\SysWOW64\\torfbzg\\",
+      1
+    ],
+    [
+      "\"C:\\Windows\\system32\\cmd.exe\" /c \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp1df76806.bat\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\193e6241.bat\" \"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\64fb086b.bat\" \"",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\cmd.exe\" /c \"C:\\Users\\comp\\AppData\\Roaming\\remcos\\remcos.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\00332003.bat\" \"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\server.exe\" \"server.exe\" ENABLE",
+      1
+    ],
+    [
+      "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\4cc03f40db99afd8c50a.exe\"",
+      1
+    ],
+    [
+      "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\143a4301b5ec24aef84d.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Server.exe\"",
+      1
+    ],
+    [
+      "netsh firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Local\\Temp\\system.exe\" \"system.exe\" ENABLE",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\perfts\\typeperf.exe\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\35b3616a.bat\" \"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\PING.EXE ping.exe  -n 6 127.0.0.1",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\61367a95.bat\" \"",
+      1
+    ],
+    [
+      "cmd /c schtasks /Create /TN name /XML \"C:\\Users\\comp\\AppData\\Local\\Temp\\03c3a7cda963409e9f28aa38670d3ae4.xml\"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\041c1628.bat\" \"",
+      1
+    ],
+    [
+      "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\decd02ff66099628ec87.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\PATHPING\\korwbrkr.exe\"",
+      1
+    ],
+    [
+      "cmd.exe /c ping 127.0.0.1 & del \"C:\\Users\\comp\\AppData\\Local\\Temp\\7995.tmp\"",
+      1
+    ],
+    [
+      "C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\cmdl32\\nslookup.exe\"",
+      1
+    ]
+  ],
+  "keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DefaultColor",
+      1
+    ]
+  ],
+  "resolved_apis": [
+    [
+      "advapi32.dll.StartServiceCtrlDispatcherA",
+      1
+    ],
+    [
+      "wshtcpip.dll.WSHGetBroadcastSockaddr",
+      1
+    ],
+    [
+      "cryptbase.dll.SystemFunction036",
+      1
+    ],
+    [
+      "advapi32.dll.CheckTokenMembership",
+      1
+    ],
+    [
+      "rpcrt4.dll.RpcBindingSetAuthInfoExW",
+      1
+    ],
+    [
+      "dui70.dll.?Paint@Element@DirectUI@@UEAAXPEAUHDC__@@PEBUtagRECT@@1PEAU4@2@Z",
+      1
+    ],
+    [
+      "kernel32.dll.IsProcessorFeaturePresent",
+      1
+    ],
+    [
+      "gdi32.dll.CreateDIBSection",
+      1
+    ]
+  ],
+  "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3476-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderDescriptions\\{33E28130-4E1E-4676-835A-98395C3BC3BB}\\InfoTip",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Winsock\\Mapping",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Filter",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3476-f160-11ea-9f0e-806e6f6e6963}\\Data",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DefaultColor",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\TurnOffSPIAnimations",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\CreateUriCacheSize",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Lsa\\AccessProviders\\MartaExtension",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}\\ShellFolder\\HideFolderVerbs",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist\\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\\Count\\{1NP14R77-02R7-4R5Q-O744-2RO1NR5198O7}\\FavccvatGbby.rkr",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\MapNetDrvBtn",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\napagent\\Qecs\\79619\\Config Clsid",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@C:\\Windows\\system32\\prnfldr.dll,-8036",
+      1
+    ]
+  ],
+  "write_files": [
+    [
+      "\\Device\\Http\\Communication",
+      8
+    ],
+    [
+      "\\??\\pipe\\jehvrpw",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\p2pnetsh\\XpsFilt.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\PING\\tzutil.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\efsutil\\clbcatq.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\references\\wolthuis\\5\\model51.xml",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\msidle\\shutdown.exe",
+      1
+    ],
+    [
+      "\\Device\\KsecDD",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Robocopy\\runonce.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\rhnghpfo.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Windows Sidebar\\Gadgets\\Weather.Gadget\\images\\1.png",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\perfts\\typeperf.exe",
+      1
+    ]
+  ],
+  "delete_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\systeminfo\\azroleui.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\PING\\tzutil.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\492d3068d091a831b594.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\cryptext\\dpnet.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\meg25bin.default-release\\safebrowsing\\base-fingerprinting-track-digest256.sbstore",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2648.9626953",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\perfts\\typeperf.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\PATHPING\\korwbrkr.exe:Zone.Identifier",
+      1
+    ]
+  ]
+}

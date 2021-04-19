@@ -1,0 +1,6391 @@
+[
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.102\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.AddMonitorW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\htui\\WSHTCPIP.exe.1000.Manifest"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\DataStore_V1.0"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\079734cd.bat "
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\7e90794f.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscorwks.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\MVID"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumMonitorsW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v2.0.50727\\\\\\\\RegAsm.exe\""
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\GAC_32\\CustomMarshalers\\2.0.0.0__b03f5f7f11d50a3a\\CustomMarshalers.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\181938c6\\7950e2c5\\1b\\NIDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\159a66b8\\424bd4d8\\1f\\ConfigString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\d8e810952cfcb4523e07.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\EnableExtensions"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\sqlsrv32\\wiavideo.exe.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\WantsFORDISPLAY"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\Purchase-order_62297.exe \"{path}\""
+          ],
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2876.24025453"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\19ab8d57\\c91dbb2\\a6\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_files": [
+            "\\Device\\NamedPipe\\"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\schtasks.exe\" /Create /TN \"Updates\\czANYWBxpgCY\" /XML \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp67A3.tmp\""
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\pubpol4.dat"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\5a8de2c3\\2b1a4e4\\5b\\MissingDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverExW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "rundll32  \"C:\\Users\\comp\\AppData\\Local\\Temp\\77FE.tmp\" Play \"C:\\Users\\comp\\AppData\\Local\\Temp\\07f17e0af622f2e4a65b.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent",
+            "winspool.drv.GetFormW",
+            "winspool.drv.ConfigurePortW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{3AD05575-8857-4850-9277-11B85BDB8E09}\\InProcServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\route.exe.mui"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.InitializeCriticalSectionEx",
+            "kernel32.dll.WaitForThreadpoolTimerCallbacks",
+            "kernel32.dll.SetDefaultDllDirectories",
+            "kernel32.dll.GetUserDefaultLocaleName"
+          ],
+          "read_files": [
+            "\\Device\\KsecDD"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\56b9367bd57099cd5da7.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\ir41_qcx\\nlaapi.exe.3.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InProcServer32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2876.24025718"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\24bf93f6\\6e527edf\\8e\\LastModTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\36bc0b63.bat\" \""
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\2dd6ac50\\163e1f5e\\a0\\Status"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v2.0.50727\\\\\\\\RegSvcs.exe\""
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\ConfigMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "mscoree.dll.ND_RI2"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\ConfigString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\utildll\\sqmapi.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Internet Explorer\\Security\\DisableSecuritySettingsCheck",
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Cached\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF} {000214E6-0000-0000-C000-000000000046} 0xFFFF"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Program Files\\PuTTY\\msvcr100.dll"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Authy Desktop\\Local Storage\\"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\kbd101a\\d3dim700.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\0b926fffec167ec152f2.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Interface\\{B722BCCB-4E68-101B-A2BC-00AA00404770}\\ProxyStubClsid32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\PING.EXE.mui"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\jsproxy\\linkinfo.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.AddPrinterDriverExA",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\HideFolderVerbs"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.SetPrinterDataW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\pstorsvc\\NlsData0027.exe.3.Manifest"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "REG  ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" /v \"java\" /t REG_SZ /d \"C:\\Users\\comp\\AppData\\Roaming\\IDM\\ichader.exe\" /f"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{69D2CF90-FC33-4FB7-9A0C-EBB0F0FCB43C}\\InitFolderHandler"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\ConfigMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.LocaleNameToLCID"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Xml\\d510b629bb87e2c16897b365f2b726bc\\System.Xml.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\eventvwr.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.CreateSymbolicLinkW"
+          ],
+          "read_files": [
+            "C:\\Windows\\winsxs\\FileMaps\\$$_system32_21f9a9c4a2f8b514.cdf-ms"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\19ab8d57\\c91dbb2\\a6\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\MSBuild.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.GetLocaleInfoEx"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\efb44a894165485c174d.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePortW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\QCLIPROV\\NlsData003e.exe.Config"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\regsvr32.exe -s C:\\Users\\comp\\AppData\\Local\\Temp\\1AFF83~1.DLL f1 C:\\Users\\comp\\AppData\\Local\\Temp\\1AFF83~1.EXE@2652"
+          ],
+          "resolved_apis": [
+            "winspool.drv.WaitForPrinterChange"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3f50fe4f\\17907762\\a7\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\48b89c60002dab9e048b.exe"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\en-US\\mscorrc.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\181938c6\\7950e2c5\\1b\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumPrintProcessorsW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\wtsapi32\\hid.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1405"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\AutoCheckSelect"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2776.30026546"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\LatestIndex"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\NlsLexicons0018\\fontview.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.AdvancedDocumentPropertiesA",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Nls\\Locale"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Folder\\DocObject"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\CompMgmtLauncher.exe\""
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2868.27621937"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDUR\\iprtrmgr.exe:Zone.Identifier"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "DisableUserModeCallbackFilter"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\SystemFileAssociations\\.exe\\NeverShowExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.AddPrinterDriverExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\inetmib1\\kerberos.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{11CD958A-C507-4EF3-B3F2-5FD9DFBD2C78}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\2dd6ac50\\163e1f5e\\a0\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\msvcr100.dll",
+            "C:\\Program Files\\PuTTY\\msvcr100.dll"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\VAN\\{19b9dcc7-6f37-4dc7-9da6-8af601c5fce2}\\DisplayName",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\4f99a7c9\\53bea2b0\\39\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\3cca06a0\\6dc7d4c0\\13\\MissingDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\System32\\wbem\\msvcr100.dll"
+          ],
+          "read_files": [
+            "\\Device\\KsecDD"
+          ],
+          "mutexes": [
+            "btirweunhdtr-comp"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "files": [
+            "C:\\Program Files (x86)\\Windows Sidebar\\Gadgets\\Currency.Gadget\\icon.png"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\5280ad5f3e72ddb0cf41.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterDriversW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\OnLineIDCpl\\raschap.exe.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\QueryForInfoTip"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\wmi\\FXSEXT32.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverPackageW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Security\\DisableSecuritySettingsCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\f50fc0303d3df18d0849.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log4BBE.tmp"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountSidLocalW"
+          ],
+          "read_files": [
+            "\\Device\\KsecDD"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2976.9626375"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\3bab0d3a.bat\" \""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3a1cefe1b7be7b33c159.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverDirectoryW"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\ccdcdab88ef1d1d2149f.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\28a595f1fc9773d9ffbd.exe\" 2 2768 16823531"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\424bd4d8\\1c83327b\\a5\\LastModTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountSidLocalW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6522.tmp"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent",
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6522.tmp"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\SQMClient\\Windows\\DisabledSessions\\MachineThrottling",
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\GRE_Initialize"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\msvcr100.dll"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\627dc6c8\\PC"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\26a982d045b9d87eb103.exe\" 2 2252 16829828"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Notepad\\iMarginLeft"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\GAC_32\\mscorlib\\2.0.0.0__b77a5c561934e089\\mscorlib.INI"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\GAC_MSIL\\System.Windows.Forms\\2.0.0.0__b77a5c561934e089\\System.Windows.Forms.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\PublisherPolicy\\Default\\policy.2.0.System.Runtime.Remoting__b77a5c561934e089",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane4"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\2dd6ac50\\163e1f5e\\a0\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\PresentationHostProxy\\dccw.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\*"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\msfeedssync\\shsetup.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.FlushPrinter",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CLASSES_ROOT\\.exe"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoWebView"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\b242562488e79dd22308.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.AddPortW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\b242562488e79dd22308.exe.3.Manifest"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "mutexes": [
+            "Local\\WinSpl64To32Mutex_ea79_0_2000"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "winspool.drv.SetPrinterW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\be0268b59271185c682f.exe\""
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\41e41228.bat"
+          ],
+          "resolved_apis": [
+            "urlmon.dll.CoInternetIsFeatureEnabledForUrl"
+          ],
+          "files": [
+            "C:\\Program Files\\VideoLAN\\VLC\\lua\\http\\dialogs\\*"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\SearchIndexer\\NlsLexicons081a.exe.3.Manifest"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ShellCompatibility\\Applications\\7eb1d3ba3690ea3a01f0.exe"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\wbem\\msvcr100.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\f4d6d997b3623b63efa6.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\EnableExtensions"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2980.10826390"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\RegSvcs.exe.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\CustomMarshalers,2.0.0.0,,b03f5f7f11d50a3a,x86"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\5e92b2ec690517a1c426.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v4.0.30319\\\\\\\\MSBuild.exe\""
+          ],
+          "files": [
+            "C:\\Windows\\System32\\UxTheme.dll.Config"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\reg.exe\" add \"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" /v \"KeybordDriver\" /t REG_SZ /d \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Windows Objects\\wmimic.exe\\\" winstart\" /f"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2900.22824484"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{A520A1A4-1780-4FF6-BD18-167343C5AF16}\\Roamable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Program Files\\PuTTY\\msvcr100.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\78980d1625f3788b42bc.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ndishc\\mstime.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent",
+            "wlanmsm.exe.B56wrg7Qrxtth"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Internet Explorer\\Security\\DisableSecuritySettingsCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\pstorsvc\\remotepg.exe:Zone.Identifier"
+          ],
+          "resolved_apis": [
+            "winspool.drv.SetPrinterW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "\\??\\pipe\\MSSE-6787-server"
+          ],
+          "read_files": [
+            "\\??\\pipe\\MSSE-6787-server"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\__tmp_rar_sfx_access_check_1221296"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2960.27626312"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\4f99a7c9\\53bea2b0\\39\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v4.0.30319\\\\\\\\MSBuild.exe\\xdd<\\xf1\\x01\\xfe\\xff\\xff\\xff\\x201eq}\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.CreateThreadpoolWait"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\bthudtask\\dllhost.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverDirectoryW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Nls\\CustomLocale"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\SysWOW64\\rundll32.exe \"C:\\Users\\comp\\AppData\\Local\\Scirzowxrvo\\nlfzdmzffc.bec\",Control_RunDLL"
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\f5e97ab0d4a91e0f03e8.dll"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Argovi\\epiou.ize.124.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Folder\\IsShortcut"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\iexplore.exe\\DisableUserModeCallbackFilter"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2976.32424843"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.SpoolerPrinterEvent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\NlsData0816\\SystemPropertiesAdvanced.exe.2.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.103\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\d31dfcd09b88af6bcea1.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\CTF\\KnownClasses"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\PinToNameSpaceTree"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\inseng\\KernelBase.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.#207",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Drive\\shellex\\FolderExtensions\\{fbeb8a05-beee-4442-804e-409d6c4515e9}\\DriveMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\dskquoui\\KBDIT.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Folder\\DocObject"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\PING.EXE ping.exe  -n 6 127.0.0.1"
+          ],
+          "write_files": [
+            "\\Device\\LanmanDatagramReceiver"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountSidLocalW"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Windows\\winsxs\\FileMaps\\$$_system32_21f9a9c4a2f8b514.cdf-ms"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\MachineThrottling"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2824.3622171"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.ActivateActCtx"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\WaitForNameErrorOnAll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.#212",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\hdwwiz\\TapiUnattend.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\AllFilesystemObjects\\ShellEx\\{2F711B17-773C-41D4-93FA-7F23EDCECB66}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowInfoTip"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\11217e54.bat\" \""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "resolved_apis": [
+            "winhttp.dll.WinHttpConnect"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders\\{b155bdf8-02f0-451e-9a26-ae317cfd7779}\\SuppressionPolicy"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "mutexes": [
+            "btirweunhdtr-comp"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\regapi\\mfps.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.SetDefaultPrinterW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows\\CEIPEnable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\netruntime\\Ag8iNOUQjLOQlwcrcTpzNZzI0paYs5.bat\" \""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}\\ParentFolder"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\39b0e1025bddf4843a24.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.SetThreadStackGuarantee",
+            "kernel32.dll.WaitForThreadpoolTimerCallbacks"
+          ],
+          "read_files": [
+            "\\Device\\KsecDD"
+          ],
+          "keys": [
+            "DisableUserModeCallbackFilter"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\wwrE9A8.tmp.bat\" \"C:\\Users\\comp\\AppData\\Local\\Temp\\7a42c6c41aa0c395c806.exe\"\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{0F214138-B1D3-4A90-BBA9-27CBC0C5389A}\\InitFolderHandler"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{CAC52C1A-B53D-4EDC-92D7-6B2E8AC19434}\\Category"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\ProgramData\\yfr98D0.tmp.bat\" \"C:\\Users\\comp\\AppData\\Local\\Temp\\c46633f6a9cd1b378d2e.exe\"\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{1B3EA5DC-B587-4786-B4EF-BD1DC332AEAE}\\RelativePath"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowTypeOverlay"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\5a8de2c3\\2b1a4e4\\5b\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2928.19228921"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\System.Security,2.0.0.0,,b03f5f7f11d50a3a,MSIL"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\85bf4deb47e2e0fb1317.exe \"{path}\""
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\GAC_MSIL\\System.Configuration\\2.0.0.0__b03f5f7f11d50a3a\\System.Configuration.INI"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\357ee49a\\7d2df0ec\\6b\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist\\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\\Count\\{6Q809377-6NS0-444O-8957-N3773S02200R}\\IvqrbYNA\\IYP\\iyp.rkr"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoEncryptOnMove"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\36629a739c84edc4c727.exe\""
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Tracing\\e846df33b958032e9fbf_RASMANCS\\ConsoleTracingMask"
+          ],
+          "mutexes": [
+            "60b249ad-226d-4b72-91e9-758951b2fb48{846ee340-7039-11de-9d20-806e6f6e6963}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.3008.33653843"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\index1e1\\ILUsageMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\3d6353b2.bat\" \""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.VisualBasic\\8.0.0.0__b03f5f7f11d50a3a\\Microsoft.VisualBasic.INI"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Core\\917f6b4a9e4407e8515dee543cdbe63e\\System.Core.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\424bd4d8\\1c83327b\\a5\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\61e7e666\\c991064\\12\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.VisualBasic\\8.0.0.0__b03f5f7f11d50a3a\\Microsoft.VisualBasic.INI"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\475dce40\\67f29a3e\\a4\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2904.26425218"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\6faf58\\19ab8d57\\1e\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDCZ2\\NlsData001b.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\fdedfdf365430768b839.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.SetJobW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\BrowseInPlace"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableAdapterDomainNameRegistration"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\drt\\WMASF.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\BrowseInPlace"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{01979c6a-42fa-414c-b8aa-eee2c8202018}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoEncryptOnMove"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDataW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\QueryForInfoTip",
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ShellState"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\c5a5bd8be58583416d09.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\64bit\\security.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_64\\IL\\6dc7d4c0\\1c74cc87\\c4\\LastModTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\GACChangeNotification\\Default\\System.Runtime.Remoting,2.0.0.0,,b77a5c561934e089,MSIL"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDataW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{945a8954-c147-4acd-923f-40c45405a658}.check.42\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\vbc.exe\" /stext \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp6896.tmp\""
+          ],
+          "read_files": [
+            "C:\\Windows\\System32\\UxTheme.dll.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\75638fee\\27002c8f\\a3\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.AdvancedDocumentPropertiesA",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System\\638819a4449064c0dd85ee3588fd9340\\System.ni.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\109d7e79\\357ee49a\\3f\\NIDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\uninstall.exe /log install\"\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane5",
+            "HKEY_CURRENT_USER\\Software\\Classes\\http\\shell\\open\\command\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6244.tmp"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\GlobalSession"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\lpk\\SearchFilterHost.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\089e88f86f8f5199c9cd.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrintProvidorW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Internet Explorer\\Security"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\01de5f24.bat\" \""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\01de5f24.bat"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log636D.tmp"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log636D.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\OLE\\AppCompat\\RaiseDefaultAuthnLevel"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\09b342d9.bat\" \""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "files": [
+            "C:\\Program Files\\VideoLAN\\VLC\\locale\\zh_TW\\*"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\System.Xml,2.0.0.0,,b77a5c561934e089,MSIL"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sxs.dll.SxsOleAut32MapConfiguredClsidToReferenceClsid"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2912.3625781"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\5a8de2c3\\2b1a4e4\\5b\\NIDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c157094755f108ba39c9.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\WMVSENCD\\netevent.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrintProcessorW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2888.1224734"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\5a8de2c3\\2b1a4e4\\5b\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\NlsData0816\\SystemPropertiesAdvanced.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\ForceCopyACLWithFile"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\ujq222C.tmp.bat\" \"C:\\Users\\comp\\AppData\\Local\\Temp\\76fabfdaefb12f77c031.exe\"\""
+          ],
+          "resolved_apis": [
+            "sfc.dll.SfcIsFileProtected"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "DisableUserModeCallbackFilter"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GRE_Initialize\\DisableMetaFiles"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log828D.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\GlobalSession"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\Microsoft.VisualBasic,8.0.0.0,,b03f5f7f11d50a3a,MSIL"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log66C8.tmp"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Rpc\\Extensions\\RemoteRpcDll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\MachineThrottling"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\f3fcc8c4c65e6d2ba1ee.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\NlsLexicons0009\\napipsec.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dxtrans\\KBDLT.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Hidden"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.CorePrinterDriverInstalledW"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\api-ms-win-core-fibers-l1-1-1.DLL"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.AddPrinterConnectionW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ShellCompatibility\\Objects\\{66742402-F9B9-11D1-A202-0000F81FEDEE}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\EnableBalloonTips"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\28158558\\__tmp_rar_sfx_access_check_7227453"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\xpsservices\\rastapi.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Rpc\\Extensions\\NdrOleExtDLL"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Security\\DisableFixSecuritySettings"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\20e8dace516d8039ecfd.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideFileExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.InstallPrinterDriverFromPackageW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\mcbuilder\\docprop.exe.Config"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\ShellEx\\IconHandler"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\d3dxof\\shfolder.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrintProvidorW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\devobj\\msjter40.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\secproc_ssp\\sdiageng.exe.2.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideIcons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverDirectoryW"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\cd906a510d3b844b2ee8.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "mutexes": [
+            "qazwsxedc"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\termmgr\\msoeacct.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\00fbb8780d3bb8bda103.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Directory\\BrowseInPlace"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\v2.0.50727\\\\MSBuild.exeb\""
+          ],
+          "files": [
+            "C:\\Windows\\System32\\UxTheme.dll.Config"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2976.1225093"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\109d7e79\\357ee49a\\3f\\MVID"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2912.14424734"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumMonitorsW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterConnectionW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\rundll32\\Display.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.SetPrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\38689534\\__tmp_rar_sfx_access_check_31226046"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\f729f8559aead8f565d4.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.#207",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverPackageW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountSidLocalW"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\181938c6\\7950e2c5\\1b\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "Hassan firewall add allowedprogram \"C:\\Users\\comp\\AppData\\Roaming\\WindowsSystem.exe\" \"WindowsSystem.exe\" ENABLE"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\6dc7d4c0\\1c74cc87\\9e\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v4.0.30319\\\\\\\\MSBuild.exe\""
+          ],
+          "files": [
+            "C:\\Windows\\System32\\UxTheme.dll.Config"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\ieaksie\\KBDUS.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ShellState"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\PING.EXE ping.exe  -n 6 127.0.0.1"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\calc.exe"
+          ],
+          "read_files": [
+            "\\DEVICE\\NETBT_TCPIP_{3DF8548A-CA81-417C-AD72-445187C06A79}",
+            "\\DEVICE\\NETBT_TCPIP_{846EE342-7039-11DE-9D20-806E6F6E6963}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\$Recycle.Bin\\S-1-5-21-2237850072-885592287-911325625-1000\\$I2KMSXR.txt"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\en\\SurveillanceExClientPlugin.resources.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\LastModTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverPackageW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\41c04c7e\\7f3b6ac4\\98\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\xwizard\\NlsData0002.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\cdd97e454e78f5a53858.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterKeyW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "schtasks.exe /Create /TN \"Updates\\EUfYRs\" /XML \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp1121.tmp\""
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\GAC_MSIL\\System.Windows.Forms\\2.0.0.0__b77a5c561934e089\\System.Windows.Forms.dll",
+            "C:\\Windows\\assembly\\GAC_32\\mscorlib\\2.0.0.0__b77a5c561934e089\\sorttbls.nlp",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscorrc.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{5E6C858F-0E22-4760-9AFE-EA3317B67173}\\Description"
+          ],
+          "mutexes": [
+            "Global\\CLR_CASOFF_MUTEX"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{DF7266AC-9274-4867-8D55-3BD661DE872D}\\PublishExpandedPath"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\wusa.exe\""
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledProcesses\\B006B342"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\6f06001f\\475dce40\\1c\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.SetThreadStackGuarantee"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\GlobalSession"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDTURME\\api-ms-win-crt-conio-l1-1-0.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetCorePrinterDriversW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting\\Disabled"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\d589d4776afaaac7b752.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GRE_Initialize\\DisableMetaFiles"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\RegSvcs.exe \"{path}\""
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\MissingDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\installutil /logtoconsole=false /logfile= /u \"C:\\Users\\comp\\AppData\\Local\\Temp\\e161ec8af4ae4b055ca4.exe\""
+          ],
+          "resolved_apis": [
+            "msvcrt.dll._set_error_mode"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\GAC\\PublisherPolicy.tme"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\24bf93f6\\6e527edf\\8e\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DisableUNCCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\5af443fbb6aa4ae35f99.exe \"{path}\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\2dd6ac50\\163e1f5e\\a0\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "mutexes": [
+            "Global\\acdcae37-3517-11eb-81db-4e7c77f3845b"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3ced59c5\\3dc46903\\9c\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd /c choice /t 10 /d y & attrib -h \"C:\\Users\\comp\\AppData\\Local\\Temp\\37a30621364d3083424b.exe\" & del \"C:\\Users\\comp\\AppData\\Local\\Temp\\37a30621364d3083424b.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\DriverStore\\FileRepository\\mcx2.inf_amd64_neutral_8cf9cade8f7bba56\\*"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\eventvwr.exe\""
+          ],
+          "read_files": [
+            "C:\\Windows\\winsxs\\FileMaps\\$$_system32_21f9a9c4a2f8b514.cdf-ms"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\1953c6a87b553974b689.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\machine.config"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\cmd.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\nsk638C.tmp"
+          ],
+          "resolved_apis": [
+            "winspool.drv.PlayGdiScriptOnPrinterIC"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\DllNXOptions\\UseFilter"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\DllNXOptions\\UseFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\24bf93f6\\6e527edf\\8e\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6B5C.tmp"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winhttp.dll.WinHttpSetStatusCallback"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\comp\\{F8AEBC31-B2FA-65C2-4200-9349405F008C}\\Udohac32.png"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6FD1.tmp"
+          ],
+          "resolved_apis": [
+            "advapi32.dll.LookupAccountSidW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6FD1.tmp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledProcesses\\A4CAE9E1"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2632.31224328"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\index1e1\\ILUsageMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrintProcessorW"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\ReAgentc\\RpcRtRemote.exe.Config"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\ReAgentc\\RpcRtRemote.exe.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\InProcServer32\\(Default)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System\\638819a4449064c0dd85ee3588fd9340\\System.ni.dll",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\2dd6ac50\\163e1f5e\\a0\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\api-ms-win-core-datetime-l1-1-1.DLL"
+          ],
+          "mutexes": [
+            "dfthorbnjcomp"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\mspatcha\\KBDHAU.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePortW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{2227A280-3AEA-1069-A2DE-08002B30309D}\\{B725F130-47EF-101A-A5F1-02608C9EEBAC} 10"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\DDORes\\avicap32.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.UploadPrinterDriverPackageW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPropertiesMyComputer"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Rpc\\Extensions\\NdrOleExtDLL"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\WantsUniversalDelegate",
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\midimap\\dplayx.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.104\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\f6e8397\\3e045c21\\8f"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\40ff9ac67eaadb1650b8.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winhttp.dll.WinHttpOpenRequest"
+          ],
+          "files": [
+            "C:\\Program Files\\VideoLAN\\VLC\\locale\\sl\\*"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\SysWOW64\\schtasks.exe\" /create /tn setx /tr \"C:\\Users\\comp\\AppData\\Roaming\\CapabilityAccessHandlers\\sfc.exe\" /sc  minute /mo 1 /F"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\explorer\\FolderDescriptions\\{374DE290-123F-4565-9164-39C4925E467B}\\Icon"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\f6e8397\\3e045c21\\8f\\LastModTime"
+          ],
+          "mutexes": [
+            "Global\\CLR_CASOFF_MUTEX"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "winspool.drv.AddPrinterDriverExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\IconsOnly"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\CertEnrollUI\\api-ms-win-crt-runtime-l1-1-0.exe:Zone.Identifier"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\SeparateProcess"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\bb80042faa8b947b9caf.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "mutexes": [
+            "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\7f2008fd.bat\" \""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "files": [
+            "C:\\Program Files (x86)\\Windows Sidebar\\Gadgets\\Currency.Gadget\\images\\*"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winhttp.dll.WinHttpSendRequest"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\{1616CA81-15AC-1892-0732-B0B1F32653DC}\\Axewac.png"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\{1616CA81-15AC-1892-0732-B0B1F32653DC}\\Axewac.png"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2824.16820546"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\c991064\\5086dba8\\99\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v2.0.50727\\\\\\\\MSBuild.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\30bc7c4f\\3f50fe4f\\20\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\dhcpcmonitor\\kbdgeoer.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\2\\1000"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{7007ACC7-3202-11D1-AAD2-00805FC1270E}\\ShellFolder\\QueryForInfoTip"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\50c21fe7.exe"
+          ],
+          "resolved_apis": [
+            "winhttp.dll.WinHttpReadData"
+          ],
+          "files": [
+            "C:\\Program Files\\VideoLAN\\VLC\\locale\\cy\\LC_MESSAGES\\*"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\EnableExtensions"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePortW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2928.33625203"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\f6e8397\\3e045c21\\8f\\SIG"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\untfs\\certcli.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\c25213d1f204698ff627.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterDriversW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\7dba3276.bat\" \""
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DefaultColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\machine.config"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\7f7c4f226cfdced09a0b.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetCorePrinterDriversW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCompColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\winusb\\fphc.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetCorePrinterDriversW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GRE_Initialize\\DisableMetaFiles"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.CorePrinterDriverInstalledW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Folder\\DocObject"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideIcons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.SetThreadStackGuarantee"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3ced59c5\\3dc46903\\9c\\LastModTime"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3f50fe4f\\17907762\\a7\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.AddPortExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{DAB69A6A-4D2A-4D44-94BF-E0091898C881}\\LastKnownState"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.100\\CheckSetting"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\SeparateProcess",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders\\{9113A02D-00A3-46B9-BC5F-9C04DADDD5D7}\\SuppressionPolicy"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountSidLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log66B8.tmp"
+          ],
+          "keys": [
+            "DisableUserModeCallbackFilter"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\ThreadingModel",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Rpc\\Extensions\\RemoteRpcDll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\ProgramData\\IObit"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2932.31224437"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\3cca06a0\\6dc7d4c0\\13\\ConfigMask"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\bbd8018edbeaa00dae37.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\MuiCache\\5\\52C64B7E\\@C:\\Windows\\system32\\netshell.dll,-1200"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\LastModTime"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Windows Error Reporting\\LoggingDisabled"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\keyiso\\dmintf.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverPackageW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\SystemFileAssociations\\.exe\\AlwaysShowExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ipsecsnp\\hlink.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NoFileFolderConnection"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\stobject\\autochk.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\Directory"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\7f261f87.bat\" \""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\292b44287392ffa0c588.exe\""
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data",
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\\Interfaces\\{846EE342-7039-11DE-9D20-806E6F6E6963}"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "write_files": [
+            "\\Device\\KsecDD"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\MachineThrottling"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\VAN\\{E1DE74AD-C368-4104-ADB1-57D00577247A}\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "advapi32.dll.LookupAccountSidW"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2668.14425484"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\GAC_32\\CustomMarshalers\\2.0.0.0__b03f5f7f11d50a3a\\CustomMarshalers.INI"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\141dfd70\\96f8a9\\49\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\KBDMLT47.exe"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Security\\DisableFixSecuritySettings"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\spbcd\\kbdax2.exe.Config"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\prnntfy\\icm32.exe.Config"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\KBDLAO\\NlsLexicons0001.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\AuthFWSnapin\\vdsvd.exe.Config"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\ShellFolder\\HasNavigationEnum"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\msvcr100.dll"
+          ],
+          "mutexes": [
+            "734100A23531365D776C388D0BBD014E5C3A8244"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.104\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.FlsSetValue"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Security\\3e6ee87e1c438531b00a001343a76362\\System.Security.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\109d7e79\\357ee49a\\3f\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\4f99a7c9\\53bea2b0\\39\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\meg25bin.default-release\\datareporting\\archived\\2020-09\\v8_context_snapshot.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\SysWOW64\\dllhost.exe\""
+          ],
+          "delete_files": [
+            "C:\\Windows\\SysWOW64\\dllhost.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.WaitForThreadpoolTimerCallbacks"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsValidLocaleName"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\UxTheme.dll.Config"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\181938c6\\7950e2c5\\1b\\MissingDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\4251b66d1f657c488f01.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "write_files": [
+            "G:\\4251b66d1f657c488f01.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.GetModuleFileNameW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\3cca06a0\\6dc7d4c0\\13\\MissingDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\8e99f5fd03a8139fe46d.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\KBDUK\\api-ms-win-crt-convert-l1-1-0.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.AddPrintProvidorW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\SystemFileAssociations\\.exe\\NeverShowExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\ole32\\wuwebv.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.DeleteMonitorW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\fd864a775babbb4d6b87.exe.3.Manifest",
+            "C:\\Users\\comp\\AppData\\Local\\ole32\\wuwebv.exe.2.Manifest"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\d757166031f827bafc4b.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\SeparateProcess"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\enterprisesec.config.cch.2960.10826265"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\4f99a7c9\\53bea2b0\\39\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\system\\msvcr100.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2912.31221718"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\109d7e79\\357ee49a\\3f\\NIDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\475dce40\\67f29a3e\\a4\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Tasks\\owqdjs.job"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\ir_ext_temp_0\\autorun.exe\" \"SFXSOURCE:C:\\Users\\comp\\AppData\\Local\\Temp\\985bc1027ad2c2656ede.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.EnumFormsW"
+          ],
+          "mutexes": [
+            "DirectSound Administrator shared thread array (lock)"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\1e6249ee7f5ce3ffe5b3.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "write_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.CopyFileW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Nls\\Language Groups"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\3cca06a0\\6dc7d4c0\\13\\EvalationData"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe"
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\P2PGraph\\hhsetup.exe\""
+          ],
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "mutexes": [
+            "Local\\WinSpl64To32Mutex_ea2a_0_2000"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.CreatePrinterIC"
+          ],
+          "files": [
+            "C:\\Windows\\winsxs\\amd64_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.4940_none_88df89932faf0bf6\\msvcr80.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_64\\mcstore\\75eed8a4f9f282c71e72a1927508ed3f\\mcstore.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\MediaPlayer\\Preferences\\TrackFoldersDirectories0"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd /C mkdir C:\\Windows\\SysWOW64\\pknbxvc\\"
+          ],
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Windows\\winsxs\\FileMaps\\$$_system32_21f9a9c4a2f8b514.cdf-ms"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\S-1-5-21-2237850072-885592287-911325625-1000"
+          ],
+          "write_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Buses\\Config0"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v4.0.30319\\\\\\\\MSBuild.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Control Panel\\Mouse\\SwapMouseButtons"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2816.6021390"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.CopyFileW"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\Lzma#.exe"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\a054161\\46043f61"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\475dce40\\67f29a3e\\a4\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\14f270ec4236592b1e74.exe"
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetCorePrinterDriversW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3479-f160-11ea-9f0e-806e6f6e6963}\\Data"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "winspool.drv.AddPrinterW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\networkexplorer\\subst.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.101\\CheckSetting"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\4f99a7c9\\53bea2b0\\39\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2692.16825093"
+          ],
+          "resolved_apis": [
+            "mscoree.dll.GetProcessExecutableHeap"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SQMClient\\Windows\\DisabledSessions\\GlobalSession"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\0e25e4a05fadbcb038a3.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\7ff6d44945c408d4b15b.exe \"{path}\""
+          ],
+          "resolved_apis": [
+            "sxs.dll.SxsOleAut32MapConfiguredClsidToReferenceClsid"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll",
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\2bbc3aad.bat\" \""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\gpscript\\comrepl.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{945a8954-c147-4acd-923f-40c45405a658}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting\\Disabled"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\40ef9adfcf675caf8054.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsDebuggerPresent"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane16"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane9"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "ws2_32.dll.WSAGetOverlappedResult"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\ConfigString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\4c1794f0b7e028c9ba08.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\0bd02630044b47b1e8ac.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DisableUNCCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Users\\comp\\AppData\\Local\\Temp\\7b492640.bat\" \""
+          ],
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\vbc.exe\" /stext \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmp479D.tmp\""
+          ],
+          "resolved_apis": [
+            "winhttp.dll.WinHttpGetProxyForUrl"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\DisplayName",
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\c991064\\5086dba8\\99\\DisplayName"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\MulticastSenderFlags"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "mscoree.dll.IEE"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\System.Xml,2.0.0.0,,b77a5c561934e089,MSIL"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\24bf93f6\\6e527edf\\8e"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\GACChangeNotification\\Default\\mscorlib,2.0.0.0,,b77a5c561934e089,x86"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v2.0.50727\\\\\\\\MSBuild.exe\""
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\Microsoft.VisualBas#\\616da2b61467febe7ba589dbad1f0839\\Microsoft.VisualBasic.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\19ab8d57\\c91dbb2\\a6\\Modules"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\ProgramData\\LNVG17IJZBKBKFOQA1BRAZZ8L\\files\\passwords.txt"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\msjet40\\KBDGEO.exe.3.Manifest"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Security Center\\AutoUpdateDisableNotify"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2904.13224796"
+          ],
+          "files": [
+            "C:\\Windows\\assembly\\GAC_32\\mscorlib\\2.0.0.0__b77a5c561934e089\\sortkey.nlp"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\PeerDist\\HostedCache\\MaxPendingDownloads"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "read_files": [
+            "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\CONFIG\\security.config.cch.2920.27626593"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\6faf58\\19ab8d57\\1e\\ILDependencies"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\itircl\\LAPRXY.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.AddPrintProvidorW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\itircl\\LAPRXY.exe.3.Manifest"
+          ],
+          "keys": [
+            "HKEY_CLASSES_ROOT\\ExplorerCLSIDFlags\\{66742402-F9B9-11D1-A202-0000F81FEDEE}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPropertiesMyComputer"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\16c04f8dfc9cddacd2d9.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Providers\\EventLog\\{A5268B8E-7DB5-465b-BAB7-BDCDA39A394A}"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\xcopy\\twext.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.DocumentPropertiesW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Security Center\\AutoUpdateDisableNotify"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\586dde5090c799890db3.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2976.15625843"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\Status"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\nsv5795.tmp"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Windows\\system\\msvcr100.dll"
+          ],
+          "mutexes": [
+            "60b249ad-226d-4b72-91e9-758951b2fb48{846ee340-7039-11de-9d20-806e6f6e6963}"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\9c859acb2313ca18c689.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPropertiesMyComputer"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.InitializeCriticalSectionAndSpinCount"
+          ],
+          "files": [
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\fusion.localgac"
+          ],
+          "mutexes": [
+            "Global\\CLR_CASOFF_MUTEX"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_64\\IL\\19ab8d57\\c91dbb2\\cb\\LastModTime"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumPrinterDataW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Rpc\\Extensions\\RemoteRpcDll"
+          ],
+          "mutexes": [
+            "Local\\WinSpl64To32Mutex_eedf_0_2000"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCompColor"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\AppDataLow\\Software\\{1C1C1C1C-1C1C-1C1C-1C1C-1C1C1C1C1C1C}\\00101CF2\\3b69d93a365302ba7"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\LanguagePack\\SurrogateFallback\\Plane8"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\zwnwiarjs.yju"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\WebClient\\NetworkProvider\\Class",
+            "HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{EB082BA1-DF8A-46BE-82F3-35BF9E9BE52F}"
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableDAForAllNetworks"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\566538c1908aed56c8d4.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "read_files": [
+            "C:\\mirc\\mirc.ini"
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\ef41c26328181e0f1723.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\ReNotifyCount"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.EnumPortsW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "files": [
+            "C:\\Users\\comp\\AppData\\Local\\api-ms-win-security-lsalookup-l1-1-0\\api-ms-win-core-file-l1-1-0.exe:Zone.Identifier"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\\ShellFolder\\CallForAttributes"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverExW"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\admparse\\davhlpr.exe\""
+          ],
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDriverPackagePathW"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\exefile\\AlwaysShowExt"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.GetPrinterDataExW",
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ShellCompatibility\\Applications\\8b59618e30053c3a3284.exe"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\SeparateProcess"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "winspool.drv.DeletePrinterDriverPackageW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\3d9428da16fae6ccbcc6.exe.Config"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Security Center"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\DelegateFolders\\{b155bdf8-02f0-451e-9a26-ae317cfd7779}\\SuppressionPolicy"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\LogFailures"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\netdiagfx\\WmpDui.exe"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "sechost.dll.LookupAccountNameLocalW"
+          ],
+          "read_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log6031.tmp"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\log701F.tmp"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{3E5FC7F9-9A51-4367-9063-A120244FBEC7}\\InprocServer32\\InprocServer32"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\Temp\\af3c3931b3832cc8183a.exe\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ],
+          "read_keys": [
+            "DisableUserModeCallbackFilter"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Users\\comp\\AppData\\Local\\mstscax\\wlanhlp.exe\""
+          ],
+          "delete_files": [
+            "C:\\Users\\comp\\AppData\\Local\\Temp\\cc55a446d53f5369a08f.exe"
+          ],
+          "resolved_apis": [
+            "kernel32.dll.IsProcessorFeaturePresent"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "C:\\Windows\\system32\\cmd.exe /c echo on error resume next:CreateObject(\"WScript.Shell\").Run \"C:\\Users\\comp\\AppData\\Local\\Temp\\2753a150a2e3d7184413.exe\",1: >\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\x.vbs\""
+          ],
+          "resolved_apis": [
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\c111c573e41b4fe55c7c.exe\""
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\CompletionChar"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "resolved_apis": [
+            "kernel32.dll.WaitForThreadpoolTimerCallbacks",
+            "kernel32.dll.SetConsoleInputExeNameW"
+          ],
+          "keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Tracing\\QNlILm_RASMANCS\\EnableConsoleTracing"
+          ],
+          "mutexes": [
+            "IESQMMUTEX_0_208"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\DisableUNCCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\rundll32.exe\" C:\\Windows\\system32\\shell32.dll,OpenAs_RunDLL C:\\Users\\comp\\AppData\\Local\\Temp\\4f9b6fef2832a7c1196a.doc"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_64\\System.Runtime.Seri#\\f1089da212b779e0beefabf4898107ee\\System.Runtime.Serialization.Formatters.Soap.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_64\\NI\\4ed0765e\\41c04c7e\\c7\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd.exe /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\2372c12bf9bb289210f9.exe\""
+          ],
+          "mutexes": [
+            "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DisableUNCCheck"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\NI\\1c22df2f\\4f99a7c9\\6a\\DisplayName"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "cmd /C mkdir C:\\Windows\\SysWOW64\\mhkyusz\\"
+          ],
+          "files": [
+            "C:\\Windows\\System32\\wbem\\msvcr100.dll"
+          ],
+          "read_files": [
+            "C:\\Windows\\winsxs\\FileMaps\\$$_system32_21f9a9c4a2f8b514.cdf-ms"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\System32\\cmd.exe\"  /c ping.exe -n 6 127.0.0.1 &  type \"C:\\Windows\\System32\\calc.exe\" > \"C:\\Users\\comp\\AppData\\Local\\Temp\\e00c9748bf093a39159a.exe\""
+          ],
+          "keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\AutoRun"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "executed_commands": [
+            "\"C:\\Windows\\system32\\cmd.exe\" /c \"C:\\Users\\comp\\AppData\\Local\\Temp\\tmpd51d95a5.bat\""
+          ],
+          "mutexes": [
+            "Global\\{6239D085-EAF3-7A2B-A3E8-E5A1D9268868}"
+          ],
+          "read_keys": [
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\EnableExtensions"
+          ]
+        }
+      }
+    }
+  ],
+  [
+    {
+      "behavior": {
+        "summary": {
+          "files": [
+            "C:\\Users\\comp\\AppData\\Roaming\\60B249AD-226D-4B72-91E9-758951B2FB48\\catalog.dat"
+          ],
+          "read_files": [
+            "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll"
+          ],
+          "mutexes": [
+            "Global\\CLR_CASOFF_MUTEX"
+          ],
+          "read_keys": [
+            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\3f50fe4f\\17907762\\a7\\Status"
+          ]
+        }
+      }
+    }
+  ]
+]

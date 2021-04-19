@@ -1,0 +1,308 @@
+{
+  "resolved_apis": [
+    [
+      "advapi32.dll.SetSecurityDescriptorDacl",
+      2
+    ],
+    [
+      "advapi32.dll.RegSetValueExW",
+      1
+    ],
+    [
+      "comctl32.dll.#338",
+      1
+    ],
+    [
+      "comctl32.dll.#321",
+      1
+    ],
+    [
+      "comctl32.dll.#385",
+      1
+    ]
+  ],
+  "keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Command Processor\\CompletionChar",
+      1
+    ]
+  ],
+  "executed_commands": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      10
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W",
+      5
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe",
+      4
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      3
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\shfolder\\appidapi.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\Temp\\server.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\prevhost\\icardie.exe\"",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Windows Objects\\wmihostwin.exe\" unk2",
+      1
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Local\\WSHTCPIP\\raschap.exe\"",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\System32-64.exe ",
+      1
+    ]
+  ],
+  "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Microsoft OneDrive",
+      3
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Connections\\DefaultConnectionSettings",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\SessionInfo\\1\\WHCIconStartup",
+      2
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\WpadLastNetwork",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\e82659d4d80247971005752945638b8c",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{ADBB83E0-BA05-4247-B12D-9D6DC0F8831F}\\WpadNetworkName",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{E8433B72-5842-4d43-8645-BC2C35960837}.check.102\\CheckSetting",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{852FB1F8-5CC6-4567-9C0E-7C330F8807C2}.check.101\\CheckSetting",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{7A88E0A6-3E28-4435-B7F6-CF6C06D28E17}\\WpadDecisionTime",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\{5BE5D642-96BC-4358-B880-1B42B62B3C07}\\WpadNetworkName",
+      1
+    ]
+  ],
+  "started_services": [
+    [
+      "EFS",
+      1
+    ]
+  ],
+  "delete_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\ProxyBypass",
+      1
+    ]
+  ],
+  "read_files": [
+    [
+      "C:\\Windows\\SysWOW64\\WerFault.exe",
+      10
+    ],
+    [
+      "C:\\tmp_2qrlboi\\bin\\oldloader_x64.exe",
+      1
+    ],
+    [
+      "C:\\Program Files\\Mozilla Firefox\\minidump-analyzer.exe",
+      1
+    ]
+  ],
+  "delete_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2656.30025312",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2056.33670312",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2900.24026109",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\sxstrace\\msihnd.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2816.12021343",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\msdart\\msident.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Documents and Settings\\Mini\\LOCALS~1\\Temp\\Temporary Directory 1 for 2013111512381802850.zip\\2013111812398784524.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\irclass\\d3d10_1core.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\mmcndmgr\\KBDAZEL.exe:Zone.Identifier",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch.2868.32424703",
+      1
+    ]
+  ],
+  "mutexes": [
+    [
+      "IESQMMUTEX_0_208",
+      28
+    ],
+    [
+      "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+      4
+    ],
+    [
+      "Global\\{A42BA924-B417-4B83-AD34-6F16594B05DA}",
+      3
+    ],
+    [
+      "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}",
+      2
+    ],
+    [
+      "StikyNot_yakuza",
+      2
+    ],
+    [
+      "Local\\WinSpl64To32Mutex_ecc9_0_2000",
+      1
+    ],
+    [
+      "e460dc8d9634539854ab71cd72901ab4",
+      1
+    ],
+    [
+      "5cd8f17f4086744065eb0992a09e05a2",
+      1
+    ],
+    [
+      "DefaultTabtip-MainUI",
+      1
+    ],
+    [
+      "c",
+      1
+    ]
+  ],
+  "read_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      8
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3476-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      6
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Data",
+      3
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Interfaces\\{3DF8548A-CA81-417C-AD72-445187C06A79}\\MaxNumberOfAddressesToRegister",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\4\\1004",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3479-f160-11ea-9f0e-806e6f6e6963}\\Data",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\Fusion\\NativeImagesIndex\\v2.0.50727_32\\IL\\7950e2c5\\69be3dec\\a1\\SIG",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoSimpleStartMenu",
+      1
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3476-f160-11ea-9f0e-806e6f6e6963}\\Data",
+      1
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPropertiesMyComputer",
+      1
+    ]
+  ],
+  "write_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      11
+    ],
+    [
+      "\\??\\PIPE\\efsrpc",
+      11
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.dat",
+      3
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe",
+      3
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\~ikkzowxr.tmp",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\RegSvcs.exe",
+      2
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\KBDIC\\user.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\server.exe",
+      1
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\msvfw32\\KBDINDEV.exe",
+      1
+    ]
+  ]
+}

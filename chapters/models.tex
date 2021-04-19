@@ -43,8 +43,6 @@ Next task is to investigate what the implementation of particular signature is a
   
 \end{lstlisting}
 
-
-
 We explored two types of grouping aspects. First is the subject of particular signature and then second is if we can see this subject in the behavioral log directly. For instance if the signature implementation is using api calls so the api call list is directly in the log. If it uses entrophy of dropped files, it is not directly in the output. In listing \ref{lst:signatureimpl} we can see simple example of \emph{antidebugsetunhandledexceptionfilter} signature which is just checking presence of specific signature.
 
 \begin{lstlisting}[language=mypython, caption={Example of signature implementation},captionpos=b, label={lst:signatureimpl}]
@@ -100,7 +98,7 @@ Technology stack we used to train \emph{hmill} model is described in \ref{app:te
 
 First experiments are without reported results because model was to huge to converge to some significant performance. We were not able to train it on hardware and with thread limitationsin in feasible time. This reality led us to skip one part of feature vector - \emph{enhanced} part. So the resulting model is working with \emph{summary}p art of original report only. Looking back on this part of experimenting we know that the problem might have been even in hyper parameter choice. But tighter feature vector was advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
 
-Original code of the model is in thesis attachment \ref{app:attach}. The pseudocode of the whole process can be seen in \ref{algo:hmillbinary}. It is standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library which is able to accept array of json documents and produce schema (more in \ref{app:technologies}). Schema is then used to create \emph{hmill} structures from each json document. Schema extraxted from our data is in \ref{app:schema}.
+Original code of the model is in thesis attachment \ref{app:attach}. The pseudocode of the whole process can be seen in \ref{algo:hmillbinary}. It is standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library which is able to accept array of json documents and produce schema (more in \ref{app:technologies}). Schema is then used to create \emph{hmill} structures from each json document. Example of a schema, implied extractor and \emph{hmill} model for our data is in attachment of this thesis (\ref{app:attach}]. In our case each signature has its own training set and ecen own schema implied by training set examples.
 
 \begin{algorithm}
   \caption{Hmill model training}\label{algo:hmillbinary}
