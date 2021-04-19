@@ -1,38 +1,80 @@
-\chapter{Signatures descriptions} \label{app:signatures} \label{app:histogram} \label{app:frequecies}
+\chapter{Signatures description} \label{app:signatures} \label{app:histogram} \label{app:frequecies}
 
-For each signature description of what is doing in more detail, what is in data part, plus histogram (in percentage)
+\begin{table}[h]
+  \centering
+  \caption{Used signatures and their details}
+  \begin{minipage}{\linewidth}
+  \begin{tabular}{p{3.5cm}p{6cm}p{3cm}p{1.3cm}}
+    \toprule
+    \textbf{Signature} &
+    \textbf{Description} &
+    \textbf{Subject} &
+    \textbf{P~[\%]\footnote[1]{positive examples ratio in our dataset ($80000$ samples)}}
+    \\
+    \midrule
+    antidebug setunhandledexceptionfilter & filters api call \emph{SetUnhandledExceptionFilter}, which enables an application to supersede the top-level exception handler of each thread of a process  (source \url{https://docs.microsoft.com/})  & API CALLS & $45$ \\
+    \midrule
+    copiesself & detects that currently analysed file copies itself & Dropped files & $18$ \\
+    \midrule
+    deletesself & detects that currently analysed file deletes/move itself or directory where placed, examining parameters of calls & API CALLS, basic file attributes (path\dots) & $27$ \\
+    \midrule
+    enumerates running processes & detects more than five process detail listing, saves \emph{pids} in data part & API CALLS & $16$ \\
+    \midrule
+    stealthtimeout & detects sequence of api calls which seems like expiration check and soon exit & API CALLS & $21$ \\
+    \midrule
+    useswindowsutilities & detect usage of usual windows utilities (\emph{attrib, copy, dir, echo, erase\dots}) & COMMANDS & $18$ \\
+    \midrule
+    removeszoneidads & detects attempts to remove evidence of file downloaded from internet by examining parameters of api calls& API CALLS & $28$ \\
+    \midrule[0.3pt]
+    \midrule[0.3pt]
+    antisandboxsleep & detects attempts to delay the analysis task, saves \emph{pids} and time to data part & TIME, API CALLS & $39$ \\
+    \midrule
+    dropper & detect dropping of binary and its execution & PROCESSES, DROPPED FILES & $15$ \\
+    \midrule
+    invalid authenticode signature & detects authenticode signature is invalid & STATIC, DROPPED FILES & $36$ \\
+    \midrule
+    packerentropy & detects encrypted or compressed data using entrophy calculation & STATIC & $22$ \\
+    \midrule
+    stealthnetwork & detects network activity which is not detected in api calls & NETWORK & $66$ \\
+    \bottomrule
+  \end{tabular}
+  \end{minipage}
+  \label{tab:signatures_detail}
+\end{table}
 
-\begin{figure}
-    \centering
-    \begin{subfigure}{.33\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \pie[text=inside, radius=2]{50/Yes, 50/No}
-    \end{tikzpicture}
-      \caption{1a}
-      \label{fig:sfig1}
-    \end{subfigure}%
-    \begin{subfigure}{.33\textwidth}
-      \centering
-      \begin{tikzpicture}
-        \pie[text=inside, radius=2]{70/Yes, 30/No}
-    \end{tikzpicture}
-      \caption{1b}
-      \label{fig:sfig2}
-    \end{subfigure}
-    \begin{subfigure}{.33\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \pie[text=inside, radius=2]{20/Yes, 80/No}
-        \end{tikzpicture}
-        \caption{1c}
-        \label{fig:sfig3}
-    \end{subfigure}
-    \caption{plots of....}
-    \label{fig:fig}
-\end{figure}
+Implementation of signatures could be seen on \url{https://github.com/kevoreilly/community}. The split in the table \ref{tab:signatures_detail} denotes groups mentioned in \chapter{chap:models}.
 
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}{.33\textwidth}
+%       \centering
+%       \begin{tikzpicture}
+%         \pie[text=inside, radius=2]{50/Yes, 50/No}
+%     \end{tikzpicture}
+%       \caption{1a}
+%       \label{fig:sfig1}
+%     \end{subfigure}%
+%     \begin{subfigure}{.33\textwidth}
+%       \centering
+%       \begin{tikzpicture}
+%         \pie[text=inside, radius=2]{70/Yes, 30/No}
+%     \end{tikzpicture}
+%       \caption{1b}
+%       \label{fig:sfig2}
+%     \end{subfigure}
+%     \begin{subfigure}{.33\textwidth}
+%         \centering
+%         \begin{tikzpicture}
+%             \pie[text=inside, radius=2]{20/Yes, 80/No}
+%         \end{tikzpicture}
+%         \caption{1c}
+%         \label{fig:sfig3}
+%     \end{subfigure}
+%     \caption{plots of....}
+%     \label{fig:fig}
+% \end{figure}
 
+% For each signature description of what is doing in more detail, what is in data part, plus histogram (in percentage)
 
 %---------------------------------------
 % More details about each signature is in appendix \todo{add appendix where each signature will by summarized, its implementation and its data part...}
