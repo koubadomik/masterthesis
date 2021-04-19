@@ -1,33 +1,112 @@
 \chapter{Attachments of thesis} \label{app:attach}
 \todo{format all code, maybe more refactor if we have time, and documentation also}
-Tree structure using tree command with description for each member, what it does in several words (scripts should be lightly documented inside!)
+\section*{Code}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{p{4cm}p{10cm}}
+        \toprule
+        \textbf{INFRASTRUCTURE} \\
+        \midrule
+        init\textunderscore cape\textunderscore machine.py &
+        setup new machine with \emph{Ubuntu 20.04} with cape sandbox and all requirements like \emph{kvm}, network security \\
+        \midrule
+        ansible\textunderscore init\textunderscore cape.yml &
+        setup multiple machines at one time using ansible\\
+        \midrule
+        fetch\textunderscore samples.py &
+        fetch malware samples from defined sources online \\
+        \midrule
+        fetch\textunderscore metadata.py &
+        fetch for already retrieved samples from defined sources\\
+        \midrule
+        filter\textunderscore samples.py &
+        filter retrieved samples by filetype\\
+        \midrule
+        distribute\textunderscore samples.py &
+        distribute samples to analyse on multiple instances of \emph{CAPEv2} sandbox\\
+        \midrule
+        collect\textunderscore results.py &
+        collect results of analyses\\
+        \midrule
+        aggregate\textunderscore results.py &
+        aggregate results of analyses on master machine\\
+        \midrule
+        dbutils.py &
+        create new samples in db of files (for us json file was sufficient) and other tools for maintenance\\
+        \midrule
+        dbs/filedb.json &
+        example of json database of samples\\
+        \midrule
+        dbs/machinedb.json &
+        example of json database of physical machines in cluster \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:signatures_detail}
+  \end{table}
 
-Infrastructure
-init-cape.sh - OK
-ansible scripts just example - OK
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{p{4cm}p{10cm}}
+        \toprule
+        \textbf{DATA} \\
+        \midrule
+        data\textunderscore prune.jl &
+        prune json files using lazy json loading \\
+        \midrule
+        binary.jl &
+        binary classifier \\
+        \midrule
+        explain\textunderscore binary.jl &
+        explainer of binary classification model \\
+        \midrule
+        grid\textunderscore submit.sh &
+        script used to schedule job on grid cluster\\
+        \midrule
+        merge\textunderscore explanations.py &
+        merge multiple explanations into one aggregated json file\\
+        \midrule
+        plots.jl &
+        generate plots for classifier (\emph{ROC, PRC})\\
+      \bottomrule
+    \end{tabular}
+    \label{tab:signatures_detail}
+  \end{table}
+  \newpage
 
-abuse bulk - OK
-get metadata - OK
-filter_files - OK
+  \section*{Results}
+  For each used signature is presented following:
+  \begin{itemize}
+    \item \emph{models} - serialized model and other serialized objects needed in case of experiment replication or just evaluation of existing one
+    \item \emph{explanations} - original explanations (2 runs) as json file which includes list of jsons representing explanation, merged explanations where jsons are aggregated into one and for each entry we have frequency in original explanation list, in second run we have even \emph{mergedtop} where we have only frequencies of ten most seen entries
+  \end{itemize}
 
-send.py - OK
-aggregate.py - OK
-collect.py - OK
-dbutils.py (if necessary) - OK
-filedb and machinedb example - OK
+% Infrastructure
+% init-cape.sh - OK
+% ansible scripts just example - OK
 
-Data science
-analyser.jl - OK
-explainer.jl - OK
-plots.jl - OK
-pruner.jl - OK
-merge.py - OK
-grid center scripts - only analyser to demonstrate its function - OK
+% abuse bulk - OK
+% get metadata - OK
+% filter_files - OK
 
-Results
-models (whole directories with description) - data center in 100_exp it is what I need - OK
-explanations extracted and even merged - both runs - OK
-plots (nice-to-have)
+% send.py - OK
+% aggregate.py - OK
+% collect.py - OK
+% dbutils.py (if necessary) - OK
+% filedb and machinedb example - OK
+
+% Data science
+% analyser.jl - OK
+% explainer.jl - OK
+% plots.jl - OK
+% pruner.jl - OK
+% merge.py - OK
+% grid center scripts - only analyser to demonstrate its function - OK
+
+% Results
+% models (whole directories with description) - data center in 100_exp it is what I need - OK
+% explanations extracted and even merged - both runs - OK
+% plots (nice-to-have)
 
 %==================================
 % manalyzer.jl (nice-to-have)
+% Tree structure using tree command with description for each member, what it does in several words (scripts should be lightly documented inside!)
