@@ -1,2 +1,256 @@
-\chapter{Trained Hmill models and their performance} \label{app:models}
+\chapter{Model additional metrics} \label{app:models}
 % Other metrics and graphs could be seen in appendix \todo{add appendix with all the data - graphs, additional metrics which are not in the body of text}
+
+\begin{table}[h]
+    \centering
+    \caption{Other classifier matrix for particular signatures (rounded to 3 decimal places)}
+    \begin{minipage}{\linewidth}
+    \begin{tabular}{lllll}
+      \toprule
+      \textbf{signature} &
+      \textbf{f1} &
+      \textbf{AUROC} &
+      \textbf{AUPRC} &
+      \textbf{test loss}\footnote{logit binary cross entrophy}
+      \\
+      \midrule
+      antidebug setunhandledexceptionfilter & 0.979 & 0.998 & 0.871 & 0.054  \\
+      \midrule
+      copiesself &  0.874 & 0.983 & 0.920 & 0.132 \\
+      \midrule
+      deletesself &  0.995 & 0.999 & 0.9997 & 0.008 \\
+      \midrule
+      enumerates running processes & 0.957 & 0.996 & 0.989 & 0.041 \\
+      \midrule
+      stealthtimeout & 0.802 & 0.794 & 0.929 &  0.263 \\
+      \midrule
+      useswindowsutilities & 0.945 & 0.996 & 0.987 &  0.057 \\
+      \midrule
+      removeszoneidads & 1.00 & 1.00 & 1.00 & 0.00 \\
+      \midrule
+      antisandboxsleep & 0.962 & 0.993 & 0.986 & 0.087 \\
+      \midrule
+      dropper & 0.840 & 0.982 & 0.902 & 0.125 \\
+      \midrule
+      invalid authenticode signature & 0.433 & 0.714 & 0.608 & 0.569 \\
+      \midrule
+      packerentropy & 0.359 & 0.776 & 0.518 & 0.436 \\
+      \midrule
+      stealthnetwork & 0.969 & 0.978 & 0.987 & 0.138 \\
+      \bottomrule
+    \end{tabular}
+    \end{minipage}
+    \label{tab:additional_metrics}
+  \end{table}
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/antidebug_setunhandledexceptionfilter.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/antidebug_setunhandledexceptionfilter.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{antidebug setunhandledexceptionfilter plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/copies_self.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/copies_self.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{copiesself plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/deletes_self.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/deletes_self.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{deletesself plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/enumerates_running_processes.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/enumerates_running_processes.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{enumerates running processes plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/stealth_timeout.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/stealth_timeout.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{stealthtimeout plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/uses_windows_utilities.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/uses_windows_utilities.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{uses windows utilities plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/removes_zoneid_ads.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/removes_zoneid_ads.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{removeszoneidads plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/antisandbox_sleep.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/antisandbox_sleep.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{antisandboxsleep plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/dropper.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/dropper.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{antidebug dropper plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/invalid_authenticode_signature.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/invalid_authenticode_signature.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{invalid authenticode signature plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/packer_entropy.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/packer_entropy.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{packerentropy plots}
+    \label{fig:fig}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{pdfs/modperf/stealth_network.bson-pr.pdf}
+      \caption{PR curve}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{pdfs/modperf/stealth_timeout.bson-roclog.pdf}
+        \caption{ROC (log on x-axis)}
+        % \label{fig:sfig3}
+    \end{subfigure}
+    \caption{stealthnetwork plots}
+    \label{fig:fig}
+\end{figure}
+
+
+
+
+
+% f-score, auroc,auprc, loss
+% PR curve, ROC curve log
