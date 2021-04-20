@@ -18,6 +18,60 @@ TODO:
   - compare it in case of original report and in case of
 
 
+RUN 1
+64 antidebug_setunhandledexceptionfilter.json
+Counter({'read_keys': 51, 'resolved_apis': 49, 'read_files': 25, 'executed_commands': 23, 'keys': 13, 'delete_files': 12, 'files': 10, 'mutexes': 3})
+21 antisandbox_sleep.json
+Counter({'read_keys': 17, 'keys': 16, 'write_keys': 13, 'executed_commands': 11, 'resolved_apis': 9, 'read_files': 7, 'write_files': 7, 'mutexes': 4, 'files': 1})
+4 copies_self.json
+Counter({'write_files': 4, 'executed_commands': 2, 'mutexes': 2, 'write_keys': 2, 'delete_files': 2})
+50 deletes_self.json
+Counter({'delete_files': 50, 'executed_commands': 30, 'write_files': 28, 'keys': 25, 'read_keys': 24, 'resolved_apis': 2})
+9 dropper.json
+Counter({'executed_commands': 9, 'write_files': 9, 'mutexes': 7, 'write_keys': 3, 'read_keys': 2})
+16 enumerates_running_processes.json
+Counter({'executed_commands': 15, 'mutexes': 14, 'read_keys': 8, 'write_files': 6, 'resolved_apis': 6, 'read_files': 5, 'write_keys': 5, 'keys': 4, 'delete_files': 3, 'files': 2})
+2 invalid_authenticode_signature.json
+Counter({'write_files': 2, 'read_files': 2, 'keys': 2, 'write_keys': 2, 'read_keys': 2, 'executed_commands': 1, 'delete_files': 1, 'resolved_apis': 1, 'files': 1, 'mutexes': 1})
+4 packer_entropy.json
+Counter({'executed_commands': 4, 'write_files': 4, 'delete_files': 4, 'resolved_apis': 4, 'files': 4, 'read_files': 4, 'keys': 4, 'read_keys': 4, 'write_keys': 3, 'mutexes': 2})
+56 removes_zoneid_ads.json
+Counter({'delete_files': 56, 'keys': 41, 'files': 24, 'write_keys': 20, 'executed_commands': 16, 'read_keys': 7, 'write_files': 4, 'resolved_apis': 2})
+44 stealth_network.json
+Counter({'keys': 42, 'files': 30, 'read_keys': 16, 'executed_commands': 14, 'write_files': 9, 'resolved_apis': 8, 'write_keys': 5, 'started_services': 1})
+
+
+RUN 2
+377 antidebug_setunhandledexceptionfilter.json
+Counter({'read_keys': 296, 'resolved_apis': 265, 'executed_commands': 144, 'read_files': 113, 'delete_files': 86, 'files': 82, 'keys': 69, 'mutexes': 35, 'write_files': 4, 'write_keys': 1})
+100 antisandbox_sleep.json
+Counter({'write_keys': 82, 'keys': 68, 'read_keys': 58, 'executed_commands': 25, 'read_files': 24, 'resolved_apis': 24, 'mutexes': 12, 'write_files': 12, 'files': 3, 'delete_files': 3, 'started_services': 1})        
+100 copies_self.json
+Counter({'write_files': 100, 'executed_commands': 55, 'delete_files': 38, 'mutexes': 31, 'write_keys': 19, 'read_files': 16, 'files': 1, 'started_services': 1})
+100 deletes_self.json
+Counter({'delete_files': 100, 'write_files': 58, 'executed_commands': 57, 'keys': 53, 'read_keys': 31, 'resolved_apis': 2, 'files': 2})
+71 dropper.json
+Counter({'write_files': 71, 'executed_commands': 68, 'mutexes': 45, 'write_keys': 25, 'read_keys': 23, 'delete_files': 22, 'read_files': 12, 'resolved_apis': 6, 'started_services': 1, 'keys': 1, 'delete_keys': 1})   
+84 enumerates_running_processes.json
+Counter({'executed_commands': 60, 'mutexes': 58, 'read_keys': 46, 'read_files': 33, 'write_files': 26, 'delete_files': 12, 'keys': 5, 'resolved_apis': 5, 'files': 3, 'started_services': 1})
+61 invalid_authenticode_signature.json
+Counter({'read_keys': 52, 'read_files': 43, 'keys': 43, 'mutexes': 35, 'resolved_apis': 32, 'write_keys': 22, 'delete_files': 18, 'files': 15, 'write_files': 11, 'executed_commands': 9})
+29 packer_entropy.json
+Counter({'keys': 28, 'resolved_apis': 26, 'read_keys': 24, 'files': 22, 'read_files': 21, 'executed_commands': 20, 'mutexes': 18, 'write_files': 15, 'delete_files': 14, 'write_keys': 12})
+100 removes_zoneid_ads.json
+Counter({'delete_files': 100, 'keys': 71, 'executed_commands': 36, 'write_keys': 34, 'files': 26, 'read_keys': 14, 'write_files': 8, 'read_files': 3, 'resolved_apis': 1})
+100 stealth_network.json
+Counter({'keys': 94, 'files': 68, 'read_keys': 31, 'write_files': 28, 'executed_commands': 19, 'resolved_apis': 14, 'write_keys': 8, 'started_services': 4})
+78 stealth_timeout.json
+Counter({'executed_commands': 77, 'files': 63, 'resolved_apis': 25, 'write_files': 16, 'read_files': 15, 'write_keys': 13, 'read_keys': 4, 'keys': 3, 'mutexes': 2, 'delete_keys': 2, 'delete_files': 1})
+67 uses_windows_utilities.json
+Counter({'executed_commands': 67, 'write_files': 19, 'read_keys': 18, 'delete_files': 8, 'resolved_apis': 7, 'keys': 2})
+
+
+
+
+
+
 
 DIRECT CLUES SHOULD BE (did not check if the exact subject of signature is in the sample, it is quite complex but the category is in json summary part)
 antidebug_setunhandledexceptionfilter
@@ -62,6 +116,126 @@ antidebug_setunhandledexceptionfilter
                         "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll" 4
                             https://www.processlibrary.com/en/directory/files/system.windows.forms.ni/65719/
                         "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config" 3
+                        
+                        
+         377    
+                     {
+  "resolved_apis": [
+    [
+      "kernel32.dll.IsProcessorFeaturePresent",
+      153
+    ],
+    [
+      "kernel32.dll.SetConsoleInputExeNameW",
+      17
+    ],
+    [
+      "winspool.drv.GetPrinterDriverPackagePathW",
+      16
+    ],
+    [
+      "sechost.dll.LookupAccountNameLocalW",
+      16
+    ],
+    
+    
+      "executed_commands": [
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      7
+    ],
+    [
+      "\"C:\\\\\\\\Windows\\\\\\\\Microsoft.NET\\\\\\\\Framework\\\\\\\\v4.0.30319\\\\\\\\MSBuild.exe\"",
+      3
+    ],
+    [
+      "\"C:\\Windows\\System32\\eventvwr.exe\"",
+      2
+    ],
+    
+    
+      "read_files": [
+    [
+      "C:\\Windows\\SysWOW64\\en-US\\cmd.exe.mui",
+      9
+    ],
+    [
+      "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\mscorlib\\9f895c66454577eff9c77442d0c84f71\\mscorlib.ni.dll",
+      8
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config",
+      8
+    ],
+    [
+      "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Windows.Forms\\22aeb10b1d8cdd66bdccfa0958340c6f\\System.Windows.Forms.ni.dll",
+      7
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\CLR Security Config\\v2.0.50727.312\\security.config.cch",
+      7
+    ],
+    [
+      "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll",
+      7
+    ],
+    
+    
+      "delete_files": [
+    [
+      "C:\\Windows\\sysnative\\spool\\drivers\\x64\\3\\mxdwdui.BUD",
+      9
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Temp\\JNEwqQ.exe",
+      4
+    ],
+    
+      "mutexes": [
+    [
+      "IESQMMUTEX_0_208",
+      9
+    ],
+    [
+      "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}",
+      7
+    ],
+    [
+      "Global\\CLR_CASOFF_MUTEX",
+      4
+    ],
+    
+    
+      "files": [
+    [
+      "C:\\Windows\\winsxs\\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.4940_none_50916076bcb9a742\\msvcr90.dll",
+      6
+    ],
+    [
+      "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Drawing\\f85964cc53acab6fa148b7c9b05e07f7\\System.Drawing.ni.dll",
+      4
+    ],
+    [
+      "C:\\Windows\\System32\\UxTheme.dll.Config",
+      4
+    ],
+    
+      "read_keys": [
+    [
+      "DisableUserModeCallbackFilter",
+      34
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\DelayedExpansion",
+      12
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Command Processor\\PathCompletionChar",
+      11
+    ],
+    
+    
+    
                             
                 
 
@@ -110,6 +284,79 @@ copies_self
                             "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
                             2
                             ]
+                            
+                            
+                100
+                
+                  "executed_commands": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      6
+    ],
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      5
+    ],
+    
+    
+      "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Microsoft OneDrive",
+      6
+    ],
+    
+    
+      "read_files": [
+    [
+      "C:\\Windows\\SysWOW64\\WerFault.exe",
+      13
+    ],
+        [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
+      5
+    ],
+    
+    
+      "delete_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\StikyNot.exe",
+      7
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\BF783B\\BCDB0B.lck",
+      4
+    ],
+    
+      "mutexes": [
+    [
+      "StikyNot_yakuza",
+      12
+    ],
+    [
+      "IESQMMUTEX_0_208",
+      9
+    ],
+    [
+      "14E11E0BF783BCDB0BD10C30",
+      5
+    ],
+    
+    
+      "write_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      13
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Chrome\\C:\\Users\\comp\\AppData\\Local\\Chrome\\SyncHost.exe",
+      6
+    ],
+    
+    
+    
+    
+    
+                
 
 
 
@@ -138,6 +385,13 @@ deletes_self
                 Repeatedly seen in explanation
                     Nothing repeated but all files are in delete files (49 occurences) - for example in case of antidebug_setunhandledexceptionfilter it was only 1/6
 
+      100
+      all files are really 
+      
+      Nothing repeated but all files are in delete files (49 occurences) - for example in case of antidebug_setunhandledexceptionfilter it was only 1/6
+      
+
+
 
 
 
@@ -154,7 +408,41 @@ enumerates_running_processes  - If we have enough time this model we should reru
     fnr - 0.050141464948129516
     fpr - 0.006510494084071586
     loss - 0.04144602
-
+    
+    
+    84
+      "executed_commands": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe /C",
+      8
+    ],
+    
+      "mutexes": [
+    [
+      "IESQMMUTEX_0_208",
+      17
+    ],
+    [
+      "Global\\{E6C47FBA-9E19-4A7E-8C8C-D0F29534EA2B}",
+      11
+    ],
+    [
+      "Global\\{E5356632-2BBA-4C08-9A7F-B995913B15BB}",
+      9
+    ],
+        ],
+    [
+      "Global\\.net clr networking",
+      7
+    ],
+    
+      "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{6EDD6D74-C007-4E75-B76A-E5740995E24C}\\InProcServer32\\InprocServer32",
+      6
+    ],
+    
+    
 
 stealth_timeout
     balance of training set
@@ -178,6 +466,49 @@ stealth_timeout
                     1
                 Repeatedly seen in explanation
                     Skipped, one explanation only (quite weak model)
+                    
+                    
+         78
+        "keys": [
+    [
+      "DisableUserModeCallbackFilter",
+      11
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable",
+      7
+    ],
+      "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\SessionInfo\\1\\WHCIconStartup",
+      8
+    ]
+      "files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
+      9
+    ],
+      "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Hostname",
+      6
+    ],
+      "started_services": [
+    [
+      "EFS",
+      4
+    ]
+  ],
+    "write_files": [
+    [
+      "\\??\\PIPE\\efsrpc",
+      6
+    ],
+    
+  
+    
+    
+          
                     
 
 uses_windows_utilities
@@ -213,6 +544,20 @@ uses_windows_utilities
                 Repeatedly seen in explanation
                     13 executed commands, for each observation
                     significantly stronger command section
+
+      67
+      commands everywhere (even in minimal explanation)
+        "executed_commands": [
+    [
+      "\"netsh\" wlan show profile",
+      7
+    ],
+    "write_files": [
+    [
+      "\\Device\\Http\\Communication",
+      8
+    ],
+
 
 
 
@@ -258,6 +603,11 @@ removes_zoneid_ads
                         ],
 
                         ...
+                        
+                100
+            not significant redundancy but we see repeatedly what is above, it is learning what it should
+            
+              
 
 
 
@@ -312,6 +662,54 @@ antisandbox_sleep
                         "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll",
                         3
                         ],
+                        
+                        
+              100
+
+            "resolved_apis": [
+    [
+      "advapi32.dll.ConvertStringSecurityDescriptorToSecurityDescriptorW",
+      5
+    ],
+      "keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID\\{A4A1A128-768F-41E0-BF75-E4FDDD701CBA}\\InProcServer32\\InprocServer32",
+      8
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\\InprocServer32\\InprocServer32",
+      7
+    ],
+    
+      "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting",
+      63
+    ],
+    
+      "executed_commands": [
+    [
+      "\"C:\\Windows\\system32\\schtasks.exe\" /create /tn {9E554C6E-7D11-4FC0-AFA1-FF49DBC84412} /tr \"\\\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\\\"\" /sc HOURLY /mo 5 /F",
+      8
+    ],
+    [
+      "nslookup -querytype=ALL -timeout=10 _ldap._tcp.dc._msdcs.WORKGROUP",
+      8
+    ],
+    [
+      "\"netsh\" wlan show profile",
+      3
+    ],
+    
+      "read_files": [
+    [
+      "C:\\Windows\\assembly\\NativeImages_v2.0.50727_32\\System.Configuration\\612d5cf16a6bb439a07aebb38a1a5311\\System.Configuration.ni.dll",
+      4
+    ],
+    
+    
+    
+                
 
 
 dropper
@@ -361,6 +759,54 @@ dropper
                             4
                             ],
 
+              71
+              
+            "executed_commands": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      10
+    ],
+    [
+      "\"C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe\" /W",
+      5
+    ],
+    
+      "read_files": [
+    [
+      "C:\\Windows\\SysWOW64\\WerFault.exe",
+      10
+    ],
+    "mutexes": [
+    [
+      "IESQMMUTEX_0_208",
+      28
+    ],
+              
+         "read_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3475-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      8
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MountPoints2\\CPC\\Volume\\{5f0c3476-f160-11ea-9f0e-806e6f6e6963}\\Generation",
+      6
+    ],     
+    
+      "write_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.exe",
+      11  --> BEWARE THIS could be something confounding (and similar cases also) because this is used in more than one signature
+    ],
+    [
+      "\\??\\PIPE\\efsrpc",
+      11
+    ],
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Tiafuzdii\\ikkzowxr.dat",
+      3
+    ],          
+              
+
 
 
 invalid_authenticode_signature
@@ -376,6 +822,72 @@ invalid_authenticode_signature
     fnr - 0.6679958027282267
     fpr - 0.11289632367243727
     loss - 0.5691154
+    
+    61
+    
+    {
+  "resolved_apis": [
+    [
+      "kernel32.dll.GetUserDefaultUILanguage",
+      6
+    ],
+    
+     "keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\.NETFramework\\Policy\\Upgrades",
+      3
+    ],
+    
+      "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Action Center\\Checks\\{C8E6F269-B90A-4053-A3BE-499AFCEC98C4}.check.0\\CheckSetting",
+      9
+    ],
+    
+      "read_files": [
+    [
+      "C:\\Users\\comp\\AppData\\Roaming\\Microsoft\\Network\\Connections\\Pbk\\_hiddenPbk\\rasphone.pbk",
+      9
+    ],
+        [
+      "C:\\Windows\\Fonts\\staticcache.dat",
+      5
+    ],
+    
+      "mutexes": [
+    [
+      "CicLoadWinStaWinSta0",
+      8
+    ],
+    [
+      "Global\\CLR_CASOFF_MUTEX",
+      7
+    ],
+    [
+      "Global\\.net clr networking",
+      7
+    ],
+    [
+      "IESQMMUTEX_0_208",
+      6
+    ],
+    
+      "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{8A40A45D-055C-4B62-ABD7-6D613E2CEAEC}\\ProxyStubClsid32\\(Default)",
+      7
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Wow6432Node\\Interface\\{2A1C9EB2-DF62-4154-B800-63278FCB8037}\\ProxyStubClsid32\\(Default)",
+      5
+    ],
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad\\WpadLastNetwork",
+      5
+    ],
+    
+    
+    
 packer_entropy
     balance of training set
         training - 8866
@@ -390,6 +902,7 @@ packer_entropy
     fpr - 0.04295483001059424
     loss - 0.4364625
 
+    Low performance
 
 stealth_network
     balance of training set
@@ -421,3 +934,40 @@ stealth_network
                         "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
                         6
                         ],
+                        
+                        
+                        
+           100
+      
+             "keys": [
+    [
+      "DisableUserModeCallbackFilter",
+      11
+    ],
+    [
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\CTF\\TIP\\{0000897b-83df-4b96-be07-0fb58b01c4a4}\\LanguageProfile\\0x00000000\\{0001bea3-ed56-483d-a2e2-aeae25577436}\\Enable",
+      7
+    ],
+
+      "write_keys": [
+    [
+      "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\SessionInfo\\1\\WHCIconStartup",
+      8
+    ]
+          "files": [
+    [
+      "C:\\Users\\comp\\AppData\\Local\\Microsoft\\Windows\\Caches\\{AFBF9F1A-8EE8-4C77-AF34-C647E37CA0D9}.1.ver0x0000000000000003.db",
+      9
+    ],                
+                        
+        "read_keys": [
+    [
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\services\\Tcpip\\Parameters\\Hostname",
+      6
+    ],            
+    
+      "write_files": [
+    [
+      "\\??\\PIPE\\efsrpc",
+      6
+    ],

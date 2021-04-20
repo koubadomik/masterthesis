@@ -1,49 +1,74 @@
 \chapter{Explaining model} \label{chap:expex}
 Final part of this thesis is to follow results of previous chapter about models and their performance and examine their explanation using \emph{hmill} explainer \cite{Pevny2020} which we described in \ref{chap:explain}. We address one of goals of this thesis which is to identify artifacts corresponding to different malware behavior. As artifacts we can see whatever what is among features of our model.
 
-Experimenting with \emph{hmill} and output of \emph{CAPEv2} sandbox we struggled several times. The crux was to find the way in the signature research. This was done mainly by involving the \emph{Python} implementation of original signatures and the data part of signature in \emph{JSON} report. Those two and performance of models from \ref{chap:models} is building block of further discussion.
+Experimenting with \emph{hmill} and output of \emph{CAPEv2} sandbox we struggled several times. The crux was to reclaim the signatures and their logic. This was done mainly by involving the \emph{Python} implementation of original signatures and the data part of signature in \emph{JSON} report. Those two and performance of models from \ref{chap:models} are building blocks of further discussion.
+
+\todo{are we able to learn more than the sandbox is doing deterministically so far?}
 
 \section{Explainer}
 We performed two explainig experiments using \emph{ExplainMill.jl} (described in \ref{app:technologies}). 
 
-Explainer pseudocode is in \ref{algo:explainer}. There is nothing extraordinary we used similar setup as authors of the tool \cite{Pevny2020}. We extracted $100$ examples from testing set in first run and $500$ in second run. We attempted explaining only on positive example which were truly classified into positive class with confidence above specified treshold. The confidence tresholfdwhich we used is $0.99$ for first run and $0.9$ for second run, in both cases we decrement it by $0.1$ if no results was found in data subset.
+Explainer code is in attachments (\ref{app:attach}). There is nothing extraordinary we used similar setup as authors of the tool \cite{Pevny2020}. We extracted $100$ examples from testing set in first run and $500$ in second run. We attempted explaining only on positive example which were truly classified into positive class with confidence above specified treshold. The confidence treshold which we used is $0.99$ for first run and $0.9$ for second run, in both cases we decrement it by $0.1$ if no results was found in data subset. We run explaining process on each of chosen exaples.
 
-Each of chosen examples we run explainer on. Authors of original paper did came to conclusion that the \emph{BanzHof values} method shows the best performance and we followed this setup. We involve no clustering method and \emph{:LbyL_HArr} \todo{reference its real name} pruning method (due to some problems with library version compatibility wich led us to accept first working solution regarding clustering and pruning).
+Authors of original paper did came to conclusion that the \emph{BanzHof values} method shows the best performance and we followed this setup. We involve no clustering method and \emph{:LbyL_HArr} \todo{reference its real name} pruning method (due to some problems with library version compatibility we did not experiment with other clustering and pruning methods).
 
-We received explanation for each example as a subset of original example in \emph{JSON} format. For some signatures we have tens of explanations using this approach. That is why we involved some additional aggregation. In our case we merged all explanations for one signature into one \emph{JSON} file and for each entry counted its frequencies. Our assumption was that the most general formulation of an exaplanation should contain the most seen entries. This and other we discuss below.
+We received explanation for each example as a subset in \emph{JSON} format. For some signatures we have tens of explanations using this approach. That is why we involved some additional aggregation. In our case we merged all explanations for one signature into one \emph{JSON} file and for each entry computed its frequencies. Our assumption is that the most general formulation of an exaplanation should contain the most seen entries. Post-hoc we decided to involve two more ideas. First we counted frequency of particular key (name of fied in json file e.g. \ \emph{read files, resolved apis}\dots) in explanations such that for each signature we see how often particular key is detected by explainer. Based on this information we can compare original signature subject with most seen key to see if they coincide. Second idea is that we compute frequencies of entries seen accross different signature. We assume that in such way we could identify some kind of bias which is caused by quite often seen entries but in case of several signatures in such case we should consider being it too general concept. Results we discuss below.
 
-\begin{algorithm}
-  \caption{Explainer steps}\label{algo:explainer}
-  \begin{algorithmic}
-      \Procedure{HmillTrain}{$signature\_name, jsons, hyperparameters$}
-      \State $samples \gets load(jsons)$
-      \State $train,test \gets split(samples)$
-      \State $trnstates,tststates \gets extractstates(train, test)$
-      \State $schema \gets getshema(train)$
-      \State $extractor \gets suggestextractor(schema)$
-      \State $model \gets reflectinmodel(schema, extractor, class\_num, hyperparams)$
-      \State $optimize(model, train, trnstates)$
-      \State $metrics \gets evaluate(model, tststates)$
-      \EndProcedure
-  \end{algorithmic}
-\end{algorithm}
+\todo{add histogram of keys to appendix}
 
 \todo{connect to theory in chapter about explainer theory}
 
 
 \section{Results and discussion}
-Original and even aggregated outputs are part of attachment of this thesis \ref{app:attach}. The size of original json file with only behavioral part can be hundreds but even thousands of items (averaged \texttildelow~$3000$ but included even the signature part). Average size of explanation is $3-5$ entries (detail could be see in \ref{app:expl}). In case of low performance signatures like \emph{invalidauthenticodesignature} and \emph{packerentropy} we can see even more than $10$ in both runs.
+Original and even aggregated outputs are part of the attachment of this thesis \ref{app:attach}. The size of original json file with only behavioral part can be hundreds but even thousands of items (averaged \texttildelow~$3000$ but included even the signature part). Average size of explanation is $3-5$ entries (detail could be see in \ref{app:expl}). In case of low performance signatures like \emph{invalidauthenticodesignature} and \emph{packerentropy} we can see even more than $10$ in both runs.
 
-Number of explanations may vary because the difference in confidence of each model. This is not good in case we are trying to compare explanations and make some statististically oriented conclusion. This comparison is very risky but in the second run we attempted to normalize the number of explanation to be $100$ per signature but in some cases we were not succesful because in subsample was just not enough such samples. Number of explanations for both runs we can also see in \ref{app:expl}.
+Number of explanations may vary because of the difference between confidence levels of models. In the second run we attempted to normalize the number of explanation to be $100$ per signature but in some cases we were not succesful because in subsample was just not enough such samples. Number of explanations for both runs we can also see in \ref{app:expl}. Frequency of entry in explanations is everytime related to overall number of explanations.
 
-Detail description of each signature is in \ref{app:signatures} including the details of its implementation. In following discussion we address only specific details.
+Detail description of each signature is in \ref{app:signatures} including the details of their implementation. In further discussion we just refer to it.
 
-expectation
 
-We are discussing results after presenting those results to expert and then having discussion. The results are often assumptions and hypothesis because we have to anticipate the risks mentioned in \ref{chap:explain}. Especially the causality X correlation problem and confounding variable existence. We are aiming at descriptions and observation more than drawing conclusion. In some cases we try to formulate hypothesis in any case we can not be sure.
+% expectation
+Our expectation regarding explanations are is quite specific. Hopefully, we are able to find the original subject of signature in some cases and even something else which we can see as more general than the original subject and not too general. We know that low performance models explanations are not relevant due to low overall confidence so we skip them in furher discussion.
 
-discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
-reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
+We assume that the explanations have very high entrophy because of high entrophy of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, there are experiments involving some kind of data compression but we did not use these tool. So we might not identify the same entries which in reality are the same. This problem we reference in future work section.
+
+We are discussing results after presenting them to expert and having discussion. The results are often assumptions and hypotheses because we have to anticipate the risks mentioned in \ref{chap:explain}. Especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at observation and its description more than drawing conclusion.
+
+
+\paragraph{antidebug setunhandledexceptionfilter}
+The most seen keys in explanations are \emph{read keys, resolved apis,executed commands} which include even api calls which are original signature subject. Among entries the most seen are \emph{kernel32.dll.IsProcessorFeaturePresent} (153/377) api and \emph{DisableUserModeCallbackFilter} (34/377) registry key. Those are presented in other explanations once and twice so it does not look like something too general but also not absolutely unique. The registry key is related to exceptions and the original api call used by signature is also related to them.
+
+\paragraph{copies self}
+The most seen keys in explanations are \emph{write files, executed commands, delete files} and the first is seen in all explanations and it also coincide with original subejct of signature. Among entries the most seen are \emph{ikkzowxr.exe} (13/100) file, \emph{WerFault.exe} (13/100) file and \emph{StikyNot_yakuza} mutex. The first file is very common across different signatures, the mutex is also seen more than one time in explanations.
+
+\paragraph{deletes self}
+The most seen keys in explanations are \emph{deleted files, write files, executed commands} and the first is seen in all explanations but the original signature subject are api calls. Here we can see some generalization because the original signature does not check deleted files directly but the model is using it with high performance. We also checked if this trend is not seen in more cases but this is unique that all explanations include deleted files. We do not identify repeated entries.
+
+\paragraph{enumerates running processes}
+The most seen keys in explanations are \emph{executed_commands, mutexes, read_keys}. This does not include original subject which were api calls.  Among entries the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is again quite common. The performance of this classifier is significant but using our kind of explaining we are not able to generalize some subset.
+
+\paragraph{stealth timeout}
+The most seen keys in explanations are \emph{executed_commands, files} which does not include original api calls section. Among entries the most seen is \emph{DisableUserModeCallbackFilter} (11/78) registry. But the situation is the same as in prevous case we are not able to generalize more.
+
+\paragraph{uses windows utilities}
+The most seen key in explanations is \emph{executed_commands} which is incuded in each explanation and it coincides with original subject which are commands. The most seen commands are \emph{netsh, schtasks.exe}.
+
+\paragraph{removes zoneid ads}
+The most seen keys in explanations are \emph{delete_files, keys}. The first is seen in each explanation but the original signature is using api calls. We are not able to identify specific redundancies but we identified one big conformity. The original signature implementation includes following \emph(\dots .endswith(":Zone.Identifier")} so it is detecting end of api call argument and even \emph{.startswith("DeleteFile")} is detecting name of api starting with specific string. These two facts perfectly correlate with our explanations.
+
+\paragraph{antisandbox sleep}
+The most seen keys in explanations are \emph{write_keys, keys, read_keys} which does not correspond to the original subject. Among entries the most seen are \emph{HKEY_CURRENT_USER/\dots} (63/100) registry key. This registry key we see in case of two signatures, we do not see direct relation between this key and the original subject. It might be something more general.
+
+\paragraph{dropper}
+The most seen keys in explanations are \emph{write_files, executed_commands, mutexes}. The first is presented in all explanations, second is not only in negligible fraction. The original subject is not trivial but dropped files are there which corresponds to the first key. Among entries the most seen is \emph{IESQMMUTEX0208} (28/71) mutex but this mutex was mentioned earlier as too general.
+
+\paragraph{stealth network}
+The most seen keys in explanations are \emph{keys, files}. The original subject (network) is not presented in the input at all. It looks like registry keys play big role. But neither in case of registry keys we can not find any redundancies.
+
+In particular cases we can see several situations. We can identify situations where the model explanations corresponds to the original subject which we can see as some clue that the model is using what expected and its generalization goes right way (e.g. \ \emph{remove zone ads}). In several cases we are not able to identify any direct cause of model high performance. It also difficult to interpret particular entries and connect them to specific subjects because their variance is quite huge sometimes and making conclusion would need more samples and further analysing.
+
+
+general conclusions
 
 Results for each signature (present both attempts)
 performance context and what is the strenght of the explanation (is it relevant)
@@ -69,6 +94,9 @@ Explanation as another random variable
 %NICE TO HAVE
 %COMPATE SIGNATURES DATA PART WITH THE EXPLANATION
   %%---------------------
+  
+% discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
+% reason why we want to look at it, about the main question - are we able to learn more than the sandbox is doing deterministically so far?
   % Connect to motivation part of this chapter
   % Do not be black and white, try to formulate hypothesis which should be derived, do not state truth
   % Add some philozophiing... (about the risky things, assumptions, reference explanation theory chapter)
