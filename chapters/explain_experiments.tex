@@ -12,9 +12,7 @@ Explainer code is in attachments (\ref{app:attach}). There is nothing extraordin
 
 Authors of original paper did came to conclusion that the \emph{BanzHof values} method shows the best performance and we followed this setup. We involve no clustering method and \emph{:LbyL_HArr} \todo{reference its real name} pruning method (due to some problems with library version compatibility we did not experiment with other clustering and pruning methods).
 
-We received explanation for each example as a subset in \emph{JSON} format. For some signatures we have tens of explanations using this approach. That is why we involved some additional aggregation. In our case we merged all explanations for one signature into one \emph{JSON} file and for each entry computed its frequencies. Our assumption is that the most general formulation of an exaplanation should contain the most seen entries. Post-hoc we decided to involve two more ideas. First we counted frequency of particular key (name of fied in json file e.g. \ \emph{read files, resolved apis}\dots) in explanations such that for each signature we see how often particular key is detected by explainer. Based on this information we can compare original signature subject with most seen key to see if they coincide. Second idea is that we compute frequencies of entries seen accross different signature. We assume that in such way we could identify some kind of bias which is caused by quite often seen entries but in case of several signatures in such case we should consider being it too general concept. Results we discuss below.
-
-\todo{add histogram of keys to appendix}
+We received explanation for each example as a subset in \emph{JSON} format. For some signatures we have tens of explanations using this approach. That is why we involved some additional aggregation. In our case we merged all explanations for one signature into one \emph{JSON} file and for each entry computed its frequencies. Our assumption is that the most general formulation of an exaplanation should contain the most seen entries. Post-hoc we decided to involve two more ideas. First we counted frequency of particular key (name of fied in json file e.g. \ \emph{read files, resolved apis}\dots) in explanations such that for each signature we see how often particular key is detected by explainer. Based on this information we can compare original signature subject with most seen key to see if they coincide. Second idea is that we compute frequencies of entries seen accross different signature. We assume that in such way we could identify some kind of bias which is caused by quite often seen entries but in case of several signatures in such case we should consider being it too general concept. All the original outputs of additional aggregations are in attachments (\ref{app:attach}) - merged explanations are in \emph{merged} directory, frequencies of keys are in \emph{freq.json} and merged keys accross signatures are in \emph{overall.json}. Parts of results we discuss below.
 
 \todo{connect to theory in chapter about explainer theory}
 
@@ -65,34 +63,24 @@ The most seen keys in explanations are \emph{write_files, executed_commands, mut
 \paragraph{stealth network}
 The most seen keys in explanations are \emph{keys, files}. The original subject (network) is not presented in the input at all. It looks like registry keys play big role. But neither in case of registry keys we can not find any redundancies.
 
-In particular cases we can see several situations. We can identify situations where the model explanations corresponds to the original subject which we can see as some clue that the model is using what expected and its generalization goes right way (e.g. \ \emph{remove zone ads}). In several cases we are not able to identify any direct cause of model high performance. It also difficult to interpret particular entries and connect them to specific subjects because their variance is quite huge sometimes and making conclusion would need more samples and further analysing.
+In particular cases we can see several situations. Sometimes the model explanations corresponds to the original subject which we can see as some clue that the model is using what is expected and its generalization goes right way (e.g. \ \emph{copies self}). There is even special case where the original subject does not fit but the explanations logically correlates with it. In case of \emph{deletes self} we see key \emph{deleted files} but the original signature is detecting the same thing but according to \emph{api calls}. This example is quite special because the causality is straight-forward the api call causes that the file is deleted and appear even among deleted files. But model generelize to that which should not be overlooked. Another example is \emph{stealth network} where we do not see direct cause of the fact that registry keys are often used for explanation.
 
+Choosing the most used key is one way but second is investigating particular entries (specific calls, files, mutexes\dots). It is extremely difficult to interpret them and connect them to specific subjects because their variance is huge as we expected. The most significant is in \emph{removes zoneid ads} where we definitelly can see that the model is mainly using same entries as original signature (with the same suffix). This should also be considered as clue that the signature generalize right way.
 
-general conclusions
+Using our method we were able to identify several too general parts of explanations. Among them we see mutexes which were presented very often accross the signatures and they should considered confounding variables. Then also some files which are repeatedly seen in reports accross the signatures. Both play significant role detecting particular family or just classify malware/cleanware but to identify particular behavior they might be considered not used.
 
-Results for each signature (present both attempts)
-performance context and what is the strenght of the explanation (is it relevant)
-What it does (implementation) and if we can see it in explanation
-top of histogram.
-hypothesis we can formulate
+In several cases we are not able to identify any direct cause of model's high performance (e.g. \ \emph{antisandbox sleep}).
 
-Final thoughts, what categories we can see based on results and what are main problems, compare the explanation of initial two groups of signatures and even try to say something about different subject groups
-we are able to explain and this part should be further researched - describe particular problems including the type of explaning for this model complexity.
-We are experiencing two challenges which were mentioned earlier and those are - huge entrophy (take an example path to file for example) leads to big entrophy of explanation and we do not have some special method to determine similarities (some norm or...) (above our scope), confounding variables which we are not able to identify.
-It would be interesting to thing about the second approach - trasparency, to extract explanation for model not for sample, it is really hard to generalize such conslusions
-I think we can even state that the principle is working and we are able to identify why the model is predicting some things, cons of it is the example based explanation, better could be some kind of dataset based explanation
+\subsection{Final thoughts}
+After organizing research in explaining theory chapter \ref{chap:explain} we are very careful. Explaining is complicated field, its challenges we summarized in this chapter. We can not be sure about the output and especially using \emph{post hoc} explanation. As the input is considired random variable even the explanation should be. Despite those facts our observation evidence that the some models are strongly involving original subjects. This leads to future work in this field. The main interest should be in improving aggregation of particular explanations, too general parts of explanation detection, confounding variable detection. Important are also quetions if the \emph{post hoc} explanation would be better with bigger datasets as it also behaves as set of random variables.
 
-- Admit failures on bias variables
-  ○ Would it be better with more samples? (some mathematical magic?)
+But also the \emph{transparency} approaches should be added to the game. If we are able to make the explanation more accessible to the client (e.g. \ security engineer) there is significant chance for \emph{hmill} models to be used during malware analysis in real world application. The main reason is their high performance seen in our thesis but also in \cite{Mandlik2020} \todo{ref even others}. Of course more complex examples and wider dataset and further testing have to be involved.
 
-  reference explain theory properly (mainly the desiderata and interpretable model challenges, assumptions, interpretability, explainability, credibility)
-
-it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
-
-Explanation as another random variable
+\todo{try to connect it to the theory chapter reference explain theory properly (mainly the desiderata and interpretable model challenges, assumptions, interpretability, explainability, credibility)}
 
 %NICE TO HAVE
 %COMPATE SIGNATURES DATA PART WITH THE EXPLANATION
+% Would it be better with more samples? (some mathematical magic?)
   %%---------------------
   
 % discussion, why we are doing that - I think we can somehow see, what the original signature should care about - what else is significant from the behavior log, but we can see in general other malicious patterns - regardless original signature goal, obviously we see something else which is common
@@ -113,6 +101,27 @@ Explanation as another random variable
 %   report explanation and even some information from logs!!
 %   - Time to explain, Explanation size for different types of signatures, input size (Pevny is addressing those)
 
+
+% Results for each signature (present both attempts)
+% performance context and what is the strenght of the explanation (is it relevant)
+% What it does (implementation) and if we can see it in explanation
+% top of histogram.
+% hypothesis we can formulate
+
+% Final thoughts, what categories we can see based on results and what are main problems, compare the explanation of initial two groups of signatures and even try to say something about different subject groups
+% we are able to explain and this part should be further researched - describe particular problems including the type of explaning for this model complexity.
+% We are experiencing two challenges which were mentioned earlier and those are - huge entrophy (take an example path to file for example) leads to big entrophy of explanation and we do not have some special method to determine similarities (some norm or...) (above our scope), confounding variables which we are not able to identify.
+% It would be interesting to thing about the second approach - trasparency, to extract explanation for model not for sample, it is really hard to generalize such conslusions
+% I think we can even state that the principle is working and we are able to identify why the model is predicting some things, cons of it is the example based explanation, better could be some kind of dataset based explanation
+
+% - Admit failures on bias variables
+%   ○ 
+
+  
+
+% it is not problem to report that result is not easily interpretable and in practise we would have to create way of extracting general knowledge from sample explanations)
+
+% Explanation as another random variable
 
 
 

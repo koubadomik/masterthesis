@@ -1,0 +1,173 @@
+{
+  "antidebug_setunhandledexceptionfilter.json": {
+    "count": 377,
+    "items": {
+      "resolved_apis": 265,
+      "read_keys": 296,
+      "read_files": 113,
+      "keys": 69,
+      "executed_commands": 144,
+      "delete_files": 86,
+      "mutexes": 35,
+      "files": 82,
+      "write_files": 4,
+      "write_keys": 1
+    }
+  },
+  "antisandbox_sleep.json": {
+    "count": 100,
+    "items": {
+      "read_files": 24,
+      "keys": 68,
+      "mutexes": 12,
+      "read_keys": 58,
+      "write_keys": 82,
+      "resolved_apis": 24,
+      "started_services": 1,
+      "executed_commands": 25,
+      "write_files": 12,
+      "files": 3,
+      "delete_files": 3
+    }
+  },
+  "copies_self.json": {
+    "count": 100,
+    "items": {
+      "write_files": 100,
+      "write_keys": 19,
+      "executed_commands": 55,
+      "mutexes": 31,
+      "delete_files": 38,
+      "read_files": 16,
+      "files": 1,
+      "started_services": 1
+    }
+  },
+  "deletes_self.json": {
+    "count": 100,
+    "items": {
+      "write_files": 58,
+      "delete_files": 100,
+      "executed_commands": 57,
+      "keys": 53,
+      "read_keys": 31,
+      "resolved_apis": 2,
+      "files": 2
+    }
+  },
+  "dropper.json": {
+    "count": 71,
+    "items": {
+      "executed_commands": 68,
+      "write_files": 71,
+      "mutexes": 45,
+      "write_keys": 25,
+      "delete_files": 22,
+      "read_keys": 23,
+      "read_files": 12,
+      "resolved_apis": 6,
+      "started_services": 1,
+      "keys": 1,
+      "delete_keys": 1
+    }
+  },
+  "enumerates_running_processes.json": {
+    "count": 84,
+    "items": {
+      "executed_commands": 60,
+      "mutexes": 58,
+      "write_files": 26,
+      "read_files": 33,
+      "read_keys": 46,
+      "delete_files": 12,
+      "keys": 5,
+      "resolved_apis": 5,
+      "files": 3,
+      "started_services": 1
+    }
+  },
+  "invalid_authenticode_signature.json": {
+    "count": 61,
+    "items": {
+      "resolved_apis": 32,
+      "read_files": 43,
+      "mutexes": 35,
+      "delete_files": 18,
+      "keys": 43,
+      "read_keys": 52,
+      "files": 15,
+      "write_files": 11,
+      "write_keys": 22,
+      "executed_commands": 9
+    }
+  },
+  "packer_entropy.json": {
+    "count": 29,
+    "items": {
+      "write_files": 15,
+      "delete_files": 14,
+      "resolved_apis": 26,
+      "files": 22,
+      "keys": 28,
+      "mutexes": 18,
+      "write_keys": 12,
+      "read_keys": 24,
+      "executed_commands": 20,
+      "read_files": 21
+    }
+  },
+  "removes_zoneid_ads.json": {
+    "count": 100,
+    "items": {
+      "write_files": 8,
+      "delete_files": 100,
+      "keys": 71,
+      "read_keys": 14,
+      "write_keys": 34,
+      "executed_commands": 36,
+      "files": 26,
+      "read_files": 3,
+      "resolved_apis": 1
+    }
+  },
+  "stealth_network.json": {
+    "count": 100,
+    "items": {
+      "files": 68,
+      "keys": 94,
+      "executed_commands": 19,
+      "write_files": 28,
+      "resolved_apis": 14,
+      "write_keys": 8,
+      "read_keys": 31,
+      "started_services": 4
+    }
+  },
+  "stealth_timeout.json": {
+    "count": 78,
+    "items": {
+      "executed_commands": 77,
+      "resolved_apis": 25,
+      "files": 63,
+      "read_files": 15,
+      "keys": 3,
+      "write_files": 16,
+      "write_keys": 13,
+      "read_keys": 4,
+      "mutexes": 2,
+      "delete_files": 1,
+      "delete_keys": 2
+    }
+  },
+  "uses_windows_utilities.json": {
+    "count": 67,
+    "items": {
+      "executed_commands": 67,
+      "resolved_apis": 7,
+      "read_keys": 18,
+      "delete_files": 8,
+      "write_files": 19,
+      "keys": 2
+    }
+  }
+}
