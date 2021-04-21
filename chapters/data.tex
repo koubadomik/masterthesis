@@ -3,21 +3,21 @@
 % \todo{this chapter could be absorbed into next chapter if it is too short...}
 % \todo{do not forget to add goals to each chapter and go through the trash below each chapter!!}
 
-The outputs of previous chapter are dynamic malware analysed samples. There are even such experiments that used machine learning algorithms on all the produced data but this is very performance demanding because the output may have 15~\emph{MB} but even gigabytes. That is why we want to choose only subset which we find containing the most information about the run and behavior. 
+The outputs of the previous chapter are dynamic malware analysed samples. Even such experiments used machine learning algorithms on all the produced data, but this is very performance demanding because the output may have 15~\emph{MB} but even gigabytes. That is why we want to choose the only subset containing the most information about the run and behaviour. 
 
-The goal of this thesis is to use \emph{hmill} model (copmrehensively desribed in \ref{chap:hmill}) which is able to work with graph-structured data and especially with json files. This fact we would like to use.
+The goal of this thesis is to use \emph{hmill} model (comprehensively described in \ref{chap:hmill}), which can work with graph-structured data and especially with JSON files. This fact we would like to use.
 
-Our approach is to create simple binary classifier and then scale up to multiclass or even multilabel if it is possible regarding performance and time we have. In this chapter we describe our reasoning on choosing features and hidden states for our \emph{hmill} classifier. The input are collected results and the expected output is set of features and states (maybe more than one possibility). This decision should be based on the data we have and even on experience from prior work we reference to.
+Our approach is to create a simple binary classifier and then scale up to multiclass or even multilabel if possible regarding performance and time. This chapter describes our reasoning on choosing features and hidden states for our \emph{hmill} classifier.  Collected results are input, and the expected output is a set of features and states (maybe more than one possibility). This decision should be based on the data we have and the experience observed in prior work.
 
 
 \section{Dataset}
-We have some of results which were mentioned in \ref{chap:infrastructure}. At the time we start following reasoning we have proper amount of the data without internet access because the setup is straight-forward and easier. The setup with the internet connection and its collected data will be investigated in the future work as its collection continues. 
+We have some of the results which were mentioned in \ref{chap:infrastructure}. When we start the following reasoning, we have the proper amount of the data without internet access because the setup is straightforward and more accessible. The setup with the internet connection and its collected data will be investigated in future work as its collection continues. 
 
-The data in such domain are very biased (\ref{chap:class}). Sometimes we can see that malware is not able to be run under the conditions in virtual machine or it is trying to use some \emph{.NET} library and if not found it kills itself. The fact that we do not have internet connection can make this bias stronger so it has to be counted on in making the decision on what to use to train the model. We definitely do not want to investigate network activities even if sometimes it contains something (malware attempts).
+The data in such domain are very biased (\ref{chap:class}). Sometimes we can see that malware can not be run under the conditions in a virtual machine or is trying to use some \emph{.NET} library and if not found, it kills itself. The fact that we do not have an internet connection can make this bias stronger, so we have to count on it to decide what to use to train the model. We do not want to investigate network activities even if sometimes it contains something (malware attempts).
 
-The dataset we have consists of $80000$ different samples. Complete data have \texttildelow$2,5$~\emph{TB} where the analysis result is compressed.
+The dataset consists of $80000$ different samples. Complete data have \texttildelow$2,5$~\emph{TB} where the analysis result is compressed.
 
-The documentation of the output is quite weak but there is some (\url{https://cuckoo.readthedocs.io/en/latest/usage/results/}) and we also investigated outputs themselves. The output of general \emph{CAPEv2} sandbox analysis is described in table \ref{tab:sandbox-out}.
+The output documentation is quite weak, but there is some (\url{https://cuckoo.readthedocs.io/en/latest/usage/results/}), and we also investigated outputs themselves. The output of general \emph{CAPEv2} sandbox analysis is described in table \ref{tab:sandbox-out}.
 
 \begin{table}[h]
     \centering
@@ -50,14 +50,14 @@ The documentation of the output is quite weak but there is some (\url{https://cu
 
 Not all the outputs are presented in each sample. \emph{CAPEv2} presents results using web interface for example here \url{https://capesandbox.com/}~(after authentication).
 
-There are various experiments involving machine learning approaches with analysis result input. Based on the fact that a lot of them use \emph{report.json} as main input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything what the sandbox is able to provide. It also covers the majority of the storage on the disk so included information is very comprehensive (see \ref{tab:report}). As we are not very sure which parts are suitable for us this report is quite convenient and compared to mentioned authors we have model which accepts json documents.
+There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
 
-% \todo{Summarize what we know from previous sections \todo{especially from analysis part, where we should summarize what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
+% \todo{Summarise what we know from previous sections \todo{especially from analysis part, where we should summarise what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
 
 \section{Report}
-\emph{JSON} notation is described in \ref{sec:json_notation}. The report has usually tens of megabytes but sometimes even gigabytes. It is quite easy to compress, we can have even 10 times less storage because it contains a lot of redundancies (sequencies of api calls\dots). 
+\emph{JSON} notation is described in \ref{sec:json_notation}. The report usually has tens of megabytes but sometimes even gigabytes. It is quite easy to compress. We can have even ten times less storage because it contains many redundancies (sequences of API calls\dots). 
 
-The documentation of each part of the report is again quite poor but a lot of attributes are self-descriptive. Complete schema is in \ref{tab:report}. In attachments we can see example of real log (\ref{app:attach})
+The documentation of each part of the report is quite poor, but many attributes are self-descriptive. Complete schema is in \ref{tab:report}. In attachments we can see example of real log (\ref{app:attach})
 
 \begin{table}[h]
     \centering
@@ -100,21 +100,21 @@ The documentation of each part of the report is again quite poor but a lot of at
 \end{table}
 
 \section{Features and states for classification}
-Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements we find them in \emph{report.json}. More than one possibilites are stated and based on further conditions we are going to train models on some of input data combination/s.
+Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
 
 \subsection{States}
-We know that our samples are malware based on the source of original files as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes has to be related to the malwaware itself, its attributes and behavioral signs.
+We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
 
-From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioral features or combination of behavioral and static features. 
+From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
 
-Assigning \emph{malware family} is very complex task \cite{Gennari2011}, we often involve the behavior of the sample and its similarity to other samples. Usual process involves some kind of decomposition of this task to deterministic detection of specific behavior and classfying according to their combination. Potential model could attempt to generalize family assignment process (like in \cite{Rieck2008}) and point out features which could be used in more complex way than usual deterministic ones. Straght-forward thinking about this task is that it is more a clustering task - we need to find families and use them to categorize old and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
+Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
 
-\emph{Malware score} has multiple definitions in a lot of papers (\cite{Walker2019, Kumar2014})and that is a crucial problem of these metrics. Of course in case of CAPEv2 sandbox we can investigate its implementation but the future classifier will be dependent on it. On the other hand potential classifier could assign score based on more complex decisions and we could observe where it is against original human-defined assignment. But this is quite risky because even the original malscore assignement is complex decision consisting from a serie of steps. Examining it like blackbox should not be the first thinkg which we want to use. We rather want to use its causes.
+\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
 
-\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behavior, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. Potential model could again generalize their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behavior correlating with original signature assignment.
+\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
 
 \subsection{Features}
-Following the assumption that our state candidates are related to the behavior of malware sample we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behavior. Two things remain - network and behavior part. In our dataset we do not have relevant network traffic due to the data collection details mentioned above. We take into consideration only behavior part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
+Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain - network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
 
 \begin{table}[h]
     \centering
@@ -136,11 +136,11 @@ Following the assumption that our state candidates are related to the behavior o
     \label{tab:behavioral}
 \end{table}
 
-As feature vector could be used the whole section or its segments. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
+We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
 
 Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
 
-The goal of this chapter was to describe potential states and features. We know that to train the model we concentrate on specific parts of \emph{report.json}. We are moving to modeling itself.
+The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
 
 
 
