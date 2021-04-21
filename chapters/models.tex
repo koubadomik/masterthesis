@@ -1,132 +1,66 @@
 \chapter{Modelling classifier} \label{chap:models}
-In this chapter we want to present our \emph{hmill} models and their results. Our goal is to train the models using hyperparameters based on prior experiments with \emph{hmill} framework. We are not going to perform hyper parameter tuning and other robust techniques, our goal is to demonstrate that it is possible to train such model and later explain it. We do not aim to strictly perform long sequence of experiments and compare to prior. On the other hand we would like to present similar metrics of evaluation. 
+In this chapter we present trained \emph{hmill} models and their results. Our goal is to demonstrate that it is possible to train such model and later explain it. We do not aim to strictly perform long sequence of experiments and compare to prior. Model is just part of our work.
 
-We do not model all variants of features and states mentioned in previous chapter, we concentrate on at least one working model and then we move on to model explaining experiments.
+We do not model all variants of features and states mentioned in previous chapter, we concentrate on at least one working model and then we move on to model explaining experiments. From \emph{states} and \emph{features} in question we start with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. 
 
-In previous chapter we formulated several possibilities for model output and input. We use \emph{hmill} framework for data modelling (\ref{chap:hmill}). From \emph{states} and \emph{features} in question we started with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. 
-
-Our reasoning about states is based on the fact that the signatures are usually assigned based on some atomic fact, for example presence of some api call in log. If we choose states which are part of behavioral log where this information is presented, we should be able to evaluate model's prediction or draw some conclusions based on it. 
-
-Also we want to see if the model is able to generalize the knowledge and maybe come up with some new explanation of particular signature or just things which go with the original subject of particular signature. By subject we mean the subset of the original log based on which presence the sandbox assigned current signature.
-
-More complex labels like malware family or malware score are something what we can explore later. We assume that the assignement of those is often supported by signatures themselves and it should be better to explore the original cause of the whole chain.
-
-\section{Behavior as feature vector}
-After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive and we will not be able to train the model with the hardware resources we have. \todo{some better arguments}. If the model would be still to complex to train under our conditions we omit also the \emph{enhanced part}. At such case we would lost mainly the information about the order of events because the summary part only lists occurences of artifacts (api calls, commands\dots).
+\section{Behaviour as feature vector}
+After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive and we would not be able to train the model with the hardware resources we have. Those two should be sufficient for wide look on malware behaviour. If the model would be still to complex to train under our conditions we would omit also the \emph{enhanced part}. At such case we would lost mainly the information about the order of events because the summary part lists only occurences of artifacts (api calls, commands\dots).
 
 \section{Signatures as states}
-Brief description of signatures is in previous chapter (\ref{chap:data}). Signatures are assigned to each sample based on its behavior. In \ref{app:histogram} we can see histogram of the most frequent signatures in our dataset.
+Our reasoning about states is based on the fact that the signatures are usually assigned based on some atomic fact, for example presence of some api call in log. Let us call this fact \emph{subject of signature}. It can be one or more patterns seen in behavioural log. The implementation of signature is deterministically detecting this part and add the signature to the log. We can consider \emph{copies self} signature example. If specific dropped file which corresponds to currently analysed one is dropped signature is active and we would find it in \emph{report.json}.
 
-From the original histogram we choose specific subset based on the frequency (not too much and too little), presence of implementation in python repository (not all of them we were able to find) \todo{some better arguments,...}. In the \ref{app:frequecies} we can see our candidates and their frequencies in dataset.
+If we choose features where the subjects are presented, we should be able to evaluate model's explanation. By evaluation we mean that we can examine the conincidence between the original subject and model explanation. Also we want to see if the model is able to generalize the knowledge and maybe come up with some new explanation of particular signature - new better subject. It can also find parts which goes with the original subject of the particular signature - maybe another malicious behaviour.
 
-Next task is to investigate what the implementation of particular signature is about and try to create groups for further conclusion making. \emph{Python} implementation of each signture is processing the output of sandbox and generates boolean values signing that the subject of particular signature is presented in sample behavioral log. The subject of signature can be api call, dropped file, process, command and even something more complex. If the signature implementation returns \emph{True}, we observe instance of this signature in the \emph{signatures} part of \emph{report.json}. An example of such signature item coud be seen in \ref{lst:signature}. The most important aside from \emph{name} and \emph{description} is field \emph{data} which contains detected signature subject.
+More complex labels like malware family or malware score we might explore later. We assume that the assignement of those is often supported by signatures themselves and it is be better to explore the original cause of the whole chain.
 
-\begin{lstlisting}[language=json, caption={Example of signature item in \emph{report.json}},captionpos=b, label={lst:signature}]
-  {
-      "name": "antisandbox_sleep",
-      "description": 
-        "A process attempted to delay the analysis task.",
-      "severity": 2,
-      "weight": 1,
-      "confidence": 100,
-      "references": [],
-      "data": [
-        {
-          "Process": 
-              "explorer.exe tried to sleep 300.0 seconds"
-        }
-      ],
-      "new_data": [],
-      "alert": false,
-      "families": []
-    },
-  
-\end{lstlisting}
+After examining the histogram of seen signature in our dataset we choose subset based on the frequency. We prefered signatures which are implemented in Python for convenient investigation of the original subject. In the \ref{app:signatures} we can see our candidates and their frequencies in dataset.
 
-We explored two types of grouping aspects. First is the subject of particular signature and then second is if we can see this subject in the behavioral log directly. For instance if the signature implementation is using api calls so the api call list is directly in the log. If it uses entrophy of dropped files, it is not directly in the output. In listing \ref{lst:signatureimpl} we can see simple example of \emph{antidebugsetunhandledexceptionfilter} signature which is just checking presence of specific signature.
+Next task is to investigate what the implementation of particular signature is about and try to create groups for further conclusion making. \emph{Python} implementation of each signture processes the output of sandbox and generates boolean values signing that the subject of particular signature is presented in sample behavioral log. The subject of signature can be api call, file, registry key, process, command and even something more complex. If the signature implementation returns \emph{True}, we observe instance of this signature in the \emph{signatures} part of \emph{report.json}. An example of such signature item coud be seen in \ref{app:signatures}. The most important aside from \emph{name} and \emph{description} is field \emph{data} which sometimes contains signature subject.
 
-\begin{lstlisting}[language=mypython, caption={Example of signature implementation},captionpos=b, label={lst:signatureimpl}]
-  
-  class antidebug_setunhandledexceptionfilter(Signature):
-  name = "antidebug_setunhandledexceptionfilter"
-  description = "SetUnhandledExceptionFilter detected (possible anti-debug)"
-  severity = 1
-  categories = ["anti-debug"]
-  authors = ["redsand"]
-  minimum = "1.3"
-  evented = True
+We explored two types of grouping aspects. First is the subject of particular signature and second is if we can see this subject in the behavioral log directly. For instance if the signature implementation is using api calls so the api call list is directly in the log. If it uses entrophy of dropped files, it is not directly in the output. In \ref{app:signatures} we can see simple example of implementation of \emph{antidebugsetunhandledexceptionfilter} signature which is just checking presence of specific signature.
+More about particular signatures and identified categories could be found in \ref{app:signatures}. 
 
-  def __init__(self, *args, **kwargs):
-      Signature.__init__(self, *args, **kwargs)
-
-  filter_apinames = set(["SetUnhandledExceptionFilter"])
-
-  def on_call(self, call, process):
-      if call["api"] == "SetUnhandledExceptionFilter":
-         return True
-  
-\end{lstlisting}
-
-
-Based on our reasoning we identified following categories:
-
-\begin{enumerate}
-  \item Directly in \emph{report.json} in parts \emph{summary, enhanced}
-  \begin{itemize}
-    \item API calls - \emph{injectionrwx, antidebugsetunhandledexceptionfilter, removeszoneidads, deletesself, stealthtimeout, enumeratesrunningprocesses, injectionrunpe}
-    \item Files - \emph{copiesself}
-    \item Commands - \emph{useswindowsutilities}
-  \end{itemize}
-  \item Not directly in \emph{report.json} in parts \emph{summary, enhanced} (some clues might be presented, but the direct information is not there)
-  \begin{itemize}
-    \item Processes - \emph{dropper}
-    \item Sleep - \emph{ antisandboxsleep}
-    \item Entrophy - \emph{packerentropy}
-    \item Network - \emph{stealthnetwork}
-    \item Authsign - \emph{invalidauthenticodesignature}
-  \end{itemize}
-\end{enumerate}
-
-More about particular signatures could be found in \ref{app:signatures}.
-
-The reason why we categorize signatures in such manner is that we would like to connect those categories with the model performace in the further discussion. We expect that different categories might have different performance.
+We distinguish two groups based on the direct presence of the original subject in the feature vector. The reason why we categorize signatures in such manner is that we would like to connect those categories with the model performace in the further discussion. We expect that different categories might have different performance.
 
 \section{Model}
-We create binary classifier which predicts the presence of particular signature. Later we can train even multilabel classifier which would assign set of signatures according to dynamic analysis but the most important for us is the binary classification, its performance and its explanations. Multilabel classifier could be seen as multioutput binary model, so if we are able to scale up the hardware resources and its usage using available techniques (multithreading) multilabel model should be easily deriveable from original simle binary classfier.
+The objective is to create binary classifier which predicts the presence of particular signature. Later we can train even multilabel classifier which would assign set of signatures according to dynamic analysis. However, the binary classification, its performance and its explanations are the most important for us. 
+
+% Multilabel classifier could be seen as multioutput binary model, so if we are able to scale up the hardware resources and its usage using available techniques (multithreading) multilabel model should be easily deriveable from original simle binary classfier.
 
 Technology stack we used to train \emph{hmill} model is described in \ref{app:technologies}. Important is that we unsuccesfuly experimented with multithreading in \emph{Julia} language for gradient computation. The resulting model was trained on one CPU which a little bit shrinked our possibilities.
 
-First experiments are without reported results because model was to huge to converge to some significant performance. We were not able to train it on hardware and with thread limitationsin in feasible time. This reality led us to skip one part of feature vector - \emph{enhanced} part. So the resulting model is working with \emph{summary}p art of original report only. Looking back on this part of experimenting we know that the problem might have been even in hyper parameter choice. But tighter feature vector was advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
+First experiments are without reported results because model was too huge to converge to some significant performance. We were not able to train it on hardware and with thread limitationsin in feasible time. This reality led us to skip one part of feature vector - \emph{enhanced} part. So the resulting model is working with \emph{summary} part only. The tighter feature vector is advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
 
-Original code of the model is in thesis attachment \ref{app:attach}. The pseudocode of the whole process can be seen in \ref{algo:hmillbinary}. It is standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library which is able to accept array of json documents and produce schema (more in \ref{app:technologies}). Schema is then used to create \emph{hmill} structures from each json document. Example of a schema, implied extractor and \emph{hmill} model for our data is in attachment of this thesis (\ref{app:attach}]. In our case each signature has its own training set and ecen own schema implied by training set examples.
+Original code of the model is in thesis attachment \ref{app:attach}. It is standard binary classifier. What is not so ordinary is that the model is function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is more general so its is not accepting json documents directly. For this purpose we use \emph{JsonGrinder} library which is able to accept array of json documents and produce a schemata. The schemata is then used to create \emph{hmill} structures from each json document. Example of a schemata, implied extractor and \emph{hmill} model for our data is in attachment (\ref{app:attach}). In our case each signature has its own training set and even own schemata implied by training set examples.
 
-\begin{algorithm}
-  \caption{Hmill model training}\label{algo:hmillbinary}
-  \begin{algorithmic}
-      \Procedure{HmillTrain}{$signature\_name, jsons, hyperparameters$}
-      \State $samples \gets load(jsons)$
-      \State $train,test \gets split(samples)$
-      \State $trnstates,tststates \gets extractstates(train, test)$
-      \State $schema \gets getshema(train)$
-      \State $extractor \gets suggestextractor(schema)$
-      \State $model \gets reflectinmodel(schema, extractor, class\_num, hyperparams)$
-      \State $optimize(model, train, trnstates)$
-      \State $metrics \gets evaluate(model, tststates)$
-      \EndProcedure
-  \end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+%   \caption{Hmill model training}\label{algo:hmillbinary}
+%   \begin{algorithmic}
+%       \Procedure{HmillTrain}{$signature\_name, jsons, hyperparameters$}
+%       \State $samples \gets load(jsons)$
+%       \State $train,test \gets split(samples)$
+%       \State $trnstates,tststates \gets extractstates(train, test)$
+%       \State $schema \gets getshema(train)$
+%       \State $extractor \gets suggestextractor(schema)$
+%       \State $model \gets reflectinmodel(schema, extractor, class\_num, hyperparams)$
+%       \State $optimize(model, train, trnstates)$
+%       \State $metrics \gets evaluate(model, tststates)$
+%       \EndProcedure
+%   \end{algorithmic}
+% \end{algorithm}
 
 \subsection{Model hyperparameters and dataset attributes}
-In our experiment we do not involve techniques like early stopping or hyperparameter tuning. Our goal is to demonstrate the classifier performance we do not aspire to spend a lot of time in this part. We build on previous experiments namely on \cite{Mandlik2020} where author published even the set of hyperparameter used in \emph{device id} example. This example was also from cybersecurity field. Those parameters we used as initial.
+In our experiment we do not involve techniques like early stopping or hyperparameter tuning. Our goal is to demonstrate the classifier performance we do not aspire to concentrate on this part only. We build on previous experiments namely on \cite{Mandlik2020} where author published even the set of hyperparameter used in \emph{device id} example. This example was also from cybersecurity field. Those parameters we used as initial setup.
 
-We were not succesful immediately, it took several attempts of our hand-picked adjustments. After each adjustment we tried to train the model and observed convergence of loss function and balanced accuracy on training and testing data. Due to the fact that we did not tune hyperparameters or anything else, we did not use validation set. Due to the good ration for testing and training data and signature distribution and due to the convincing performance we did not involve cross validation.
+We were not succesful immediately, it took several attempts of our hand-picked adjustments. After each adjustment we tried to train the model and observed convergence of loss function and balanced accuracy on training and testing data. Due to the fact that we did not tune hyperparameters or anything else, we did not use validation set. 
+% Due to the good ration between testing and training data, signature distribution and convincing performance we did not involve cross validation.
 
-In the table \ref{tab:hyperparams} we can observe hyperparameters of the model and other training-independent facts.
+In the table \ref{tab:hyperparams} we can observe hyperparameters of the model and other training-independent facts which we used.
 
 
 \begin{table}[h]
   \centering
-  \caption{Parts of \emph{report.json}}
+  \caption{Hyperparameters of \emph{hmill} model}
   \begin{tabular}{p{6cm}p{8cm}} 
       \toprule
       \textbf{Parameter} &
@@ -149,12 +83,15 @@ In the table \ref{tab:hyperparams} we can observe hyperparameters of the model a
 \end{table}
 
 
-Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations} which worked for us in this changed form. Data used in their case were of much smaller scale (\emph{device id}) which could be the reason.
+Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations} which worked for us better in this changed form. Data used in their case were of much smaller scale (\emph{device id}) which could be the reason.
 
-The number of \emph{iterations} we setup so that we observe reasonable convergence. We did not challenged this parameter, we expect further convergence. We checked overfitting by monitoring difference between accuracy on training and testing data. They does not differ significantly.
+The number of \emph{iterations} we setup so that we observe reasonable convergence. We did not challenged this parameter, we expect further convergence. We checked overfitting by monitoring difference between accuracy on training and testing data. They do not differ significantly.
 
 \section{Results}
-Chosen metrics are based on metrics which are reported by similar papers \todo{reference Pevny, Madlik and Stiborek}. We also follow the chapter \ref{chap:classification} where we mentioned classifiers in cyber security field and their pitfalls. The calculation was supported by \emph{EvalMetrics.jl} library (\ref{app:technologies}).
+% Chosen metrics are based on metrics which are reported by similar papers \todo{reference Pevny, Madlik and Stiborek}. 
+We choose the metrics following the chapter \ref{chap:classification} where we mentioned classifiers in cyber security field and their pitfalls. The calculation was supported by \emph{EvalMetrics.jl} library (\ref{app:technologies}). Results of experiments could be seen in \ref{tab:models_res}, table is divided into two groups based on categories presented above. There are also some other metrics and visualizations in \ref{app:models}. Resulting models are part of attachment \ref{app:attach}.
+
+Metrics which we are reporting in \ref{tab:models_res} are robust in case of disbalanced dataset which is also our case. In the table we also include percentage of positive examples to see this disbalance and be able to assess the \emph{FNR} and \emph{FPR}.
 
 \begin{table}[h]
   \centering
@@ -198,37 +135,49 @@ Chosen metrics are based on metrics which are reported by similar papers \todo{r
   \label{tab:models_res}
 \end{table}
 
-Results of experiments could be seen in \ref{tab:models_res}, table is divided into two groups based on categories presented above. There are also some other visualizations in \ref{app:models}.
-
 \section{Discussion}
-Original signature implementation is deterministically examining the sandbox output and marking some behavior as we stated above. The most significant difference between them regarding the input is that their subject (\emph{api call, file \dots}) is directly among our fetures (\emph{direct}) or it is not there (\emph{not direct}). We could also investigate if the instance of particular subject for instance specific api call not only their list is presented because the signature detect specific list of api calls. But we categorize signature based on the fact if the whole category of subject is presented in output.
+Original signature implementation is deterministically examining the sandbox output and marking some behavior as we stated above. The most significant difference between the signatures is if their subject (\emph{api call, file \dots}) is directly among our fetures or it is not. 
 
-Based on this categorization we assume that the performace of signatures in \emph{direct} category have better performance than the ones in \emph{not direct}. Because the algorithm has to converge to something else which is corresponding to positive training examples and this do not have to be straight-forward. But on the other hand we assume that classifier could generalize in such way because that could lead us to some new knowledge in explanation part.
+Firstly, let us describe our expectations. Based on this categorization we assume that the performace of signatures in the first category is better than the one in second. It is because we could not be sure that model would have something according to what it will generalize but in the first case we know exactly that it should consider the subject of original signature.
 
-Metrics which we are reporting in \ref{tab:models_res} are robust in case of disbalanced dataset which is also our case. In the table we also include percentage of positive examples to see this disbalance and be able to assess the \emph{FNR} and \emph{FPR}.
+In case of the first category of signatures we observe quite consistent performance above $95$~\%. Signature \emph{copiesself} has $92$~\% which is still sufficient for explaning. This devitaion could be caused by the fact that the original signature is examining dropped files and checking if current file is among them. But the filename varies of course so the entrophy might by very high and it might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues but it is determining according to api calls and not dropped files which could cause that its performance is better. The only significant outlier in this group is \emph{stealthtimeout} signature which examines sequence of api calls which could be quite compicated. After going through some files where this signature was presented we were not able to identify the particular api calls in the original log so the assignment might be more tricky. The main cause of low accuracy is in this case \emph{FPR}.
 
-In case of \emph{direct} category of signatures we observe quite consistent performance above $95$~\%. \emph{copiesself} signature has $92$~\% which is still sufficient for explaning. This devitaion could be caused by the fact that the original signature is examining dropped files and looking at the fact if current file is among them. But the filename varies of course so the entrophy might by very high and it might cause big \emph{FNR}. \emph{deletesself} might have similar issues but it is determining also according to api calls which could cause that its performance is better. The only significant outlier in this group is \emph{stealthtimeout} signature which examines sequence of api calls which could be quite compicated. After going through some files where this signature was presented we were not able to identify the particular api calls in the original log so the assignment might be much more tricky. The main cause of low accuracy is in this case \emph{FPR}.
+Despite of some anomalies which we inspect in next chapter the performance of this signature group is as we expected. 
 
-Despite of some anomalies which we inspect next chapter the performance of this signature group is as we expected. Even the \emph{stealthtimeout} we are going to explain on positive examples with high confidence to see what is in the game there.
+% Even the \emph{stealthtimeout} we are going to explain on positive examples with high confidence to see what is in the game there.
 
-\emph{No direct} group behaves more unexpectedly because the performance in 3 of 5 cases  is above $90$~\%. This we can connect to the particular facts that \emph{antisandboxsleep} uses api calls in more complex way so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR} but its performance is still good for explanations. \emph{Stealthnetwork} should look at network activity which is not among the features.
-
-Good performance of some signatures in this group arouses our interest in the explaining part of those signatures. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy} explanation we should not take it too seriously due to the performance. Overall the first group has statistically better performance as we expected but this comparison is not relevant so much.
+Second group behaves more unexpectedly because the performance in 3 of 5 cases  is above $90$~\%. Signature \emph{antisandboxsleep} uses api calls in more complex way so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR} but its performance is still good for explanations. \emph{Stealthnetwork} should look at network activity which is not among the features. Good performance of some signatures in this group arouses our interest in the explaining part. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy} explanation we should not take it too seriously due to the performance. Overall the first group has statistically better performance as we expected but this comparison is not so relevant.
 
 We performed also several experiments with more general multilabel classifier but we did not observe convergence under our hardware resource conditions.
 
-Conclusion of this chapter is that we are able to train \emph{hmill} classifier to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has significant performance more than $90\%$ as balanced accuracy for majority of signatures and this is sufficient for further explaining experiments. Such models should have strong confidence for us to be able to choose some samples for explainer (\ref{chap:explain}). Obviously we are able to classify only some of signatures with such performace which we mentioned in discussion.
+Conclusion of this chapter is that we are able to train \emph{hmill} classifier to classify presence of particular signature based on summary part of behavioral log from \emph{CAPEv2} sandbox. This classifier has significant performance more than $90\%$ as balanced accuracy for majority of signatures and this is sufficient for further explaining experiments. Such models should have strong confidence for us to be able to choose some samples for explainer (\ref{chap:explain}). 
 
-In explanation chapter we should examine different categories of signatures based on their performance. The ones which are with our intuition we should investigate such that they are really using what original signature did. The ones which were unexpectedly bad we should not try to explain because low confidence. The ones which were unexpectedly good we need to explain to see what is the subject which is used the most by the model.
+% We are able to classify only some of signatures with such performace which we mentioned in discussion.
 
-
-
-
+In explanation chapter we should examine different categories of signatures based on their performance. The ones which are with our intuition we should investigate such that they are really using what original signature did. The ones which were unexpectedly bad we should not try to explain because of their low confidence. The ones which were unexpectedly good we need to explain to see what is the subject which is used by the model.
 
 
 
+% We could also investigate if the instance of particular subject for instance specific api call not only their list is presented because the signature detect specific list of api calls. But we categorize signature based on the fact if the whole category of subject is presented in output.
 
+% Because the algorithm has to converge to something else which is corresponding to positive training examples and this do not have to be straight-forward. But on the other hand we assume that classifier could generalize in such way because that could lead us to some new knowledge in explanation part.
 
+% \begin{enumerate}
+%   \item Directly in \emph{report.json} in parts \emph{summary, enhanced}
+%   \begin{itemize}
+%     \item API calls - \emph{injectionrwx, antidebugsetunhandledexceptionfilter, removeszoneidads, deletesself, stealthtimeout, enumeratesrunningprocesses, injectionrunpe}
+%     \item Files - \emph{copiesself}
+%     \item Commands - \emph{useswindowsutilities}
+%   \end{itemize}
+%   \item Not directly in \emph{report.json} in parts \emph{summary, enhanced} (some clues might be presented, but the direct information is not there)
+%   \begin{itemize}
+%     \item Processes - \emph{dropper}
+%     \item Sleep - \emph{ antisandboxsleep}
+%     \item Entrophy - \emph{packerentropy}
+%     \item Network - \emph{stealthnetwork}
+%     \item Authsign - \emph{invalidauthenticodesignature}
+%   \end{itemize}
+% \end{enumerate}
 %NICE TO HAVE
 %we can try to play more with some average bal. acc. or FNR and FPR overall dataset and over each group...
 
