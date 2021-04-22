@@ -1,10 +1,12 @@
 \chapter{Signatures description} \label{app:signatures}
-The split in the table \ref{tab:signatures_detail} denotes two groups of signatures:
+The split in the table \ref{tab:sigdet} denotes two groups of signatures:
 \begin{itemize}
   \item Directly in \emph{report.json} in parts \emph{summary, enhanced}
   \item Not directly in \emph{report.json} in parts \emph{summary, enhanced} (some clues might be presented, but the direct information is not there)
 \end{itemize}
 Signature entry in original report can be seen in \ref{lst:signature_example}. Implementations of signatures could be seen on \url{https://github.com/kevoreilly/community} and example is in \ref{lst:signatureimpl}.
+
+\newpage
 
 \begin{table}[h]
   \centering
@@ -45,7 +47,7 @@ Signature entry in original report can be seen in \ref{lst:signature_example}. I
     \bottomrule
   \end{tabular}
   \end{minipage}
-  \label{tab:signatures_detail}
+  \label{tab:sigdet}
 \end{table}
 
 \begin{lstlisting}[language=json, caption={Example of \emph{signature} part entries in \emph{report.json}},captionpos=b, label={lst:signature_example}]

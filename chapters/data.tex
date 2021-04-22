@@ -1,8 +1,6 @@
-\chapter{Data structure, features and states} \label{chap:data}
-
 % \todo{this chapter could be absorbed into next chapter if it is too short...}
 % \todo{do not forget to add goals to each chapter and go through the trash below each chapter!!}
-
+\chapter{Data structure, features and states} \label{chap:data}
 The outputs of the previous chapter are dynamic malware analysed samples. Even such experiments used machine learning algorithms on all the produced data, but this is very performance demanding because the output may have 15~\emph{MB} but even gigabytes. That is why we want to choose the only subset containing the most information about the run and behaviour. 
 
 The goal of this thesis is to use \emph{hmill} model (comprehensively described in \ref{chap:hmill}), which can work with graph-structured data and especially with JSON files. This fact we would like to use.
@@ -15,7 +13,7 @@ We have some of the results which were mentioned in \ref{chap:infrastructure}. W
 
 The data in such domain are very biased (\ref{chap:class}). Sometimes we can see that malware can not be run under the conditions in a virtual machine or is trying to use some \emph{.NET} library and if not found, it kills itself. The fact that we do not have an internet connection can make this bias stronger, so we have to count on it to decide what to use to train the model. We do not want to investigate network activities even if sometimes it contains something (malware attempts).
 
-The dataset consists of $80000$ different samples. Complete data have \texttildelow$2,5$~\emph{TB} where the analysis result is compressed.
+The dataset consists of $80000$ different samples. Complete data have approximately $2,5$~\emph{TB} where the analysis result is compressed.
 
 The output documentation is quite weak, but there is some (\url{https://cuckoo.readthedocs.io/en/latest/usage/results/}), and we also investigated outputs themselves. The output of general \emph{CAPEv2} sandbox analysis is described in table \ref{tab:sandbox-out}.
 
@@ -30,19 +28,19 @@ The output documentation is quite weak, but there is some (\url{https://cuckoo.r
         \midrule
         pcap report & network traffic record (packet sequences) & Presented in output but not significant regarding the fact that during run was not internet access \\
         \midrule
-        memory dump & dump of RAM (its analysis results could be also presented)& Our version of sandbox do not support it \\
+        memory dump & dump of RAM (its analysis results could be also presented)& our version of sandbox do not support it \\
         \midrule
-        bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}& Presented\\
+        bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}& presented\\
         \midrule
-        behavioral log & raw logs of api calls and other (usually in bson) & Presented \\
+        behavioral log & raw logs of api calls and other (usually in bson) & presented \\
         \midrule
-        dropped files & all dropped files are unchanged in separate directory & Presented \\
+        dropped files & all dropped files are unchanged in separate directory & presented \\
         \midrule
-        CAPE, procdump & Other extraxted payload in separate directory, extracted by various techniques \cite{Cape} & Presented \\
+        CAPE, procdump & other extracted payload in separate directory, extracted by various techniques \cite{Cape} & presented \\
         \midrule
-        reports & Sandbox allows us using several reporting and processing modules, their results are in separate directory  & Several of them presented but the most comprehensive and important is \emph{report.json} \\
+        reports & sandbox allows us using several reporting and processing modules, their results are in separate directory  & several of them presented but the most comprehensive and important is \emph{report.json} \\
         \midrule
-        screenshots & All taken during analysis  & Presented \\
+        screenshots & taken during analysis  & presented \\
         \bottomrule
     \end{tabular}
     \label{tab:sandbox-out}
@@ -62,14 +60,14 @@ The documentation of each part of the report is quite poor, but many attributes 
 \begin{table}[h]
     \centering
     \caption{Parts of \emph{report.json}}
-    \begin{tabular}{p{2cm}p{12cm}} 
+    \begin{tabular}{p{4cm}p{10cm}} 
         \toprule
         \textbf{Entry} &
-        \textbf{Meaning} \\
+        \textbf{Note} \\
         \midrule
         statistics & time statistics for particular part of malware analysis \\
         \midrule
-        info & sandbox details (machine, category, used modul, timeout...) \\
+        info & sandbox details (machine, category, used module, timeout\dots) \\
         \midrule
         debug & sandbox debug log \\
         \midrule
@@ -93,7 +91,7 @@ The documentation of each part of the report is quite poor, but many attributes 
         \midrule
         malscore &  malware sample metric\\
         \midrule
-        signatures &  list of signatures which were detected by sandbox with their attributes \\
+        signatures &  list of signatures which were detected by sandbox \\
         \bottomrule
     \end{tabular}
     \label{tab:report}
@@ -114,7 +112,7 @@ Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we of
 \emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
 
 \subsection{Features}
-Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain - network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
+Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
 
 \begin{table}[h]
     \centering
