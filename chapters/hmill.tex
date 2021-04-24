@@ -12,36 +12,30 @@ On figure \todo{reference figure} we can see basic idea behind \emph{Mill} probl
 Firstly we for our puprose we assume that we are in \emph{supervised} setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances} and usually lives in standard feature space $$x_i \in \mathbb{R}^{n}$$. Its length is $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$. Now we can see that standard learning is just \emph{Mill} problem where holds $$|b| = 1$$.
 
 For the purposes of our thesis we assume mill classification problem so $$|\mathcal{Y}|$$ is finite. One more additional note is that some researches and even the original has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance label} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} so even we do.
-
 \todo{I have to mention some citations the theory I built on top of Mandlik and Amores!}
 
-\todo{image of standard setting vs mill setting}
-
-\todo{if we would like to have some fancy figure we can try something with keys}
+\todo{image of standard setting vs mill setting} \todo{if we would like to have some fancy figure we can try something with keys}
 
 The motivation example in original paper \cite{Dietterich1997} is formulated in following way. Imagine we have keys and some of them unlock specific door and some of them not (no other choice). Important is that we do not have access to the door. In standard learning is our goal to learn classification model which consumes key and outputs if it is able to open or not. But in \emph{multiple instance learning} setting we receive whole chains of several keys and without checking every single key we have to classify if the whole chain is able to open the door.
 
 More on this topis we can find in \cite{Amores2013} where we can find formulated paradigms of solving such issues.
 
-\todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite}
+\todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite from Amores}
+another examples we can find here - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
 
 \todo{some real world examples (not only pevny and Mandlik).}
 
-\todo{Last solution describe neural net architecture - cite Somol, Pevny, Dedic (3 papers) and even Mandlik with the notation on page 14,15}
-\todo{Mention Zaheer with deep sets}
+\todo{Last solution describe neural net architecture - cite Somol, Pevny, Dedic (3 papers) and even Mandlik with the notation on page 14,15}, \emph{Mandlik2020}  \cite{Pevny2016a} \cite{Pevny2017} \cite{PevnyDedic2020}
+\todo{Mention Zaheer with deep sets} \cite{Zaheer2018}
 \todo{Add own figure of neural net architecture}
 
-- Prior experiments
-    - Add something from another domain
-    - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
-    - The most impotant
-        - https://link.springer.com/content/pdf/10.1007%2F978-3-319-59072-1.pdf (somol, pevny)
-        - https://dl.acm.org/doi/pdf/10.1145/2996758.2996761
-        - Stiborek - https://reader.elsevier.com/reader/sd/pii/S0957417417307170?token=492DD375F9C6F2836E0F6B394FAA2BC3E6663F3EFD26E24D7295DBFDCB870D23C3B120BCCC9731B0E6399BEFEE29C4A2
-
-        - https://arxiv.org/pdf/2002.04059.pdf - Pevny, Dedic
-        - https://arxiv.org/pdf/1906.00764.pdf - Pevny Kovarik, 
-        - https://papers.nips.cc/paper/2017/file/f22e4747da1aa27e363d86d40ff442fe-Paper.pdf - same idea, but different name (just marginally)
+- Prior experiments (Some of them mention here, some of them below in hmill section)
+    Look at applications which are in previous papers above (mandlik, pevny..)
+        \cite{Stiborek2018}
+        \cite{Janisch2020}
+        \cite{PevnyDedic2020}
+        \cite{PevnyKovarik2019a}
+        \cite{Zaheer2018}
 
 \section{HMILL framework}
 The idea of the neural net architecture by \todo{ref names Somol and Pevny} was followed by \todo{ref Mandlik and Pevny}. This led to formulation of \emph{HMill framework} in \cite{Mandlik2020} which refers to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models. Inspite the fact that the hierarchical learning is generalization of standard learning we can cover quite complicated structured data (which is later used by us).
@@ -50,7 +44,7 @@ The idea of the neural net architecture by \todo{ref names Somol and Pevny} was 
     - go to Mandlik
 - prior will be sufficient
     - Mandlik's results using the framework
-    - https://arxiv.org/pdf/2002.04059.pdf
+    - \cite{PevnyDedic2020}
 
 The conclusion of this chapter and maybe the most significant conslusion for our work is that it is possible to use \emph{HMill framework} to classify tree-structured data e.g. \ \emph{JSON} documents. \citeauthor{Mandlik2020} presents convincing results (for example on \emph{device identification} example) and that is why this framework is directly in assignment of this thesis.
 
@@ -58,26 +52,26 @@ Regardless of quite comprehensive theory which is covered in this part of the th
 
 %---------------------REMAINING-------------------------------------
 
-HMILL:
-- assumptions - https://en.wikipedia.org/wiki/Multiple_instance_learning (Be aware, I think those are not true all at once...), also algorithm list is presented, could be mentioned, and other interesting references like problem generalization
-- between modern approaches mention adapting of single instance algorithms
+% HMILL:
+% - assumptions - https://en.wikipedia.org/wiki/Multiple_instance_learning (Be aware, I think those are not true all at once...), also algorithm list is presented, could be mentioned, and other interesting references like problem generalization
+% - between modern approaches mention adapting of single instance algorithms
 
-Previous connection
-- We focus on structured data and our tool is hmill, let's describe it
-Way through this chapter
-- multiple instance learning
-- hierarchical mill
-- prior
-    - Prior in various fields
-    - Prior in cybersec
-Next connection
-- Not necessary, but can connect to next chapter slightly (we want to explain this kind of model)
+% Previous connection
+% - We focus on structured data and our tool is hmill, let's describe it
+% Way through this chapter
+% - multiple instance learning
+% - hierarchical mill
+% - prior
+%     - Prior in various fields
+%     - Prior in cybersec
+% Next connection
+% - Not necessary, but can connect to next chapter slightly (we want to explain this kind of model)
 
-Stand on Madlik chapter, his citations (be aware), somol and Pevny
+% Stand on Madlik chapter, his citations (be aware), somol and Pevny
 
 
-- GOALS 
-- Learn the hierarchical multiple instance learning framework (HMill)
-- describe theory, connect it to classical approach
-- Usual usage of this type of learning - classification, regression...
-- Our usecase and experiments with this kind of learning in malware classification field (prior)
+% - GOALS 
+% - Learn the hierarchical multiple instance learning framework (HMill)
+% - describe theory, connect it to classical approach
+% - Usual usage of this type of learning - classification, regression...
+% - Our usecase and experiments with this kind of learning in malware classification field (prior)
