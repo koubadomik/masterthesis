@@ -76,57 +76,58 @@ In our work we are using \emph{discriminative} models namely neural networks.
 \paragraph{Discriminative learning algorithm}
 The learning algorithm is realization of the learning process. Input of this process are training examples and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, which are tuned during the learning process. Given observed sample $x$ this model can provide prediction  $\hat{y}$ (the model is representing prediction strategy). Quality of this strategy (its predictions) is conditioned by number of training examples and choice of $\mathcal{H}$ which is often connected to the algorithm we choose. 
 
-We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{\mathcal{m}}-R(h_{\mathcal{H}})$ where $R(h_{\mathcal{m}}$ denotes risk learned from training data by learning algorithm.
+We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{\mathcal{m}})-R(h_{\mathcal{H}})$ where $R(h_{\mathcal{m}})$ denotes risk learned from training data by learning algorithm.
 
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
 
 
 \section{Machine learning tasks}
-There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples we have but also according to the $\mathcal{Y}$.
+There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples (as mentioned above) but also according to the states.
 
 \paragraph{Regression}
-In this case $y \in \mathcal{Y}$ is continous-valued tensor, most often $\mathcal{y} \in \mathbb{R}^{n}$. An example could be prediction of impact of some attack expressed as score. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record. \cite{Jaganathan2015}
+In this case $y \in \mathcal{Y}$ is continous-valued tensor, most often $\mathcal{y} \in \mathbb{R}^{n}$. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record and predicted value is score represented as real-value \cite{Jaganathan2015}.
 
 \paragraph{Classification}
-In this case $y \in \mathcal{Y}$ is categorical tensor, in most cases $\mathcal{y} \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is just encoding for real world values like \emph{man} and \emph{woman} and similar. If $\mathcal{C}$ is $2$, than we call it \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. As defined generally we can see tensors, so we can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, we can also classify into hierarchical related classes \cite{zhang2020dive}. \
-Important is that we did not state what is the output of specific classification model. Given $x$ it might output $\hat{y}$ which will be directly ecoded class but it might output even probability distribution over classses \cite{GoodBengCour16}. This distribution might be later interpreted and used during learning.
+In this case $y \in \mathcal{Y}$ is categorical tensor, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman} and similar. If $\mathcal{C}$ is $2$, than we call it \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated e.g. \ we can also classify into hierarchical related classes \cite{zhang2020dive}.
+
+Given $x$ classifier outputs $\hat{y}$ which is ecoded class or probability distribution over classses \cite{GoodBengCour16}. Example of such distribution might by popular \emph{softmax} layer in case of neural networks. This distribution might be later interpreted and used during evaluation and further result analysis (explaning, interpreting).
+
 Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
 
 
-\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. \
-Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting everything which is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
+\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. 
 
+Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting what is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
 
 Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
 
-\section{Classification models and algorithms}
-As we want to focus on classification let us introduce several algorithm which are common in training classification models. In previous section we defined learning and two different approaches - \emph{generative} and \emph{discriminative learning} algorithms are also divided into these two groups.
-\todo{in all cases we can have reference and short definition, describe some of basic models and their usual output and its intepretation and also loss function, Mention on what kind of optimization it is doing}
-% \paragraph{Discriminative}
-% SVM
-% Decision Trees
-% Logistic regression
-% Neural Nets - will be defined rigorosly later
-
-% \paragraph{Generative}
-% Naive Bayes
-% Fisher's linear discriminant
-
-% \section{Loss functions for classification}
-% In classification problems we usualy use one of two loss functions:
-% \todo{define, reference - https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/ \cite{JasonBrownlee2020} }
-
-% Cross-Entrophy (and logit version, binary version)
-% Just define mathematically and then say its intepretation, nice to have would be to mention KL divergence
-% https://stats.stackexchange.com/questions/272754/how-do-you-interpret-the-cross-entropy-value - intepretation, add even my own intuition
-% https://stats.stackexchange.com/questions/31985/definition-and-origin-of-cross-entropy - KL div
-% mention logit transformation for numerical stability
-% Hinge Loss
-% math, intuition (ours)
-% \cite{Gentile1998} - definition https://papers.nips.cc/paper/1998/file/a14ac55a4f27472c5d894ec1c3c743d2-Paper.pdf
+Examples of classification learning algorithms are discriminative - Support vector machine, Decision trees, Logistic reggression, neural nets; generative - Naive bayes, Fisher's linear discriminant.
 
 
+\section{Loss functions for classification}
+The learning part of the whole process consists mainly of function optimization. Our criterion is chosen Loss function. The way of optimizing it may vary for example in case of neural networks we use the output of loss function to be able to update the parameters of the model \cite{JasonBrownlee2020}.
+
+We mention two common functions which are often involved in classification tasks.
+
+\subsection{Multinomial logistic loss (multiclass cross entropy)} 
+In this situation we assume that the output of our model are conditional probabilites  $x \in \mathcal{X}$  $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and for each of $n$ examples.
+Multiclass cross entropy is defined in \ref{eq:crossent}. 
+
+We can see that the idea behind is that we are minimizing value representing average logarithm of probability of truth class (denoted by $c_i$) assigned by the model, across examples. We want the probability to be the maximum attaineable and $\log$ of value between $0$ and $1$ is negative larger as we are getting closer to $0$. 
+
+\begin{equation} \label{eq:crossent}
+    \ell(\theta)=-\frac{1}{n}\sum_{i=1}^{n}\sum_{c \in \mathcal{C}}\mathbbm{1}\{c==c_i\}\log p(c|x;\theta)
+\end{equation}
+
+In multilabel case we use variant of this function sometimes called binary cross entropy. %may mention formula, nice-to-have
+
+\subsection{Hinge loss}
+This loss was introduced in \cite{Gentile1998} and its main usage we can find in Support vector machine algorithm. The formula could be seen in \ref{eq:hinge}, where $y=\pm1$ denotes truth label and $\hat{y}$ classifier score.
+
+\begin{equation} \label{eq:crossent}
+    \ell(y)=\max(0,1-\hat{y}\cdot y)
+\end{equation}
 
 % \section{Model Evaluation}
 % Based on what we are solving and what we want to comapre to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
@@ -253,12 +254,33 @@ As we want to focus on classification let us introduce several algorithm which a
 
 
 %%--------------------------------NICE TO HAVE----------------------------------------------
+% Cross-Entrophy (and logit version, binary version)
+% Just define mathematically and then say its intepretation, nice to have would be to mention KL divergence
+% https://stats.stackexchange.com/questions/272754/how-do-you-interpret-the-cross-entropy-value - intepretation, add even my own intuition
+% https://stats.stackexchange.com/questions/31985/definition-and-origin-of-cross-entropy - KL div
+% mention logit transformation for numerical stability
+% Hinge Loss
+% math, intuition (ours)
+
 % \todo{ In this section we are aiming at standard machine learning approach and tasks formulation, later we will define task which is actual for our work. add scheme of machine learning algorithm in classical manner, so features to hidden states (sometimes label) mapping, define some formalism for math signing}
     % \todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
     % \subsection{Challenges}
 % \todo{more like nice-to-have}
 % The oposite point of view on non-ideal datasets are those where features are missing. \todo{http://www.iiis.org/CDs2008/CD2008SCI/SCI2008/PapersPdf/S507DT.pdf is source of information here}
 % If I finally go through this summary report I will be save with this part hopefully - https://www.jstor.org/stable/resrep22692?seq=53#metadata_info_tab_contents, this is great summary for modern approaches and papers in cybersec, I can use it even somewhere else for example in intro of this chapter and whole thesis
+
+
+
+% \todo{in all cases we can have reference and short definition, describe some of basic models and their usual output and its intepretation and also loss function, Mention on what kind of optimization it is doing}
+% \paragraph{Discriminative}
+% SVM
+% Decision Trees
+% Logistic regression
+% Neural Nets - will be defined rigorosly later
+
+% \paragraph{Generative}
+% Naive Bayes
+% Fisher's linear discriminant
 
 %%--------------------------------REMAINING----------------------------------------------
 %%--------------------------------REMAINING----------------------------------------------
