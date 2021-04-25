@@ -125,45 +125,91 @@ In multilabel case we use variant of this function sometimes called binary cross
 \subsection{Hinge loss}
 This loss was introduced in \cite{Gentile1998} and its main usage we can find in Support vector machine algorithm. The formula could be seen in \ref{eq:hinge}, where $y=\pm1$ denotes truth label and $\hat{y}$ classifier score.
 
-\begin{equation} \label{eq:crossent}
+\begin{equation} \label{eq:hinge}
     \ell(y)=\max(0,1-\hat{y}\cdot y)
 \end{equation}
 
-% \section{Model Evaluation}
-% Based on what we are solving and what we want to comapre to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
-% When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. \todo{reference bias X variance tradeoff in the beginning of this chapter}
-% Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the result model.
+\section{Model Evaluation}
+Based on what we are solving and what we want to compare to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
+When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. 
+% \todo{reference bias X variance tradeoff in the beginning of this chapter}
+Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the model.
 
-% \paragraph{Loss function}
-% As we defined earlier loss function is our objective, so the value of our objective has its own meaning and possible interpretation. \todo{try to define what does it mean by particular loss functions} Loss function value is often monitor directly during learning process.
+\paragraph{Loss function}
+As we defined earlier loss function is the objective with its own meaning and possible interpretation. Loss function value is often monitored directly during the learning process.
 
-% \paragraph{Confusion matrix}
-% Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. Definition of confusion matrix is for binary classifier because of its convenience but generalization for more complex classifications is possible. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example we can introduce classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and oposite examples are called negative.
-% \todo{balanced dataset definition}
-% \todo{confusion matrix table as example}
+\paragraph{Confusion matrix}
+Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. For our convenience we define confusion matrix for binary classifier. Its generalization is obvious. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example we can introduce classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and oposite examples are called negative.
 
-% \todo{list of metrics with formula and interpretation and usage}
-% accuracy, false positive rate, false negative rate, balanced accuracy error rate, precision, recall, f-score
-% \cite{Hossin2015}
-% https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
+\begin{table}[h]
+    \centering
+    \caption{Confusion matrix}
+        \begin{tabular}{l|l|c|c|}
+        \multicolumn{2}{c}{}&\multicolumn{2}{c}{Ground truth}\\
+        \cline{3-4}
+        \multicolumn{2}{c|}{}&Positive&Negative\\
+        \cline{2-4}
+        \multirow{2}{*}{Classified}& Positive & True positive ($TP$) & False negative($FP$)\\
+        \cline{2-4}
+        & Negative & False negative ($FN$) & True negative ($TN$)\\
+        \cline{2-4}
+        \end{tabular}
+    \label{tab:confmatrix}
+  \end{table}
+
+Before deriving basic metrics we have to emphasize that all of them have to be trated in particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of metrics that relevant for our use is in \ref{tab:metrics}.
+
+\begin{table}[h]
+    \centering
+    \caption{Classifier evaluation metrics}
+    \begin{minipage}{\linewidth}
+    \begin{tabular}{l|l}
+      \toprule
+      \textbf{Metric} &
+      \textbf{Formula} &
+      \textbf{Interpretation}
+      \\
+      \midrule
+      accuracy & $\frac{TP+TN}{TP+TN+FN+FP}$ & shows the ratio of correctly classified examples to all examples (imbalanced dataset may bias its interpretation)\\
+      \midrule
+      false positive rate ($FPR$) & $\frac{FP}{FP+TN}$ & shows the ratio of misclassified positive examples to all examples classified positive \\
+      \midrule
+      false negative rate ($FNR$) & $\frac{FN}{FN+TP}$ &  shows the ratio of misclassified negative examples to all examples classified negative \\
+      \midrule
+      true positive rate or recall ($TPR$) & $\frac{TP}{TP+FN}$ & shows the ratio of truly classified positive examples to all positive examples  \\
+      \midrule
+      true negative rate ($TNR$) & $\frac{TN}{TN+FP}$ & shows the ratio of truly classified negative examples to all negative examples \\
+      \midrule
+      precision & $\frac{TP}{TP+FP}$ & shows the ratio of truly classified positive examples to all examples classified as positive \\
+      \midrule
+      balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes (imbalanced dataset is less risky here) \\
+      \midrule
+      f1 score & $2\dot\frac{PRECISION \dot RECALL}{PRECISION + RECALL}$ & good measure if we seek for trade-of between precision and recall (we are not able to tweak both simultaneously), we are able to compare classifiers using that\\
+      \bottomrule
+    \end{tabular}
+    \end{minipage}
+    \label{tab:metrics}
+  \end{table}
+
 
 % \paragraph{Derived curves}
 % ROC, AUC \cite{Fawcett2006}
 % PRC, AUPRC \cite{Flach2015}
 % and their difference
 
-% \paragraph{In Cyber Security}
-% The main point which we are walking around is Cyber Security. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
+\paragraph{In Cyber Security}
+The main point which we are walking around is the cybersecurity. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
 
-% For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $accuracy=0.8$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
+For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $accuracy=0.8$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
 
-% \todo{add formula for geometrical mean}
+During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
 
-% During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
+Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
 
-% Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
+As result, further in this thesis we will work with imbalanced datasets. We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \emph{PR curve}.
 
-% As result, further in this thesis we will work with imbalanced data. We use several metrics mentioned above especially \cite{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \cite{PR curve}.
+
+
 
 % \section{Neural Nets}
 % In the section models we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to build the formalism for the rest of the thesis.
@@ -248,10 +294,9 @@ This loss was introduced in \cite{Gentile1998} and its main usage we can find in
 
 % In this chapter we described general overview and notation on task we are solving - classification in the cybersecurity. We addressed even structured data techniques which are the crux for us, especially \emph{hmill} model. We are going to use this model during data modelling part. In next chapter we describe it comprehensively.
 
-
-
-
-
+% Metrics
+% \cite{Hossin2015}
+% https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
 
 %%--------------------------------NICE TO HAVE----------------------------------------------
 % Cross-Entrophy (and logit version, binary version)
@@ -281,6 +326,9 @@ This loss was introduced in \cite{Gentile1998} and its main usage we can find in
 % \paragraph{Generative}
 % Naive Bayes
 % Fisher's linear discriminant
+
+
+% \todo{add formula for geometrical mean}
 
 %%--------------------------------REMAINING----------------------------------------------
 %%--------------------------------REMAINING----------------------------------------------
