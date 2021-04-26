@@ -91,10 +91,9 @@ In this case $y \in \mathcal{Y}$ is continous-valued tensor, most often $\mathca
 \paragraph{Classification}
 In this case $y \in \mathcal{Y}$ is categorical tensor, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman} and similar. If $\mathcal{C}$ is $2$, than we call it \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated e.g. \ we can also classify into hierarchical related classes \cite{zhang2020dive}.
 
-Given $x$ classifier outputs $\hat{y}$ which is ecoded class or probability distribution over classses \cite{GoodBengCour16}. Example of such distribution might by popular \emph{softmax} layer in case of neural networks. This distribution might be later interpreted and used during evaluation and further result analysis (explaning, interpreting).
+Given $x$ classifier outputs $\hat{y}$ which is ecoded class or probability distribution over classses \cite{GoodBengCour16}. Example of such distribution might by popular \emph{softmax} layer in case of neural networks. This distribution might be later interpreted and used during evaluation and further result analysis (explaning, interpreting). In case of scoring classifier where the output is representing the probability distribution we have to determine its final predictions. This is often done by setting \emph{treshold}, if the result is above specified treshold it is in positive class and it is in negative otherwise.
 
 Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
-
 
 \emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. 
 
@@ -157,13 +156,13 @@ Most significant metrics are derived from very straight-forward concept of \emph
     \label{tab:confmatrix}
   \end{table}
 
-Before deriving basic metrics we have to emphasize that all of them have to be trated in particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of metrics that relevant for our use is in \ref{tab:metrics}.
+Before deriving basic metrics we have to emphasize that all of them have to be trated in particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of metrics that relevant for our use is in \ref{tab:metrics} \todo{might be in appendix}.
 
 \begin{table}[h]
     \centering
     \caption{Classifier evaluation metrics}
     \begin{minipage}{\linewidth}
-    \begin{tabular}{l|l}
+    \begin{tabular}{lcp{5cm}}
       \toprule
       \textbf{Metric} &
       \textbf{Formula} &
@@ -184,18 +183,18 @@ Before deriving basic metrics we have to emphasize that all of them have to be t
       \midrule
       balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes (imbalanced dataset is less risky here) \\
       \midrule
-      f1 score & $2\dot\frac{PRECISION \dot RECALL}{PRECISION + RECALL}$ & good measure if we seek for trade-of between precision and recall (we are not able to tweak both simultaneously), we are able to compare classifiers using that\\
+      f1 score & $2 \cdot \frac{precision \dot recall}{precision+recall}$ & good measure if we seek for trade-of between precision and recall (we are not able to tweak both simultaneously), we are able to compare classifiers using that\\
       \bottomrule
     \end{tabular}
     \end{minipage}
     \label{tab:metrics}
   \end{table}
 
+Very often we can see also curves which are plotted along reported metrics. These plots fits in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data point for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on \emph{y-axis}.
 
-% \paragraph{Derived curves}
-% ROC, AUC \cite{Fawcett2006}
-% PRC, AUPRC \cite{Flach2015}
-% and their difference
+There are many differences and similarities of these two curves but the crucial one is that the \emph{PRC} is better in case of having imbalanced dataset where we have more negative examples and we especially care about positive examples and their predictions. Sometimes we can compensate this even in case of \emph{ROC} curve by setting \emph{logarithm scale} on x-axis.
+
+If we need to have single number as performance metric including multiple tresholds we can use \emph{area under the ROC or PR curve}. However it usage have to be careful and strictly in given context.
 
 \paragraph{In Cyber Security}
 The main point which we are walking around is the cybersecurity. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
@@ -206,15 +205,36 @@ During Intrusion Detection in cyber security \emph{False negative} examples can 
 
 Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
 
-As result, further in this thesis we will work with imbalanced datasets. We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \emph{PR curve}.
+As result, further in this thesis we will work with imbalanced datasets where we have more negative examples. We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \emph{PR curve}.
 
+\section{Neural Networks}
+In the section about models we refered to different approaches. One specific we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to state the formalism for the rest of the thesis.
+\begin{figure}
+    \centering
+    \begin{neuralnetwork}[height=4]
+        \newcommand{\x}[2]{$x_#2$}
+        \newcommand{\y}[2]{$\hat{y}_#2$}
+        \newcommand{\hfirst}[2]{\small $h^{(1)}_#2$}
+        \newcommand{\hsecond}[2]{\small $h^{(2)}_#2$}
+        \inputlayer[count=3, bias=true, title=Input\\layer, text=\x]
+        \hiddenlayer[count=4, bias=false, title=Hidden\\layer 1, text=\hfirst] \linklayers
+        \hiddenlayer[count=3, bias=false, title=Hidden\\layer 2, text=\hsecond] \linklayers
+        \outputlayer[count=2, title=Output\\layer, text=\y] \linklayers
+    \end{neuralnetwork}
+    \caption{Neural net example}
+    \label{fig:neuralnet}
+\end{figure}
 
+Neural net is discriminative model which is based \emph{Empirical Risk Minimization} (mention earlier). It is a composition of simple linear or non-linear functions (\emph{neurons}) which are parametrized. Specific neural network architecture is defined by used functions and their count (functions are organized into layers). The architecture implies $\mathcal{H}$ a hypothesis space. Example of general neural net could be seen in \ref{fig:neuralnet}. \todo{describe a little more the picture and maybe even change it}
 
+The overall goal in this game is to optimize $\ell$ with respect to the parameters of the net. For this task is most often used \emph{gradient descent}.
 
-% \section{Neural Nets}
-% In the section models we briefly described different kinds of models. One specific model we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to build the formalism for the rest of the thesis.
+Usage of the \emph{gradient descent} puts minimal demands on the data we are using which makes this model so popular. We also do not insist on strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions we are using is that they have to be differentiable. The price we are paying is that the optimization guarantees only stationary point ending which could be \emph{local minimum} or worse \emph{saddle point}. But applications lead us to the conclusion that in right hands this model may perform really well.
 
-% - motivation
+For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm is that we are able to compute derivatives of outputs with respect to its outputs (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. This is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
+
+% Main advantage of this kind of model is that we do not have assume much about our data. This is main reason why neural nets are used very often nowadays.
+
 % Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. They do not guarantee global maxima as the function we are optimizing does not have to be convex
 % \todo{image}
 % - approach, notation
@@ -230,10 +250,20 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 % https://www.deeplearningbook.org/contents/ml.html - \cite{GoodBengCour16}
 % http://neuralnetworksanddeeplearning.com/chap1.html - \cite{Nielsen2018}
 
-% \todo{nice-to-have applications of NN (but there are tons...)}
 
-% \section{Classifying based on graph-structured data}
-% Real world use cases provide often more complex dastasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs for machine learning algorithms. We are able to perform some kind of feature extraction but in the structure itself is a lot information also. \cite{PevnyDedic2020}
+
+\section{Hierarchical structured data}
+Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs. We are able to perform the feature extraction to gain fixed dimension objects but in the structure itself is a lot information.\cite{PevnyDedic2020}.  The documents are often hierarchical which means that nodes in same subtree are semantically related. 
+
+There are two main approaches to classify such hierarchical structured data - \emph{Hierarchical Multiple Instance Learning} and \emph{Graph neural networks}. The first one is described in next chapter \ref{chap:hmill}.
+
+\todo{define graph}
+Both methods are able to generally operate on node-level, edge-level, and graph-level for varuios prediction tasks. We aim at graph-level classification (class is predicted for each graph).
+
+\emph{Graph neural networks}
+This kind of neural network was introduced in \cite{Scarselli2009}. 
+
+
 % \subsection{Problem}
 % Define it as problem of processing structured data meaning JSON which are very often and they could be interpreted as graphs (specifically trees).
 % Inspiration can be Simon's chapter Towards automated processing...
@@ -242,8 +272,7 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 % \subsection{Approaches and prior}
 % Very shortly mention
 % Formalism, why we are solving that (connect to graph structured data)
-% Graphical models
-%     Simon
+
 % Graph neural networks
 %     Also seen here file:///C:/Users/domia/Downloads/Explainability_ICML2021.pdf \cite{Pevny2020}
 % Hmill
@@ -253,6 +282,8 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 %     \cite{Borgwardt2005} - Graph data in bioinformatics
 
 %     Hmill - \cite{Janisch2020} \cite{PevnyDedic2020}
+
+
 
 
 % \section{Classification in cyber security, classifying malware} %% HIGH PRIORITY
@@ -294,11 +325,12 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 
 % In this chapter we described general overview and notation on task we are solving - classification in the cybersecurity. We addressed even structured data techniques which are the crux for us, especially \emph{hmill} model. We are going to use this model during data modelling part. In next chapter we describe it comprehensively.
 
-% Metrics
-% \cite{Hossin2015}
-% https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
+
 
 %%--------------------------------NICE TO HAVE----------------------------------------------
+% Graphical models
+%     Simon
+
 % Cross-Entrophy (and logit version, binary version)
 % Just define mathematically and then say its intepretation, nice to have would be to mention KL divergence
 % https://stats.stackexchange.com/questions/272754/how-do-you-interpret-the-cross-entropy-value - intepretation, add even my own intuition
@@ -306,6 +338,11 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 % mention logit transformation for numerical stability
 % Hinge Loss
 % math, intuition (ours)
+
+% Metrics
+% \cite{Hossin2015}
+% https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2730527/Hameed%252C%2BIbr.pdf?sequence=2&isAllowed=y
+
 
 % \todo{ In this section we are aiming at standard machine learning approach and tasks formulation, later we will define task which is actual for our work. add scheme of machine learning algorithm in classical manner, so features to hidden states (sometimes label) mapping, define some formalism for math signing}
     % \todo{from this we can go to missing values in data and maybe even to various dimesion data learning}
@@ -329,6 +366,8 @@ As result, further in this thesis we will work with imbalanced datasets. We use 
 
 
 % \todo{add formula for geometrical mean}
+
+% \todo{nice-to-have applications of NN (but there are tons...)}
 
 %%--------------------------------REMAINING----------------------------------------------
 %%--------------------------------REMAINING----------------------------------------------
