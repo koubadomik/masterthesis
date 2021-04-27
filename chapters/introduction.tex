@@ -39,7 +39,7 @@ From the assignment of this thesis we can extract following particular steps:
 
 This implies that we will use dynamic malware analysis to retrieve input for our machine learning model. This was motivated by couple of thousands of sandbox \emph{JSON} reports downloaded from the internet and its modelling using the model we are researching. This dataset was not sufficient to observe significant performance. However, it was sufficient to realize that this use case is interesting for further research.
 
-The first task is the data collection. We are about to use \url{https://bazaar.abuse.ch/} as a pulic data source of malware samples. The sandbox we want to use \emph{CAPEv2} \cite{Cape} because first reports were also produced by this tool. Challenging part might by the whole sandbox setup and distributed data collection.
+The first task is the data collection. We are about to use \url{https://bazaar.abuse.ch/} as a pulic data source of malware samples. There are many file types of malware and statistics shows that the significant part of windows malware are Microsoft office files. However, we aim at \emph{Portable Executable} (PE) which does not require any additional sofware running on target machine. The sandbox we want to use \emph{CAPEv2} \cite{Cape} because first reports were also produced by this tool. Challenging part might by the sandbox setup and its distributed run and data collection.
 
 The model we want to use is \emph{hierarchical multiple instance learning} (\emph{hmill}) model. In \cite{Mandlik2020} authors showed that this model has significant performance modelling \emph{JSON} documents. It is not the only one, we describe its alternative later in the first part of the thesis.
 

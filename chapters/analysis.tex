@@ -1,9 +1,12 @@
-https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
 
-\todo{describe part one goal - We involve more theory and prior work research, in following chapters we discuss our case.}
-In the first part of this thesis we focus the comprehensive theory which is needed to absorb in order to interpret results. Not everything is disassembled in detail we go only there where we find something useful for our thesis. This is really based on experience so if the reader is interested only in results used formalism and notation in theory part are important only.
+
+% \todo{describe part one goal - We involve more theory and prior work research, in following chapters we discuss our case.}
+% In the first part of this thesis we focus the comprehensive theory which is needed to absorb in order to interpret results. Not everything is disassembled in detail we go only there where we find something useful for our thesis. This is really based on experience so if the reader is interested only in results used formalism and notation in theory part are important only.
 
 \chapter{Malware analysis} \label{chap:analysis}
+Particular goal of this thesis is to create dataset of dynamic malware analyses. In this chapter we define basic notions of malware, PE file, malware analysis. We describe sandbox which we use for analysis and its output. We also address some cyber security challenges and refer to prior arts.
+
+
 The data which we are performing analysis on are malware analysis results. Specifically those are dynamic analysis of running Portable executable (PE) files in sandbox environment. In this chapter we cover theory of malware analysis and everything related. 
 
 \todo{add some motivation example or latest results... - known malware attacks..}
@@ -30,6 +33,7 @@ Definition of cleanware and malware
 Types, Families
 https://en.wikipedia.org/wiki/Malware
 Find in books!
+https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
 
 \section{Portable executable files}
 Malware is defined widely and is not limited to specific kind of file format. In our research we decided to investigate only Portable Executable (PE) files. It is because we want to create dataset of malware running on windows machines with no extra extension. 
@@ -93,7 +97,7 @@ mention signatures
 usual format which are produced by sandbox and what we can find there
 Reference even docs - no problem, not only books and papers
 Conclusion should be that those data are complicated and their structure also keep some information (order, structure...), that is why we want to focus on structured data and especially json.
-
+size...
 
 \section{Prior}
 works about malware analysis
@@ -112,22 +116,22 @@ file:///C:/Users/domia/Downloads/088851962.pdf
 
 %%------------------------------------------
 
-Previous connection
-- Nothing before
-Way through this chapter
-- Malware definition and types
-- Malware analysis
-- Challenges
-- Data - input, output...
-- prior
-Next connection
-- We are interested in modeling the data using modern approaches, we know that the data are often structured somehow and that is what we will solve
+% Previous connection
+% - Nothing before
+% Way through this chapter
+% - Malware definition and types
+% - Malware analysis
+% - Challenges
+% - Data - input, output...
+% - prior
+% Next connection
+% - We are interested in modeling the data using modern approaches, we know that the data are often structured somehow and that is what we will solve
 
-- GOALS
-  - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
-  - Capture behavior of selected malware samples in CapeV2 sandbox and store results
-- Theory part - types, conditions, bias, Malware types, signatures....
-- Sandboxing
-- Previous experiments
-- Our goal in this part
-- Data collection for ML purposes in general
+% - GOALS
+%   - Run several instances of CapeV2 sandbox and solve their orchestration for this experiment
+%   - Capture behavior of selected malware samples in CapeV2 sandbox and store results
+% - Theory part - types, conditions, bias, Malware types, signatures....
+% - Sandboxing
+% - Previous experiments
+% - Our goal in this part
+% - Data collection for ML purposes in general
