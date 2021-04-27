@@ -1,17 +1,33 @@
 \chapter{Introduction} \label{chap:intro}
 \section{Motivation}
-Nowadays we face quite strong explosion of machine learning application in various branches of human efforts. We can see applications in biology, chemistry, physics but we often do not have to go so far. These technologies are influencing our daily life. They make our life easier because we do not have to remember everything, what we do not know we just find. On the other hand we can see cases where the fact that algorithms (especially in machine learning) can control ourselves, our decisions, our reasoning, our life.
+Nowadays we face strong explosion of machine learning application in various branches of human efforts. We can see applications in biology, chemistry, physics but we often do not have to go so far. These technologies are influencing our daily life. They make our life easier because we do not have to remember everything, we can find everything what do not know. On the other hand we can see cases where the fact that algorithms (especially in machine learning) can control ourselves, our decisions, our reasoning, our life.
 
-If we use these computer science tools which are provided for us in good way we are often able to create something what may serve for our protection. Specific thing which is really up to date is detection of threads and frauds in cyber security. Research and application in this particular field is very interesting for one reason and that is motivation. We have to know which side we are standing on and what are the crucial interests of our client. For example in case of fraud detection we know that the investment in this detection is profitable only if the subject (bank, insurance company\dots) solves it above some specific treshold. Not all the frauds are interesting from the financial point of view because solving them costs also a lot of money. If we see it from the ethical point of view every fraud should be punished. Similarly, we can see the fact that often network security, single device security and access control is often seen like something which could be added (and often is) later. Small businesses which are aiming at specific market are not interested in some stuff which very often costs a lot of money and its main impact is preventive. 
+If we use these computer science tools in a good way we are often able to create something what may serve for our protection. Specific thing which is really up to date is detection of threads and frauds in cyber security. Research and applications in this particular field is very interesting for one reason and that is motivation. We have to know which side we are standing on and what are the crucial interests of our client. For example in case of fraud detection we know that the investment in this detection is profitable only if the subject (bank, insurance company\dots) solves it above some specific treshold. Not all the frauds are interesting from the financial point of view because solving them costs also a lot of money. If we see it from the ethical point of view every fraud should be punished. Similarly, we can see the fact that network security, single device security and access control is often seen like something which could be added (and often is) later. Small businesses which are aiming at specific market are not interested in some stuff which very often costs a lot of money and its main impact is preventive. 
 
-So in each of the mention cases we have to start with analysis of costs and benefits and analysis of risks and their probabilites, impact (potential damage). Which is not so obvious in sometimes stricly technically seen branch as cybersecurity.
+So in each of the mention cases we have to start with analysis of costs and benefits and analysis of risks and their probabilites, impact (potential damage). Which is not so obvious in sometimes stricly technically seen branch as the cybersecurity is.
 
-The subject of this thesis is malware classification which is part of thread/intusion detection. We want to use specific machine learning tool - \emph{hierarchical multiple instance learning} to train classifier on data which we collect during dynamic malware analysis (\emph{sandboxing}). After we train the classifier (or several) we measure its performance and explain its predicitons. By explanation of predicition we mean using statistical method to extract the most important parts of input vector which contributed the most compared to other parts. The model could be used to detect malicious code execution based on its behavior and later the explanation can be used to generalize some of our deterministic ways to detect malware (family assignment, signature marking) or just to explain what is for some specific malware family some generic group of malicious programs.
+Inseparable character of this play is malware. Let us motivate this thesis by listing several examples.
 
-There are experiments in each part of our task but we would like to examine the whole pipeline to see if we are able to go from plain malware sample to predictor which is explainable. We do not aspire to dig deep in some specific part rather we want to connect each step and identify problems which are in the whole process. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps.
-\todo{We can add some references}
-\section{Goals}
-From the assignment of this thesis we can extract following particular steps/goal:
+Firstly, one of the most popular malicious software is \emph{ransomware}. Its overall damage estimate is $\$20$ billion and it increases every year \cite{purplesec2021}. What is worse that the social impact is more significant than the amount of money because we can see even attacks aiming at the healthcare organization. The first death reported following a ransomware attack was reported in 2020 \cite{Cimpanu2020}.
+
+In Sonic Wall's 2019 report we can find that IoT malware is becoming more common. It is caused by poor protection of these small devices, where we cannot provide full malware protection. But every second are connected to the web $127$ new IoT devices. This lead us to estimate that by the end of 2021 we have 35 billion IoT devices connected to the internet \cite{TheIoTRu52:online}. This risk can not be mitigated easily and malware elimination will play significant role as it did so far.
+
+Another convenient trend for malware is widespreading encryption which becomes a standard in web traffic. Its main goal is security of target information. But the creators of malware have much to hide and secure against the protectors. The most serious problem is that the encryption itself give us information that the data we are encrypted are secret. We can make some conclusion based on this fact only if not everything is not encrypted. But that is something we did not consider setting up the encryption as standard in network communication.
+
+In 2020 \cite{Topcyber13:online} we can see that $94$~\% of malware is delivered by email. The meaning of phising emails (with also malicious attachment) and other social engineering techniques are also more significant nowadays. The cause of this trend is very straightforward. It is just cheaper to produce one clever convincing email to retrieve some information than attempt to attack highly protected network perimeter. We can also use this kind of communication to distribute malware or other threads.
+
+In 2020 AV-atlas \cite{AVATLASM39:online} recorded over 750 million malware samples and at the end of april 2021 820 million malware samples. The majority of them are executable files and attacks windows devices.
+
+Malware research continues and it undoubtly will unless we can introduce solution which is sufficiently universal and flexible to be able to detect zero-days threads (unseen). These attributes we might find among statistical machine learning models. The biggest challenge is that high quality security engineers does not have to be high quality machine learning engineers. That leads us to the significance of model interpretability and clarity. If we want to involve machine learning methods more and more, we need to be able to easily interpret its performance and output features which the model is using the most to predict/classify. Then we should be able to combine knowledge from cybersecurity with more complex models and gain better understanding. 
+
+
+\section{Goal}
+The subject of this thesis consists of several goals which we want to achieve. The main objective is to design pipeline which has malware dataset as input and machine learning model and its explanationas as output. We would like to go through the whole process and document each step and report results.
+
+Due to the fact that our goal is really wide we defined tools which we use before the process. Later we formulate method description and theory part but we do not aspire to compare more variants much. Our acquisition is the whole process. It is described in detail for reader to be able to identify problems we experienced and also to be able to replicate or extend our setup.
+
+\subsection{Realization steps}
+From the assignment of this thesis we can extract following particular steps:
 \begin{enumerate}
     \item Run several instances of CapeV2 \cite{Cape} sandbox and solve their orchestration for this experiment
     \item Capture behavior of selected malware samples and store results
@@ -20,6 +36,29 @@ From the assignment of this thesis we can extract following particular steps/goa
     \item Using HMill, create models, and identify the artifacts corresponding to different malware behavior, report results
     \item Investigate which parts of the CapeV2 log are important to different malware behavior
 \end{enumerate}
+
+This implies we will use dynamic malware analysis to retrieve input for our machine learning model. This was motivated by couple of thousands of sandbox \emph{JSON} reports downloaded from the internet and its modelling by the model we are researching. This dataset was not sufficient to observe significant performance. However, it was sufficient in sense that we realized that this use case is interesting for further research.
+
+The first task is the data collection, we have to find appropriate source of malware samples \todo{}
+
+The model we want to use is \emph{hierarchical multi instance learning} (\emph{hmill}) model. \cite{Mandlik2020} showed that this model has significant performance modelling \emph{JSON} documents. It is not the only one, we describe its alternative later.
+
+After further research we decided that the main goal in modelling part would be to try model dependecy of malware \emph{signatures} (assigned automatically by sandbox) on behavioral features presented in \emph{JSON} report. This is implied by the fact that the last goal of this thesis is explaning. Here we will attempt to explain the models predictions by choosing minimal subset of original behavioral features which contributes to the predictions the most. The signatures are deterministic and we are able to access their implementation. The easier might by easier to evaluate, we are able to compare original implementation to the model explanation. Also we can encounter something new in explanation and discuss the correlation with the original implementation. The explanation would be performed using existing \emph{hmill} explainer.
+
+
+
+
+
+
+The subject of this thesis is malware classification which is part of thread/intrusion detection. We want to use specific machine learning tool - \emph{hierarchical multiple instance learning} to train classifier on the data which we collect ourselves using dynamic malware analysis (\emph{sandboxing}). Our goal is to use data in \emph{JSON} format because this format is quite common output of reporting modules of sandboxes and usualy include majority of the information in structured form. The other reason is that the framework we are about to use shows significant results using such data.
+
+After we train the classifier (or several) we measure its performance and explain its predicitons. By explanation of predicition we mean using statistical method to extract the most important parts of input vector which contributed the most compared to other parts. Finally we discuss the performance of classifiers and the output of explanation.
+
+% The model could be used to detect malicious code execution based on its behavior and later the explanation can be used to generalize some of our deterministic ways to detect malware (family assignment, signature marking) or just to explain what is for some specific malware family some generic group of malicious programs.
+
+There are experiments in each part of our task but we would like to examine the whole pipeline to see if we are able to go from plain malware sample to predictor which is explainable. We do not aspire to dig deep in some specific part rather we want to connect each step and identify problems which are in the whole process. We want to see it from a greater prespective. The whole process itself is acquisition and we want to demostrate all the steps.
+\todo{We can add some references}
+\section{Goals}
 
 The thesis is divided into two main parts. In the first part we focus the theoretical background for each of the tools we use. In the second part we describe usage details, parameters, conditions and other specific things regarding the application of described tools.
 
