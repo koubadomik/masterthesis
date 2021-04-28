@@ -7,7 +7,22 @@
 Particular goal of this thesis is to create dataset of dynamic malware analyses. In this chapter we define basic notions of malware, PE file, malware analysis. We describe sandbox which we use for analysis and its output. We also address some cyber security challenges and refer to prior arts.
 
 
-The data which we are performing analysis on are malware analysis results. Specifically those are dynamic analysis of running Portable executable (PE) files in sandbox environment. In this chapter we cover theory of malware analysis and everything related. 
+\section{Data cybersecurity challenges}
+We address challenges which we found from our point of view and then we refer to the ones listed in \cite{Amit2019}. Authors of that paper also list available datasets for specific kinds of machine learning task in the cybersecurity.
+
+All challenges are based on the complexity of cyber security domain. There are only few industries that are so flexible, dynamic and fast. There are terabytes of data every second in the cybersecurity - cloud, IoT, general network traffic\dots. The supervised machine learning is still the most reliable so we want these data to be labelled. But the detection itself has to be fast because the most significant is ability to detect malware variants (based on similar attributes) and of course zero-day attacks (unseen). Repeated observation might not be possible because modern malware is flexible which could be seen on malware analysis evasion techniques \cite{Afianian2018}. Huge concern is also bias in the data itself caused by multiple things - size, noise, sensibility to small deviations. For instance, if we run several malware samples in sandbox which has access to the internet and malware is able to access its public ip address the bias might be caused by the geographical location of edge router. This is something which could ruin our dataset. Another kind of bias is encryption as mention in the thesis introduction.
+
+Regarding the lack of labeled and certainty in ground truth we can address several problems. If the labelling process is done by human, it become slow and subjective. So the better approach is to develop some heuristic like black lists, white lists or more complex rules, models. That knowledge is little bit more systematic but still not shared which leads us to consensus techniques. This approach is based on combining knowledge from several sources. The goal should be to generalize our detection, but it has another pitfall which are \emph{Advanced Persistent Threats} that are often disposable and unique attack. However, the quality of labelling determines real performance of our future model and its reliable evaluation. Finally, it is sometimes too complex to automate the labelling process, some hope can give us the involvement of unsupervised techniques like anomaly detection or active learning in combination with semisupervised learning.
+
+If we can collect the dataset we should care about its quality. Imbalanced datasets are not speciality of the cybersecurity but it is often presented. The population of specific attacks is not distibuted equally and even the ratio between benign and malicious vary in time. So the balance of our dataset is strongly dependent on the time of data collection. The problem of concept drift is also related to the development over time. It simply addresses the trend of decreasing performance of machine learning models due to the difference of training data in the past and current data. This could be solved by new model or even by ability of adapting existing models in new situations.
+
+% Last remarkable not is many times analyzed statistical assumption
+% My
+% Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
+
+
+
+
 
 \todo{add some motivation example or latest results... - known malware attacks..}
 
@@ -20,11 +35,7 @@ Use found books or post-hoc go through some articles and formulate the motivatio
 \section{JSON notation} \label{sec:json_notation}
 (define json notation in short paragraph)
 
-\section{Challenges}
-Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
 
-https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
-https://www.readitquik.com/articles/security-2/cybersecurity-challenges-that-need-to-be-on-your-radar-right-now/
 
 
 \section{Malware}
@@ -135,3 +146,8 @@ file:///C:/Users/domia/Downloads/088851962.pdf
 % - Previous experiments
 % - Our goal in this part
 % - Data collection for ML purposes in general
+
+
+% https://www.groundai.com/project/machine-learning-in-cyber-security-problems-challenges-and-data-sets/1
+
+% https://www.readitquik.com/articles/security-2/cybersecurity-challenges-that-need-to-be-on-your-radar-right-now/

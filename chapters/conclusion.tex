@@ -1,14 +1,15 @@
 \chapter{Conclusions} \label{chap:concl}
- We went from one physical machine with Linux on it to dataset and model and it explanation, which was the goal of this thesis. The thesis is quite wide and not aiming at particular part of the process...
-% Discuss results and evaluate goals.
+The main objective of this thesis was to design pipeline which has malware dataset as input and machine learning model and its explanationas as output. The whole process was motivated by the desiderata of high performance model intepretability to achieve greater compliance of machine learning and cybersecurity.
 
-% - goals and their achivement, results, outputs
-% - future work
-%     - larger dataset
-%     - we did something like proof of concept, we need more data and robust modelling
-%     - explaining issues (maybe ask Pevny what they are trying now)
-% - thanks to
+We set up eight physical machines with the \emph{CAPEv2} sandbox in two different setup - with internet and without internet connection. Using the open source sandbox and our own programs we collected dynamic malware analyses for $80 000$ malware samples retrieved from \url{https://bazaar.abuse.ch/}. We reported problems which we experienced during collection process and the whole setup including our own code.
 
+We used \emph{JSON} reports of sandbox as input for \emph{Hierarchical multiple instance} framework \cite{Mandlik2020}. We used this framework because of its ability to model \emph{JSON} documents. The classfication model features are behavioral parts of original \emph{JSON} log and as classes we used malware behaviour signatures also included in original report. We created binary classifier for each signature we chose (overall $12$). We observed how the model performs on each signature based on complexity of original signature python implementation. Nine classfiers have balanced accuracy more than $91\%$, remaining three do not have significant performance. We reported and discussed particular results.
+
+Despite the greater amount of work we faced during the sandboxing task, we managed to meet goals of this thesis. Theory background and method are summarized in the first part of the thesis. The setup, experienced problems, results and their discussion are in the second part. We wanted our experiment to be repeatable so source code and other related technical stuff are in attachment of this thesis \ref{app:attach}.
+
+\subsection*{Future work}
+
+\todo{formulate}
 
 The performance of presented models is really good regarding the measures which we presented. \emph{Hmill} should be examined under different conditions just to see the conditions under which the model is not performing well. This should lead to better understanding of generalization and even explanation. \emph{Hmill} should be very important in cyber security application due to the fact that it is able to operate \emph{JSON} files which are quite usual format of data it not totally unstructured. Based on our experiments we draw the conclusion that explanation is very important for future work because models is created for the actual data and it is very complex to observe particular models and believe very good precision which it is performing with.
 
@@ -24,3 +25,16 @@ Multilabel
 Looking back on this part of experimenting we know that the problem might have been even in hyper parameter choice. But tighter feature vector was advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
 
 We assume that the explanations will have very high entropy because of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, even if target files might be identical. There are experiments involving some kind of data compression but we did not use these tool. This problem we reference in future work section.
+
+
+%  We went from one physical machine with Linux on it to dataset and model and it explanation, which was the goal of this thesis. The thesis is quite wide and not aiming at particular part of the process...
+% Discuss results and evaluate goals.
+
+% - goals and their achivement, results, outputs
+% - future work
+%     - larger dataset
+%     - we did something like proof of concept, we need more data and robust modelling
+%     - explaining issues (maybe ask Pevny what they are trying now)
+% - thanks to
+
+
