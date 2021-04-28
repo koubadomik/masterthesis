@@ -20,42 +20,52 @@ If we can collect the dataset we should care about its quality. Imbalanced datas
 % My
 % Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
 
+% \todo{add some motivation example or latest results... - known malware attacks..}
 
+% Philosophy could be walking around risk management, probability of risk and resulting damage... Maybe more examples of situations where we know how much it cost (Cambridge analytica, ransomware...)
+% Maybe something about truth and its protection in the world of lies and fake news
+% Confidentiality, integrity and availability
 
-
-
-\todo{add some motivation example or latest results... - known malware attacks..}
-
-Philosophy could be walking around risk management, probability of risk and resulting damage... Maybe more examples of situations where we know how much it cost (Cambridge analytica, ransomware...)
-Maybe something about truth and its protection in the world of lies and fake news
-Confidentiality, integrity and availability
-
-Use found books or post-hoc go through some articles and formulate the motivation part...
-
-\section{JSON notation} \label{sec:json_notation}
-(define json notation in short paragraph)
-
-
-
+% Use found books or post-hoc go through some articles and formulate the motivation part...
 
 \section{Malware}
-Generally types of attacks and just the intro, to settle the malware into wider context
-Definition of cleanware and malware
-Types, Families
-https://en.wikipedia.org/wiki/Malware
-Find in books!
-https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
+Malicious code (also called \emph{Malware}) is code that is intended to disrupt computer, network or its part from functioning. The form or format may vary, it could be JAVA application, microsoft office macro or even pdf file. Malware detection, classification and overall research is part of broader branch of \emph{Intrusion detection} \cite{Cole2009}. Attackers use malware to steal data, use target computer (in C2 or DDOS) or even spy the owner. Malware often gets into target computer via usual communication channels - emails, USB, web download. \cite{KA2018}. Malware may contain more parts which have different role, we call these parts \emph{components}. The software which is not malicious is often called \emph{cleanware}.
 
-\section{Portable executable files}
-Malware is defined widely and is not limited to specific kind of file format. In our research we decided to investigate only Portable Executable (PE) files. It is because we want to create dataset of malware running on windows machines with no extra extension. 
+Firstly let us clarify several terms. \emph{Malware type} denotes group of malware samples or their components that show same behavior. \emph{Malware family} is collection of malware that has same code base (uses same code components). Example of such family might by \emph{Emotet} which is banking trojan family or CryptoWall which is ransomware family. \emph{Malware variant/strain/version} is malware which is in some existing family but includes new parts which were not earlier detected in this family \cite{Cohen2019}.
 
-In general we can find various filetypes. In list below we list some examples with basic principle how particular type is used for system intrusion or harm. From the definition of malicious code we can derive that whichever filetype could by used but some are more usual than another (easier to use).
+Based on specific behavior we can distinguish several fundamental types of malware. Each malware sample may have multiple components and each component may have different type. The most usual malware types follows (their source are \cite{Cole2009, KA2018, Graham2010, Sikorski2012}).
+
+\paragraph{Worm} is malware capable of copying itself in a varieaty of ways and so spreading itself on multiple devices.
+\paragraph{Virus} is capable of infecting other executable files by injecting its payload. Infected files are then executed by user.
+\paragraph{Trojan} disguises itself as regular program. Their job starts after the user is manipulated. After installation they can steal the data, control target machine\dots
+\paragraph{Backdoor} allow attacker access target machine after if their job has succesful ending. The attacker can use multiple machines as botnet controlled by a command and controll server.
+\paragraph{Adware} presents unwanted advertisements to user of target machine. They are usually downloaded from the internet.
+\paragraph{Information stealer} aims at user's data. Examples are sniffers, grabbers, spyware and key loggers.
+\paragraph{Ransomware} locks users out of their computer or encypt their data. It usually threaten the user from not decrypting it before they pay some money.
+\paragraph{Rootkit} allow a malware presence concealment.
+\paragraph{Dropper} download malicious code or its updates from the internet. The dropper itself is often harmless.
+\paragraph{Launcher} is responsible of running malicious code, usually steathly.
+
+According to \cite{AVATLASM39:online} the most seen types on windows are \emph{trojans} and \emph{backdoors}.
+
+
+% Types, Families
+% https://en.wikipedia.org/wiki/Malware
+% Find in books!
+% https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
+
+Malware is defined very generally and it is not limited to specific file format. In general we can find various filetypes. In list below we list some examples.
 \begin{enumerate}
   \item Portable executable
   \item Portable Document Format
   \item Microsoft office formats
-  \item Compressed
+  \item HTML
+  \item Archives
 \end{enumerate}
+
+The most see on windows machine are according to \cite{AVATLASM39:online} Portable Executable (PE) files.
+
+The portable executable is file format mainly for executables, object code and DLLs. It is specific for Windows operation system, for 32-bit we use format PE32 and for 64-bit is PE32+. Its complete description is provided by microsoft \cite{PEFormat89:online}. Description of the most important parts follows.
 
 https://en.wikipedia.org/wiki/Portable_Executable
 https://docs.microsoft.com/en-us/windows/win32/debug/pe-format
@@ -66,6 +76,14 @@ introduction
 
 https://en.wikipedia.org/wiki/Malware_analysis
 Find in books!
+
+\subsection{Static}
+○ Retdec - static analyser
+§ Not so well documented..
+§ I am studying the output, there is decompiled code and there some metada
+§ I will use as it is out of box - decompiled code and some metadata
+○ Manalyze
+§ Another metadata like clamav signatures and something else
 
 \subsection{Dynamic}
 https://publications.sba-research.org/publications/malware_survey.pdf
@@ -85,16 +103,10 @@ mention especially parts which gives more information about the run (mutexes, fi
 ○ https://github.com/maliceio/malice
 https://www.hybrid-analysis.com/
 
-\subsection{Static}
-○ Retdec - static analyser
-§ Not so well documented..
-§ I am studying the output, there is decompiled code and there some metada
-§ I will use as it is out of box - decompiled code and some metadata
-○ Manalyze
-§ Another metadata like clamav signatures and something else
+sandbox detection
 
+capev2 description
 
-\section{Sandboxing}
 existing solutions and results...
 find basics in books
 
@@ -109,6 +121,9 @@ usual format which are produced by sandbox and what we can find there
 Reference even docs - no problem, not only books and papers
 Conclusion should be that those data are complicated and their structure also keep some information (order, structure...), that is why we want to focus on structured data and especially json.
 size...
+
+\section{JSON notation} \label{sec:json_notation}
+(define json notation in short paragraph)
 
 \section{Prior}
 works about malware analysis
