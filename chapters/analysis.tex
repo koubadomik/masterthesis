@@ -4,7 +4,7 @@
 % In the first part of this thesis we focus the comprehensive theory which is needed to absorb in order to interpret results. Not everything is disassembled in detail we go only there where we find something useful for our thesis. This is really based on experience so if the reader is interested only in results used formalism and notation in theory part are important only.
 
 \chapter{Malware analysis} \label{chap:analysis}
-Particular goal of this thesis is to create dataset of dynamic malware analyses. In this chapter we define basic notions of malware, PE file, malware analysis. We describe sandbox which we use for analysis and its output. We also address some cyber security challenges and refer to prior arts.
+Particular goal of this thesis is to create dataset of dynamic malware analysis samples. In this chapter we define basic notions of malware, PE file and malware analysis. We describe sandbox which we use for the analysis and its output. We also address some cyber security challenges and refer to prior arts.
 
 
 \section{Data cybersecurity challenges}
@@ -53,7 +53,7 @@ According to \cite{AVATLASM39:online} the most seen types on windows are \emph{t
 % https://en.wikipedia.org/wiki/Malware
 % Find in books!
 % https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
-
+\section{File formats}
 Malware is defined very generally and it is not limited to specific file format. In general we can find various filetypes. In list below we list some examples.
 \begin{enumerate}
   \item Portable executable
@@ -65,46 +65,104 @@ Malware is defined very generally and it is not limited to specific file format.
 
 The most see on windows machine are according to \cite{AVATLASM39:online} Portable Executable (PE) files.
 
+\subsection{PE}
 The portable executable is file format mainly for executables, object code and DLLs. It is specific for Windows operation system, for 32-bit we use format PE32 and for 64-bit is PE32+. Its complete description is provided by microsoft \cite{PEFormat89:online}. Description of the most important parts follows.
 
-https://en.wikipedia.org/wiki/Portable_Executable
-https://docs.microsoft.com/en-us/windows/win32/debug/pe-format
-https://github.com/corkami/pics/blob/master/binary/pe101/README.md
+The PE file includes information necessary for Windows operating system (specifically the dynamic linker) to map the file into memory \cite{Gibert2020}. Usual file extensions are \emph{.exe, .dll, .sys}. It consists of two main parts - \emph{Header} and \emph{Sections} (see \ref{fig:pe}). 
+
+\paragraph{Header} contains technical details about the executable. The most important parts are:
+\begin{itemize}
+  \item DOS header - presented for backward compatibility with older versions of Windows
+  \item PE header - executable info such as number of sections, file signature
+  \item Optional header - addtional info such as base of data, base of code, address of entry point
+  \item Sections table - definition of loading process
+  \item Import/export address table - lookup table (pointers) for imported or exported structures (abbrev. \emph{IAT})
+\end{itemize}
+
+\paragraph{Sections} contains mainly data and code of the executable. The most important parts are:
+\begin{itemize}
+  \item code - actual program code (\emph{.text})
+  \item imports/exports - \emph{.idata, .edata}
+  \item data - static constants (\emph{.data}), variables(\emph{.bss}), other resources (\emph{.rsrc}), debug data (\emph{.rdata})
+\end{itemize}
+
+Loading process of PE file starts by parsing the headers and sections table and its validity is checked. The file is mapped into memory according to information in specific header parts. Additional DLLs are loaded into memory based on \emph{IAT}. Finally, file is executed at specified entry point. \footnote{https://github.com/corkami/pics/blob/master/binary/pe101/pe101.png}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=8cm]{figures/pe.jpg}
+  \caption{PE file structure (source \cite{Gibert2020})}
+  \label{fig:pe}
+\end{figure}
 
 \section{Malware analysis}
-introduction
+Malware analysis is process leading to a deeper undertanding of malware features, behavior and overall goal. We can use several techniques and not all of them require execution of examined malware.
 
-https://en.wikipedia.org/wiki/Malware_analysis
-Find in books!
+Malware analysis is the most relevant at the point where we do not have original source code of malware binary, because its examinantion would often give us much more information. We see the sample as a black box \cite{Sikorski2012}.
 
-\subsection{Static}
-○ Retdec - static analyser
-§ Not so well documented..
-§ I am studying the output, there is decompiled code and there some metada
-§ I will use as it is out of box - decompiled code and some metadata
-○ Manalyze
-§ Another metadata like clamav signatures and something else
+After we described malware types we could end up our reasoning as many people before. But the goal of the description of security threats is to be able to respond - prevent further attacks, detect future attacks, identify attacker\dots Authors of \cite{KA2018} summarize our motives in malware analysis in following several reasons. 
 
-\subsection{Dynamic}
-https://publications.sba-research.org/publications/malware_survey.pdf
-https://link.springer.com/article/10.1007/s11416-007-0074-9
+We want to find malware components and their role and address its goal. For example we can identify malware consisiting from dropper part which checks running environment and downloading payload from the internet, and from launcher part which is responsible for the payload stealth execution. Another reason might be to understand malware's impact. It is hiding each step and if we do not monitor our systems (for example using integrity checks) we might not realize the threat. We also want to observe and report its behavior in the target computer (filenames, registries\dots) and the network intrusion. The last might be critical for preventing the malware from spreading accross local and global network. Finally, we want to classify the threat and investigate who might be the attacker and what are the motives.
 
-mention especially parts which gives more information about the run (mutexes, files, api calls,.. - to be able to reference from data chapter)
+The analysis might be followed by the reaction which often includes antivirus updates - creating new signatures, updating machine learning and other models. The notion of \emph{signature} refers to indicator which is able to detect malicious code on victim machine or even in the network traffic \cite{Sikorski2012}. The signature detection is based on examining outputs of malware analysis and checking specific parts.
 
-- Summary of potential sorces of metadata
-○ Abuse.ch - https://bazaar.abuse.ch/api/#api_key
-○ VirusTotal - https://developers.virustotal.com/v3.0/reference#file-info
-○ Metadefender - https://onlinehelp.opswat.com/mdcloud/3.1_Retrieving_scan_reports_using_a_data_hash.html
-- Interesting
-○ https://app.any.run/
-○ https://virusscan.jotti.org/
-○ https://virscan.org/
-○ https://mzrst.com/
-○ https://github.com/maliceio/malice
-https://www.hybrid-analysis.com/
+We distinguish two basic types of malware analysis - \emph{static} and \emph{dynamic}. In following sections we address each of these and describe their techniques.
 
-sandbox detection
+\subsection{Static analysis}
+By performing this kind of analysis we can exmine target file without executing. Its usage is definitely limited but it can narrow the scope of our interest. \cite{KA2018} Performing the static analysis is usually easier and faster. \cite{Sikorski2012}
 
+\subsubsection{Determining file type}
+Earlier in this chapter we listed several file types frequently used by malware. One of initial steps in static analysis is file type determination. The file type might corellate with the file extension e.g. \ \emph{.exe, .sys, .docx}, but reliable technique is file signature examination. This signature is sequence of bytes which is unique across different file types. File signature might be examined manually in some \emph{hex editor}\footnote{example (https://mh-nexus.de/en/hxd/)} or automatically using some programming language or tools\footnote{example https://man7.org/linux/man-pages/man1/file.1.html}. \cite{KA2018} 
+
+
+\subsubsection{Fingerprinting, comparison}
+By fingerprinting is meant generating cryptographic hash value for examined file (e.g. \ \emph{MD5, SHA1}). This hash should give us unique file identifier for future identification. It is used to retrieve known information about malware samples from online sources\footnote{example https://www.virustotal.com/gui/}, where we can find multi anti-virus scans and another useful information. On the other hand we can use special kind of 'hashes' which are able to identify similar malware samples. Those could be fuzzy hashes, import hashes or section hashes \cite{KA2018}.
+
+\subsubsection{String extraction}
+Strings are placed in malware file encoded by \emph{ASCII} or other encoding. Their extraction from original binary is valuable tool of the static part of analysis. There might by ip addresses, domain names, file names and other. There are specialized tools for this task \footnote{example http://split-code.com/strings2.html}. Obviously, the challenge in cybersecurity is the imbalance between the attacker and the protector regarding the information about analysis techniques. Which leads us to the file \emph{obfuscation} which is a technique used by attacker to secure strings from extraction. This is often done by \emph{packers} using compression or by \emph{cryptors} by encryption. Of course even such techniques are detectable and vincible using specialized tools.
+
+There are even other techniques e.g. \ \emph{PE header inspection} where we can see imported and exported libraries and functions \cite{Sikorski2012}. Another example is \emphy{Yara rules}, which allow researchers creating indication rules based on textual and binary information of malware sample \cite{KA2018}.
+
+\subsubsection{Code analysis}
+Techniques listed above are picking specific feature and by connecting them we might get useful summary as initial hypothesis. But using just executable file we are also able to examine it step by step. We can distinguish \emph{static} and \emph{dynamic} code analysis.
+
+In \emph{static} context we use \emph{disassembler} \footnote{example https://binary.ninja/} which translates machine code back to assembly code which might by further analysed. There is one more sophisticated technique which is also part of \emph{static} contex, it is called \emph{decompilation}. This process translates machine code into higher level programming language such as C or Python \footnote{example https://github.com/avast/retdec}.
+
+In \emph{dynamic} code analyses we use \emph{debugger} to examine translated code during run \cite{KA2018}.
+
+\subsection{Dynamic analysis - sandboxing}
+Dymanic analyses techniques allow us examination of running malware sample. The isolated environment for malware execution is often called \emph{Sandbox} (sometimes we call \emph{Sandbox} the application which allow us orchestrate the dynamic analysis process using some interface). During the run we observe the details about malware behaviour and even the reaction of system. In following list we can see different subjects which are often monitored.
+
+\emph{Sandbox} realization is precise work. We need to minimize the risk of malware breaking the border of safe environment. It is usually implemented using virtual machine and \emph{air-gapped} networks (isolated networks) \cite{Sikorski2012}. Using virtual machines is better for overall security of our experiments but there are some significant pitfalls as well. The crucial drawback is that malware might identify suspiciously clean and safe environment and shut down itself before any action. The sandbox setup has to by conscientious to faithfully imitate ral environment. Despite of mentioned facts virtual machine setup is still more frequent than running malware on pyhsical machine. There are various virtualization software\footnote{examples https://www.virtualbox.org/, https://www.linux-kvm.org/} which provides virtual machines hypervision and user interface (CLI or GUI). Using sophisticated network setup (bridged network adapters, NAT, VPN) we may provide even controlled internet connection (or its simulation). Extracted information from an usual sandbox analysis is listed below and some of them are further dicussed.
+
+\begin{itemize}
+  \item Process monitoring - process activity, subprocesses\dots
+  \item File system monitoring - dropped files, removed files\dots
+  \item Registry keys - read/write operations with windows registry keys including even the read/written data
+  \item Network activity monitoring - outgoing and incoming traffic
+  \item API calls - external libraries of windows operating system which are called by the malware sample
+  \item Mutexes - flags which are usually created by process thread to avoid another thread from writing at the same time, they are also used by malware to indicate something (for example its presence to another instance of the same malware)
+\end{itemize}
+
+% Let us summarize basics of malware interaction with windows OS (main source \cite{Sikorski2012}). nice to have chapter ANALYZING MALICIOUS
+% WINDOWS PROGRAMS
+
+Examples of existing solutions for sandbox environment orchestration are:
+\begin{itemize}
+  \item CAPEv2 - \url{https://www.capesandbox.com/} (earlier cuckoo sandbox)
+  \item ANY.RUN - \url{https://app.any.run/}
+  \item Hybrid analysis - \url{https://www.hybrid-analysis.com/}
+  \item Joe Sandbox - \url{https://www.joesandbox.com/}
+\end{itemize}
+
+\subsection{Sandbox evasion techniques}
+As we mentioned earlier creators of malware know how malware might be examined. Malware might delay its execution in order to overcome the timeout of most sandboxes (usually up to half an hour). Malware often checks hardware size, version and other information which could be overlooked during the virtual machine setup and stay generic. It might detect a low number of CPU cores commonly used in sandboxes and other environment details before dropping a payload. If sandbox is running on device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. Comprehensive desription of sandbox evasion techniques can be found in \cite{Afianian2018}.
+
+\section{CAPEv2}
+An opensource project called \emph{Cuckoo sandbox} was firstly published in 2011. It started as Google Summer of Code project in 2010 within the Honeynet Project. This project is no more actively developed but community developers forked original project and updated its implementation to python 3. This project is called \emph{CAPEv2}. There is one publication about original \emph{Cuckoo} sandbox \cite{Oktavianto2013} which is partial source of following description together with documentation of \emph{CAPEv2} \cite{CAPESand75:online}.
+
+What it is? We want to use it? Why?
 capev2 description
 
 existing solutions and results...
@@ -116,14 +174,16 @@ to appendix we can add also web interface of cuckoo
 
 
 \section{Produced data}
-mention signatures
-usual format which are produced by sandbox and what we can find there
-Reference even docs - no problem, not only books and papers
-Conclusion should be that those data are complicated and their structure also keep some information (order, structure...), that is why we want to focus on structured data and especially json.
-size...
+As we stated in the thesis introduction, our goal is to use \emph{behavioural} features from \emph{JSON} reports and \emph{signatures}. In this section we want to demonstrate what we can retrieve from malware analysis tools and refer to some prior art.
 
-\section{JSON notation} \label{sec:json_notation}
+absorb chapter data and start of model chapter beginning
+
+\subsubsection{JSON notation} \label{sec:json_notation}
 (define json notation in short paragraph)
+
+\subsection{Prior arts}
+https://reader.elsevier.com/reader/sd/pii/S1084804519303868?token=54FB03AEF11E9E1FF89315F6E2C0ABD33E786C739B234F740D81164F700DB03A7AA2B4398F27F60FBFE27EED225DCE21&originRegion=eu-west-1&originCreation=20210428221108 - page further and further
+
 
 \section{Prior}
 works about malware analysis
@@ -141,6 +201,30 @@ file:///C:/Users/domia/Downloads/088851962.pdf
 
 
 %%------------------------------------------
+% mention signatures
+% usual format which are produced by sandbox and what we can find there
+% Reference even docs - no problem, not only books and papers
+% Conclusion should be that those data are complicated and their structure also keep some information (order, structure...), that is why we want to focus on structured data and especially json.
+% size...
+
+
+% TODO - nice-to-have
+% memory forensics
+
+
+% If I have to add something - https://publications.sba-research.org/publications/malware_survey.pdf
+
+
+
+% mention especially parts which gives more information about the run (mutexes, files, api calls,.. - to be able to reference from data chapter)
+
+% - Summary of potential sorces of metadata
+% ○ Abuse.ch - https://bazaar.abuse.ch/api/#api_key
+% ○ VirusTotal - https://developers.virustotal.com/v3.0/reference#file-info
+% ○ Metadefender - https://onlinehelp.opswat.com/mdcloud/3.1_Retrieving_scan_reports_using_a_data_hash.html
+% - Interesting
+
+
 
 % Previous connection
 % - Nothing before
