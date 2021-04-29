@@ -141,7 +141,7 @@ Dymanic analyses techniques allow us examination of running malware sample. The 
   \item File system monitoring - dropped files, removed files\dots
   \item Registry keys - read/write operations with windows registry keys including even the read/written data
   \item Network activity monitoring - outgoing and incoming traffic
-  \item API calls - external libraries of windows operating system which are called by the malware sample
+  \item API calls - external libraries of windows operating system which are called by the malware sample, essentially everything what malware performs should be expressed in the list of api calls
   \item Mutexes - flags which are usually created by process thread to avoid another thread from writing at the same time, they are also used by malware to indicate something (for example its presence to another instance of the same malware)
 \end{itemize}
 
@@ -179,28 +179,50 @@ As we stated in the thesis introduction, our goal is to use \emph{behavioural} f
 absorb chapter data and start of model chapter beginning
 
 \subsubsection{JSON notation} \label{sec:json_notation}
-(define json notation in short paragraph)
+The most comprehensive report which is produced by \emph{CAPEv2} is in \emph{JSON} format. We will use this format as direct input for our model, let us define it here \footnote{documentation https://www.json.org/json-en.html}.
+
+JSON (JavaScript Object Notation) is a most frequently used lightweight data-interchange format. It consists of two essential structures - \emph{collections of key-value pairs} (sometimes called \emph{object}) and \emph{ordered lists}. 
+\emph{Object} is unordered list of \emph{key-value} pairs, it is surrounded by curly brackets, pairs are coma-separated and keys are separated by colon from values. \emph{Keys} have to be double-quoted unicode strings. \emph{Values} might be strings, numbers, objects, arrays, boolean or null. \emph{Lists} are surronded by square brackets and contains coma-separated values.
+
+Usually, single \emph{.json} file contains one object, but there are also cases where list of objects is presented.
 
 \subsection{Prior arts}
-https://reader.elsevier.com/reader/sd/pii/S1084804519303868?token=54FB03AEF11E9E1FF89315F6E2C0ABD33E786C739B234F740D81164F700DB03A7AA2B4398F27F60FBFE27EED225DCE21&originRegion=eu-west-1&originCreation=20210428221108 - page further and further
+List of relevant example publications where authors applied machine learning algorithm using the data produced by malware analysis tools.
+\subsubsection{Static features}
+\begin{itemize}
+  \item Strings - \cite{Lee2011}
+  \item N-grams (an analysis using bytes subsequences of length $N$ from original binary) - \cite{Fuyong2017}
+  \item Entropy of the malware file - \cite{Wojnowicz2018}
+  \item Statically extracted API functions calls - \cite{Ahmadi2016}
+\end{itemize}
 
+\subsubsection{Dynamic features}
+\begin{itemize}
+  \item Registry - \cite{Ghiasi2015}
+  \item CPU instruction traces - \cite{Carlin2017}
+  \item Network traffic - \cite{Boukhtouta2015}
+  \item API call traces -  \cite{Galal2015}
+\end{itemize}
 
-\section{Prior}
-works about malware analysis
-works that collected data for machine learning purposes
-Mandlik, Stiborek, everybody who used cuckoo or other sandbox data (reference for what and their results)
+Other related resources might be in \cite{Singh2020, Sethi2019, Abdessadki2019, Gibert2020}.
 
-file:///C:/Users/domia/Downloads/Imad-Saiida-IJCNIS-V11-N6-1.pdf
-https://web.archive.org/web/20160418151823/http://www.ijarcsse.com/docs/papers/Volume_3/4_April2013/V3I4-0371.pdf
-https://reader.elsevier.com/reader/sd/pii/S1383762120301442?token=81F1AB06FF0FE40D1B7745234269280FCF2CB0979140E84DB35D6E04A2C622FE6EDA2DE4DA0630E1D73044E3D84A722F&originRegion=eu-west-1&originCreation=20210401090943
-https://iopscience.iop.org/article/10.1088/1742-6596/1140/1/012042/pdf
-file:///C:/Users/domia/Downloads/JCIT4024PPL.pdf
-https://dl.acm.org/doi/abs/10.1145/2046614.2046618?casa_token=MXpfHiylCZcAAAAA:szRMPWfKXTl4wxP2-h32eknCg5dzM2t7RxGjywiJDksmT5FqcUY7pPrIBZchv26HUe3Lwubu5Hru
-
-file:///C:/Users/domia/Downloads/088851962.pdf
 
 
 %%------------------------------------------
+% \section{Prior}
+% works about malware analysis
+% works that collected data for machine learning purposes
+% Mandlik, Stiborek, everybody who used cuckoo or other sandbox data (reference for what and their results)
+
+% file:///C:/Users/domia/Downloads/Imad-Saiida-IJCNIS-V11-N6-1.pdf
+% https://web.archive.org/web/20160418151823/http://www.ijarcsse.com/docs/papers/Volume_3/4_April2013/V3I4-0371.pdf
+% https://reader.elsevier.com/reader/sd/pii/S1383762120301442?token=81F1AB06FF0FE40D1B7745234269280FCF2CB0979140E84DB35D6E04A2C622FE6EDA2DE4DA0630E1D73044E3D84A722F&originRegion=eu-west-1&originCreation=20210401090943
+% https://iopscience.iop.org/article/10.1088/1742-6596/1140/1/012042/pdf
+% file:///C:/Users/domia/Downloads/JCIT4024PPL.pdf
+% https://dl.acm.org/doi/abs/10.1145/2046614.2046618?casa_token=MXpfHiylCZcAAAAA:szRMPWfKXTl4wxP2-h32eknCg5dzM2t7RxGjywiJDksmT5FqcUY7pPrIBZchv26HUe3Lwubu5Hru
+
+% file:///C:/Users/domia/Downloads/088851962.pdf
+
 % mention signatures
 % usual format which are produced by sandbox and what we can find there
 % Reference even docs - no problem, not only books and papers
