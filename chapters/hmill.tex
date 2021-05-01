@@ -1,29 +1,107 @@
 \chapter{Hierarchical Multiple Instance learning} \label{chap:hmill}
-
-
-
 The goal of this thesis is to use specifically hierarchical multiple instance learning (\emph{hmill}) for classification. Using it we want to follow the prior art in this area \cite{Mandlik2020} where author pointed out elegant way to classify \emph{JSON} documents. In comparison to GNN approach \emph{hmill} model has better scalability \cite{Mandlik2020} which is convenient for our \emph{JSON reports}. In this chapter we describe multiple instance learning as generalization of standard learning approach described in previous chapter. Then we describe \emph{hmill} framework, which we use.
 
+% In this chapter we describe multiple instance learning as extended approach compared to previus chapter. In the second part we will describe hierarchical multiple instance learning framework as modelling tool to model tree-structured data. Finally, we will address its usage in malware classification and other applications in cyber security field.
 
-In this chapter we describe multiple instance learning as extended approach compared to previus chapter. In the second part we will describe hierarchical multiple instance learning framework as modelling tool to model tree-structured data. Finally, we will address its usage in malware classification and other applications in cyber security field.
+\section{Multiple instance learning}
+At first let us describe and define problem of \emph{Multiple instance learning} its origin and formalism. This term firstly appeared in \citet{Dietterich1997}, it is not the very first formulation of such problem, that is in \cite{Keeler1991}.
 
-\section{Multiple instance learning - Mill}
-At first let us describe and define problem of \emph{Multiple instance learning} its origin and formalism.
+The motivation example in original paper \cite{Dietterich1997} is formulated in following way. Imagine we have keys and some of them unlock specific door and some of them not (no other choice). Important is that we do not have access to the door. In standard learning is our goal to learn classification model which consumes key and outputs if it is able to open the door or not. But in \emph{multiple instance learning} setting we receive whole key chains (with various number of keys) and without checking every single key we have to classify if the whole chain is able to open the door.
 
-The most cited original article in this field is \citet{Dietterich1997}, it is not the very first formulation of such problem (it is in \cite{Keeler1991}) but fist usage of term \emph{Multiple instance learning}.
-
-On figure \todo{reference figure} we can see basic idea behind \emph{Mill} problem. Standard learning described in chapter \todo{ref chapter} we can see as a special case of \emph{Mill}. Compared to defined formalism we have to change definition of \emph{example} \todo{ref section example in chapter 1}. 
+In the figure \ref{fig:mill} we can see basic idea behind \emph{Mill} problem. The only significant change regarding previous chapter is definition of \emph{Example}. 
 \paragraph{Example}
-Firstly we for our puprose we assume that we are in \emph{supervised} setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances} and usually lives in standard feature space $$x_i \in \mathbb{R}^{n}$$. Its length is $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$. Now we can see that standard learning is just \emph{Mill} problem where holds $$|b| = 1$$.
+We assume \emph{supervised} learning setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. State was defined earlier and its meaning is the same but it is related to bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is set of feature vectors $$x_i$$, these vectors are called \emph{instances} and usually lives in standard feature space $$x_i \in \mathbb{R}^{d}$$. Cardinality of each bag $$|b| \in \mathbb{N}$$ and can be even zero. We assume that $$b \in \mathcal{B}$$ which denotes \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$. Now we can see that standard learning situation described in chapter \ref{chap:classification} is just \emph{Mill} problem where holds $$|b| = 1$$.
 
-For the purposes of our thesis we assume mill classification problem so $$|\mathcal{Y}|$$ is finite. One more additional note is that some researches and even the original has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance label} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} so even we do.
-\todo{I have to mention some citations the theory I built on top of Mandlik and Amores!}
+For the purposes of our thesis we assume mill classification problem so $$|\mathcal{Y}|$$ is finite (typically binary classification $$\mathcal{Y} \in \{positive, negative\}$$). 
+% Some researches and even the original paper has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance labels} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} and that is also our case.
 
-\todo{image of standard setting vs mill setting} \todo{if we would like to have some fancy figure we can try something with keys}
+\begin{figure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \begin{tikzpicture}
+            \node (X) at (-2,1) {$x$};
+            \node (Y) at (6,1) {$y$};
+            \draw (0,0)rectangle(4,2)node[midway,black,align=center]{Unknown \\ Process};
+            \path [->] (X) edge (0,1);
+            \path [->] (4,1) edge (Y);
+        \end{tikzpicture}
+      \caption{Standard situation}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \begin{tikzpicture}
+            \node (X) at (-3,1) {$x$};
+            \node (Y) at (6,1) {$y$};
+            \node (I1) at (-1,2) {$I_1$};
+            \node (I2) at (-1,1.5) {$I_2$};
+            \node (I3) at (-1,1) {$I_3$};
+            \node (I4) at (-1,0.5) {$...$};
+            \node (I5) at (-1,0) {$I_n$};
+            \draw (0,0)rectangle(4,2)node[midway,black,align=center]{Unknown \\ Process};
+            
+            \path [-] (X) edge (-2,1);
+            \path [->] (-2,1) edge (I1);
+            \path [->] (-2,1) edge (I2);
+            \path [->] (-2,1) edge (I3);
+            \path [->] (-2,1) edge (I4);
+            \path [->] (-2,1) edge (I5);
+            \path [->] (I1) edge (0,1);
+            \path [->] (I2) edge (0,1);
+            \path [->] (I3) edge (0,1);
+            \path [->] (I4) edge (0,1);
+            \path [->] (I5) edge (0,1);
+            \path [->] (4,1) edge (Y);
+            
+            \draw [dashed] (-2.5,-0.5)rectangle(5,2.5);
+        \end{tikzpicture}
+      \caption{Multiple instance situation}
+    \end{subfigure}
+    \caption{Supervised learning}
+    \label{fig:mill}
+\end{figure}
 
-The motivation example in original paper \cite{Dietterich1997} is formulated in following way. Imagine we have keys and some of them unlock specific door and some of them not (no other choice). Important is that we do not have access to the door. In standard learning is our goal to learn classification model which consumes key and outputs if it is able to open or not. But in \emph{multiple instance learning} setting we receive whole chains of several keys and without checking every single key we have to classify if the whole chain is able to open the door.
 
-More on this topis we can find in \cite{Amores2013} where we can find formulated paradigms of solving such issues.
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (X) at (-2,1) {$x$};
+        \node (Y) at (6,1) {$y$};
+        \draw (0,0)rectangle(4,2)node[midway,black,align=center]{Unknown \\ Process};
+        \path [->] (X) edge (0,1);
+        \path [->] (4,1) edge (Y);
+    \end{tikzpicture}
+    \caption{Graphs of three analytical functions.}
+    \label{fig:analytical}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    
+    \caption{Graphs of three analytical functions.}
+    \label{fig:analytical}
+\end{figure}
+
+% \todo{I have to mention some citations the theory I built on top of Mandlik and Amores!}
+% \todo{image of standard setting vs mill setting} \todo{if we would like to have some fancy figure we can try something with keys}
+
+\section{Solving of \emph{Mill} problems}
+The goal is the same regardless the standard or multiple instasnce setting, we would like to find discriminative modelling approach to be able to solve classification task. Three general approaches (paradigms) to solve \emph{mill} problems are formulted in \cite{Amores2013} - \emph{Instance-Space, Bag-Space} and \emph{Embedded-Space} paradigm.
+
+\subsection{Instance-Space paradigm}
+An algorithm in this group infers \emph{instance-based} classifier $f(x) \in \{1,0\}$ for each instance in training set. \emph{Bag-based} classifier is constructed in following way - $F(b)=\frac{f(x_1)\circ f(x_2)\circ\dots\circ f(x_N)}{Z}$, where $x_i$ are instances in bag $b$, $\circ$ denotes an algorithm-specific aggregation operator and $Z$ denotesa an optional normalization factor. As we stated earlier \emph{bag labels} are part of training but not \emph{instance labels}, which means methods using this paradigm have to make some assumptions about the relation between \emph{bag} and \emph{instance} labels.
+\subsubsection{Standard assumption}
+Our assumption is that each negative bag consists of negative instances only and each positive bag includes at least one positive instance. The goal of algorithm in this setup is to aim at instances that make bags positive (we know that at least one in each bag does that).
+
+There are several methods which follow this assumption. First is \emph{Axis-Parallel Rectangle} used in \cite{Dietterich1997} in drug discovery use case, where $F(b)=\max_{x\in b}f(x)$. Other methods are \emph{Diverse Density} \cite{Maron1998} or MI-SVM \cite{Andrews2003}.
+
+\subsubsection{Collective assumption}
+Previous methods tend to look over the fact that the bag labels might be influenced by the interaction of instance features. For example in learning stage some of them might consider only several instances (or even one) from the whole bag.
+
+\emph{Collective assumption} states that \quote{all instances in a bag contribute equally to the bag’s label} \cite{Xu2003}. Methods usualy use training set of instances which is constructed such that each instance inherits label from bag where it is is presented. This training set might by used to get instance-level classifier. Basic approach is applying SIL algorithm \cite{Bunescu2007}, which simply train mentioned instance-level classifier and bag-level classifier is obtained by $F(b)=\frac{1}{|b|}\sum_{x\in b}f(x)$. Other method is Wrapper MI \cite{Frank2003}.
+
+
+\subsection{Bag-space paradigm}
 
 \todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite from Amores}
 another examples we can find here - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf

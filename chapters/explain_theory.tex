@@ -2,8 +2,6 @@
 In following chapter we describe model explainability in general - definition, motivation, prior arts. Finally, we give details of \emph{hmill} explainer which we use in experiments.
 
 
-
-
 In case of complex model structures like artificial neural nets we often want to explain its predictions. For example in case of malware we may be sure that the information used by the model is quite simple and straight-forward compared to the whole sample or at least that is in our expectation. That is why we often try to explain the models results to see if the explanation (e.g. \ subset of original sample which gives the model majority of information based on which it classifies) is hand in hand with our intuition. It could also be kind of hand brake to see that the model is not generalizing based on something relevant. For example in base prior article for us authors identified that their model is classifying mainly according to timestamp field in original sample, which was different for malware and for cleanware \cite{Pevny2020}. This was obviously mistake because this detail is not the difference between malware and cleanware.
 
 Going from popular quote: \say{All models are wrong but some of them are useful} \todo{add name George E.P. Box} We should ask: \emph{What kind of model is useful?}

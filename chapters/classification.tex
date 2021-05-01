@@ -84,7 +84,6 @@ We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
 
-
 \section{Machine learning tasks}
 There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples (as mentioned above) but also according to the states.
 
@@ -228,13 +227,13 @@ In the section about models we refered to different approaches. One specific we 
     \label{fig:neuralnet}
 \end{figure}
 
-Neural net is discriminative model which is based \emph{Empirical Risk Minimization} (mention earlier). It is a composition of simple linear or non-linear functions (\emph{neurons}) which are parametrized. Specific neural network architecture is defined by used functions and their count (functions are organized into layers). The architecture implies $\mathcal{H}$ a hypothesis space. Example of general neural net could be seen in \ref{fig:neuralnet}. \todo{describe a little more the picture and maybe even change it}
+Neural net is discriminative model which is based on \emph{Empirical Risk Minimization} (mention earlier). It is a composition of simple linear or non-linear functions (\emph{neurons}) which are parametrized. Specific neural network architecture is defined by used functions and their count (functions are organized into layers). The architecture implies $\mathcal{H}$ a hypothesis space. Example of general neural net could be seen in \ref{fig:neuralnet}. \todo{describe a little more the picture and maybe even change it}
 
 The overall goal is to optimize $\ell$ with respect to the parameters of the net. For this task is most often used \emph{gradient descent} optimization technique.
 
 Usage of the \emph{gradient descent} puts minimal demands on the data we are using which makes this model so popular. We also do not insist on strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions we are using is that they have to be differentiable. The price we are paying is that the optimization guarantees only stationary point ending which could be a \emph{local minimum} or worse a \emph{saddle point}. But applications lead us to the conclusion that in right hands this model may perform really well.
 
-For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm is that we are able to compute derivatives of every function's outputs with respect to its outputs (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
+For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm builds on computing derivatives of every function's outputs with respect to its outputs (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
 
 % Main advantage of this kind of model is that we do not have assume much about our data. This is main reason why neural nets are used very often nowadays.
 
