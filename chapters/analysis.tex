@@ -157,7 +157,7 @@ Examples of existing solutions for sandbox environment orchestration are:
 \end{itemize}
 
 \subsection{Sandbox evasion techniques}
-As we mentioned earlier creators of malware know how malware might be examined. Malware might delay its execution in order to overcome the timeout of most sandboxes (usually up to half an hour). Malware often checks hardware size, version and other information which could be overlooked during the virtual machine setup and stay generic. It might detect a low number of CPU cores commonly used in sandboxes and other environment details before dropping a payload. If sandbox is running on device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. Comprehensive desription of sandbox evasion techniques can be found in \cite{Afianian2018}.
+As we mentioned earlier creators of malware know how malware might be examined. Malware might delay its execution in order to overcome the timeout of most sandboxes (usually up to half an hour). Malware often checks hardware size, version and other information which could be overlooked during the virtual machine setup and stay generic. It might detect a low number of CPU cores commonly used in sandboxes and other environment details before dropping a payload. If sandbox is running on device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. Comprehensive desription of sandbox evasion techniques can be found in \cite{Afianian2018} and this blog post \cite{Chailytko2019} is describing how we can defeat them.
 
 \section{CAPEv2}
 An opensource project called \emph{Cuckoo sandbox} was firstly published in 2011. It started as Google Summer of Code project in 2010 within the Honeynet Project. This project is no more actively developed but in 2019 community developers forked original project\footnote{https://github.com/kevoreilly/CAPEv2} and updated its implementation to python 3. This project is called \emph{CAPEv2} and it is distributed under GPL-3.0 License. There is one publication about original \emph{Cuckoo} sandbox \cite{Oktavianto2013} which is partial source of the following description together with documentation of \emph{CAPEv2} \cite{CAPESand75:online}, other sources are reffered in text.
@@ -165,23 +165,26 @@ An opensource project called \emph{Cuckoo sandbox} was firstly published in 2011
 \emph{CAPEv2} is used to automatically run malicious files, collect results and make some further analysis. It has modular design which allows its integration into more complex infrastructure. Other developers can customize and extend a lot of its functions.
 % \todo{nice-to-have image of the interface}
 
-It can analyze various file types (listed below), which can be uploaded using CLI and see results in subdirectory or using a web interface and display results \footnote{public instance https://capesandbox.com/}.
+It can analyze various file types (listed below), which can be uploaded using CLI and see results in subdirectory or using a web interface and display results in browser \footnote{public instance https://capesandbox.com/}. List of file types which can be analysed using \emph{CAPEv2} follows:
 \begin{itemize}
   \item PE files
   \item DLL files
   \item PDF documents
   \item Microsoft Office documents
-  \item URLs and HTML files
+  \item URLs and HTML files (even internet explorer context opening some URL)
   \item PHP scripts
   \item CPL files
   \item Visual Basic scripts
   \item ZIP files
-  \item Java JAR
+  \item Java JAR or applets
   \item Python files 
+  \item PowerShell scripts
+  \item Microsoft windows installer
+  \item Generic binary data such as shellcodes
 \end{itemize}
 
 
-\emph{Architecture}
+\subsection{Architecture}
 \emph{CAPE's} architecture is demonstrated in figure \ref{fig:capearchitecture}. It consists of one or more \emph{cape hosts}, more in case of creating cluster of distributed cape. Each \emph{cape host} might have multiple \emph{analysis guests}. \emph{Cape host} is the environment for sandbox management (file upload, analysis retrieval\dots) usally running Linux distribution\footnote{recommended https://releases.ubuntu.com/20.04/}. \emph{Guests} are virtual machines where particular samples run usually under Windows 7 OS. By default guests are in isolated virtual network where they can not access each other.
 
 \begin{figure}[h]
@@ -190,7 +193,8 @@ It can analyze various file types (listed below), which can be uploaded using CL
   \caption{Official image of sandbox architecture (source \cite{CAPESand75:online})}
   \label{fig:capearchitecture}
 \end{figure}
-\todo{if enough time, we should redraw the image and where we may display even result server and agent.py and capemon.dll, this might be additional image, more low level}
+
+% \todo{if enough time, we should redraw the image and where we may display even result server and agent.py and capemon.dll, this might be additional image, more low level}
 
 \subsection{Components}
 \subsubsection*{Scheduler}
@@ -215,7 +219,7 @@ This component communicates with the \emph{cuckoo agent} and upload sample, chec
 Platform-dependent sofware running in \emph{guest} machine which controls the part of flow in the machine. It is started by \emph{agent} and its configuration is provided per analysis. It runs sample using chosen package (specific for each type of uploaded file), if the package is not provided it might be determined automatically. After running target sample it injects it with \emph{cape monitor}.
 
 \subsubsection*{Cape monitor}
-DLL which is injected into running sample. It logs any captured behavior using several techniques like hooking functions or following processes It also sends results to the \emph{result server}.
+DLL which is injected into running sample. It logs any captured behavior using several techniques like hooking functions, following processes, PE dumping It also sends results to the \emph{result server}. \emph{Capemon} is maintained in separate repository\footnote{http://docplayer.net/62887099-Cuckoo-malware-analysis.html}.
 
 \subsubsection*{Result server}
 It collects analysis result data and store them.
@@ -223,9 +227,27 @@ It collects analysis result data and store them.
 \subsubsection*{Processing modules}
 Processing consists of following parts - processing raw data, signature matching and reporting. First part transforms the raw ouput to readable/searchable format, performs static analysis, extracts network streams. There is structured output at the end. Second part is running particular signatures and collect their results. Signatures are stored in special repository\footnote{https://github.com/kevoreilly/community}. Their interface accepts processed structured data and generates result if current signature matches and realted data. Signature results are added to the structured output. Final part of analysis is reporting, in this part all results are stored in \emph{JSON} report and alsoo in the database (other reporting modules might be added).
 
+List of raw data processing modules follows:
+\begin{itemize}
+  \item AnalysisInfo - generates some basic information on the current analysis, such as timestamps, version of CAPE and so on.
+  \item BehaviorAnalysis - parses the raw behavioral logs and perform some initial transformations and interpretations, including the complete processes tracing, a behavioral summary and a process tree.
+  \item Debug - includes errors and the analysis.log generated by the analyzer.
+  \item Dropped - includes information on the files dropped by the malware and dumped by CAPE.
+  \item Memory - executes Volatility on a full memory dump.
+  \item NetworkAnalysis - parses the PCAP file and extracts some network information, such as DNS traffic, domains, IPs, HTTP requests, IRC and SMTP traffic.
+  \item ProcMemory - performs analysis of process memory dump. Note: the module is able to process user defined Yara rules from data/yara/memory/index_memory.yar. Just edit this file to add your Yara rules.
+  \item StaticAnalysis - performs some static analysis of PE32 files.
+  \item Strings - extracts strings from the analyzed binary.
+  \item TargetInfo - includes information on the analyzed file, such as hashes.
+  \item VirusTotal - searches on VirusTotal for antivirus signatures of the analyzed file. Note: the file is not uploaded on VirusTotal.com, if the file was not previously uploaded on the website no results will be retrieved.
+\end{itemize}
+
+\paragraph{Signatures} might isolate some unique behaviour and so identify some malware family or type and spot interesting modification that are performed on the system. Signature does not have only identifier, it also stores description, severity, category, malware family and other related information.
+
 \subsection{Analysis}
-\emph{nice to have, sequence diagram?}
-In case of file upload \emph{Capev2} saves it to the database. There is huge amount of options which could be configured for each analysis - used package (for multiple file types), machine to run on, network setup, timeout, priority and multiple addtional options which are presented in original configuration but could be changed per analysis. We can also run only network analysis or only static analysis. Another sandbox component the \emph{Scheduler} keeps track of pending tasks and when there is some free \emph{guest} and pending task, it is run on free machine. The process of execution is managed by \emph{analysis manager}. In case of running new analysis \emph{analysis manager} informs the \emph{result server} where the results are uploaded to. Once running, the analyzer, monitor, configuration and the sample file are uploaded to the \emph{agent}. \emph{Agent} starts the \emph{analyser}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passed, \emph{analyses manager} stops machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to database. \cite{CuckooSa10:online} The whole flow is also described in \ref{fig:capeflow}.
+An target file upload might be performed using CLI utility of \emph{CAPEv2}, using Web interface, using Python API or using REST API.
+
+In case of a file upload \emph{Capev2} saves it to the database. There is huge amount of options which could be configured for each analysis - used package (for multiple file types), machine to run on, network setup, timeout, priority and multiple addtional options which are presented in original configuration but could be changed per analysis. We can also run only network analysis or only static analysis. Another sandbox component the \emph{Scheduler} keeps track of pending tasks and when there is some free \emph{guest} and pending task, it is run on free machine. The process of execution is managed by \emph{analysis manager}. In case of running new analysis \emph{analysis manager} informs the \emph{result server} where the results are uploaded to. Once running, the analyzer, monitor, configuration and the sample file are uploaded to the \emph{agent}. \emph{Agent} starts the \emph{analyser}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passed, \emph{analyses manager} stops machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to database. \cite{CuckooSa10:online} The whole flow is also described in \ref{fig:capeflow}.
 
 \begin{figure}[h]
   \centering
@@ -234,14 +256,20 @@ In case of file upload \emph{Capev2} saves it to the database. There is huge amo
   \label{fig:capeflow}
 \end{figure}
 
-Processing modules
 
-existing solutions and results...
-find basics in books
+\subsection{Network}
+\emph{CAPEv2} provides multiple possibilities for \emph{guest} network setup which could be configured per analysis. 
 
-api hooking, dumping import reconstruction debugging static parsing - https://www.youtube.com/watch?v=qEwBGGgWgOM
+In case of \emph{None} routing, the machine is absolutely isolated, the only traffic is the one with the resuls server. Additionaly, there is \emph{Drop} routing, when the all the traffic is actively dropped (more agresive option). 
 
-to appendix we can add also web interface of cuckoo
+Other options provides in some sense internet connection. \emph{Internet} routing is full internet access through specified interface. We can also forward the traffic through another gateway - \emph{VPN}, \emph{SOCKS5} proxy\footnote{example tool https://github.com/RicoVZ/socks5man} or \emph{Tor}\footnote{https://www.torproject.org/}. Last option is to use network simulation like \emph{INetSim}\footnote{https://www.inetsim.org/}.
+
+\subsection{Other}
+One of the crucial features of \emph{CAPEv2} is debugger, so we can also perform a non-interactive dynamic code analysis. It allows dynamic anti-evasion bypasses such as \emph{Guloader, Ursnif} or \emph{Zloader} uses.
+
+\emph{CAPE} means \emph{Config And Payload Extraction}. Main motivation behind its creation was malware payload extraction for which it uses techniques like Process injection, Decompression of executable modules in memory or extraction of executable modules. \emph{CAPEv2} automatically creates process dump for each process which is effective to detect basic packers.
+
+\emph{CAPEv2} can detect various malware families such as Emotet, QakBot, Dridex and many others. It also uses Yara rules.
 
 
 \section{Produced data}
@@ -280,6 +308,18 @@ Other related resources might be in \cite{Singh2020, Sethi2019, Abdessadki2019, 
 
 
 %%------------------------------------------
+% Nice to have
+% https://github.com/kevoreilly/CAPEv2/blob/master/changelog.md
+% http://docplayer.net/62887099-Cuckoo-malware-analysis.html
+% https://cuckoo-monitor.readthedocs.io/en/latest/hooks.html, more comprehensive description of cape monitor
+% Processing modules
+
+% existing solutions and results...
+% find basics in books
+
+% api hooking, dumping import reconstruction debugging static parsing - https://www.youtube.com/watch?v=qEwBGGgWgOM
+
+% to appendix we can add also web interface of cuckoo
 % \section{Prior}
 % works about malware analysis
 % works that collected data for machine learning purposes
