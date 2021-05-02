@@ -101,10 +101,36 @@ Previous methods tend to look over the fact that the bag labels might be influen
 \emph{Collective assumption} states that \quote{all instances in a bag contribute equally to the bag’s label} \cite{Xu2003}. Methods usualy use training set of instances which is constructed such that each instance inherits label from bag where it is is presented. This training set might by used to get instance-level classifier. Basic approach is applying SIL algorithm \cite{Bunescu2007}, which simply train mentioned instance-level classifier and bag-level classifier is obtained by $F(b)=\frac{1}{|b|}\sum_{x\in b}f(x)$. Other method is Wrapper MI \cite{Frank2003}.
 
 
-\subsection{Bag-space paradigm}
+\subsection{Bag-Space paradigm}
+In this setup we treat whole bags to learn classifier. The discriminant learning process is performed in \emph{bag space} directly in contrast to previous paradigm where we assumed instance-level classifiers.
 
-\todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite from Amores}
-another examples we can find here - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
+\emph{Bag space} is non-vectorial, we are able to define such distance function $D(b_1,b_2)$, where $b_1$, $b_2$ are bags and the result is representing a measure of their similarity (or distance). This function we can use in standard distance-based classifiers such as SVM or K-NN.
+
+Instances lives in \emph{d-dimensional} spaces, so we can see them as points and then bags are set of points. Example of distance function is minimal Hausdorff distance $D(b_1,b_2)=\min_{x\in b_1, y\in b_2}||x-y||$, which denotes distance between closest points of bags $b_1$ and $b_2$ \cite{Wang2000}. We can also use kernel functions $K(b_1,b_2)$ which provide similarity between bags (set of points). An example of such kernel might be $K(b_1,b_2)=\sum_{x\in b_1, y\in b_2}k(x-y)^{p}$, where $k(x,y)$ denotes instance-level kernel (linear, polynomial\dots) and $p$ is related to size of the largest bag (in practise found by cross validation) \cite{Gartner2002}.
+
+\subsection{Embedded-Space paradigm}
+In Bag-Space paradigm the goal is to extract global information from bags, this is achieved by defining distance function which allow us their implicit comparison. In Embedded-Space paradigm we extract the information by defining explicit mapping $\mathcal{M}:b\mapsto v$ from the bag space to custom feature space which summarizes bag characteristics, we call $\mathcal{M}$ embedding. Based on the choice of $\mathcal{M}$ we distinguish two approaches - \emph{without vocabulary} and \emph{vocabulary-based} methods.
+
+\emph{Without vocabulary} approaches make no differentiation among instances in bag and aggregates overall statistics from each instance of the bag. Example of such algorithm might be \emph{Simple MI} where the feature vector for bag is attained by averaging over all instances in it - $\mathcal{M}(b)=\frac{1}{|b|}\sum_{x\in b}x$ \cite{Dong2006}.
+
+\subsubsection{Vocabulary-based methods}
+These methods are still in embedded-space category and main idea is to find an embedding based on instance-level classfication. However, classes are taken in difference sense than in Instance-Space paradigm, here we often involve an unsupervised way so the semantics of class is missing here. Bag embedding is then determined according to instance classes. These methods are called \emph{vocabulary-based} because we need a vocabulary of all instance-level classes in training set. This vocabulary is used to classify instances.
+
+There are three usual components of \emph{vocalbulary-based method} \cite{Amores2013}. \emph{Vocabulary} $\mathcal{V}$ storing instance level classes (sometimes rather called concepts). Each concepts is defined by identifier and set of parameters. These concepts are most often created from result of K-means algorithm. Second component is \emph{mapping function} $\mathcal{M}(b, \mathcal{V})=v$ (embedding) which is mapping from \emph{bag space} to $k$-dimensional \emph{feature space}, where $k$ denotes number of concepts. Final component of \emph{vocabulary-based method} is standard supervised classifier $\mathcal{G}(v) in \{1,0\}$ which classifies feature vectors in \emph{embedded space}. Final bag-level classifier results in $F(b)=\mathcal{G}(\mathcal{M}(b,\mathcal{V}))$
+
+\subsubsection{Histogram-based methods}
+In this sub-paradigm $\mathcal{V}$ denotes resulting clusters of chosen clustering algorithm which outputs $K$ classes $C_1,\dots C_K$. $\mathcal{M}$ denotes histogram of classes in instances in particular bag - $\mathcal{M}(b,\mathcal{V})=(v_1,v_2\dots,v_K)$, where $v_j=\frac{1}{Z}\sum_{x\in b}f_{j}(x), j=1,\dots,K$, where $f_{j}(x) \in \{1,0\}$ is likelihood that instance $x$ belongs to class $C_j$ and $Z$ is normalization factor. Example of algorithm like this is Bag-of-Words \cite{Nowak2006}.
+
+Remainding methods are \emph{Distance-based} and \emph{Attribute-based} methods, for more info we refer to \cite{Amores2013}.
+
+Finally, we arrived at the crux method we are going to use. Great generalization of all paradigms is provided in \cite{Mandlik2020}. Authors stated that all approaches require three components - function operation at the instance level of instances $f$ (e. g. \ class classifier), a form of aggregation or pooling $g$ and bag-level classifier $F$. As this all together might be seen as function composition, we might involve gradient-based optimization, which is the idea of \cite{Pevny2016a, Edwards2017}. As we stated in previous chapter using gradient-based optimization leads us to the requirement that the functions (in this case $f$,$g$ and $F$) have to be (at least piecewise) differentiable with respect to their parameters. This approach is very flexible because we do not have to solve particular interactions of components like in previous cases where they are designed separatedly and later connected. The overall flexibility and expresivity comes from the fact that all the functions and their parameters are optimized together. For more, no instance labels are required, they are treated in unsupervised manner, the bag labels are the only information which is provided. Example of architecture of such neural network is demonstrated in \ref{fig:hmill}.
+
+\todo{hmill architecture}
+
+
+
+% \todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite from Amores}
+% another examples we can find here - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
 
 \todo{some real world examples (not only pevny and Mandlik).}
 
