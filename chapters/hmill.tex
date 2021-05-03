@@ -123,37 +123,82 @@ In this sub-paradigm $\mathcal{V}$ denotes resulting clusters of chosen clusteri
 
 Remainding methods are \emph{Distance-based} and \emph{Attribute-based} methods, for more info we refer to \cite{Amores2013}.
 
-Finally, we arrived at the crux method we are going to use. Great generalization of all paradigms is provided in \cite{Mandlik2020}. Authors stated that all approaches require three components - function operation at the instance level of instances $f$ (e. g. \ class classifier), a form of aggregation or pooling $g$ and bag-level classifier $F$. As this all together might be seen as function composition, we might involve gradient-based optimization, which is the idea of \cite{Pevny2016a, Edwards2017}. As we stated in previous chapter using gradient-based optimization leads us to the requirement that the functions (in this case $f$,$g$ and $F$) have to be (at least piecewise) differentiable with respect to their parameters. This approach is very flexible because we do not have to solve particular interactions of components like in previous cases where they are designed separatedly and later connected. The overall flexibility and expresivity comes from the fact that all the functions and their parameters are optimized together. For more, no instance labels are required, they are treated in unsupervised manner, the bag labels are the only information which is provided. Example of architecture of such neural network is demonstrated in \ref{fig:hmill}.
+Finally, we arrived at the crux method we are going to use. Great generalization of all paradigms is provided in \cite{Mandlik2020}. Authors stated that all approaches require three components - function operation at the instance level of instances $f$ (e. g. \ class classifier), a form of aggregation or pooling $g$ and bag-level classifier $F$. As this all together might be seen as function composition, we might involve gradient-based optimization, which is the idea of \cite{Pevny2016a, Edwards2017}. As we stated in previous chapter using gradient-based optimization leads us to the requirement that the functions (in this case $f$,$g$ and $F$) have to be (at least piecewise) differentiable with respect to their parameters. This approach is very flexible because we do not have to solve particular interactions of components like in previous cases where they are designed separatedly and later connected. The overall flexibility and expresivity comes from the fact that all the functions and their parameters are optimized together. For more, no instance labels are required, they are treated in unsupervised manner, the bag labels are the only information which is provided. Example of architecture of such neural network is demonstrated in \ref{fig:hmill}. Note that there is one $f$ with shared parameters $\Theta_{f}$ over all instances. The pooling function $g$ might be mean or maximum and final layer $F$ after the pooling uses fixed dimension bag representation.
 
-\todo{hmill architecture}
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (I1) at (-6,2) {$x_1 \in \mathbb{R}^{d}$};
+        \node (I12) at (-4,2) {$f(x_1,\Theta_{f})$};
+        \node (I13) at (-2,2) {$x_1' \in \mathbb{R}^{m}$};
+        \path[->] (I1) edge (I12);
+        \path[->] (I12) edge (I13);
+        
+        \node (I2) at (-6,1.5) {$x_2 \in \mathbb{R}^{d}$};
+        \node (I22) at (-4,1.5) {$f(x_2,\Theta_{f})$};
+        \node (I23) at (-2,1.5) {$x_2' \in \mathbb{R}^{m}$};
+        \path[->] (I2) edge (I22);
+        \path[->] (I22) edge (I23);
+        
+        \node (Ik) at (-6,1) {\vdots};
+        \node (Ik3) at (-2,1) {\vdots};
+        
+        \node (I3) at (-6,0.25) {$x_{|b|} \in \mathbb{R}^{d}$};
+        \node (I32) at (-4,0.25) {$f(x_{|b|},\Theta_{f})$};
+        \node (I33) at (-2,0.25) {$x_{|b|}' \in \mathbb{R}^{m}$};
+        \path[->] (I3) edge (I32);
+        \path[->] (I32) edge (I33);
+        
+        \node (G) at (1.5,1.125) {$g(x_1',x_2',\dots,x_{|b|};\Theta_{g})$};
+        \path[->] (I33) edge (-0.5,1);
+        \path[->] (I23) edge (-0.5,1.125);
+        \path[->] (I13) edge (-0.5,1.25);
+        
+        \node (R) at (4.5,1.125) {$x' \in \mathbb{R}^{n}$};
+        \path[->] (G) edge (R);
+        
+        \node (F) at (6.5,1.125) {$F(x',\Theta_{F})$};
+        \path[->] (R) edge (F);
+        
+        
+        \draw[thick,decorate,decoration={brace, raise=-3pt}] (-1.25, -0.25) -- (-6.75, -0.25) node[midway,below]{One vector for instance $x_i \in b$ };
+
+        \draw[thick,decorate,decoration={brace, raise=-3pt}] (7.5, 0.5) -- (3.5,0.5) node[midway,below]{One vector for bag $b$ };
+        
+    \end{tikzpicture}
+    \caption{Hierarchical mill model by \cite{Pevny2016a} (image inspired by \cite{Mandlik2020})}
+    \label{fig:hmill}
+\end{figure}
+
+Demonstration of this approach and its results can be found in \cite{Pevny2016a,Pevny2017, PevnyDedic2020, Mandlik2020, Janisch2020,PevnyKovarik2019a}. The same idea was published independently as \emph{Deep sets} by \cite{Zaheer2018}.
+
+In \cite{Mandlik2020} we can see application of this approach in created \emph{hmill} framework and its convincing application for \emph{JSON} documents. Our goal is to use this framework for the \emph{JSON} documents collected during dynamic malware analysis. Further we describe this framework.
 
 
 
 % \todo{List paradigm and shortly describe and add some examples (prior) of solutions - cite from Amores}
 % another examples we can find here - https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/mil_marc_2017.pdf
 
-\todo{some real world examples (not only pevny and Mandlik).}
+% \todo{some real world examples (not only pevny and Mandlik).}
 
-\todo{Last solution describe neural net architecture - cite Somol, Pevny, Dedic (3 papers) and even Mandlik with the notation on page 14,15}, \emph{Mandlik2020}  \cite{Pevny2016a} \cite{Pevny2017} \cite{PevnyDedic2020}
-\todo{Mention Zaheer with deep sets} \cite{Zaheer2018}
-\todo{Add own figure of neural net architecture}
 
-- Prior experiments (Some of them mention here, some of them below in hmill section)
-    Look at applications which are in previous papers above (mandlik, pevny..)
-        \cite{Stiborek2018}
-        \cite{Janisch2020}
-        \cite{PevnyDedic2020}
-        \cite{PevnyKovarik2019a}
-        \cite{Zaheer2018}
+% - Prior experiments (Some of them mention here, some of them below in hmill section)
+%     Look at applications which are in previous papers above (mandlik, pevny..)
+%         \cite{Stiborek2018}
 
-\section{HMILL framework}
-The idea of the neural net architecture by \todo{ref names Somol and Pevny} was followed by \todo{ref Mandlik and Pevny}. This led to formulation of \emph{HMill framework} in \cite{Mandlik2020} which refers to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models. Inspite the fact that the hierarchical learning is generalization of standard learning we can cover quite complicated structured data (which is later used by us).
+\section{HMill framework}
+The idea of the neural net architecture defined in \cite{Pevny2016a} was followed by \cite{Mandlik2020} which led to formulation of \emph{HMill framework} reffering to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models introduced above and provides general tools to create models based on examined samples. Both sample and model consist of various type nodes which are structured as rooted directed tree. The crucial publication for \emph{hmill framework} is \cite{Mandlik2020} where authors firstly formulated this framework and demonstrated its use. In this section we summarize the most important facts. Should reader wish to learn more, we recommend original publication \cite{Mandlik2020}.
 
-- Framework definition
-    - go to Mandlik
-- prior will be sufficient
-    - Mandlik's results using the framework
-    - \cite{PevnyDedic2020}
+\subsection{Abstract data nodes}
+AN, BN,PN
+borrow image of specimen
+schema and matching schema, valid sample
+Hmill models - try to describe it more briefly and connect it to the original idea by Pevny - do not use many images from mandlik but the original iris and the last one to demonstrate the relation to Pevny, or my simplified version
+
+Using hmill to model jsons
+
+Finally reffer to Mandlik's results in this field - identification example. (marginally reffer to other examples of using framework)
+
 
 The conclusion of this chapter and maybe the most significant conslusion for our work is that it is possible to use \emph{HMill framework} to classify tree-structured data e.g. \ \emph{JSON} documents. \citeauthor{Mandlik2020} presents convincing results (for example on \emph{device identification} example) and that is why this framework is directly in assignment of this thesis.
 
