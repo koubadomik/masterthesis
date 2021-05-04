@@ -254,16 +254,27 @@ For the gradient computation is used \emph{backpropagation algorithm} \cite{Rume
 
 
 
-\section{Hierarchical structured data}
-Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files. Those files could be formally seen as tree-structured inputs. We are able to perform the feature extraction to gain fixed dimension objects but in the structure itself is a lot information.\cite{PevnyDedic2020}.  The documents are often hierarchical which means that nodes in same subtree are semantically related. 
+\section{Hierarchical structured data classification}
+Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files and modelling of such data is our goal. Those files could be formally seen as tree-structured inputs. In following section we describe two very simple approaches of such data classification (mentioned in \cite{Mandlik2020}) and two more complex. The motivation of more complex techniques is that the data the structure itself keeps also some information and it is worth to try to model it.
 
-There are two main approaches to classify such hierarchical structured data - \emph{Hierarchical Multiple Instance Learning} and \emph{Graph neural networks}. The first one is described in next chapter \ref{chap:hmill} and second is decribed below.
+\subsection{Rules}
+An example of rule might be that if we observe specific value in specific key part in the document, e.g. \ \{"api_calls": "DeleteFileA"\}, we classify this document to specific class, e.g. \ \emph{dropper}. The logic might be more complex, we can count some score aggregating more information about current document and based on its value we might classify. As example of such rule-based approach we can see malware signatures mentioned in previous chapter as their implementation deterministically check some property of original \emph{JSON} report and perform binary classification (\emph{true} - signature is added to the report, \emph{false} - signature is not added to the report).
 
-\todo{define graph}
-Both methods are able to generally operate on node-level, edge-level, and graph-level prediction tasks. We aim at graph-level classification (class is predicted for each graph).
+\subsection{Flattening}
+This approach deals with the data structure itself which have not fixed dimensions. Each document might contain different number of keys in different order and size of arrays may vary. Using flattening we find mapping/procedure which allow vectorization of each document. Target learning algorithm is used on the flattened dataset. This might be the background of various methods.
 
 \emph{Graph neural networks}
-This kind of neural network was introduced in \cite{Scarselli2009}. 
+This kind of neural network was introduced in \cite{Scarselli2009}. \todo{describe or skip}
+
+\subsection{HMill framework}
+Creation of this framework was motivated by \cite{Pevny2016a}. We will describe it in the next chapter and also its usage during \emph{JSON} modelling.
+
+Another example of structured data modelling motivated in reccurent and recursive neural network is in \cite{Woof2020}. More generally, graph structured data modelling is part of \cite{Henaff2015} or \cite{Borgwardt2005}.
+
+% \todo{define graph}
+% Both methods are able to generally operate on node-level, edge-level, and graph-level prediction tasks. We aim at graph-level classification (class is predicted for each graph).
+
+% In this chapter we described general overview and notation on task we are solving - classification in the cybersecurity. We addressed even structured data techniques which are the crux for us, especially \emph{hmill} model. We are going to use this model during data modelling part. In next chapter we describe it comprehensively.
 
 
 % \subsection{Problem}
@@ -321,11 +332,9 @@ This kind of neural network was introduced in \cite{Scarselli2009}.
 
 % % Recurrent networks - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7178304
 
-% Finally - hmill in malware classification tool
-% % HMILL in cyber security - https://arxiv.org/pdf/2002.04059.pdf, mandlik, Pevny
 
 
-% In this chapter we described general overview and notation on task we are solving - classification in the cybersecurity. We addressed even structured data techniques which are the crux for us, especially \emph{hmill} model. We are going to use this model during data modelling part. In next chapter we describe it comprehensively.
+
 
 
 

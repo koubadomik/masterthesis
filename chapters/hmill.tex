@@ -238,18 +238,30 @@ $f$ might be arbitrarily complex HMill model accepting HMill tree, its output ha
 \subsubsection{Product model - $pm(f_1,\dots,f_l,f_p)$}
 Product model consists of $l$ submodels, each processes  one child of a corresponding product data node an one more final mapping $f_p$. Each product data node can follow different schema so each $f_i$ might be different (not like in case of bag model). By applying all $f_i$ to corresponding product nodes we get $l$ vectors which might have different length. Product model concatenate all vector and the result is transformed one or more time by $f_p$.
 
+As all functions in the tree structured model are defined to be at least piecewise differentiable with respect to all parameters the backpropagation algorithm is adopted in the overall model optimization. Its adaptation we can find in \cite{Mandlik2020}.
+
 \todo{maybe add image on page 27 in mandlik...}
 
 % schema and matching schema, valid sample
 % Hmill models - try to describe it more briefly and connect it to the original idea by Pevny - do not use many images from mandlik but the original iris and the last one to demonstrate the relation to Pevny, or my simplified version
 
 \subsection{Modelling JSON documents using HMill framework}
+Following our goal to model the collected data using \emph{HMill} model we would like to focus specific use case which is modelling \emph{JSON} documents. Original publication \cite{Mandlik2020} contains even such approach and even experimental results for \emph{IoT device identification} use case. In previous chapter we described several approaches for such data classification, now we describe how the \emph{HMill} framework might be used.
 
+Assuming that we have a set of \emph{JSON} documents as dataset $\mathcal{T}$ we require one condition to hold. All documents in our dataset have to follow same structure (same schema) which means following:
+\begin{itemize}
+    \item Given a fixed position in the tree, we know which keys can be found in this particular position in all documents $d\in\mathcal{T}$.
+    \item Values of the same key at the same position in all documents $d\in\mathcal{T}$ must follow same structure.
+    \item Arrays at the same position in all documents $d\in\mathcal{T}$ must be empty or contain same structured objects.
+\end{itemize}
 
-Using hmill to model jsons
+Note that the document can follow same schema even if it is missing some keys. The condition of matching schema might seem limiting but it is very common setup that documents used for single use case follow the same schema. This is true especially for machine generated documents.
 
-Finally reffer to Mandlik's results in this field - identification example. (marginally reffer to other examples of using framework)
+\emph{JSON} to \emph{HMill} sample translation is defined on three basic abstract node types. Each leaf of the tree (JSON primitive data types) are transformed into array node $an(h(\dots))$, $h$ denotes mapping to $\mathbb{R}^n$. Mapping $h$ is the same for all leaves at the same position across the dataset and it might be different for different positions. Product data is used to model \emph{JSON} objects. Because product node accepts an ordered set, the keys in the \emph{JSON} object are ordered. Finally, \emph{JSON} arrays are modelled as bag nodes.
 
+\todo{image of json document in our use case, but the idea is the same like in Mandlik fig 5.4}
+
+Authors of framework mentioned that the model is taking into game even the structure which exceeds the \emph{flattening} approach. Compared to the rule-based approaches, the framework is able to learn more complex hypotheses because chosen aggregation can substitute various hand-defined rules. The \emph{HMill} framework was used in an IoT device identification use case \cite{Mandlik2020} which was a dataset of \emph{JSON} documents in multinomial classification modelling. Reported accuracy was $96$~\%. Authors experimented even in different setup for general graph inference to demonstrate the generality of \emph{HMill} framework.
 
 The conclusion of this chapter and maybe the most significant conslusion for our work is that it is possible to use \emph{HMill framework} to classify tree-structured data e.g. \ \emph{JSON} documents. \citeauthor{Mandlik2020} presents convincing results (for example on \emph{device identification} example) and that is why this framework is directly in assignment of this thesis.
 
