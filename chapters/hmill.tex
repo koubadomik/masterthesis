@@ -187,13 +187,64 @@ In \cite{Mandlik2020} we can see application of this approach in created \emph{h
 %         \cite{Stiborek2018}
 
 \section{HMill framework}
-The idea of the neural net architecture defined in \cite{Pevny2016a} was followed by \cite{Mandlik2020} which led to formulation of \emph{HMill framework} reffering to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models introduced above and provides general tools to create models based on examined samples. Both sample and model consist of various type nodes which are structured as rooted directed tree. The crucial publication for \emph{hmill framework} is \cite{Mandlik2020} where authors firstly formulated this framework and demonstrated its use. In this section we summarize the most important facts. Should reader wish to learn more, we recommend original publication \cite{Mandlik2020}.
+The idea of the neural net architecture defined in \cite{Pevny2016a} was followed by \cite{Mandlik2020} which led to formulation of \emph{HMill framework} reffering to \emph{Hierarchical Multiple instance learning framework}. This framework builds on the top of the idea of hierarchically composed models introduced above and provides general tools to create models which structurally follows the data. Both sample and model consist of various type nodes which are structured as rooted directed tree. The crucial publication for \emph{hmill framework} is \cite{Mandlik2020} where authors firstly formulated this framework and demonstrated its use. In this section we summarize the most important facts. Should reader wish to learn more, we recommend original publication \cite{Mandlik2020}.
 
 \subsection{Abstract data nodes}
-AN, BN,PN
-borrow image of specimen
-schema and matching schema, valid sample
-Hmill models - try to describe it more briefly and connect it to the original idea by Pevny - do not use many images from mandlik but the original iris and the last one to demonstrate the relation to Pevny, or my simplified version
+Firstly, let us summarize basic data nodes in \emph{hmill} framework. Demonstration of the types usage can be seen in figure \ref{fig:irismill}.
+\todo{transform figure to pdf}
+\subsubsection{Array node}
+Our data consists of some low level observations like - strings, booleans, vectors, enums\dots Authors call these raw observations - \emph{fragments} and $\mathcal{F}$ denotes the space where they are living. Examples of $\mathcal{F}$ might be Euclidean space $\mathbb{R}^{k}$, linear space $\mathbb{Z}^{2}$ or even all strings over finite alphabet. The only requirement for $\mathcal{F}$ is that there have to exist such mapping $\mathcal{F}\xleftarrow{h}\mathbb{R}^{n}$. The array node is responsible for storing \emph{fragments} $\alpha\in\mathcal{F}$ in following form: $an(\alpha,\mathcal{F},h)$. Sometimes the notation is $an(x)$, where $x=h(\alpha)$ meaning that the trasformation was already made.
+
+\subsubsection{Bag node}
+\emph{Bag node} denotes analogy to \emph{bag} in multipliple instance learning $bn(b)$, where $b=\{a_1,\dots,a_{|b|}\}$. From the structural point of view (tree) bag node can be created if that node has multiple children which are $an$ with matching $\mathcal{F}$ and second case if it has multiple subtrees $bn_i$ with matching (more complex) structure\footnote{follows same schema which is defined later} (nested). As the instances have to be of the same structure they form an unordered set.
+
+\subsubsection{Product node}
+Final node type of \emph{hmill} tree representation of sample is \emph{product node}. That is defined as $pn(a_1,\dots,a_{l}$, where $l\geq1$ and $a_i$ is representation of some \emph{hmill} tree/subtree - \emph{an,bn,ps}. The order of $a_i$ is arbitrary but fixed.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{figures/irismill.png}
+    \caption{Representation of the plant specimen in \emph{Hmill} framwork (source \cite{Mandlik2020})}
+    \label{fig:irismill}
+\end{figure}
+
+\subsection{HMill schema}
+In the \emph{bag node} definition we mentioned that instances in it have to follow same structure. That is why we define \emph{HMill schema}. Schemas are trees which are mirroring sample trees and for each abstract data node there are corresponding information stored in the schema structure. See below.
+\begin{itemize}
+    \item \emph{Array schema node} ($as(\mathcal{F'},h')$ - defines fragments space instance $\mathcal{F'}$ and mapping $h'$
+    \item \emph{Bag schema node} ($bs(s')$) - defines subschema (subtree) of instances $s'$ specifying structure of instance in bag node
+    \item \emph{Product schema node} ($ps(s_1,\dots,s_{l})$) - defines one or more subschemata $s_i$ of subtrees in product node
+\end{itemize}
+
+\paragraph{Definition} (Schema matching according to \cite{Mandlik2020}). We say that a sample tree $t$ follows a schema $s$, or matches a schema $s$, provided following conditions hold:
+\begin{itemize}
+    \item If $t=an(\alpha,\mathcal{F},h)$ for any $\alpha\in\mathcal{F}$, then $t$ is matching $s$ if and only if $s=as(\mathcal{F},h)$
+    \item If $t=bn(\{a_1,\dots,a_k\})$, then $t$ is matching $s$ if and only if $s=bs(s')$ and $\forall i\in\{1,\dots,k\}:t_i$ matches $s'$
+    \item If $t=pn(t_1,\dots,t_l)$, then $t$ is matching $s$ if and only if $s=ps(s_1,\dots,s_k)$,$l=k$ and $\forall i\in\{1,\dots,l\}:t_i$ matches $s_i$
+\end{itemize}
+
+Note that empty bag node match every schema with bag node as root, so if we observe two sample following same structure and one of them has instances in specific bag and second does not, they still might follow the same schema.
+\subsection{HMill model}
+After we defined sample and schema, we are able to treat our dataset and create \emph{hmill} samples $\mathcal{T}$ ready for modelling. Following the idea of the tree structure mirroring in case of schema definition we define \emph{hmill} model in the same manner. The goal here is to create model based on schema extracted from our data, which would accept each sample $s\in\mathcal{T}$ on input. Models are made of model nodes and represent functions. During single sample evaluation using our model, we evaluate subtrees first and lastly their parent. The root provides the model output. The model nodes are hierarchically nested function, each of wich outputs one vector given one sample. All nodes are piecewise differentiable with respect to their input.
+
+\subsubsection{Array model - $am(f)$}
+This model trasforms leaves of sample trees. The input of $f$ is in $\mathbb{R}^{m}$ because we assume mapping $h$ is already applied for original fragment. So $f:\mathbb{R}^m\rightarrow\mathbb{R}^n$. We migh use any piecewise differentiable mapping but authors refer to dense, feedforward neural networks.
+
+\subsubsection{Bag model - $bm(f,g,F)$}
+\emph{Bag model} is motivated by solution of mill problem provided in \cite{Pevny2016a}. Each bag can be seen as mil solver for the problem defined by corresponding bag node and its instances. Three functions are composed - $f$ denotes \emph{instance model}, $g$ denotes \emph{aggregation} and $F$ denotes \emph{bag mapping}. On each instance/subtree $a_i$ in $bn(a_1,\dots,a_k)$ we apply $f$. All results are input for one or more aggregation functions $g$, its output is a single vector. Finally, the \emph{bag mapping} $F$ is applied. The output lives in from $\mathbb{R}^d$, where $d$ is output dimension of particular multiple instance model. If the bag model is in the root of the tree $d$ is overall dimension of the model, we often use $d=|C|$ as number of classes, the output is then interpreted as logits of probabilities of classes.
+
+$f$ might be arbitrarily complex HMill model accepting HMill tree, its output has to be $\mathbb{R^m}$. Note that all nodes in bag node has to follow same schema so the $f$ is the same for all instances (subtrees) and the output space is of fixed dimension for all subtrees. We might use for instance \emph{max} or \emph{mean} as aggregation function $g$. Authors of framework use one or more layer of a feedforward neural network as $F$.
+
+\subsubsection{Product model - $pm(f_1,\dots,f_l,f_p)$}
+Product model consists of $l$ submodels, each processes  one child of a corresponding product data node an one more final mapping $f_p$. Each product data node can follow different schema so each $f_i$ might be different (not like in case of bag model). By applying all $f_i$ to corresponding product nodes we get $l$ vectors which might have different length. Product model concatenate all vector and the result is transformed one or more time by $f_p$.
+
+\todo{maybe add image on page 27 in mandlik...}
+
+% schema and matching schema, valid sample
+% Hmill models - try to describe it more briefly and connect it to the original idea by Pevny - do not use many images from mandlik but the original iris and the last one to demonstrate the relation to Pevny, or my simplified version
+
+\subsection{Modelling JSON documents using HMill framework}
+
 
 Using hmill to model jsons
 
