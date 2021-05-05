@@ -1,41 +1,23 @@
 \chapter{Model explaining} \label{chap:expth}
-In following chapter we describe model explainability in general - definition, motivation, prior arts. Finally, we give details of \emph{hmill} explainer which we use in experiments.
+In following chapter we describe model explainability in general - definition, motivation, prior arts. Finally, we give details of \emph{hmill} explainer which we use in our experiments.
 
-
+\section{Motivation}
 In case of complex model structures like artificial neural nets we often want to explain its predictions. For example in case of malware we may be sure that the information used by the model is quite simple and straight-forward compared to the whole sample or at least that is in our expectation. That is why we often try to explain the models results to see if the explanation (e.g. \ subset of original sample which gives the model majority of information based on which it classifies) is hand in hand with our intuition. It could also be kind of hand brake to see that the model is not generalizing based on something relevant. For example in base prior article for us authors identified that their model is classifying mainly according to timestamp field in original sample, which was different for malware and for cleanware \cite{Pevny2020}. This was obviously mistake because this detail is not the difference between malware and cleanware.
 
-Going from popular quote: \say{All models are wrong but some of them are useful} \todo{add name George E.P. Box} We should ask: \emph{What kind of model is useful?}
-One of the greatest advice in machine learning and statistical data analysis is that less is more. If we are modeling some unknown process based on given data we should start from the simplest model and incrementaly proceed to more complex. This fact is derived from \emph{Bias x Variance tradeoff} \todo{Maybe some citation, https://blog.insightdatascience.com/always-start-with-a-stupid-model-no-exceptions-3a22314b9aaa, describe better} and we can see practical consequences during model extrapolation but we can see even interpretability and explainability. That is why our next question should be: \emph{Why should we trust the model?} \cite{Ribeiro2016}.
+Going from popular quote by George E.P. Box: \say{All models are wrong but some of them are useful} We should ask: \emph{What kind of model is useful?}
+One of the greatest advice in machine learning and statistical data analysis is that less is more. If we are modeling some unknown process based on given data we should start from the simplest model and incrementaly proceed to more complex. 
+This fact is derived from \emph{Bias x Variance tradeoff} \todo{Maybe some citation, https://blog.insightdatascience.com/always-start-with-a-stupid-model-no-exceptions-3a22314b9aaa, describe better} and we can see practical consequences during model extrapolation but we can see even interpretability and explainability. That is why our next question should be: \emph{Why should we trust the model?} \cite{Ribeiro2016}.
 
-
-\todo{another good motivation}
-The European Parliament recently adopted the General Data Protection Regulation (GDPR),
-which has become law in May 2018. An innovative aspect of the GDPR are the clauses on automated decision-making, including profiling, which for the first time introduce, to some extent, a right of explanation for all individuals to obtain “meaningful explanations of the logic involved”
-when automated decision making takes place. Despite divergent opinions among legal scholars
-regarding the real scope of these clauses [36, 74, 126], there is a general agreement on the need for
-the implementation of such a principle is urgent and that it represents today a huge open scientific
-challenge. Without an enabling technology capable of explaining the logic of black boxes, the right
-to an explanation will remain a “dead letter.” \cite{Guidotti2018}
-
-A lot of articles like \cite{Zhang2016} leads us to conclusion that neural net generalization is against our intuition or expectations. Let us introduce basic facts about model 
-explanation and later about \emph{HMill} explaining.
+In May 2018 General Data Protection Regulation (GDPR) became law. It has innovative clauses on automated decision-making and, to some extent, right of explanation. All individuals might enforce to obtain “meaningful explanations of the logic involved” when automated decision making takes place \cite{Guidotti2018}. That is a significant scientific challenge in the field where we face such a great boom regarding the statistical model's performance and disproportionately weak understanding of its behaviour. A lot of articles like \cite{Zhang2016} leads us to conclusion that neural net generalization is against our intuition or expectations.
 
 This field is a little bit like a border between artificial inteligence, philosophy and other branches. We do not aspire to cover everything, the goal is to summarize terminology and basic challenges. This part of the thesis is more experimental, just to see what results we have and how we can interpret them.
 
-\section{General approaches}
 
-Notes:
-Two main phases I think which are model explaing using some method and second is intepretation - human understandable
-post-hoc intepretability X directly model interpretability
-Explaining model X explaining particular predictions
-local X global explanation
-correlation X causality
-definitions - basic terms (like for instance concept, math formalism...)
+Techniques of intepretation and explaining are growing in popularity as a tool for further statistical model analysis. It might lead us to better model understanding or it can shed some more light on examined domain (extract new knowledge) \cite{Montavon2018}.
 
-\cite{Montavon2018}
-Techniques of intepretation and explaining are growing in popularity as a tool for further statistical model analysis. It might lead to better model understanding or it can shed some more light on examined domain (extract new knowledge) \cite{Montavon2018}
+\section{Definition}
 
-Deriving to \cite{Montavon2018} we can define two basic terms.
+Based on \cite{Montavon2018} we can define two basic terms.
 \begin{definition}
 An \emph{iterpretation} is the mapping $$\mathcal{Y}\rightarrow\mathcal{D}$$. $$\mathcal{Y}$$ was defined in \todo{ref chapter Classification}) as \emph{state space}, in general it can be any kind of abstract concept (real-valued vectors, sequences\dots).  $$\mathcal{D}$$ denotes domain which is human-readable and understandable (image, heatmap, sequence of words\dots). Typically $$D$$ is the same as feature space \todo{define feature space} $$\mathcal{X}$$ or its transformation.
 \end{definition}
@@ -48,138 +30,124 @@ This definition is quite vague because human-readability and understadability is
 
 We often express explanations as original feature vector with some kind of relevance score vector e.g. \ real-valued vector of same dimension as input where positive items indicates relevant features and zeros irrelevant \cite{Montavon2018}.
 
-Speaking about human readability and understand ability. Different point of view on 'measuring' it is to look at the available time which the user (human) is available or allowed to spend on understanding the explanation \cite{Guidotti2018}. Then we can check the complexity or quality of the explanation by measuring the time to understand the explanation and if its average is above required treshold. Of course this we can observe under the assumption we know (and can check) level of the background knowledge of person performing the interpretation. And this leads us to next complication \cite{Guidotti2018}.
+Speaking about human readability and understand ability. Different point of view on it quality is to look at the available time which the user (human) is available or allowed to spend on understanding the explanation \cite{Guidotti2018}. Then we can check the complexity or quality of the explanation by measuring the time to understand the explanation and if its average is above required treshold. Of course this we can observe under the assumption we know (and can check) level of the background knowledge of person performing the interpretation. And this leads us to next complication \cite{Guidotti2018}.
 
-Nice-to-have:
-\cite{Mittelstadt2019}
-section about Human explanations are selective - just to philozophy it a little bit
-
-
-
-\cite{Lipton2016}
-These definitions are not so rigorous how we would like them to be. We would rather state that another source of information is more clear but it is not. However, in \cite{Lipton2016} authors present very comprehensive, critical and real insight to desiderata of intepretability reasearch and an interpretable model properties.
-
-
-\citet{Montavon2018} address the main bias in the term \emph{interpretability} and state that one of problems we face is that the majority of the model evaluation metrics works with the model as with blackbox - sufficient information for evaluation is just set of predicted labels (or class probabilities) and ground-truth labels \todo{maybe define those two}. Often, we do not observe model parameters, hyperparameters, model hypthesis space \dots. 
+\citet{Montavon2018} address the main bias in the term \emph{interpretability} and state that one of problems we face is that the majority of the model evaluation metrics works with the model as with blackbox - sufficient information for evaluation is just set of predicted labels (or class probabilities) and ground-truth labels. Often, we do not observe model parameters, hyperparameters, model hypthesis space \dots. 
 
 Another problem is that there are situations which are not easily trasferable to numerical form e.g. \ real-valued vector. Examples we can find in ethics or legality. Interpretability of such concepts is not ambigous even in the world without machine learning.
 
 
-\todo{list Desiderata of Interpretability Research and summarize each and try to connect it to cyber security (examples, especially in case of huge data, huge entrophy and causality X Correlation tradeoff)}
-\todo{make up some images, for example demostration of confounding variable}
+Based on \cite{Guidotti2018} and \cite{Lipton2016}, there are several aspects according to which we can categorize model explaining - knowledge of the model, scope of explanation and technique of explanation.
 
-○ How to detect that we are predictiong based on some confounding variable (reference theory chapter we should have described it there)...
-philozophy - Causality X Correlation - cite some literature
-The book of why, Judea Pearl
+If we know the model we are explaning and we can investigate its functioning, parameters and other details during learning process we speak about white box explaining - often called \emph{transparency}. In this case the goal of explanation might by to answer the question \emph{how does the model work?}. On the other hand if we have only the output of the model without knowing what model is used and how it works we speak about black box explanaining - often called \emph{post-hoc} explanation. In this case the question is \emph{what else can the model tell us?}.
 
-\todo{add section about properties of interpretable model}
+\emph{Global interpretability} means that we are able to intepret all predictions - we know intepretation $$f$$: $$\forall y \in \mathcal{Y}$$, $$\exists i \in \mathcal{D}$$ $$f: y\mapsto i$$. In another words the intepretation is mapping (or relation) and if the model is globaly interpretable this mapping is \emph{serial} (also called \emph{left-total}). On the other hand \emph{local interpretability} means that we are able to intepret only some so mentioned relation is not \emph{serial}.
 
-    We turn now to consider the techniques and model properties that are proposed either to enable or to comprise interpretations. These broadly fall into two categories. The first
-    relates to transparency, i.e., how does the model work? The
-    second consists of post-hoc explanations, i.e., what else
-    can the model tell me? 
-
-    \todo{summarize section properties of interpretable model, our model is post-hoc local I think so we can say something more about that}
-
-    4.4. Post-hoc interpretations can potentially mislead
-    We caution against blindly embracing post-hoc notions of
-    interpretability, especially when optimized to placate subjective demands. In such cases, one might - deliberately or
-    not - optimize an algorithm to present misleading but plausible explanations. As humans, we are known to engage in
-    this behavior, as evidenced in hiring practices and college
-    admissions. Several journalists and social scientists have
-    demonstrated that acceptance decisions attributed to virtues
-    like leadership or originality often disguise racial or gender
-    discrimination (Mounk, 2014). In the rush to gain acceptance for machine learning and to emulate human intelligence, we should be careful not to reproduce pathological
-    behavior at scale.
-
-    we can also reference other authors in this field- \cite{Mittelstadt2019}
-    Much recent work has been dedicated to rendering machine learning models interpretable or explainable. Two broad aims of work on
-    interpretability have been recognised in the literature: transparency
-    and post-hoc interpretation. Transparency addresses how a model
-    functions internally, whereas post-hoc interpretations concern how
-    the model behaves (Lepri et al., 2017; Lipton, 2016; Montavon et al.,
-    2017).
+Another aspect which is often considered is the fact if we explain single examples or set of examples. In case of explaining single example we might observe specific reason of particular prediction. If we explain batch of examples there is a space for generalization across the examples and avoid some noise in particular explanations.
 
 
+\section{Explanability desiderata}
+In \cite{Lipton2016} authors present very comprehensive, critical and real insight to desiderata of intepretability reasearch and an interpretable model properties. We list some of them.
 
-If we know the model we are explaning and we can investigate its functioning, parameters and other details during learning process we speak about \emph{white box explaining}. On the other hand if we have only the output of the model without knowing what model is used and how it works we speak about \emph{black box explanaining}.
+\subsection{Trust}
+This is first term which is very complicated due its own interpretation. We might build the trust on the performance of the model, so the better the model is the more trustworthy and maybe more interpretable it is. But in such case we just need high performance models and we have no questions. The situation is more complex in sense that we need to examine whole context. By context we mean the accuracy on specific examples e.g. \ unseen examples or examples where people are able to classify with high precision. The overall trust might be based on the model flexibility in different situations and what is more important that we should care about the trust evaluation repeatedly.
 
-\cite{Guidotti2018} aims at blackbox models and their intepretability. Authors distinguish two points of view. - \emph{global} and \emph{local} intepretability of the model.
+\subsection{Causality X Correlation}
+Correlation of two random variables $X,Y$ is defined as $\rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand causality is defined as relation between $X$ (a cause) which contributes to the production of $Y$ (an effect), $X,Y$ might be event, process, state, object or generally random variables.
 
-\emph{Global interpretability} means that we are able to intepret all predictions - we know intepretation $$f$$: $$\forall y \in \mathcal{Y}$$, $$\exists i \in \mathcal{D}$$ $$f: y\mapsto i$$. In another words the intepretation is mapping (or relation) and if the model is globaly interpretable this mapping is \emph{serial} (also called \emph{left-total}).
+Every statistician was instructed about situations where the data shown us results we want to see. This is demonstrated on examples which might be so absurd that nobody should take it seriously. For example divorce rate in Maine correlates with per capita consumption of margarine between 2000 and 2009 \footnote{http://www.tylervigen.com/spurious-correlations}.
 
-On the other hand \emph{local interpretability} means that we are able to intepret only some so mentioned relation is not \emph{serial}.
+However, we have to remember that the underlying process generating the data for machine learning algorithms is assumed to be random no matter how complex it might be. We must not forget about the fact that the researcher is making assumptions and choosing what data are modelled. The statistical model itself should not serve as an argument for cause and effect relation between modelled variables. If we want make conclusion about causality we should involve other experiments and research in the particular domain to uncover the generating process itself. Correlation is easily measurable and conclusion about it is based only on its calculation. More on this topic can be found in \cite{Kenny1979}.
 
+Even if we observe correlation and we know that the relation is not random it is difficult to make conclusion about the cause and effect. One of reason might by an confounding variable which is the variable influencing both features and states of our model. If there exist such variable we might falsely make a conclusion about causality although the correlation is caused by the confounder. More on this topic can be found in \cite{Skelly2012}.
 
-\cite{Guidotti2018} \todo{nice-to-have are another desiderata below}
-Desiderata of an Interpretable Model
-An interpretable model is required to provide an explanation. Thus, to realize an interpretable
-model, it is necessary to take into account the following list of desiderata, which are mentioned
-by a set of papers in the state of art [5, 28, 32, 45]:
-• Interpretability: to which extent the model and/or its predictions are human understandable. The most addressed discussion is related to how the interpretability can be measured.
-In Reference [32] a component for measuring the interpretability is the complexity of the
-predictive model in terms of the model size. According to the literature, we refer to interpretability also with the name comprehensibility.
-• Accuracy: to which extent the model accurately predicts unseen instances. The accuracy
-of a model can be measured using evaluation measures like the accuracy score, the F1-
-score [118], and so on. Producing an interpretable model maintaining competitive levels of
-accuracy is the most common target among the papers in the literature.
-• Fidelity: to which extent the model is able to accurately imitate a black-box predictor. The
-fidelity captures how much is good an interpretable model in the mimic of the behavior of
-a black-box. Similarly to the accuracy, the fidelity is measured in terms of accuracy score,
-F1-score, and so on, but with respect to the outcome of the black box.
+\subsection{Transferability}
+This problem addresses the situation that in usual setup we split our data randomly and create training and testing set. Then we observe generalization error estimate as difference between training and testing error. However, regarding the model deployment we should observe its behavior in real world as it might face different situations or even worse its deployment might influence the domain where deployed. The difference of training and deployment setup might be caused by strong assumptions we make but cannot meet because the data we have does not follow them strictly. This trend refers to robust statistic field where we mainly face the problem of the assumption violation \cite{Erceg-Hurn2008}.
 
-\cite{Guidotti2018} \todo{check consistency of my definition and theirs, maybe extend my to match and cite}
-Definition 4.1 (Model Explanation Problem). Given a black box predictor b and a set of instances
-X, the model explanation problem consists in finding an explanation E ∈ E, belonging to a humaninterpretable domain E, through an interpretable global predictor cд = f (b,X) derived from the
-black box b and the instances X using some process f (·, ·). An explanation E ∈ E is obtained
-through cд, if E = εд (cд,X) for some explanation logic εд (·, ·), which reasons over cд and X.
+\subsection{Informativness}
+This point is about the ability of the model to extend human intuition and knowledge by pointing out the most important parts of comprehensive outputs. It casn also provide stronger overview on the space we are examining - provide some similarity measure on our examples. This might be very challenging task in the process of gaining labelled data using unsupervised or semi-supervised learning.
+
+\subsection{Fair and ethical decision making}
+If we want algorithms making autonomous decisions under our control and being of our interest we need to interpret its decisions. This very significant problem because we need to deal with the fact that the artificial inteligence is much more capable to make fast and precise decisions than humam. If we need to interpret it and control it we need to find mapping from this super fast and often unintuitive world to the world of our understanding. It is not clear if we do not degrade the capabilities of AI by trying to understand. However it is necessary because we need to avoid situations like Cambridge analytica affair during presidential ellections \cite{Boldyreva2018}. As we stated by adopting GDPR we face this challenge even for legal reasons. The field of Ethics in AI \cite{Siau2020} is inexhaustible well of challenges beginning by autonomous driving and decision of car and ending with absolute manipulation of a mass of people.
+
+% \todo{list Desiderata of Interpretability Research and summarize each and try to connect it to cyber security (examples, especially in case of huge data, huge entrophy and causality X Correlation tradeoff)}
+% \todo{make up some images, for example demostration of confounding variable}
+
+% ○ How to detect that we are predictiong based on some confounding variable
+% philozophy - Causality X Correlation - cite some literature
+% The book of why, Judea Pearl
 
 
-\citet{Guidotti2018} further categorize explanation techniques into several groups based on the basic princeple:
-\todo{summarize the categories below, and we should also reference it in hmill explaining section also, what we use}
-We further categorize in the subsections the various methods with respect to the type of interpretable explanator:
-• Decision Tree (DT) or Single Tree. It is commonly recognized that decision tree is one of
-the more interpretable and easily understandable models, primarily for global, but also for
-local, explanations. Indeed, a very widespread technique for opening the black box is the
-so-called “single-tree approximation.”
-• Decion Rules (DR) or Rule Based Explanator. Decision rules are among the more human understandable techniques. There exist various types of rules (illustrated in Section 3.3). They
-are used to explain the model, the outcome and also for the transparent design. We remark
-the existence of techniques for transforming a tree into a set of rules.
-• Features Importance (FI). A very simple but effective solution acting as either global or local
-explanation consists in returning as explanation the weight and magnitude of the features
-used by the black box. Generally the feature importance is provided by using the values of
-the coefficients of linear models used as interpretable models.
-• Saliency Mask (SM). An efficient way of pointing out what causes a certain outcome, especially when images or texts are treated, consists in using “masks” visually highlighting the
-determining aspects of the record analyzed. They are generally used to explain deep neural
-networks and can be viewed as a visual representation of FI.
-• Sensitivity Analysis (SA). It consists of evaluating the uncertainty in the outcome of a black
-box with respect to different sources of uncertainty in its inputs. It is generally used to
-develop visual tools for model inspection.
-• Partial Dependence Plot (PDP). These plots help in visualizing and understanding the relationship between the outcome of a black box and the input in a reduced feature space.
-• Prototype Selection (PS). This explanator consists in returning, together with the outcome,
-an example very similar to the classified record, to make clear which criteria the prediction
-was returned. A prototype is an object that is representative of a set of similar instances and
-is part of the observed points, or it is an artifact summarizing a subset of them with similar
-characteristics.
-• Activation Maximization (AM). The inspection of neural networks and deep neural network
-can be carried out also by observing which are the fundamental neurons activated with respect to particular input records, i.e., to look for input patterns that maximize the activation
-of a certain neuron in a certain layer. AM can be viewed also as the generation of an input
-image that maximizes the output activation (also called adversarial generation).
+% \cite{Lipton2016}
+% 4.4. Post-hoc interpretations can potentially mislead
+% We caution against blindly embracing post-hoc notions of
+% interpretability, especially when optimized to placate subjective demands. In such cases, one might - deliberately or
+% not - optimize an algorithm to present misleading but plausible explanations. As humans, we are known to engage in
+% this behavior, as evidenced in hiring practices and college
+% admissions. Several journalists and social scientists have
+% demonstrated that acceptance decisions attributed to virtues
+% like leadership or originality often disguise racial or gender
+% discrimination (Mounk, 2014). In the rush to gain acceptance for machine learning and to emulate human intelligence, we should be careful not to reproduce pathological
+% behavior at scale.
+
+% \cite{Guidotti2018} \todo{nice-to-have are another desiderata below}
+% Desiderata of an Interpretable Model
+% An interpretable model is required to provide an explanation. Thus, to realize an interpretable
+% model, it is necessary to take into account the following list of desiderata, which are mentioned
+% by a set of papers in the state of art [5, 28, 32, 45]:
+% • Interpretability: to which extent the model and/or its predictions are human understandable. The most addressed discussion is related to how the interpretability can be measured.
+% In Reference [32] a component for measuring the interpretability is the complexity of the
+% predictive model in terms of the model size. According to the literature, we refer to interpretability also with the name comprehensibility.
+% • Accuracy: to which extent the model accurately predicts unseen instances. The accuracy
+% of a model can be measured using evaluation measures like the accuracy score, the F1-
+% score [118], and so on. Producing an interpretable model maintaining competitive levels of
+% accuracy is the most common target among the papers in the literature.
+% • Fidelity: to which extent the model is able to accurately imitate a black-box predictor. The
+% fidelity captures how much is good an interpretable model in the mimic of the behavior of
+% a black-box. Similarly to the accuracy, the fidelity is measured in terms of accuracy score,
+% F1-score, and so on, but with respect to the outcome of the black box.
 
 
 
-prior
-- each of papers presents their own approach wich could be mentioned
-NN
-    Motivation example - https://arxiv.org/pdf/1311.2901.pdf (quite often seen results ) \cite{Zeiler2013}
-https://arxiv.org/pdf/1806.07538.pdf - \cite{Alvarez-Melis2018}
-https://link.springer.com/content/pdf/10.1007/s10115-013-0679-x.pdf - \cite{Strumbelj2013}
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4407709 \cite{Robnik-Sikonja2008}
-https://reader.elsevier.com/reader/sd/pii/S1051200417302385?token=E746E7B6AEA70FD3F88C8EDB1CE81407F166E7078D3011812BBC4D2DEB1597D112CCA6A919B515991126E136897B721C&originRegion=eu-west-1&originCreation=20210405200556 \cite{Lipton2016}
+% Nice-to-have:
+% \cite{Mittelstadt2019}
+% section about Human explanations are selective - just to philozophy it a little bit
+
+\section{Interpretable model}
+As we mentioned we can distinguish two basic types of explanation according to our goal - \emph{transparency} and \emph{post-hoc}.
+
+\subsection{Transparency}
+Authors in \cite{Lipton2016} reffer to several attributes which can by treated during a particular model's \emph{transparency} research - \emph{simulatability, decomposability} and \emph{algorithmic transparency}.
+
+By \emph{simulatability} is meant that the model prediction can be simulated by a human in reasonable amount of time given the model parameters and input example. Obviously this capability is closely connected with the model complexity. This might seem like it is about the type of the model such that we can say that decision trees are more interpretable than neural nets. The truth is that simpler models like linear regression or decision trees tends to be more interpretable but it is because they are usually involved in straightforward use cases. On the other hand the simulatability is strictly determined by limited amount of human conginition which leads us to the conclusion that very complex decision tree is not more interpretable than a lightweight neural net.
+
+\emph{Decomposability} stands for the the ability that each input, parameter and calculation admits an intuitive explanation. The input interpretability throw out of the game majority of models where dimensionality reduction and other feature engineering which inlude complex mapping is involved. The intepretation of parameters and calculation is for example that parameters of linear model are representing strenghts of association of variables or an human-readable description of decision tree nodes. An oposite might be a huge amount of weight and biases in neural net.
+
+Last notion of \emph{algorithmic transparency} is about observing the learning algorithm and its mathematical background. The algorithm have to be fully explorable using mathematical tools for example in case of linear model the shape of error surface can be understood and we can prove that training will converge to unique solution. On the other hand heuristic algorithms used in deep models like \emph{stochastic gradient descent} can not be fully observed and we are cannot be sure about its adaptation in new situation.
+
+Examples of model with significant level of transparency are Linear/Logistic reggression, decision trees, KNN, Rule based learners, generative additive models and bayesian models. More on this topic can be found in \cite{Arrieta2019}.
+
+
+\subsection{Post-hoc}
+Post-hoc interpretability has different goal than the previous category. It can extract more information from the model which might help to gain new overall knowledge or just understand why it predicts such a class for particular examples. This technique can be used to intepret opaque (not trasparent) models without examining their complex logic.
+
+There are several techniques for post-hoc interpretation, their list follows.
+
+\begin{itemize}
+    \item \emph{Text explanation} - We still assume that we are not able to assign textual interpretation by hand because that might mean that our model is transparent. However, we might automate the inference of a textual form. We can train another model which maps the prediction of original model to its textual explanation. Example of such approach is in \cite{Krening2017}, where authors trained a reiforcement model to perform particular task and second model to explain decisions.
+    \item \emph{Visualization} - Images and other visual outputs are considered to be very straightforward for human understanding. We often involve dimensionality reduction and other techniques to be able to display the situation in two or three dimensions such as \cite{Pearson1901}. Example of visualization of neural net explanation using heatmap can be found in \cite{Zeiler2013}.
+    \item \emph{Local explanations} - This approach is about explaining specific parts (e.g. \ specific samples). It might find parts of sample which contribute to the predicition the most. An example might be saliency map usage for neural nets \cite{Simonyan2014}. It is important to emphasize that the explanation have to be treated in specific context e.g. \ saliency map might change drastically even if the example was changed only a little bit.
+    \item \emph{Explanations by example} - Usually, if the teacher explain the theory on running example, especially in mathematics, there exists much greater chance that a lot of student would understand. The principle is the same in model explanation by example. The model can provide such explanation along with prediction i.e. \ prediction and set of examples which are in the same class  \cite{Caruana1999}. We might reveal something about the space in which examples are treated by the model - clusters based on predicted classes.
+    \item \emph{Explanations by simplification} - As simpler models are usually easily interpretable this approach is aiming at model simplification while maintaining its performance.
+    \item \emph{Feature relevance explanation} - We aim at scoring the input variables. Variables are later compared based on the their score and we can make conclusion which variables are the most important for particular prediction.
+\end{itemize}
+
+This kind of explaining is used with SVM, where we can see model simplification or local explanations. Another significant modelsa re neural nets and their variations where we see feature relevance and vizualization techniques. Examples can be found in \cite{Arrieta2019}.
+
+Another example of model explaining is in \cite{Alvarez-Melis2018}, where authors focus self-explaining models. Other sources might be \cite{Strumbelj2013,Robnik-Sikonja2008,Montavon2018}.
 
 
 \section{Explaining HMill models}
-
 address somehow the significance of confidence of neural net and what does it mean
 
 \todo{could be good to formulate pseudocode of the explainer also}
@@ -209,7 +177,55 @@ The first part of thesis addressed the most important theoretical background of 
 
 
 %%------------------------------------------------------------------------------------
+% If we need inspiration for this chapter - here https://arxiv.org/pdf/1910.10045v1.pdf
 
+% \section{Explanation techniques}
+% \citet{Guidotti2018} further categorize explanation techniques into several groups based on the basic princeple:
+% \todo{summarize the categories below, and we should also reference it in hmill explaining section also, what we use}
+% We further categorize in the subsections the various methods with respect to the type of interpretable explanator:
+% • Decision Tree (DT) or Single Tree. It is commonly recognized that decision tree is one of
+% the more interpretable and easily understandable models, primarily for global, but also for
+% local, explanations. Indeed, a very widespread technique for opening the black box is the
+% so-called “single-tree approximation.”
+% • Decion Rules (DR) or Rule Based Explanator. Decision rules are among the more human understandable techniques. There exist various types of rules (illustrated in Section 3.3). They
+% are used to explain the model, the outcome and also for the transparent design. We remark
+% the existence of techniques for transforming a tree into a set of rules.
+% • Features Importance (FI). A very simple but effective solution acting as either global or local
+% explanation consists in returning as explanation the weight and magnitude of the features
+% used by the black box. Generally the feature importance is provided by using the values of
+% the coefficients of linear models used as interpretable models.
+% • Saliency Mask (SM). An efficient way of pointing out what causes a certain outcome, especially when images or texts are treated, consists in using “masks” visually highlighting the
+% determining aspects of the record analyzed. They are generally used to explain deep neural
+% networks and can be viewed as a visual representation of FI.
+% • Sensitivity Analysis (SA). It consists of evaluating the uncertainty in the outcome of a black
+% box with respect to different sources of uncertainty in its inputs. It is generally used to
+% develop visual tools for model inspection.
+% • Partial Dependence Plot (PDP). These plots help in visualizing and understanding the relationship between the outcome of a black box and the input in a reduced feature space.
+% • Prototype Selection (PS). This explanator consists in returning, together with the outcome,
+% an example very similar to the classified record, to make clear which criteria the prediction
+% was returned. A prototype is an object that is representative of a set of similar instances and
+% is part of the observed points, or it is an artifact summarizing a subset of them with similar
+% characteristics.
+% • Activation Maximization (AM). The inspection of neural networks and deep neural network
+% can be carried out also by observing which are the fundamental neurons activated with respect to particular input records, i.e., to look for input patterns that maximize the activation
+% of a certain neuron in a certain layer. AM can be viewed also as the generation of an input
+% image that maximizes the output activation (also called adversarial generation).
+
+
+
+% \cite{Guidotti2018} \todo{check consistency of my definition and theirs, maybe extend my to match and cite}
+% Definition 4.1 (Model Explanation Problem). Given a black box predictor b and a set of instances
+% X, the model explanation problem consists in finding an explanation E ∈ E, belonging to a humaninterpretable domain E, through an interpretable global predictor cд = f (b,X) derived from the
+% black box b and the instances X using some process f (·, ·). An explanation E ∈ E is obtained
+% through cд, if E = εд (cд,X) for some explanation logic εд (·, ·), which reasons over cд and X.
+
+% Notes:
+% Two main phases I think which are model explaing using some method and second is intepretation - human understandable
+% post-hoc intepretability X directly model interpretability
+% Explaining model X explaining particular predictions
+% local X global explanation
+% correlation X causality
+% definitions - basic terms (like for instance concept, math formalism...)
 
 % Previous connection
 % - Hmill models and their explanation
