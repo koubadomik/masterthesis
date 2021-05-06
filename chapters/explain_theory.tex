@@ -150,11 +150,25 @@ Another example of model explaining is in \cite{Alvarez-Melis2018}, where author
 \section{Explaining HMill models}
 Our model is capable of modelling trees structured data - \emph{JSON} documents as stated in previous chapter. In this section we describe explanation method for \emph{HMill} models proposed and demonstrated in \cite{Pevny2020}. Introduced explainer attempts to explain complex structured \emph{HMill} model of from neural nets. It uses post-hoc explanation approach with \emph{feature relevance explanation}. So fat it is the only known approach of \emph{HMill} model explanation and as we do not aspire to find new solutions in this part we will follow author's results and choose method with the best results.
 
-The goal of \emph{HMill} explainer is to find minimal subset of input sample (\emph{JSON} subtree) that is still classified to the same class as the original sample. Doing so we can identify possible bias e.g. \ in \cite{Mandlik2020} authors concluded that their classifier is timestamp field in \emph{JSON} sample the most, even if it was irrelevant information. It might also improve our understanding of domain specific knowledge as authors state.
+The goal of \emph{HMill} explainer is to find minimal subset of input sample (\emph{JSON} subtree) that is still classified to the same class as the original sample. Doing so we can identify possible bias e.g. \ in \cite{Pevny2020} authors concluded that their classifier is using timestamp field in \emph{JSON} sample the most, even if it was irrelevant information. It might also improve our understanding of domain specific knowledge as authors state.
 
-Finding an explanation of \emph{HMill} model has two phases - subtree ranking and subtree selection. In the first phase all subtrees are heuristically ranked to reflect their importance for the final classification. Secondly, subtrees of a sample are searched through and evaluated by the model to find minimal explanation. There are multiple approaches adopted by authors for both phases. 
+In following text we assume \emph{HMill} binary classification model as blackbox decomposed only to two function $h$ and $f$. The first function is $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and the output $v\in\mathbb{R}^{m}$ represents the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is than classified by $f(h(d))=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to positive class.
 
-In following text we assume \emph{HMill} binary classification model as blackbox decomposed to $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and $v\in\mathbb{R}^{m}$ representing the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is than classified by $f(v)=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to positive class.
+\subsection{Explainer steps}
+The basic idea builds on top of sub-tree selection problem solution. Our problem is a specific case of subtree selection. It can be formulated such that for given tree $T$, expensive evaluation function $r(t)=q$ ($q\in\mathbb{R}$) and treshold $\tau\in\mathbb{R}$ we want to find subtree $t$ with minimal number of nodes such that $r(t)\grq\tau$. 
+
+In case of \emph{HMill} explainer the input tree is \emph{JSON} document and evaluation function is $f$ which outputs the confidence that document belongs to positive class. Authors introduced several sub-set selection methods which is less general case of subtree problem. It is not possible to adopt subset selection methods in subtree problems directly. Firtly, we have to decide if we need to maintain the tree structure of result or not. Authors mention two solutions to deal with this problem - one ignoring the structure and second exploiting it.
+
+\subsection{Subset selection}
+\paragraph{Greedy addition} starts with empty subset and in each steps adds new item until the treshold is achieved. Each new item is chosed such that the gain in the evaluation function is maximal across all elements which are not in the subset.
+\paragraph{Heuristic addition} sorts the elements in the set by heuristic ranking (see below) and adds to the subset starting from the items with largest ranking until the treshold is achieved.
+\paragraph{Random removal} might follow any of previous methods. It starts with initial subset which already achieved the treshold. It permutes all items in subset and removes items from the beggining until the evaluation drops below the treshold. If it drops lastly removed item is added back and algorithm continue with new permutation.
+% \paragraph{Fine tuning}
+\subsection{Subtree adoptation}
+\paragraph{Flat search} performs subset selection on isolated nodes of the tree with only assumption that root is defaultly added to explanation. After subset selection is done all nodes which are not reachable from the root (there is no path from root to that particular node) it is removed from explanation. This can be done because they do not have any impact on classification based on the definition of \emph{HMill} model tree structure.
+\paragraph{Level-by-leve search} performs subset selection on each level of the tree. On each level it is taking into account only nodes whose parents are in the explanation so far.
+
+% Finding an explanation of \emph{HMill} model has two phases - subtree ranking and subtree selection. In the first phase all subtrees are heuristically ranked to reflect their importance for the final classification. Secondly, subtrees of a sample are searched through and evaluated by the model to find minimal explanation. There are multiple approaches adopted by authors for both phases. 
 
 \subsection{Subtree ranking}
 \subsubsection{Model gradient ranking}
@@ -167,37 +181,40 @@ Game theoretical approaches in feature extraction which uses \emph{Shapley value
 
 A sampling algorithm is used to approximate the banzaf values \cite{Bachrach2010}. There are two values stored for each subtree in \emph{JSON} document- average confidence of the classifier in coalitions that include the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running a larger number of iterations, the approximation of Banzhaf values for each subtree is difference the two values stored in it. Banzof values approximation is used as subtree ranking. If we do not fix the seed the explanation is stochastic and might be instable regarding the number of iterations and the output.
 
-\subsection{Subtree selection}
+% Clustering and explanation of sample and batch - nice-to-have
 
-Clustering and explanation of sample and batch
+\subsection{Prior}
+Authors in \cite{Pevny2020} present qualitative and quantitative analysis for differen \emph{HMill} explainer setup. The best result regarding the computational time and size of explanation were reported for Banzhaf values based heuristic addition approach in combination with Level-by-level search.
 
-Experiment results
 
-\todo{Summarize MillExplainer - \cite{Pevny2020}}
-Two main steps
-    sub-trees in a sample are heuristically ranked to reflect their importance for the final classification
-    subtrees of a sample are searched throughand evaluated by the model in order to find the minimalexplanation
-Summarize mentioned ways
-Summarize conclusions and results
-    Conclusion The best way are Banzhaf values
-
-address somehow the significance of confidence of neural net and what does it mean
-
-\todo{could be good to formulate pseudocode of the explainer also}
-
-Our target is explanation of \emph{HMill} model because it is also model we are about to use. In this section we will introduce solution proposed in \cite{Pevny2020} and we will reference other solutions which were presented on models capable consuming \emph{JSON} documents.
-
-If we do not specify we assume binary classification setup.
-
-As mentioned earlier we assume two main models capable processing tree-structured data. Those are \emph{Graph Neural Nets} and \emph{HMill}. Both methods described below are based on indentifying subset of original feature vector set (graph, tree-structured document) which has crucial role during prediction itself (in our case classification). \todo{connect to the theory above}
-
-\subsection{Other methods for structured data}
+\section{Other methods for structured data}
 We mentioned three alternative techniques for \emph{JSON} modelling in previous chapters - rules, flattening, graph neural nets. Flattening is technique of feature engineering more than modelling but rules might be considered modelling tool. Rules are usually transparent so their intepretability is straightforward. Examples of graph neural nets explaining can be found in \cite{Ying2019, Huang2020} 
 
 The first part of thesis addressed the most important theoretical background of our method. It covers basics of malware analysis, machine learning (especially \emph{hmill} framework) and model explaining with \emph{hmill} Explainer. In following part we will discuss our setup, results and discussion.
 
 
 % %%------------------------------------------------------------------------------------
+
+% \todo{Summarize MillExplainer - \cite{Pevny2020}}
+% Two main steps
+%     sub-trees in a sample are heuristically ranked to reflect their importance for the final classification
+%     subtrees of a sample are searched throughand evaluated by the model in order to find the minimalexplanation
+% Summarize mentioned ways
+% Summarize conclusions and results
+%     Conclusion The best way are Banzhaf values
+
+% address somehow the significance of confidence of neural net and what does it mean
+
+% \todo{could be good to formulate pseudocode of the explainer also}
+
+% Our target is explanation of \emph{HMill} model because it is also model we are about to use. In this section we will introduce solution proposed in \cite{Pevny2020} and we will reference other solutions which were presented on models capable consuming \emph{JSON} documents.
+
+% If we do not specify we assume binary classification setup.
+
+% As mentioned earlier we assume two main models capable processing tree-structured data. Those are \emph{Graph Neural Nets} and \emph{HMill}. Both methods described below are based on indentifying subset of original feature vector set (graph, tree-structured document) which has crucial role during prediction itself (in our case classification). \todo{connect to the theory above}
+
+
+
 % Alternative model for structured data if 
 % \todo{First shortly about gnn explainer and their results - https://cs.stanford.edu/people/jure/pubs/gnnexplainer-neurips19.pdf - \cite{Ying2019}, https://arxiv.org/pdf/2001.06216.pdf \cite{Huang2020}- adaptation of LIME in graph neural networks (which also can solve our problem theoretically)}
 
