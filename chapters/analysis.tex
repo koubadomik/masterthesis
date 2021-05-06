@@ -275,7 +275,143 @@ One of the crucial features of \emph{CAPEv2} is debugger, so we can also perform
 \section{Produced data}
 As we stated in the thesis introduction, our goal is to use \emph{behavioural} features from \emph{JSON} reports and \emph{signatures}. In this section we want to demonstrate what we can retrieve from malware analysis tools and refer to some prior art.
 
-absorb chapter data and start of model chapter beginning
+
+
+
+
+
+\begin{table}[h]
+  \centering
+  \caption{CAPEv2 Sandbox output (all possibilities)}
+  \begin{tabular}{p{2cm}p{6cm}p{6cm}} 
+      \toprule
+      \textbf{Output} &
+      \textbf{Meaning} &
+      \textbf{In our output} \\
+      \midrule
+      pcap report & network traffic record (packet sequences) & Presented in output but not significant regarding the fact that during run was not internet access \\
+      \midrule
+      memory dump & dump of RAM (its analysis results could be also presented)& our version of sandbox do not support it \\
+      \midrule
+      bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}& presented\\
+      \midrule
+      behavioral log & raw logs of api calls and other (usually in bson) & presented \\
+      \midrule
+      dropped files & all dropped files are unchanged in separate directory & presented \\
+      \midrule
+      CAPE, procdump & other extracted payload in separate directory, extracted by various techniques \cite{Cape} & presented \\
+      \midrule
+      reports & sandbox allows us using several reporting and processing modules, their results are in separate directory  & several of them presented but the most comprehensive and important is \emph{report.json} \\
+      \midrule
+      screenshots & taken during analysis  & presented \\
+      \bottomrule
+  \end{tabular}
+  \label{tab:sandbox-out}
+\end{table}
+
+
+There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
+
+% \todo{Summarise what we know from previous sections \todo{especially from analysis part, where we should summarise what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
+
+\section{Report}
+\emph{JSON} notation is described in \ref{sec:json_notation}. The report usually has tens of megabytes but sometimes even gigabytes. It is quite easy to compress. We can have even ten times less storage because it contains many redundancies (sequences of API calls\dots). 
+
+
+The output documentation is quite weak, but there is some (\url{https://cuckoo.readthedocs.io/en/latest/usage/results/}), and we also investigated outputs themselves. The output of general \emph{CAPEv2} sandbox analysis is described in table \ref{tab:sandbox-out}.
+
+The documentation of each part of the report is quite poor, but many attributes are self-descriptive. Complete schema is in \ref{tab:report}. In attachments we can see example of real log (\ref{app:attach})
+
+\begin{table}[h]
+  \centering
+  \caption{Parts of \emph{report.json}}
+  \begin{tabular}{p{4cm}p{10cm}} 
+      \toprule
+      \textbf{Entry} &
+      \textbf{Note} \\
+      \midrule
+      statistics & time statistics for particular part of malware analysis \\
+      \midrule
+      info & sandbox details (machine, category, used module, timeout\dots) \\
+      \midrule
+      debug & sandbox debug log \\
+      \midrule
+      target &  info about examined sample\\
+      \midrule
+      CAPE & extracted payload info \\
+      \midrule
+      behavior & processes, mutexes, commands and other attributes as enhanced log but even summary view \\
+      \midrule
+      deduplicated shots & screenshot summary \\
+      \midrule
+      network & network traffic report (domains, tcp, udp\dots) \\
+      \midrule
+      static analysis & results per file \\
+      \midrule
+      strings & extracted strings \\
+      \midrule
+      suricata &  output of suricata network detection tool (\url{https://suricata.readthedocs.io/en/latest/quickstart.html})\\
+      \midrule
+      malfamily tag &  malware family detection result\\
+      \midrule
+      malscore &  malware sample metric\\
+      \midrule
+      signatures &  list of signatures which were detected by sandbox \\
+      \bottomrule
+  \end{tabular}
+  \label{tab:report}
+\end{table}
+
+
+\section{Features and states for classification}
+%this has to be put differently or part of it should be moved to classification chapter - at least the modelling reasoning, detail of output should stay here (the table)
+Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
+
+\subsection{States}
+We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
+
+From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
+
+Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
+
+\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
+
+\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
+
+\subsection{Features}
+Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
+
+\begin{table}[h]
+    \centering
+    \caption{Parts of \emph{report.json} behavior}
+    \begin{tabular}{p{2cm}p{12cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Meaning} \\
+        \midrule
+        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
+        \midrule
+        process tree & structure of process execution\\
+        \midrule
+        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
+        \midrule
+        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:behavioral}
+\end{table}
+
+We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
+
+Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
+
+The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
+
+
+
+
+
+
 
 \subsubsection{JSON notation} \label{sec:json_notation}
 The most comprehensive report which is produced by \emph{CAPEv2} is in \emph{JSON} format. We will use this format as direct input for our model, let us define it here \footnote{documentation https://www.json.org/json-en.html}.
