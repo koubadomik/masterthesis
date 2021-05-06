@@ -152,17 +152,26 @@ Our model is capable of modelling trees structured data - \emph{JSON} documents 
 
 The goal of \emph{HMill} explainer is to find minimal subset of input sample (\emph{JSON} subtree) that is still classified to the same class as the original sample. Doing so we can identify possible bias e.g. \ in \cite{Mandlik2020} authors concluded that their classifier is timestamp field in \emph{JSON} sample the most, even if it was irrelevant information. It might also improve our understanding of domain specific knowledge as authors state.
 
-Finding an explanation of \emph{HMill} model has two phases - subtree ranking and subtree selection. There are multiple approaches adopted by authors for both phases. In following text we assume \emph{HMill} classification model as blackbox decomposed to $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and $v\in\mathbb{R}^{m}$ representing the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is than classified by $f(v)=c$, where $f$ denotes final abstract model node evaluation function and $c$ predicted class.
+Finding an explanation of \emph{HMill} model has two phases - subtree ranking and subtree selection. In the first phase all subtrees are heuristically ranked to reflect their importance for the final classification. Secondly, subtrees of a sample are searched through and evaluated by the model to find minimal explanation. There are multiple approaches adopted by authors for both phases. 
+
+In following text we assume \emph{HMill} binary classification model as blackbox decomposed to $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and $v\in\mathbb{R}^{m}$ representing the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is than classified by $f(v)=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to positive class.
 
 \subsection{Subtree ranking}
 \subsubsection{Model gradient ranking}
 This approach is based on high absolute value of gradients for most significant parts of input. That is adopted even in case of saliency map of image processing neural net. The crucial idea is to compute the gradient $gr=\frac{\partial f(h(d))}{\partial h(c)} \in \mathbb{R}^m$ of the model with respect to the embedding of particular subtree $c$ of particular sample $d$. Alternatively formulated, we want to examine how much a small change of embedding of a specific subtree influence model's prediction. Calculation of gradient ranking $r$ of a particular subtree follows: $r(c)=|\sum_{i=1}^{m}gr_i|$.
+
 \subsubsection{GNN explainer mask ranking}
-
+This method is originally designed to explain \emph{GNN} models by \cite{Ying2019}. The main idea is to use this explainer for the graph which is created by \emph{JSON} subtrees and edges between them. Explainer uses a mask $m=\mathbb{R}^{|\mathcal{E}|}$, where $|\mathcal{E}|$ denotes all edges between the subtrees and predecessors in \emph{JSON} document and $m_i\in\[0,1\]$. This mask represent how much information is passed along each edge (during update step of GNNs). If explainer is asked to provide an explanation of a classification decision on a particular subtree the mask is optimized using stochastic gradient descent to maximize the probability of correct classification on that subtree \cite{Pevny2020}. After the optimization is performed explainer suggests $k$ edges with largest values as explanation. The value of $k$ should be properly tuned because the explanation does not have to be classified to the same class as original sample for in advanced fixed $k$. The values of mask might be used as ranking in \emph{HMill} explainer.
 \subsubsection{Banzhaf values}
+Game theoretical approaches in feature extraction which uses \emph{Shapley values} and \emph{Banhaf values} can be found in \cite{Afghah2018}. Both comes form cooperative game theory. They originally express how much a certain player contributes to various coalitions on average. We can use them for various decisions like if the player should cooperate or not. In feature extraction Banzaf value might be used to describe interdependency among the extracted features and their relevancy to the target class. On the other hand \emph{shapley value} might be used to show the contribution of a particular feature in impoving accuracy of classification when all possible coalitions of features are considered. In case of \emph{HMill} explainer authors used both variants and they did not show significantly different results. 
 
+A sampling algorithm is used to approximate the banzaf values \cite{Bachrach2010}. There are two values stored for each subtree in \emph{JSON} document- average confidence of the classifier in coalitions that include the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running a larger number of iterations, the approximation of Banzhaf values for each subtree is difference the two values stored in it. Banzof values approximation is used as subtree ranking. If we do not fix the seed the explanation is stochastic and might be instable regarding the number of iterations and the output.
 
 \subsection{Subtree selection}
+
+Clustering and explanation of sample and batch
+
+Experiment results
 
 \todo{Summarize MillExplainer - \cite{Pevny2020}}
 Two main steps

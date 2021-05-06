@@ -233,7 +233,7 @@ The overall goal is to optimize $\ell$ with respect to the parameters of the net
 
 Usage of the \emph{gradient descent} puts minimal demands on the data we are using which makes this model so popular. We also do not insist on strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions we are using is that they have to be differentiable. The price we are paying is that the optimization guarantees only stationary point ending which could be a \emph{local minimum} or worse a \emph{saddle point}. But applications lead us to the conclusion that in right hands this model may perform really well.
 
-For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm builds on computing derivatives of every function's outputs with respect to its outputs (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
+For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm builds on computing derivatives of every function's outputs with respect to its input (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
 
 % Main advantage of this kind of model is that we do not have assume much about our data. This is main reason why neural nets are used very often nowadays.
 
@@ -255,16 +255,29 @@ For the gradient computation is used \emph{backpropagation algorithm} \cite{Rume
 
 
 \section{Hierarchical structured data classification}
-Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files and modelling of such data is our goal. Those files could be formally seen as tree-structured inputs. In following section we describe two very simple approaches of such data classification (mentioned in \cite{Mandlik2020}) and two more complex. The motivation of more complex techniques is that the data the structure itself keeps also some information and it is worth to try to model it.
+Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files and modelling of such data is our goal. Those files could be formally seen as tree-structured inputs (more generally graphs). In following section we describe two very simple approaches of such data classification and two more complex.
 
 \subsection{Rules}
-An example of rule might be that if we observe specific value in specific key part in the document, e.g. \ \{"api_calls": "DeleteFileA"\}, we classify this document to specific class, e.g. \ \emph{dropper}. The logic might be more complex, we can count some score aggregating more information about current document and based on its value we might classify. As example of such rule-based approach we can see malware signatures mentioned in previous chapter as their implementation deterministically check some property of original \emph{JSON} report and perform binary classification (\emph{true} - signature is added to the report, \emph{false} - signature is not added to the report).
+An example of rule might be that if we observe specific value in specific key part in the document, e.g. \ \{"api_calls": "DeleteFileA"\}, we classify current document to specific class, e.g. \ \emph{dropper}. The logic might be more complex, we can count some score aggregating more information about current document and based on its value we might classify. As example of such rule-based approach we can see malware signatures mentioned in previous chapter as their implementation deterministically check some property of original \emph{JSON} report and perform binary classification (\emph{true} - signature is added to the report, \emph{false} - signature is not added to the report).
 
 \subsection{Flattening}
-This approach deals with the data structure itself which have not fixed dimensions. Each document might contain different number of keys in different order and size of arrays may vary. Using flattening we find mapping/procedure which allow vectorization of each document. Target learning algorithm is used on the flattened dataset. This might be the background of various methods.
+This approach deals with the data structure itself which have not fixed dimensions. It is more feature engineering technique. Each document might contain different number of keys in different order and size of arrays may vary. Using flattening we find mapping/procedure which allow vectorization of each document. Target learning algorithm is used on the flattened dataset. This might be the background of various methods.
+
+The motivation of more complex techniques is that the data structure itself keeps also some information and it is worth to try to model even the structure not only the data.
 
 \emph{Graph neural networks}
-This kind of neural network was introduced in \cite{Scarselli2009}. \todo{describe or skip}
+Let us firstly define graph $\mathcal{G}=(\mathcal{V},\mathcal{E})$, where $\mathcal{V}$ denotes a finite set of vertices and $\mathcal{E}\subseteq\binom{\mathcal{V}}{2}$ for indirected graphs or $\mathcal{E}\subseteq\mathcal{V}\times\mathcal{V}$ for directed graph denotes a finite set of edges. 
+
+Graph neural network was introduced in \cite{Scarselli2009} and it is suitable model for problems represented by graph (directed or indirected). Initial setup is that the problem representation is $G(\mathcal{V},\mathcal{E})$ where each vertex is associated with its embedded value $v_i$, where $i\in\{1,\dots,|\mathcal{V}|\}$ denotes index of vertex in graph. By embedded value we usually mean representation of vertex information in $\mathbb{R}^m$. Output of neural net is typically the same graph with optimized $v_i$ according to situation. The output graph might be use in various ways - calculate loss for next iteration, calculate an aggregation of all values, interpretation of partiular $v_i$. Usual tasks for graph neural network is node selection, node classification and graph classification. Each iteration of such neural net consists of three steps:
+\begin{itemize}
+    \item Compute a message for each of chosen pairs $(v_i,v_j)$ of vertices (might be all pairs, just neigbouring or other) using vlues from previous iteration
+    \item Aggregate messages for each vertex $i$ by aggregation function
+    \item Update $v_i$ using aggregated message for $i\in\{1,\dots,|\mathcal{V}|\}$
+\end{itemize}
+
+Assuming that all functions in the net are at least piecewise differentiable with respect to their parameters we can use stochastic gradient descent optimization approach.
+
+The natural structure of \emph{JSON} document is a tree which less general example of graph. If we want to classify documents we can use GNNs to solve graph classification task. (solution is briefly described in \cite{Pevny2020})
 
 \subsection{HMill framework}
 Creation of this framework was motivated by \cite{Pevny2016a}. We will describe it in the next chapter and also its usage during \emph{JSON} modelling.
