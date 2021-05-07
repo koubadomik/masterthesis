@@ -23,6 +23,8 @@ Hardware resources on host machines are 256GB SSD and 16GB RAM sufficient number
 
 Automation of the whole process was accompanied by various issues. These issues were caused mainly by low experience. Sometimes poor documentation was involved. Especially the process of virtual machine images copying was connected with issues of automated snapshot take. Such process needs often manual steps and their automation was very challenging.
 
+We have configured 7 host machines.
+
 \section{Guest - virtual machines}
 Guest machine denotes the machine where the malware sample is running and where the cape monitor is operating. We used Windows 7 as operating system under CTU in Prague licence. The crucial goal setting up guest machine is that it should look like normal computer which is used. Due to virtualization usage we have to care about sandbox evasion techniques mentioned in \ref{chap:analysis}.
 
@@ -31,29 +33,54 @@ There are two options for anti-evasion setup along with \emph{CAPEv2} sandbox. F
 The sandbox require disabling firewall and running python on guest machine beside this we added most seen applications like Google Chrome, Firefox, Adobe reader, Spotify\dots We added one private key to C://Users/Administrator/.ssh and one password to google chrome password database. We added random images and documents from the internet.
 
 \section{Network setup}
-problems with their setup
-images - physical, logical (images from https://github.com/koubadomik/cuckoo-distr-docs)
-describe each part
+Network is crucial point in dynamic analysis setup. The guest machine has to reach the host machine to stay in touch with the result server. It is also connected to the analysis results directly. We expect that the data might be biased if there is no internet access for the malware sample during the analysis. As an example we can see \emph{dropper} malware type which is reponsible for downloading the sample. That is very significant part of payload extraction.
 
-figure of the setup, description, argumentation
-similar projects (isolation of malware network having internet access)
-two branches - no internet, internet
-internet
-    describe in detail
-    firewall
-    security resoning
-    syslog...
-safe network made our work easier, mention couple of further ideas mentioned by Josef (thank to Josef at the beginning of thesis!)
+We decided to collect the data under two different conditions - with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). The main reason why we engaged both conditions is that the \emph{internet} is much more difficult to setup and secure and we wanted to start data collection as soon as possible.
 
-\section{Abuse.ch}
-Possible sources
-Chosen source
-- recommendation from team member
-- description of Abuse.ch
-- possible problems - bias?, Emotet results?, Some statistic from the report from VT which I downloaded (nice-to-have), maybe could be quite interesting to retrive list of file extentions - histogram?
+\emph{None} setup is straightforward option for isolated network between host and guest. This approach requires hostonly interface created in \emph{KVM} virtualization tool. Host and guest are assigned by IP address from the same range. From security point of view, we have to setup firewall of host machine to have only necessary result server port opened for communication in isolated network. This simple architecture can be see in \ref{app:network}.
+
+\subsection{Internet}
+The goal of this approach is to provide internet access to the guest machine during the analysis run. For this purpose we prepared VPN connection to the secured network through which all the communication should be forwarded. This is considered as good practise to be able to observe what the samples is doing and to be able to stop it fastly. This secured network we cal \emph{dirty lab}.
+
+\emph{CAPEv2} supports VPN connection setup for each guest machine separatedly. We knew that it would be better to have central gateway for all local traffic then connecting each particula guest machines to \emph{dirty lab} but we decided to attept to use native sandbox functions first. After experiencing some issues with \emph{CAPEv2} VPN configuration and an unsuccessful issue reporting we decided to find another custom way. 
+
+The main requirement is the centralization of exit point (gateway) of all the traffic from local network (malicious) to \emph{dirty lab}. The surrounding university network has to be absolutely secured and isolated from malicious traffic. We also need to monitor host machines because of external intrusion and centralize logs from host machines.
+
+Complete configuration can be seen in \ref{app:network} and its description follows.
+
+In following text we use \emph{l2} and \emph{l3} as a designation refering to ISO/OSI model of network communication \cite{Zimmermann1980}. By \emph{l2} we mean communication on data link layer, specifically we mean ethernet/802.11 local networks where MAC (Media access address) is used for device identification. By \emph{l3} we mean IP communication on network layer, IP addresses are used for device identification.
+
+Basic idea of the designed network architecture which was recommended by expert after consultation was to avoid \emph{l3} communication on local network such that IP address is assigned only to interface of guest machine and then to the interface of gateway device. This idea was supported mainly by \emph{l2} VPN on local network.
+
+The role of gateway device (we call it \emph{router}) is to receive traffic going out of local network and forward it to the \emph{dirty lab}. It can monitor and capture the traffic. We were provided with ipv4 interface only in \emph{dirty lab} so the \emph{router} performs even network address traslation (NAT). \emph{Router} machine is running Ubuntu operating system and it is configured to be able to connect with \emph{dirty lab} using \emph{l3} VPN connection and with the guest machines using \emph{l2} VPN. In \emph{l2} VPN, \emph{router} is the server and in \emph{l3} VPN is a client (server is running in \emph{dirty lab}). \emph{Router} is virtual machine for fast recovery ability. All logs from server are sent to central machine.
+
+The guest machine have to be configured as a client in communication with \emph{router} using \emph{l2} VPN. The idea of this setup is that all the traffic leaving this device is encapsulated in packets with local network IP addresses of the network unknown to the guest device where malware is running. From guest's point of view this traffic is performed on \emph{l2} with between the \emph{router} and \emph{guest}. Interface for \emph{l2} VPN communication (TAP) is bridged with the original interface which allow communication with guest virtual machine. A connection to the internet from guest machine goes through host machine to the router, from there to dirty lab and finally to the internet and back. There has to be performed addtional setup on host machine besides these listed in case of \emph{none}. Each host machine in distributed cluster has to send all sandbox logs to central syslog server. All machines has to be set up with monitoring tool to detect intrusion\footnote{example https://aide.github.io/}.
 
 
 \section{Data collection pipeline}
+In this section we describe whole process of data collection from malware sample to its dynamic analysis using clustered \emph{CAPEv2} sandbox guests.
+
+Download samples from malwareBazaar,
+Filter PE files only,
+Add hash to database,
+Retrieve additional metadata,
+Distribute samples to workers,
+Analyze sample and send result back,
+Store result,
+Extract JSON report,
+Prune unnecessary parts
+
+
+
+
+
+\subsection{Abuse.ch}
+The place where we downloaded malware sample was abuse.ch\footnote{https://abuse.ch/} specifically its part called malwarebazaar. The main purpose of its usage is free access without any claims. MalwareBazaar is database of malicious (no benign files or Adware) samples where everybody can share and download. In may of 2021 it contains iver 325~000 samples.
+
+
+During data collection using distributed cluster we used following terminology. \emph{Master} is machine which is responsible for sample distribution and it has access to NAS where it stores the analysis results. \emph{Worker} is machine were the sandbox is running (\emph{guest}).
+
+
 TODO: create image of pipeline, describe each part
 
 Download samples from abuse
@@ -136,19 +163,35 @@ Not all the outputs described in \ref{chap:analysis} are presented in each sampl
 
 
 
-add literally every detail including some scripts to appendix, even configuration of network, vpn, reference manuals, security reasoning during setting up internet connection (see notes)...
+
+% figure of the setup, description, argumentation
+% similar projects (isolation of malware network having internet access)
+% two branches - no internet, internet
+% internet
+%     describe in detail
+%     firewall
+%     security resoning
+%     syslog...
+% safe network made our work easier, mention couple of further ideas mentioned by Josef (thank to Josef at the beginning of thesis!)
+
+
+% add literally every detail including some scripts to appendix, even configuration of network, vpn, reference manuals, security reasoning during setting up internet connection (see notes)...
+
+% Previous connection
+% - Follow up analysis chapter and summarize what we did
+% Next connection
+% - At the end should be described output of sandbox and at the beggining of next chapter should be stated what we have chosen and why
 
 
 
+% Possible sources
+% Chosen source
+% - recommendation from team member
+% - description of Abuse.ch
+% - possible problems - bias?, Emotet results?, Some statistic from the report from VT which I downloaded (nice-to-have), maybe could be quite interesting to retrive list of file extentions - histogram?
 
 
-Previous connection
-- Follow up analysis chapter and summarize what we did
-Next connection
-- At the end should be described output of sandbox and at the beggining of next chapter should be stated what we have chosen and why
-
-
-
+% 
 
 
 % - Realization of chapter 'data'
