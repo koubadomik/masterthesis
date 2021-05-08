@@ -348,6 +348,57 @@ Another example of structured data modelling motivated in reccurent and recursiv
 
 
 
+There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
+
+\section{Features and states for classification}
+%this has to be put differently or part of it should be moved to classification chapter - at least the modelling reasoning, detail of output should stay here (the table)
+Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
+
+\subsection{States}
+We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
+
+From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
+
+Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
+
+\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
+
+\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
+
+\subsection{Features}
+Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
+
+\begin{table}[h]
+    \centering
+    \caption{Parts of \emph{report.json} behavior}
+    \begin{tabular}{p{2cm}p{12cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Meaning} \\
+        \midrule
+        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
+        \midrule
+        process tree & structure of process execution\\
+        \midrule
+        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
+        \midrule
+        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:behavioral}
+\end{table}
+
+We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
+
+Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
+
+The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
+
+
+
+
+
+
 
 
 

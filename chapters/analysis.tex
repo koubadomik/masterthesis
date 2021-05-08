@@ -1,60 +1,37 @@
-
-
-% \todo{describe part one goal - We involve more theory and prior work research, in following chapters we discuss our case.}
-% In the first part of this thesis we focus the comprehensive theory which is needed to absorb in order to interpret results. Not everything is disassembled in detail we go only there where we find something useful for our thesis. This is really based on experience so if the reader is interested only in results used formalism and notation in theory part are important only.
-
 \chapter{Malware analysis} \label{chap:analysis}
-Particular goal of this thesis is to create dataset of dynamic malware analysis samples. In this chapter we define basic notions of malware, PE file and malware analysis. We describe sandbox which we use for the analysis and its output. We also address some cyber security challenges and refer to prior arts.
-
+A particular goal of this thesis is to create a dataset of dynamic malware analysis samples. In this chapter, we define basic notions of malware, PE file and malware analysis. We describe the sandbox which we use for the analysis and its output. We also address some cybersecurity challenges and refer to prior arts.
 
 \section{Data cybersecurity challenges}
-We address challenges which we found from our point of view and then we refer to the ones listed in \cite{Amit2019}. Authors of that paper also list available datasets for specific kinds of machine learning task in the cybersecurity.
+We address challenges that we find essential, and we refer to the ones listed in \cite{Amit2019}. The authors of that paper also list available datasets for specific kinds of machine learning task in cybersecurity.
 
-All challenges are based on the complexity of cyber security domain. There are only few industries that are so flexible, dynamic and fast. There are terabytes of data every second in the cybersecurity - cloud, IoT, general network traffic\dots. The supervised machine learning is still the most reliable so we want these data to be labelled. But the detection itself has to be fast because the most significant is ability to detect malware variants (based on similar attributes) and of course zero-day attacks (unseen). Repeated observation might not be possible because modern malware is flexible which could be seen on malware analysis evasion techniques \cite{Afianian2018}. Huge concern is also bias in the data itself caused by multiple things - size, noise, sensibility to small deviations. For instance, if we run several malware samples in sandbox which has access to the internet and malware is able to access its public ip address the bias might be caused by the geographical location of edge router. This is something which could ruin our dataset. Another kind of bias is encryption as mention in the thesis introduction.
+There are terabytes of data every second in cybersecurity - cloud, IoT, general network traffic\dots. Supervised machine learning is generally more reliable than unsupervised, so we want these data to be labelled. However, the detection itself has to be fast. The most significant is the ability to detect zero-day attacks and malware variants based on similar attributes. Repeated observation might not be possible because modern malware is flexible. As an example, we can see analysis evasion techniques \cite{Afianian2018}. A significant concern is also bias in the data itself caused by multiple factors - size, noise, sensibility to minor deviations. For instance, if we run several malware samples in a sandbox that has access to the internet and malware can access its public IP address, the bias might be caused by the geographical location of the edge router. That is something that could ruin our dataset. Another kind of bias is encryption, as mention in the thesis introduction.
 
-Regarding the lack of labeled and certainty in ground truth we can address several problems. If the labelling process is done by human, it become slow and subjective. So the better approach is to develop some heuristic like black lists, white lists or more complex rules, models. That knowledge is little bit more systematic but still not shared which leads us to consensus techniques. This approach is based on combining knowledge from several sources. The goal should be to generalize our detection, but it has another pitfall which are \emph{Advanced Persistent Threats} that are often disposable and unique attack. However, the quality of labelling determines real performance of our future model and its reliable evaluation. Finally, it is sometimes too complex to automate the labelling process, some hope can give us the involvement of unsupervised techniques like anomaly detection or active learning in combination with semisupervised learning.
+Regarding the lack of labelled and certainty in the ground truth, we can address several problems. If a human does the labelling process, it becomes slow and subjective. So the better approach is to develop some heuristic like blacklists, whitelists or more complex rules/models. The quality of labelling determines the actual performance of our future model and its reliable evaluation. We want to create as general knowledge as possible to face different situations and contexts. Sometimes we cannot gain a sufficient amount of data, e.g. \  \emph{Advanced Persistent Threats} that are disposable and unique attacks. However, unsupervised techniques like anomaly detection or active learning in combination with semi-supervised learning might help us.
 
-If we can collect the dataset we should care about its quality. Imbalanced datasets are not speciality of the cybersecurity but it is often presented. The population of specific attacks is not distibuted equally and even the ratio between benign and malicious vary in time. So the balance of our dataset is strongly dependent on the time of data collection. The problem of concept drift is also related to the development over time. It simply addresses the trend of decreasing performance of machine learning models due to the difference of training data in the past and current data. This could be solved by new model or even by ability of adapting existing models in new situations.
-
-% Last remarkable not is many times analyzed statistical assumption
-% My
-% Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
-
-% \todo{add some motivation example or latest results... - known malware attacks..}
-
-% Philosophy could be walking around risk management, probability of risk and resulting damage... Maybe more examples of situations where we know how much it cost (Cambridge analytica, ransomware...)
-% Maybe something about truth and its protection in the world of lies and fake news
-% Confidentiality, integrity and availability
-
-% Use found books or post-hoc go through some articles and formulate the motivation part...
+If we collect the dataset, we should care about its quality. Imbalanced datasets are another problem of cybersecurity. The population of specific attacks is not distributed equally, and even the ratio between benign and malicious vary in time. Another addressed problem is the concept drift. It addresses the decreasing performance of a machine learning model due to the difference in training data and current data (after deployment).  It might be caused by violated assumptions that we make before the training. That could be solved by a new model or a better ability to adapt existing models in new situations.
 
 \section{Malware}
-Malicious code (also called \emph{Malware}) is code that is intended to disrupt computer, network or its part from functioning. The form or format may vary, it could be JAVA application, microsoft office macro or even pdf file. Malware detection, classification and overall research is part of broader branch of \emph{Intrusion detection} \cite{Cole2009}. Attackers use malware to steal data, use target computer (in C2 or DDOS) or even spy the owner. Malware often gets into target computer via usual communication channels - emails, USB, web download. \cite{KA2018}. Malware may contain more parts which have different role, we call these parts \emph{components}. The software which is not malicious is often called \emph{cleanware}.
+Malicious code (also called \emph{Malware}) is intended to disrupt a computer, network or its part from functioning. The form or format may vary. It could be a JAVA application, Microsoft office macro or even pdf file. Malware detection, classification and overall research is part of broader branch of \emph{Intrusion detection} \cite{Cole2009}. Attackers use malware to steal data, use target computer (in C2 or DDOS attacks) or even spy on the owner. Malware often gets into the target computer via usual communication channels - emails, USB, web download. \cite{KA2018}. Malware may contain more parts that have a different role, and we call these parts \emph{components}. The software which is not malicious (benign) is often called \emph{cleanware}.
 
-Firstly let us clarify several terms. \emph{Malware type} denotes group of malware samples or their components that show same behavior. \emph{Malware family} is collection of malware that has same code base (uses same code components). Example of such family might by \emph{Emotet} which is banking trojan family or CryptoWall which is ransomware family. \emph{Malware variant/strain/version} is malware which is in some existing family but includes new parts which were not earlier detected in this family \cite{Cohen2019}.
+Firstly let us clarify several terms. \emph{Malware type} denotes a group of malware samples or their components that show the same behaviour. \emph{Malware family} is a collection of malware that has the same code base (uses same code components). An example of such a family might buy \emph{Emotet}, which is the banking trojan family or CryptoWall, ransomware family. \emph{Malware variant/strain/version} is malware which is in some existing family but includes new parts which were not earlier detected in this family \cite{Cohen2019}.
 
-Based on specific behavior we can distinguish several fundamental types of malware. Each malware sample may have multiple components and each component may have different type. The most usual malware types follows (their source are \cite{Cole2009, KA2018, Graham2010, Sikorski2012}).
+Based on specific behaviour, we can distinguish several fundamental types of malware. Each malware sample may have multiple components, and each component may have a different type. The most usual malware types follow (their source are \cite{Cole2009, KA2018, Graham2010, Sikorski2012}).
 
-\paragraph{Worm} is malware capable of copying itself in a varieaty of ways and so spreading itself on multiple devices.
-\paragraph{Virus} is capable of infecting other executable files by injecting its payload. Infected files are then executed by user.
-\paragraph{Trojan} disguises itself as regular program. Their job starts after the user is manipulated. After installation they can steal the data, control target machine\dots
-\paragraph{Backdoor} allow attacker access target machine after if their job has succesful ending. The attacker can use multiple machines as botnet controlled by a command and controll server.
-\paragraph{Adware} presents unwanted advertisements to user of target machine. They are usually downloaded from the internet.
-\paragraph{Information stealer} aims at user's data. Examples are sniffers, grabbers, spyware and key loggers.
-\paragraph{Ransomware} locks users out of their computer or encypt their data. It usually threaten the user from not decrypting it before they pay some money.
+\paragraph{Worm} is malware capable of copying itself in a variety of ways and spreading on multiple devices.
+\paragraph{Virus} is capable of infecting other executable files by injecting its payload. The user then executes infected files.
+\paragraph{Trojan} disguises itself as a regular program. After installation, they can steal the data, control target machine\dots
+\paragraph{Backdoor} allow the attacker to access the target machine. The attacker can use multiple machines as a botnet controlled by a command and control server.
+\paragraph{Adware} presents unwanted advertisements to a user of the target machine. They are usually downloaded from the internet.
+\paragraph{Information stealer} aims at the user's data. Examples are sniffers, grabbers, spyware and key loggers.
+\paragraph{Ransomware} locks users out of their computer or encrypts their data. It usually threatens the user by not decrypting it before they pay some money.
 \paragraph{Rootkit} allow a malware presence concealment.
 \paragraph{Dropper} download malicious code or its updates from the internet. The dropper itself is often harmless.
-\paragraph{Launcher} is responsible of running malicious code, usually steathly.
+\paragraph{Launcher} is responsible for running malicious code, usually stealthy.
 
-According to \cite{AVATLASM39:online} the most seen types on windows are \emph{trojans} and \emph{backdoors}.
+According to \cite{AVATLASM39:online} the most seen types on Windows are \emph{trojans} and \emph{backdoors}.
 
-
-% Types, Families
-% https://en.wikipedia.org/wiki/Malware
-% Find in books!
-% https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
 \section{File formats}
-Malware is defined very generally and it is not limited to specific file format. In general we can find various filetypes. In list below we list some examples.
+Malware is defined very generally, and it is not limited to a specific file format. We can find various file types. In the list below, we list some examples.
 \begin{enumerate}
   \item Portable executable
   \item Portable Document Format
@@ -63,10 +40,10 @@ Malware is defined very generally and it is not limited to specific file format.
   \item Archives
 \end{enumerate}
 
-The most see on windows machine are according to \cite{AVATLASM39:online} Portable Executable (PE) files.
+According to \cite{AVATLASM39:online} Portable Executable (PE) files, the most see on Windows machines.
 
 \subsection{PE}
-The portable executable is file format mainly for executables, object code and DLLs. It is specific for Windows operation system, for 32-bit we use format PE32 and for 64-bit is PE32+. Its complete description is provided by microsoft \cite{PEFormat89:online}. Description of the most important parts follows.
+The portable executable is file format mainly for executables, object code and data-link libraries (DLLs). It is specific for Windows operation system. For 32-bit, we use format PE32 and for 64-bit is PE32+. Its complete description is provided by Microsoft \cite{PEFormat89:online}. Description of essential parts follows.
 
 The PE file includes information necessary for Windows operating system (specifically the dynamic linker) to map the file into memory \cite{Gibert2020}. Usual file extensions are \emph{.exe, .dll, .sys}. It consists of two main parts - \emph{Header} and \emph{Sections} (see \ref{fig:pe}). 
 
@@ -74,20 +51,19 @@ The PE file includes information necessary for Windows operating system (specifi
 \begin{itemize}
   \item DOS header - presented for backward compatibility with older versions of Windows
   \item PE header - executable info such as number of sections, file signature
-  \item Optional header - addtional info such as base of data, base of code, address of entry point
-  \item Sections table - definition of loading process
+  \item Optional header - additional info such as the base of data, the base of code, address of entry point
+  \item Sections table - definition of the loading process
   \item Import/export address table - lookup table (pointers) for imported or exported structures (abbrev. \emph{IAT})
 \end{itemize}
 
-\paragraph{Sections} contains mainly data and code of the executable. The most important parts are:
+\paragraph{Sections} contains mainly data and code of the executable file. The most important parts are:
 \begin{itemize}
-  \item code - actual program code (\emph{.text})
-  \item imports/exports - \emph{.idata, .edata}
-  \item data - static constants (\emph{.data}), variables(\emph{.bss}), other resources (\emph{.rsrc}), debug data (\emph{.rdata})
+  \item Code - actual program code (\emph{.text})
+  \item Imports/exports - \emph{.idata, .edata}
+  \item Data - static constants (\emph{.data}), variables(\emph{.bss}), other resources (\emph{.rsrc}), debug data (\emph{.rdata})
 \end{itemize}
 
-Loading process of PE file starts by parsing the headers and sections table and its validity is checked. The file is mapped into memory according to information in specific header parts. Additional DLLs are loaded into memory based on \emph{IAT}. Finally, file is executed at specified entry point. \footnote{https://github.com/corkami/pics/blob/master/binary/pe101/pe101.png}
-
+The loading process of the PE file starts by parsing and validity checking of the headers and sections table. The file is mapped into memory according to information in specific header parts. Additional DLLs are loaded into memory based on \emph{IAT}. Finally, the file is executed at a specified entry point. \footnote{https://github.com/corkami/pics/blob/master/binary/pe101/pe101.png}
 
 \begin{figure}[h]
   \centering
@@ -97,56 +73,60 @@ Loading process of PE file starts by parsing the headers and sections table and 
 \end{figure}
 
 \section{Malware analysis}
-Malware analysis is process leading to a deeper undertanding of malware features, behavior and overall goal. We can use several techniques and not all of them require execution of examined malware.
+Malware analysis is a process leading to a deeper understanding of malware features, behaviour and overall goal. We can use several techniques to analyze a malware sample, and not all of them require its execution.
 
-Malware analysis is the most relevant at the point where we do not have original source code of malware binary, because its examinantion would often give us much more information. We see the sample as a black box \cite{Sikorski2012}.
+Malware analysis is the most relevant if we do not have the source code of malware binary because its examination would often give us much more information. We see the sample as a black box \cite{Sikorski2012}.
 
-After we described malware types we could end up our reasoning as many people before. But the goal of the description of security threats is to be able to respond - prevent further attacks, detect future attacks, identify attacker\dots Authors of \cite{KA2018} summarize our motives in malware analysis in following several reasons. 
+The goal of the security threats research and description is to find proper response - prevent further attacks, detect future attacks, identify attacker\dots Authors of \cite{KA2018} summarize our motives in malware analysis in following several reasons. 
 
-We want to find malware components and their role and address its goal. For example we can identify malware consisiting from dropper part which checks running environment and downloading payload from the internet, and from launcher part which is responsible for the payload stealth execution. Another reason might be to understand malware's impact. It is hiding each step and if we do not monitor our systems (for example using integrity checks) we might not realize the threat. We also want to observe and report its behavior in the target computer (filenames, registries\dots) and the network intrusion. The last might be critical for preventing the malware from spreading accross local and global network. Finally, we want to classify the threat and investigate who might be the attacker and what are the motives.
+We want to find malware components, their role and address their goal. For example, we can identify malware consisting of the dropper part, which checks the running environment and downloading payload from the internet, and from the launcher part, which is responsible for the payload stealth execution. 
 
-The analysis might be followed by the reaction which often includes antivirus updates - creating new signatures, updating machine learning and other models. The notion of \emph{signature} refers to indicator which is able to detect malicious code on victim machine or even in the network traffic \cite{Sikorski2012}. The signature detection is based on examining outputs of malware analysis and checking specific parts.
+Another reason might be to understand malware's impact. It is hiding each step, and if we do not monitor our systems (for example, using integrity checks), we might not realize the threat. We want to observe and report its behaviour in the target computer (filenames, registries\dots). We also need to detect network intrusion, which might be critical for preventing the malware from spreading across a local and global network. 
 
-We distinguish two basic types of malware analysis - \emph{static} and \emph{dynamic}. In following sections we address each of these and describe their techniques.
+Finally, we want to classify the threat and investigate who the attacker might be and what are the motives.
+
+The analysis might be followed by the reaction, which often includes antivirus updates - creating new signatures, updating machine learning and other models. The notion of \emph{signature} refers to an indicator that can detect malicious code on victim machine or even in the network traffic \cite{Sikorski2012}. The signature detection is based on examining outputs of malware analysis and checking specific parts.
+
+We distinguish two basic types of malware analysis - \emph{static} and \emph{dynamic}. In the following sections, we address each of these and describe their techniques.
 
 \subsection{Static analysis}
-By performing this kind of analysis we can exmine target file without executing. Its usage is definitely limited but it can narrow the scope of our interest. \cite{KA2018} Performing the static analysis is usually easier and faster. \cite{Sikorski2012}
+By performing this kind of analysis, we can examine the target file without its execution. Its usage is limited, but it can narrow the scope of our interest. \cite{KA2018} Performing the static analysis is usually easier and faster. \cite{Sikorski2012}
 
 \subsubsection{Determining file type}
-Earlier in this chapter we listed several file types frequently used by malware. One of initial steps in static analysis is file type determination. The file type might corellate with the file extension e.g. \ \emph{.exe, .sys, .docx}, but reliable technique is file signature examination. This signature is sequence of bytes which is unique across different file types. File signature might be examined manually in some \emph{hex editor}\footnote{example (https://mh-nexus.de/en/hxd/)} or automatically using some programming language or tools\footnote{example https://man7.org/linux/man-pages/man1/file.1.html}. \cite{KA2018} 
+Earlier in this chapter, we listed several file types frequently used by malware. One of the initial steps in static analysis is file type determination. The file type might correlate with the file extension e.g. \ \emph{.exe, .sys, .docx}, but reliable technique of its determination is file signature examination. This signature is a sequence of bytes that is unique across different file types. File signature might be examined manually in some \emph{hex editor}\footnote{example https://mh-nexus.de/en/hxd/} or automatically using some programming language or tools\footnote{example https://man7.org/linux/man-pages/man1/file.1.html}. \cite{KA2018} 
 
 
 \subsubsection{Fingerprinting, comparison}
-By fingerprinting is meant generating cryptographic hash value for examined file (e.g. \ \emph{MD5, SHA1}). This hash should give us unique file identifier for future identification. It is used to retrieve known information about malware samples from online sources\footnote{example https://www.virustotal.com/gui/}, where we can find multi anti-virus scans and another useful information. On the other hand we can use special kind of 'hashes' which are able to identify similar malware samples. Those could be fuzzy hashes, import hashes or section hashes \cite{KA2018}.
+Fingerprinting means generating a cryptographic hash value for examined file (e.g. \ \emph{MD5, SHA1}). This hash should give us a unique file identifier for future identification. It is used to retrieve known information about malware samples from online sources\footnote{example https://www.virustotal.com/gui/}, where we can find multi antivirus scans and other useful information. On the other hand, we can use a special kind of 'hashes' to identify similar malware samples. Those could be fuzzy hashes, import hashes, or section hashes \cite{KA2018}.
 
 \subsubsection{String extraction}
-Strings are placed in malware file encoded by \emph{ASCII} or other encoding. Their extraction from original binary is valuable tool of the static part of analysis. There might by ip addresses, domain names, file names and other. There are specialized tools for this task \footnote{example http://split-code.com/strings2.html}. Obviously, the challenge in cybersecurity is the imbalance between the attacker and the protector regarding the information about analysis techniques. Which leads us to the file \emph{obfuscation} which is a technique used by attacker to secure strings from extraction. This is often done by \emph{packers} using compression or by \emph{cryptors} by encryption. Of course even such techniques are detectable and vincible using specialized tools.
+Strings are placed in malware file encoded by \emph{ASCII} or another encoding. Their extraction from the original binary is a valuable tool of static analysis. There might be IP addresses, domain names, file names and others. There are specialized tools for this task \footnote{example http://split-code.com/strings2.html}. 
 
-There are even other techniques e.g. \ \emph{PE header inspection} where we can see imported and exported libraries and functions \cite{Sikorski2012}. Another example is \emphy{Yara rules}, which allow researchers creating indication rules based on textual and binary information of malware sample \cite{KA2018}.
+However, attackers know all these detection techniques, including string extraction. That leads us to the file \emph{obfuscation} which is a technique used by an attacker to secure strings from extraction. This is often done by \emph{packers} using compression or by \emph{cryptors} by encryption. Even such techniques are detectable and vincible using specialized tools.
+
+There are even other techniques, e.g. \ \emph{PE header inspection} where we can see imported and exported libraries and functions \cite{Sikorski2012}. Another example is \emphy{Yara rules}, which allow researchers to create indication rules based on textual and binary information of malware sample \cite{KA2018}.
 
 \subsubsection{Code analysis}
-Techniques listed above are picking specific feature and by connecting them we might get useful summary as initial hypothesis. But using just executable file we are also able to examine it step by step. We can distinguish \emph{static} and \emph{dynamic} code analysis.
+The techniques listed above are picking specific features, and by connecting them, we might get a useful summary for an initial hypothesis. 
+However, even without the knowledge of the code, we can examine its low-level steps. That is called code analysis, and we can distinguish \emph{static} and \emph{dynamic} code analysis (CA).
 
-In \emph{static} context we use \emph{disassembler} \footnote{example https://binary.ninja/} which translates machine code back to assembly code which might by further analysed. There is one more sophisticated technique which is also part of \emph{static} contex, it is called \emph{decompilation}. This process translates machine code into higher level programming language such as C or Python \footnote{example https://github.com/avast/retdec}.
+In \emph{static} CA we use \emph{disassembler} \footnote{example https://binary.ninja/} which translates machine code back to assembly code which might be further analysed. Another option might be \emph{decompilation} which translates machine code into a higher-level programming language such as C or Python \footnote{example https://github.com/avast/retdec}.
 
 In \emph{dynamic} code analyses we use \emph{debugger} to examine translated code during run \cite{KA2018}.
 
 \subsection{Dynamic analysis - sandboxing}
-Dymanic analyses techniques allow us examination of running malware sample. The isolated environment for malware execution is often called \emph{Sandbox} (sometimes we call \emph{Sandbox} the application which allow us orchestrate the dynamic analysis process using some interface). During the run we observe the details about malware behaviour and even the reaction of system. In following list we can see different subjects which are often monitored.
-
-\emph{Sandbox} realization is precise work. We need to minimize the risk of malware breaking the border of safe environment. It is usually implemented using virtual machine and \emph{air-gapped} networks (isolated networks) \cite{Sikorski2012}. Using virtual machines is better for overall security of our experiments but there are some significant pitfalls as well. The crucial drawback is that malware might identify suspiciously clean and safe environment and shut down itself before any action. The sandbox setup has to by conscientious to faithfully imitate real environment. We might let some intentional traces of normal usage as mentioned in \cite{CAPESand75:online}. Despite of mentioned facts virtual machine setup is still more frequent than running malware on a pyhsical machine. There are various virtualization software\footnote{examples https://www.virtualbox.org/, https://www.linux-kvm.org/} which provides virtual machines hypervision and user interface (CLI or GUI). Using sophisticated network setup (bridged network adapters, NAT, VPN) we may provide even controlled internet connection (or its simulation). Extracted information from an usual sandbox analysis is listed below and some of them are further dicussed.
+Dynamic analyses techniques allow us examination of running malware sample. The isolated environment for malware execution is often called \emph{Sandbox}. Sometimes we call \emph{Sandbox} the application, which allows us to orchestrate the dynamic analysis and all its parts. During the run, we observe the details about malware behaviour and even the reaction of the system. In the following list, we can see different subjects which are often monitored.
 
 \begin{itemize}
   \item Process monitoring - process activity, subprocesses\dots
   \item File system monitoring - dropped files, removed files\dots
-  \item Registry keys - read/write operations with windows registry keys including even the read/written data
+  \item Registry keys - read/write operations with windows registry keys, including the read/written data
   \item Network activity monitoring - outgoing and incoming traffic
-  \item API calls - external libraries of windows operating system which are called by the malware sample, essentially everything what malware performs should be expressed in the list of api calls
-  \item Mutexes - flags which are usually created by process thread to avoid another thread from writing at the same time, they are also used by malware to indicate something (for example its presence to another instance of the same malware)
+  \item API calls - external libraries of windows operating system which is called by the malware sample, essentially everything what malware performs should be expressed in the list of API calls
+  \item Mutexes - flags which are usually created by a thread to avoid another thread from writing at the same time, they are also used by malware for interprocess communication, e.g. indication of the presence
 \end{itemize}
 
-% Let us summarize basics of malware interaction with windows OS (main source \cite{Sikorski2012}). nice to have chapter ANALYZING MALICIOUS
-% WINDOWS PROGRAMS
+\emph{Sandbox} realization is precise work. We need to minimize the risk of malware breaking the border of a safe environment. It is usually implemented using a virtual machine, and \emph{air-gapped} networks (isolated networks) \cite{Sikorski2012}. Using virtual machines is better for overall security, but there are some significant pitfalls as well. The crucial drawback is that malware might identify the suspiciously clean and safe environment and shut down itself before any action. The sandbox setup has to be conscientious to imitate the natural environment faithfully. We should also let some intentional traces of everyday usage as mentioned in \cite{CAPESand75:online}. Despite mentioned facts, virtual machine setup is still more frequent than running malware on a physical machine. There is various virtualization software\footnote{examples https://www.virtualbox.org/, https://www.linux-kvm.org/} that provides virtual machine management tools. Using sophisticated network setup (bridged network adapters, NAT, VPN), we may provide even a controlled internet connection (or simulation).
 
 Examples of existing solutions for sandbox environment orchestration are:
 \begin{itemize}
@@ -157,21 +137,21 @@ Examples of existing solutions for sandbox environment orchestration are:
 \end{itemize}
 
 \subsection{Sandbox evasion techniques}
-As we mentioned earlier creators of malware know how malware might be examined. Malware might delay its execution in order to overcome the timeout of most sandboxes (usually up to half an hour). Malware often checks hardware size, version and other information which could be overlooked during the virtual machine setup and stay generic. It might detect a low number of CPU cores commonly used in sandboxes and other environment details before dropping a payload. If sandbox is running on device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. Comprehensive desription of sandbox evasion techniques can be found in \cite{Afianian2018} and this blog post \cite{Chailytko2019} is describing how we can defeat them.
+As we mentioned earlier, creators of malware know how it is examined. They might involve evasion techniques to detect the sandbox. Malware might delay its execution to overcome the timeout of most sandboxes (usually up to half an hour). It often checks unlikely storage size, version and other information overlooked during the virtual machine setup. It might detect a low number of CPU cores and other environment details before dropping a payload. If the sandbox runs on a device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. A comprehensive description of sandbox evasion techniques can be found in \cite{Afianian2018} and this blog post \cite{Chailytko2019} is describing how we can defeat them.
 
 \section{CAPEv2}
-An opensource project called \emph{Cuckoo sandbox} was firstly published in 2011. It started as Google Summer of Code project in 2010 within the Honeynet Project. This project is no more actively developed but in 2019 community developers forked original project\footnote{https://github.com/kevoreilly/CAPEv2} and updated its implementation to python 3. This project is called \emph{CAPEv2} and it is distributed under GPL-3.0 License. There is one publication about original \emph{Cuckoo} sandbox \cite{Oktavianto2013} which is partial source of the following description together with documentation of \emph{CAPEv2} \cite{CAPESand75:online}, other sources are reffered in text.
+An open-source project called \emph{Cuckoo sandbox} was firstly published in 2011. It started as the Google Summer of Code project in 2010 within the Honeynet Project. This project is no more actively developed but in 2019, community developers forked the original project and updated its implementation to be compatible with python 3\footnote{https://github.com/kevoreilly/CAPEv2}. This project is called \emph{CAPEv2}, and it is distributed under GPL-3.0 License. There is one publication about original \emph{Cuckoo} sandbox \cite{Oktavianto2013} which is partial source of the following description together with documentation of \emph{CAPEv2} \cite{CAPESand75:online}, other sources are referred in text.
 
-\emph{CAPEv2} is used to automatically run malicious files, collect results and make some further analysis. It has modular design which allows its integration into more complex infrastructure. Other developers can customize and extend a lot of its functions.
+\emph{CAPEv2} is used to automatically run malicious files, collect results, and perform further analysis. It has a modular design which allows its integration into a more complex infrastructure. Other developers can customize and extend many of its functions.
 % \todo{nice-to-have image of the interface}
 
-It can analyze various file types (listed below), which can be uploaded using CLI and see results in subdirectory or using a web interface and display results in browser \footnote{public instance https://capesandbox.com/}. List of file types which can be analysed using \emph{CAPEv2} follows:
+It can analyze various file types, which can be uploaded using CLI  or the web interface. We can see results in the file system or the web application \footnote{public instance https://capesandbox.com/}. List of file types that can be analyzed using \emph{CAPEv2} follows.
 \begin{itemize}
   \item PE files
   \item DLL files
   \item PDF documents
   \item Microsoft Office documents
-  \item URLs and HTML files (even internet explorer context opening some URL)
+  \item URLs and HTML files (even internet explorer behaviour after opening some URL)
   \item PHP scripts
   \item CPL files
   \item Visual Basic scripts
@@ -185,7 +165,11 @@ It can analyze various file types (listed below), which can be uploaded using CL
 
 
 \subsection{Architecture}
-\emph{CAPE's} architecture is demonstrated in figure \ref{fig:capearchitecture}. It consists of one or more \emph{cape hosts}, more in case of creating cluster of distributed cape. Each \emph{cape host} might have multiple \emph{analysis guests}. \emph{Cape host} is the environment for sandbox management (file upload, analysis retrieval\dots) usally running Linux distribution\footnote{recommended https://releases.ubuntu.com/20.04/}. \emph{Guests} are virtual machines where particular samples run usually under Windows 7 OS. By default guests are in isolated virtual network where they can not access each other.
+\emph{CAPE's} architecture is demonstrated in figure \ref{fig:capearchitecture}. It consists of one or more \emph{host} devices. Each \emph{host} might manage multiple \emph{guests} - virtual machines. 
+
+\emph{Host} is the environment for sandbox application usually running Linux distribution\footnote{recommended https://releases.ubuntu.com/20.04/}. It allows us to upload new sample, retrieve results, configure sandbox and many other functions.
+
+\emph{Guests} are virtual machines where particular samples usually run under Windows 7 OS. By default, guests are in the isolated virtual network where they can not access each other, only \emph{host}.
 
 \begin{figure}[h]
   \centering
@@ -194,65 +178,65 @@ It can analyze various file types (listed below), which can be uploaded using CL
   \label{fig:capearchitecture}
 \end{figure}
 
-% \todo{if enough time, we should redraw the image and where we may display even result server and agent.py and capemon.dll, this might be additional image, more low level}
+% \todo{if enough time, we should redraw the image and where we may display even result in server and agent.py and capemon.dll, this might be an additional image, more low level}
 
 \subsection{Components}
+The sandbox consists internally of several components. They can be seen in figure \ref{fig:capeflow} and their description follows.
+
 \subsubsection*{Scheduler}
-This component continously runs on \emph{host} machine. It check configured limits and proper setup. It manages machinery modules and starts new task if some pends and there is empty \emph{guest} machine. New task is forwarded to \emph{analysis manager}.
+This component runs on \emph{host} machine. It checks configured limits and proper setup. It manages machinery modules and starts the new task if there is a pending \emph{guest}. A new task is forwarded to \emph{analysis manager}.
 
 \subsubsection*{Analysis manager}
-\emph{Analysis manager} is responsible for the whole flow of single task, starts other modules which are parts of analysis and starts\stops machine through \emph{machinery modules}.
-
-\subsubsection*{Auxiliary modules}
-Additional modules which are run before analysis or during in \emph{guest} machine. An example of such module is the natwork traffic sniffer which capture network traffic or an screenshot capture tool.
+\emph{Analysis manager} is responsible for the whole flow of a single task. It starts other modules which are part of the analysis and starts\stops machine through \emph{machinery modules}.
 
 \subsubsection*{Machinary modules}
-These modules are used by sandbox to manage virtual machines - start, stop, restore. They are initialized during sandbox start up. Recommended hypervising softwawre for \emph{CAPEv2} is \emph{KVM}.
+These modules are used by sandbox to manage virtual machines - start, stop, restore. They are initialized during sandbox startup. Recommended  software for virtual machine management in \emph{CAPEv2} is \emph{KVM}.
 
 \subsubsection*{Guest manager}
-This component communicates with the \emph{cuckoo agent} and upload sample, checks state of analysis and state of machine. It shutdowns machine in case of timeout.
+This component communicates with the \emph{agent}. It uploads the sample, checks the state of the analysis and the machine, shutdowns the machine in case of timeout.
 
 \subsubsection*{Cape agent}
-\emph{Agent} is HTTP server running inside \emph{guest machine} to report its state and allow samples upload and related actions. It has to be started at the same time as machine starts up (added to Windows Startup direction).
+\emph{Agent} is an HTTP server running inside \emph{guest} machine to report its state and allow sample upload and related actions. It has to start simultaneously with the machine startup (added to the Windows Startup directory).
 
 \subsubsection*{Analyzer}
-Platform-dependent sofware running in \emph{guest} machine which controls the part of flow in the machine. It is started by \emph{agent} and its configuration is provided per analysis. It runs sample using chosen package (specific for each type of uploaded file), if the package is not provided it might be determined automatically. After running target sample it injects it with \emph{cape monitor}.
+It is a platform-dependent software running in \emph{guest} machine that controls the flow in the machine. It is started by \emph{agent} and its configuration is provided per analysis. It runs sample using a chosen package (specific for each type of uploaded file). If the package is not provided, it might be determined automatically. After running the target sample, it injects it with \emph{cape monitor}.
 
 \subsubsection*{Cape monitor}
-DLL which is injected into running sample. It logs any captured behavior using several techniques like hooking functions, following processes, PE dumping It also sends results to the \emph{result server}. \emph{Capemon} is maintained in separate repository\footnote{http://docplayer.net/62887099-Cuckoo-malware-analysis.html}.
+DLL, which is injected into the running sample. It logs any captured behaviour using several techniques like hooking functions, following processes, PE dumping. It also sends results to the \emph{result server}. \emph{Cape monitor} is maintained in separate repository\footnote{https://github.com/kevoreilly/capemon}.
+
+\subsubsection*{Auxiliary modules}
+These are additional modules that run before or during analysis in \emph{guest} machine. An example of such a module is the network traffic sniffer that captures network traffic or a screenshot capture tool.
 
 \subsubsection*{Result server}
-It collects analysis result data and store them.
+It collects analysis results and stores them. It runs on \emph{host} machine.
 
 \subsubsection*{Processing modules}
-Processing consists of following parts - processing raw data, signature matching and reporting. First part transforms the raw ouput to readable/searchable format, performs static analysis, extracts network streams. There is structured output at the end. Second part is running particular signatures and collect their results. Signatures are stored in special repository\footnote{https://github.com/kevoreilly/community}. Their interface accepts processed structured data and generates result if current signature matches and realted data. Signature results are added to the structured output. Final part of analysis is reporting, in this part all results are stored in \emph{JSON} report and alsoo in the database (other reporting modules might be added).
+Processing consists of the following parts - raw data processing, signature matching, reporting. The first part transforms the raw output to readable/searchable format, performs static analysis, extracts network streams. There is structured output at the end. The second part is running particular signatures and collect their results. Signatures are stored in a special repository\footnote{https://github.com/kevoreilly/community}. Their interface accepts processed structured data and generates results, indicating that the current signature matches (true or false) and related data. Signature results are added to the structured output. The final part of the analysis is reporting. In this part, all results are stored in \emph{JSON} report and also in the database (other reporting modules might be added).
 
-List of raw data processing modules follows:
+The list of raw data processing modules follows:
 \begin{itemize}
-  \item AnalysisInfo - generates some basic information on the current analysis, such as timestamps, version of CAPE and so on.
-  \item BehaviorAnalysis - parses the raw behavioral logs and perform some initial transformations and interpretations, including the complete processes tracing, a behavioral summary and a process tree.
-  \item Debug - includes errors and the analysis.log generated by the analyzer.
-  \item Dropped - includes information on the files dropped by the malware and dumped by CAPE.
-  \item Memory - executes Volatility on a full memory dump.
-  \item NetworkAnalysis - parses the PCAP file and extracts some network information, such as DNS traffic, domains, IPs, HTTP requests, IRC and SMTP traffic.
-  \item ProcMemory - performs analysis of process memory dump. Note: the module is able to process user defined Yara rules from data/yara/memory/index_memory.yar. Just edit this file to add your Yara rules.
-  \item StaticAnalysis - performs some static analysis of PE32 files.
-  \item Strings - extracts strings from the analyzed binary.
-  \item TargetInfo - includes information on the analyzed file, such as hashes.
-  \item VirusTotal - searches on VirusTotal for antivirus signatures of the analyzed file. Note: the file is not uploaded on VirusTotal.com, if the file was not previously uploaded on the website no results will be retrieved.
+  \item AnalysisInfo - basic information about analysis
+  \item BehaviorAnalysis - parses the raw behavioural logs and perform some initial transformations and interpretations, including the complete processes tracing, a behavioural summary and a process tree
+  \item Debug - parses errors and the analysis.log generated by the analyzer
+  \item Dropped - parses information on the files dropped by the malware and dumped by \emph{CAPE}
+  \item Memory - executes Volatility analysis on a full memory dump
+  \item NetworkAnalysis - parses the PCAP file and extracts some network information, such as DNS traffic, domains, IPs, HTTP requests, IRC and SMTP traffic
+  \item ProcMemory - performs analysis of process memory dump
+  \item StaticAnalysis - performs static analysis of PE32 files
+  \item Strings - extracts strings from the analyzed binary
 \end{itemize}
 
-\paragraph{Signatures} might isolate some unique behaviour and so identify some malware family or type and spot interesting modification that are performed on the system. Signature does not have only identifier, it also stores description, severity, category, malware family and other related information.
+A Signatures might isolate some unique behaviour, identify some malware family or type, and spot interesting modifications performed in the system. The signature report consists of an identifier, description, severity, category and other related information.
 
 \subsection{Analysis}
-An target file upload might be performed using CLI utility of \emph{CAPEv2}, using Web interface, using Python API or using REST API.
+A target file upload might be performed using CLI utility of \emph{CAPEv2}, using the Web interface,  Python API or REST API.
 
-In case of a file upload \emph{Capev2} saves it to the database. There is huge amount of options which could be configured for each analysis - used package (for multiple file types), machine to run on, network setup, timeout, priority and multiple addtional options which are presented in original configuration but could be changed per analysis. We can also run only network analysis or only static analysis. Another sandbox component the \emph{Scheduler} keeps track of pending tasks and when there is some free \emph{guest} and pending task, it is run on free machine. The process of execution is managed by \emph{analysis manager}. In case of running new analysis \emph{analysis manager} informs the \emph{result server} where the results are uploaded to. Once running, the analyzer, monitor, configuration and the sample file are uploaded to the \emph{agent}. \emph{Agent} starts the \emph{analyser}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passed, \emph{analyses manager} stops machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to database. \cite{CuckooSa10:online} The whole flow is also described in \ref{fig:capeflow}.
+If a file is uploaded \emph{CAPEv2} saves it to the database. Multiple options could be configured for each analysis - used package, machine to run on, network setup, timeout, priority, and multiple additional options. We can run only network analysis or only static analysis. The \emph{scheduler} keeps track of pending tasks and runs them. The process of execution is managed by \emph{analysis manager}. In case of running a new analysis, \emph{analysis manager} informs the \emph{result server}. When the analysis is running, the \emph\{analyzer, monitor}, configuration and the sample file are uploaded to the \emph{guest} using \emph{agent}. \emph{Agent} starts the \emph{analyzer}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passes, \emph{analysis manager} stops the machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to the database \cite{CuckooSa10:online}. The whole flow can be seen in figure \ref{fig:capeflow}.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm]{figures/flow.svg}
-  \caption{Cape components and analysis flow (source \cite{CuckooSa10:online})}
+  \caption{\emph{CAPEv2} components and analysis flow (source \cite{CuckooSa10:online})}
   \label{fig:capeflow}
 \end{figure}
 
@@ -260,67 +244,59 @@ In case of a file upload \emph{Capev2} saves it to the database. There is huge a
 \subsection{Network}
 \emph{CAPEv2} provides multiple possibilities for \emph{guest} network setup which could be configured per analysis. 
 
-In case of \emph{None} routing, the machine is absolutely isolated, the only traffic is the one with the resuls server. Additionaly, there is \emph{Drop} routing, when the all the traffic is actively dropped (more agresive option). 
+In the case of \emph{None} routing, the machine is isolated. The only connection is the one with the result server. Additionally, there is \emph{Drop} routing when all the traffic is actively dropped (a more aggressive option). 
 
-Other options provides in some sense internet connection. \emph{Internet} routing is full internet access through specified interface. We can also forward the traffic through another gateway - \emph{VPN}, \emph{SOCKS5} proxy\footnote{example tool https://github.com/RicoVZ/socks5man} or \emph{Tor}\footnote{https://www.torproject.org/}. Last option is to use network simulation like \emph{INetSim}\footnote{https://www.inetsim.org/}.
+Other options provides internet connection (in some sense). \emph{Internet} routing is full internet access through specified interface. We can also forward the traffic through another gateway - \emph{VPN}, \emph{SOCKS5} proxy\footnote{example tool https://github.com/RicoVZ/socks5man} or \emph{Tor}\footnote{https://www.torproject.org/}. Last option is to use network simulation like \emph{INetSim}\footnote{https://www.inetsim.org/}.
 
 \subsection{Other}
-One of the crucial features of \emph{CAPEv2} is debugger, so we can also perform a non-interactive dynamic code analysis. It allows dynamic anti-evasion bypasses such as \emph{Guloader, Ursnif} or \emph{Zloader} uses.
+One of the crucial features of \emph{CAPEv2} is the debugger, so we can also perform non-interactive dynamic code analysis. It allows dynamic anti-evasion bypasses such as \emph{Guloader, Ursnif} or \emph{Zloader} uses.
 
-\emph{CAPE} means \emph{Config And Payload Extraction}. Main motivation behind its creation was malware payload extraction for which it uses techniques like Process injection, Decompression of executable modules in memory or extraction of executable modules. \emph{CAPEv2} automatically creates process dump for each process which is effective to detect basic packers.
+\emph{CAPE} means \emph{Config And Payload Extraction}. The main motivation behind its creation was malware payload extraction, for which it uses techniques like Process injection, Decompression of executable modules in memory or extraction of executable modules. \emph{CAPEv2} automatically creates a process dump for each process that effectively detects basic packers.
 
-\emph{CAPEv2} can detect various malware families such as Emotet, QakBot, Dridex and many others. It also uses Yara rules.
+It can detect various malware families such as Emotet, QakBot, Dridex and many others. It also uses Yara rules.
 
-
-\section{Produced data}
-As we stated in the thesis introduction, our goal is to use \emph{behavioural} features from \emph{JSON} reports and \emph{signatures}. In this section we want to demonstrate what we can retrieve from malware analysis tools and refer to some prior art.
-
-
-
-
-
+\subsection{Produced data}
+The whole ouput of \emph{CAPEv2} is listed in the table \ref{tab:sandbox-out}. 
 
 \begin{table}[h]
   \centering
-  \caption{CAPEv2 Sandbox output (all possibilities)}
+  \caption{CAPEv2 Sandbox output}
   \begin{tabular}{p{2cm}p{6cm}p{6cm}} 
       \toprule
       \textbf{Output} &
-      \textbf{Meaning} &
-      \textbf{In our output} \\
+      \textbf{Description} \\
       \midrule
-      pcap report & network traffic record (packet sequences) & Presented in output but not significant regarding the fact that during run was not internet access \\
+      pcap report & network traffic record (packet sequences) \\
       \midrule
-      memory dump & dump of RAM (its analysis results could be also presented)& our version of sandbox do not support it \\
+      memory dump & dump of RAM (its analysis results could be also presented) \\
       \midrule
-      bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}& presented\\
+      bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}\\
       \midrule
-      behavioral log & raw logs of api calls and other (usually in bson) & presented \\
+      behavioral log & raw logs of api calls and other (usually in \emph{BSON} format) \\
       \midrule
-      dropped files & all dropped files are unchanged in separate directory & presented \\
+      dropped files & all dropped files unchanged in separate directory \\
       \midrule
-      CAPE, procdump & other extracted payload in separate directory, extracted by various techniques \cite{Cape} & presented \\
+      CAPE, procdump & other extracted payload in separate directory \\
       \midrule
-      reports & sandbox allows us using several reporting and processing modules, their results are in separate directory  & several of them presented but the most comprehensive and important is \emph{report.json} \\
+      reports & JSON report and possibly other reports  \\
       \midrule
-      screenshots & taken during analysis  & presented \\
+      screenshots & taken during analysis  \\
       \bottomrule
   \end{tabular}
   \label{tab:sandbox-out}
 \end{table}
 
 
-There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
+\subsubsection{Report}
+As we stated in the thesis introduction, our goal is to use \emph{behavioural} features and \emph{signatures} from \emph{JSON} reports.  The most comprehensive report produced by \emph{CAPEv2} is in \emph{JSON} format. We will use this format as direct input for our model. Let us define this format \footnote{documentation https://www.json.org/json-en.html} and the content of the report.
 
-% \todo{Summarise what we know from previous sections \todo{especially from analysis part, where we should summarise what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
+JSON (JavaScript Object Notation) is a most frequently used lightweight data-interchange format. It consists of two essential structures - \emph{collections of key-value pairs} (sometimes called \emph{objects}) and \emph{ordered lists}. 
 
-\section{Report}
-\emph{JSON} notation is described in \ref{sec:json_notation}. The report usually has tens of megabytes but sometimes even gigabytes. It is quite easy to compress. We can have even ten times less storage because it contains many redundancies (sequences of API calls\dots). 
+\emph{Object} is an unordered list of \emph{key-value} pairs, curly brackets surround it, pairs are coma-separated, and a colon separates keys from values. \emph{Keys} have to be double-quoted unicode strings. \emph{Values} might be strings, numbers, objects, arrays, boolean or null. \emph{Lists} are surrounded by square brackets and contains comma-separated values.
 
+Usually, a single \emph{.json} file contains one object, but there are also cases where a list of objects is presented.
 
-The output documentation is quite weak, but there is some (\url{https://cuckoo.readthedocs.io/en/latest/usage/results/}), and we also investigated outputs themselves. The output of general \emph{CAPEv2} sandbox analysis is described in table \ref{tab:sandbox-out}.
-
-The documentation of each part of the report is quite poor, but many attributes are self-descriptive. Complete schema is in \ref{tab:report}. In attachments we can see example of real log (\ref{app:attach})
+The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigabytes. Complete schema (list of attributes) of report is in \ref{tab:report}. In the thesis attachment, we can see an example of a real log (\ref{app:attach})
 
 \begin{table}[h]
   \centering
@@ -340,7 +316,7 @@ The documentation of each part of the report is quite poor, but many attributes 
       \midrule
       CAPE & extracted payload info \\
       \midrule
-      behavior & processes, mutexes, commands and other attributes as enhanced log but even summary view \\
+      behavior & processes, mutexes, commands and other behavioural attributes \\
       \midrule
       deduplicated shots & screenshot summary \\
       \midrule
@@ -354,75 +330,16 @@ The documentation of each part of the report is quite poor, but many attributes 
       \midrule
       malfamily tag &  malware family detection result\\
       \midrule
-      malscore &  malware sample metric\\
+      malscore &  malicious score\\
       \midrule
-      signatures &  list of signatures which were detected by sandbox \\
+      signatures &  list of signatures detected by sandbox \\
       \bottomrule
   \end{tabular}
   \label{tab:report}
 \end{table}
 
-
-\section{Features and states for classification}
-%this has to be put differently or part of it should be moved to classification chapter - at least the modelling reasoning, detail of output should stay here (the table)
-Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
-
-\subsection{States}
-We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
-
-From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
-
-Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
-
-\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
-
-\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
-
-\subsection{Features}
-Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
-
-\begin{table}[h]
-    \centering
-    \caption{Parts of \emph{report.json} behavior}
-    \begin{tabular}{p{2cm}p{12cm}} 
-        \toprule
-        \textbf{Entry} &
-        \textbf{Meaning} \\
-        \midrule
-        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
-        \midrule
-        process tree & structure of process execution\\
-        \midrule
-        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
-        \midrule
-        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
-        \bottomrule
-    \end{tabular}
-    \label{tab:behavioral}
-\end{table}
-
-We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
-
-Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
-
-The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
-
-
-
-
-
-
-
-\subsubsection{JSON notation} \label{sec:json_notation}
-The most comprehensive report which is produced by \emph{CAPEv2} is in \emph{JSON} format. We will use this format as direct input for our model, let us define it here \footnote{documentation https://www.json.org/json-en.html}.
-
-JSON (JavaScript Object Notation) is a most frequently used lightweight data-interchange format. It consists of two essential structures - \emph{collections of key-value pairs} (sometimes called \emph{object}) and \emph{ordered lists}. 
-\emph{Object} is unordered list of \emph{key-value} pairs, it is surrounded by curly brackets, pairs are coma-separated and keys are separated by colon from values. \emph{Keys} have to be double-quoted unicode strings. \emph{Values} might be strings, numbers, objects, arrays, boolean or null. \emph{Lists} are surronded by square brackets and contains coma-separated values.
-
-Usually, single \emph{.json} file contains one object, but there are also cases where list of objects is presented.
-
-\subsection{Prior arts}
-List of relevant example publications where authors applied machine learning algorithm using the data produced by malware analysis tools.
+\section{Prior arts}
+Below we list relevant publications where authors applied machine learning algorithm using the data produced by malware analysis tools.
 \subsubsection{Static features}
 \begin{itemize}
   \item Strings - \cite{Lee2011}
@@ -439,11 +356,42 @@ List of relevant example publications where authors applied machine learning alg
   \item API call traces -  \cite{Galal2015}
 \end{itemize}
 
-Other related resources might be in \cite{Singh2020, Sethi2019, Abdessadki2019, Gibert2020}.
+Other related resources might be \cite{Singh2020, Sethi2019, Abdessadki2019, Gibert2020}.
 
+
+This chapter described the essential background of malware, its analysis, and specifically \emph{CAPEv2} sandbox and its output. 
 
 
 %%------------------------------------------
+% Let us summarize basics of malware interaction with windows OS (main source \cite{Sikorski2012}). nice to have chapter ANALYZING MALICIOUS
+% WINDOWS PROGRAMS
+% Types, Families
+% https://en.wikipedia.org/wiki/Malware
+% Find in books!
+% https://www.sciencedirect.com/science/article/pii/S1084804519303868 - good overview and taxonomy of malware
+
+
+% \todo{describe part one goal - We involve more theory and prior work research, in following chapters we discuss our case.}
+% In the first part of this thesis we focus the comprehensive theory which is needed to absorb in order to interpret results. Not everything is disassembled in detail we go only there where we find something useful for our thesis. This is really based on experience so if the reader is interested only in results used formalism and notation in theory part are important only.
+
+% \todo{Summarise what we know from previous sections \todo{especially from analysis part, where we should summarise what usual program is doing in the computer and what we can observe (and what we can get from cuckoo monitor)} and go to the most concetrated information about run of program - we should end at the things which are in summary part of json log, but we can have more variants}
+
+
+
+% Last remarkable not is many times analyzed statistical assumption
+% My
+% Data quality, bias, antisandbox detection... where to find samples? (we should definitely mention motivation why we are collecting our own data), public data (this is quite risky to publish in general), everything is fast (zero days), Are those anomalies or malicious?, Imbalanced data sets, encryption everywhere - what to trust..., cryptocurrencies, iot, cloud
+
+% \todo{add some motivation example or latest results... - known malware attacks..}
+
+% Philosophy could be walking around risk management, probability of risk and resulting damage... Maybe more examples of situations where we know how much it cost (Cambridge analytica, ransomware...)
+% Maybe something about truth and its protection in the world of lies and fake news
+% Confidentiality, integrity and availability
+
+% Use found books or post-hoc go through some articles and formulate the motivation part...
+
+
+
 % Nice to have
 % https://github.com/kevoreilly/CAPEv2/blob/master/changelog.md
 % http://docplayer.net/62887099-Cuckoo-malware-analysis.html
