@@ -1,67 +1,58 @@
 \chapter{Malware classification} \label{chap:classification}
-In this chapter we describe machine learning background which is important for further model description. We cover basic terms, cyber security context and models for hierarchical structured data (\emph{JSON}). All of these is background for our target experiments in modelling.
+In this chapter, we describe the machine learning background, which is important for further model description. We cover basic terms in machine learning, cybersecurity context and models for hierarchically structured data (\emph{JSON}). All of these is the background for our target experiments in modelling.
 
+\section{Classification}
+\say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis, we give it a test set of distinct examples from the training set.} \cite{Russell2009}
 
-We can expose a lot of information from malware analysis result (\ref{chap:analysis}). It could be used to explain directly what is going on during the run, every single step. Sandbox itself is often labelling malware samples. For instance we can observe \emph{malware family} estimation or some kind of \emph{signature}. According to that we are able to categorize malware samples and determine the danger to the target computer. These times we can see many applications of machine learning in this field, e. g. \ \cite{Yen2019}. Its automation may lead to new knowledge and might improve zero-day detection and other situations where deterministic behavioral feature detection might be insufficient. One of our goals is to perform such techniques on the data we collect. At first in this chapter we will build theoretical knowledge for its later application.
+As we can see in the quote, the essential of machine learning can be described concisely and elegantly. On the other hand, the crux is its mathematical base. The most considerable challenge in machine learning theory is the formal framework and point of view, which authors consider. Firstly, we would like to put our method into context.
 
-In this chapter we focus on classification problem in general and in second part we describe malware classification as particular case. In previous chapter we described different data outputs which are often produces by different kinds of analysis. The one we concentrate on is structured output, e.g.\ \emph{JSON}because our model (\emph{hmill}) is able to perform well on such data. That is why we mention models which are designed for such data later in this chapter.
+After a brief look into several sources, we can find varied kinds of machine learning or just learning \cite{Russell2009}. It is easy to mix perspectives and make one extensive taxonomy. However, we start with statistical machine learning as the most general notion in this chapter. 
 
-\section{Classification in general}
-Firstly, let us quote author which summarized our motivation very well.
-
-\say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis we give it a test set of examples that are distinct from the training set.} \cite{Russell2009}
-
-As we can see learning itself might be described quite easily and it is very important for its understanding. On the other hand the crucial is its mathematical base and the largest challenge in machine learning theory is very often used formal framework and point of view which we consider as there are many. So firstly we would like to summarize where in this tangle we are and where we are going.
-
-After short look into several sources we can find varigated kinds of machine learning or just learning as \cite{Russell2009} says. Its easy to mix perpectives and make one big taxonomy but we do not aspire to describe everything, just choose our subspace.
-
-At first let us state that the main field of our interest in machine learning theory begins in statistical machine learning. Where we are aiming at optimization of predictive function to fit our training and perform sufficiently on testing data, using statistical tools such as \emph{maximum likelihood estimation} and many others. As oposite we can see for example symbolic learning where we are more interested in symbolic knowledge representation, often human-readable. This approach is older and sometimes called \emph{GOFAI} - Good Old-Fashioned Artificial Intelligence \cite{Haugeland1985}. This kind of learning is nowadays not going through such a huge upswing as statistical branch. Let us define basic terms based on \cite{Franc2020}.
+In statistical machine learning, we aim to optimize predictive function to fit our training data and perform sufficiently on testing data. It is done by using statistical tools such as \emph{maximum likelihood estimation} and many others. On the opposite, we can see symbolic learning where we are more interested in symbolic knowledge representation, often human-readable. This approach is older and sometimes called \emph{GOFAI} - Good Old-Fashioned Artificial Intelligence \cite{Haugeland1985}. This kind of learning is not going through such a massive upswing as the statistical branch nowadays. Let us define basic terms based on \cite{Franc2020}.
 
 % \todo{we should define machine learning algorithm and model and how it relates to the hypothesis itself}
 
-\paragraph{Sample - Independent variable set}
-By sample we mean collection of features which tends to be represented as $x\in\mathbb{R}^{n}$, where $x_i$ is often called feature and $x$ is called sample or feature vector \cite{GoodBengCour16}. We can also generalize this definition for tensors.
+\paragraph{Sample - independent variable set}
+By sample, we mean a collection of features which tends to be represented as $x\in\mathbb{R}^{n}$, where $x_i$ is often called feature and $x$ is called sample or feature vector \cite{GoodBengCour16}. We can also generalize this definition for tensors.
 
-This is often just the finish of our way, in real word we can see object features as $x \in \mathcal{X}$, where $x$ could be categorical variables, scalar, real valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. We might involve feature extraction process to get to real-valued vectors mentioned above.
+Generally, we can see object features as $x \in \mathcal{X}$, where $\mathcal{X}$ could be a set of categorical variables, scalars, real-valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. We might involve a feature extraction process to get to the real-valued vectors mentioned above.
 
-\paragraph{States - dependent variable set}
-By state we mean the subject of our prediction, represented often as $y \in \mathcal{Y}$, where $\mathcal{Y}$ is often called \emph{state space}. That could be whatever what we enumerated by $\mathcal{X}$ (images, documents, real values\dots). States are sometimes also called labels or targets. 
+\paragraph{States, classes - dependent variable set}
+By state, we mean the subject of our prediction, often represented as $y \in \mathcal{Y}$, where $\mathcal{Y}$ is often called \emph{state space}. That could be whatever we enumerated by $\mathcal{X}$ (images, documents, real values\dots). They also tend to be represented as real-valued or discrete vectors. States are sometimes also called labels or targets. We focus on classification tasks, so we call them classes.
 
 \paragraph{Prediction strategy, hypothesis}
-Hypothesis we define as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy (state estimation) we denote as $h(x)=\hat{y}$ on the contrary real state we denote as above just $y$.
+A hypothesis is defined as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy (state estimation) we denote as $h(x)=\hat{y}$ on the contrary real state we denote as above just $y$.
 
 \paragraph{Example}
-Assume very usual situation that before the learning we receive set of examples to learn from. Based on what we receive we can distinguish between several types of learning. This thesis works with \emph{supervised} case.\
+Assume usual situation that before the learning we receive set of examples to learn from. Based on what we receive we can distinguish between several types of learning. This thesis works with \emph{supervised} case.\
 \begin{enumerate}
-    \item \emph{Supervised learning} - example denotes pair $(x,y)$, where $x\in \mathcal{X}$ and $y\in \mathcal{Y}$. 
+    \item \emph{Supervised learning} - example denotes pair $(x,y)$, where $x\in \mathcal{X}$ and $y\in \mathcal{Y}$
     \item \emph{Unsupervised learning} - example denotes $x\in \mathcal{X}$
     \item \emph{Semi-supervised learning} - each example could be one of the possibilities above
 \end{enumerate}
-We are usualy working with the set of examples which we later divide into different subsets e.g. \ \emph{training, testing, validation set}. \
+We are usually working with the set of examples that we later divide into different subsets, e.g. \ \emph{training testing and validation sets}. \
 
-One of the biggest challenges of machine learning nowadays are labelled data, because labellig itself is often not part of sample and has to be added post-hoc like in case of images (marking where on image is some object). Sometimes it is not possible e.g. \ in cyber security often we do not know what label should be presented because situation is just too complex. It is because in principle attacker or any kind of distractor often wants to hide acts such that the protector is not able to identify it. So the hidden state itself could be assigned rather based on further data collection or never. Examples of unsupervised learniing in cyber security are \cite{Alom2017}, where authors present deep unsupervised learning techniques during intrusion detection.
-
-The crucial assumption is that $X, Y$ are random variables related by unknown joint p.d.f $p(x,y)$. This assumption make the whole learning process reasonable because we assume relation between variables. We also assume that we are able to draw examples from this p.d.f.
+The crucial assumption is that $X, Y$ are random variables related by unknown joint p.d.f $p(x,y)$. This assumption makes the whole learning process reasonable because we assume the relation between variables. We also assume that we can draw i.i.d. examples from this p.d.f.
 
 \paragraph{Loss function}
-Loss funtion denotes objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually we compute output for each example such that it shows us penalization on particular example $\ell(y, h(\hat{y}))$.
+Loss function denotes an objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(\hat{y}))$ and use some kind of aggregation (mean). The result shows us loss function value for the whole set.
 
 \paragraph{Learning}
-Main consequence of our assumption is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. These assumptions also let us define \emph{expected risk} (\ref{eq:exploss}).
+Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\ref{eq:exploss}).
 
 \begin{equation} \label{eq:exploss}
     R(h)=\mathbb{E}_{(x,y) \sim p}\ell(Y,h(X))=\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,x)\ell(y,h(x))
 \end{equation}
 
-If $p(x,y)$ would be known our learning process would find optimal prediction strategy by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. But usualy it is unknown and we have to involve some kind of approximation (learning algorithm) to find best attaineable strategy using drawn data.
+If $p(x,y)$ would be known our learning process would find optimal prediction strategy by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. Usually, it is unknown and we have to involve some kind of approximation (learning algorithm) to find best attaineable strategy using drawn data.
 
-Assume $\mathcal{T}^m$ being set of examples to learn from. Then we can distinguish two basic learning approaches.
+Assume $\mathcal{T}^m$ being set of examples for supervised learning. We can distinguish two basic learning approaches.
 \begin{enumerate}
     \item \emph{Discriminative learning}
     \item \emph{Generative learning}
 \end{enumerate}
 
-In \emph{Discriminative learning} we assume that $h^* \in \mathcal{H}$. We replace \emph{expected risk} with \emph{empirical risk} (sometimes called \emph{generalization error}) (\ref{eq:emploss}).
+In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approximate \emph{expected risk} with \emph{empirical risk} (\ref{eq:emploss}).
 
 \begin{equation} \label{eq:emploss}
     R_{\mathcal{T}}(h)= \frac{1}{|\mathcal{T}|} \sum_{(x,y) \in \mathcal
@@ -70,40 +61,36 @@ In \emph{Discriminative learning} we assume that $h^* \in \mathcal{H}$. We repla
 
 Optimal strategy is denoted by $h_{\mathcal{T}}^*(x)=\operatorname*{argmin}_{{h}'\in \mathcal{H}}R_{\mathcal{T}(h)}$. Algorithms using this approach are for instance linear reggression, support vector machines and neural networks (with back-propagation).
 
-\emph{Generative learning} assumes that true p.d.f. $p(x,y)$ is part of some parametrized family of distributions. Task for our algorithm is to localize point estimate of parameters $\theta$ based on $\mathcal{T}$. It could be done by \emph{MLE} or \emph{Bayes inference rule}.
+\emph{Generative learning} assumes that true p.d.f. $p(x,y)$ is part of some parametrized family of distributions. Task for our algorithm is to localize point estimate of parameters $\theta$ based on $\mathcal{T}$. It might be done by \emph{MLE} or \emph{Bayes inference rule}.
 
-In both cases the biggest challenge is size of deviation we can gain by choosing wrong family distribution or just having small number of training examples.
-
-In our work we are using \emph{discriminative} models namely neural networks.
+In our work, we are using \emph{discriminative} models, namely neural networks.
 
 \paragraph{Discriminative learning algorithm}
-The learning algorithm is realization of the learning process. Input of this process are training examples and additional parameters (often called hyperparameters) and its output is usualy statistical model of the data. Statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model} and by its parameters e.g. \ weights, biases, which are tuned during the learning process. Given observed sample $x$ this model can provide prediction  $\hat{y}$ (the model is representing prediction strategy). Quality of this strategy (its predictions) is conditioned by number of training examples and choice of $\mathcal{H}$ which is often connected to the algorithm we choose. 
+The learning algorithm is a realization of the learning process. The input of this process is training examples and additional parameters (often called hyperparameters). Its output is usually a statistical model of the data ($h$). A statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model}, by its hyperparameters and parameters optimized during the learning process, e.g. \ weights, biases. Given observed sample $x$, the model can provide prediction  $\hat{y}$. The quality of its predictions is conditioned mainly by the number of training examples and choice of $\mathcal{H}$ (hypotheses class), which is often connected to the algorithm we choose. 
 
-We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{\mathcal{m}})-R(h_{\mathcal{H}})$ where $R(h_{\mathcal{m}})$ denotes risk learned from training data by learning algorithm.
+We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{\mathcal{m}})-R(h_{\mathcal{H}})$ where $R(h_{\mathcal{m}})$ denotes risk learned from training data, it is caused by the drawn data.
 
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
 
 \section{Machine learning tasks}
-There are many types of machine learning tasks \citet{GoodBengCour16}, we will address only some examples. Machine learning tasks are divided not only according to the examples (as mentioned above) but also according to the states.
-
 \paragraph{Regression}
-In this case $y \in \mathcal{Y}$ is continous-valued tensor, most often $\mathcal{y} \in \mathbb{R}^{n}$. In this example features are outputs of static and dynamic vulnerablities detectors and network traffic record and predicted value is score represented as real-value \cite{Jaganathan2015}.
+States $y \in \mathcal{Y}$ are continuous-valued tensor in this case, most often $\mathcal{y} \in \mathbb{R}^{n}$. For example, features might be outputs of static and dynamic vulnerabilities detectors and network traffic records, and the state is a risk score represented as real-value (\cite{Jaganathan2015}).
 
 \paragraph{Classification}
-In this case $y \in \mathcal{Y}$ is categorical tensor and often called \emph{classes}, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman} and similar. If $\mathcal{C}$ is $2$, than we call it \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to more classes at once (to not mutually exclusive classes), we call it \emph{multi-label classification}, which is sometimes called \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated e.g. \ we can also classify into hierarchical related classes \cite{zhang2020dive}.
+In this case, $y \in \mathcal{Y}$ is categorical vector, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman}. If $\mathcal{C}$ is $2$, than we call the task \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to not mutually exclusive classes at once, that is called \emph{multi-label classification} or \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated e.g. \ we can classify into class hierarchy \cite{zhang2020dive}.
 
-Given $x$ classifier outputs $\hat{y}$ which is ecoded class or probability distribution over classses \cite{GoodBengCour16}. Example of such distribution might by popular \emph{softmax} layer in case of neural networks. This distribution might be later interpreted and used during evaluation and further result analysis (explaning, interpreting). In case of scoring classifier where the output is representing the probability distribution we have to determine its final predictions. This is often done by setting \emph{treshold}, if the result is above specified treshold it is in positive class and it is in negative otherwise.
+Given $x$ classifier outputs $\hat{y}$ which is encoded class or probability distribution over classes \cite{GoodBengCour16}. An example of such distribution might be the popular \emph{softmax} layer in neural networks. This distribution might be later interpreted and used during evaluation and further analysis. We have to determine predictions of such classifier because we have real values instead of discrete classes. That is often done by setting \emph{treshold}. If the result is above the specified threshold, it is in the positive class and vice versa.
 
-Example of such classification task could be malware classification using well-known classification algorithm SVM \cite{Kruczkowski2014}.
+An example of a classification task could be malware classification using the well-known classification algorithm SVM \cite{Kruczkowski2014}.
 
-\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009}. And many other defined problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. 
+\emph{Classification} and \emph{regression} are not the only variants. There are others like transcription \cite{GoodBengCour16} or anomaly detection \cite{Chandola2009} and many other problems mentioned in \cite{GoodBengCour16} or \cite{zhang2020dive}. 
 
-Anomaly detection is quite frequent problem in cyber security field, where we are interested in detecting what is not maching usual pattern. This is usualy connected with unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example in this paper \cite{IglesiasVazquez2014} we can see example of anomaly detection on network traffic data.
+Anomaly detection is a frequent problem in cybersecurity, where we are interested in detecting what is not matching the usual pattern. That might be related to an unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example, in this paper \cite{IglesiasVazquez2014} we can see anomaly detection of network traffic data.
 
-Our intention is in \emph{classification} and that is why further we talk particularly about this task and algorithms used in this field.
+Examples of discriminative classification learning algorithms are - Support vector machine, Decision trees, Logistic regression, neural nets, generative - Naive Bayes, Fisher's linear discriminant.
 
-Examples of classification learning algorithms are discriminative - Support vector machine, Decision trees, Logistic reggression, neural nets; generative - Naive bayes, Fisher's linear discriminant.
+Our intention is in \emph{classification}, we focus on it further.
 
 
 \section{Loss functions for classification}
@@ -403,6 +390,15 @@ The goal of this chapter was to describe potential states and features. We know 
 
 
 %%--------------------------------NICE TO HAVE----------------------------------------------
+% In both cases, the biggest challenge is the size of deviation we can gain by choosing the wrong family distribution or just having a small number of training examples.
+
+
+%One of the biggest challenges of machine learning nowadays are labelled data because the label is often not part of the sample and has to be added later. Sometimes it is not possible e.g. \ in cyber security often we do not know what label should be presented because situation is just too complex. It is because in principle attacker or any kind of distractor often wants to hide acts such that the protector is not able to identify it. So the hidden state itself could be assigned rather based on further data collection or never. Examples of unsupervised learniing in cyber security are \cite{Alom2017}, where authors present deep unsupervised learning techniques during intrusion detection.
+
+
+% We can expose a lot of information from malware analysis result (\ref{chap:analysis}). It could be used to explain directly what is going on during the run, every single step. Sandbox itself is often labelling malware samples. For instance we can observe \emph{malware family} estimation or some kind of \emph{signature}. According to that we are able to categorize malware samples and determine the danger to the target computer. These times we can see many applications of machine learning in this field, e. g. \ \cite{Yen2019}. Its automation may lead to new knowledge and might improve zero-day detection and other situations where deterministic behavioral feature detection might be insufficient. One of our goals is to perform such techniques on the data we collect. At first in this chapter we will build theoretical knowledge for its later application.
+
+
 % Graphical models
 %     Simon
 

@@ -104,7 +104,7 @@ Strings are placed in malware file encoded by \emph{ASCII} or another encoding. 
 
 However, attackers know all these detection techniques, including string extraction. That leads us to the file \emph{obfuscation} which is a technique used by an attacker to secure strings from extraction. This is often done by \emph{packers} using compression or by \emph{cryptors} by encryption. Even such techniques are detectable and vincible using specialized tools.
 
-There are even other techniques, e.g. \ \emph{PE header inspection} where we can see imported and exported libraries and functions \cite{Sikorski2012}. Another example is \emphy{Yara rules}, which allow researchers to create indication rules based on textual and binary information of malware sample \cite{KA2018}.
+There are even other techniques, e.g. \ \emph{PE header inspection} where we can see imported and exported libraries and functions \cite{Sikorski2012}. Another example is \emph{Yara rules}, which allow researchers to create indication rules based on textual and binary information of malware sample \cite{KA2018}.
 
 \subsubsection{Code analysis}
 The techniques listed above are picking specific features, and by connecting them, we might get a useful summary for an initial hypothesis. 
@@ -187,7 +187,7 @@ The sandbox consists internally of several components. They can be seen in figur
 This component runs on \emph{host} machine. It checks configured limits and proper setup. It manages machinery modules and starts the new task if there is a pending \emph{guest}. A new task is forwarded to \emph{analysis manager}.
 
 \subsubsection*{Analysis manager}
-\emph{Analysis manager} is responsible for the whole flow of a single task. It starts other modules which are part of the analysis and starts\stops machine through \emph{machinery modules}.
+\emph{Analysis manager} is responsible for the whole flow of a single task. It starts other modules which are part of the analysis and starts/stops machine through \emph{machinery modules}.
 
 \subsubsection*{Machinary modules}
 These modules are used by sandbox to manage virtual machines - start, stop, restore. They are initialized during sandbox startup. Recommended  software for virtual machine management in \emph{CAPEv2} is \emph{KVM}.
@@ -231,11 +231,11 @@ A Signatures might isolate some unique behaviour, identify some malware family o
 \subsection{Analysis}
 A target file upload might be performed using CLI utility of \emph{CAPEv2}, using the Web interface,  Python API or REST API.
 
-If a file is uploaded \emph{CAPEv2} saves it to the database. Multiple options could be configured for each analysis - used package, machine to run on, network setup, timeout, priority, and multiple additional options. We can run only network analysis or only static analysis. The \emph{scheduler} keeps track of pending tasks and runs them. The process of execution is managed by \emph{analysis manager}. In case of running a new analysis, \emph{analysis manager} informs the \emph{result server}. When the analysis is running, the \emph\{analyzer, monitor}, configuration and the sample file are uploaded to the \emph{guest} using \emph{agent}. \emph{Agent} starts the \emph{analyzer}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passes, \emph{analysis manager} stops the machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to the database \cite{CuckooSa10:online}. The whole flow can be seen in figure \ref{fig:capeflow}.
+If a file is uploaded \emph{CAPEv2} saves it to the database. Multiple options could be configured for each analysis - used package, machine to run on, network setup, timeout, priority, and multiple additional options. We can run only network analysis or only static analysis. The \emph{scheduler} keeps track of pending tasks and runs them. The process of execution is managed by \emph{analysis manager}. In case of running a new analysis, \emph{analysis manager} informs the \emph{result server}. When the analysis is running, the \emph{analyzer, monitor}, configuration and the sample file are uploaded to the \emph{guest} using \emph{agent}. \emph{Agent} starts the \emph{analyzer}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passes, \emph{analysis manager} stops the machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in chosen formats and saved to the database \cite{CuckooSa10:online}. The whole flow can be seen in figure \ref{fig:capeflow}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=8cm]{figures/flow.svg}
+  \includegraphics[width=8cm]{figures/flow.png}
   \caption{\emph{CAPEv2} components and analysis flow (source \cite{CuckooSa10:online})}
   \label{fig:capeflow}
 \end{figure}
