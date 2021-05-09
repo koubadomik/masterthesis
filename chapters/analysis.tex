@@ -296,7 +296,7 @@ JSON (JavaScript Object Notation) is a most frequently used lightweight data-int
 
 Usually, a single \emph{.json} file contains one object, but there are also cases where a list of objects is presented.
 
-The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigabytes. Complete schema (list of attributes) of report is in \ref{tab:report}. In the thesis attachment, we can see an example of a real log (\ref{app:attach})
+The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigabytes. Complete schema (list of attributes) of report is in \ref{tab:report}. In the thesis attachment, we can see an example of a real log (\ref{app:attach}). 
 
 \begin{table}[h]
   \centering
@@ -316,7 +316,7 @@ The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigaby
       \midrule
       CAPE & extracted payload info \\
       \midrule
-      behavior & processes, mutexes, commands and other behavioural attributes \\
+      behaviour & processes, mutexes, commands and other behavioural attributes \\
       \midrule
       deduplicated shots & screenshot summary \\
       \midrule
@@ -337,6 +337,29 @@ The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigaby
   \end{tabular}
   \label{tab:report}
 \end{table}
+
+In the modelling part, we will concentrate on \emph{signatures} and the \emph{behaviour} parts (its structure is described in figure \ref{tab:behavioural}).
+
+\begin{table}[h]
+    \centering
+    \caption{Behaviour parts of \emph{report.json}}
+    \begin{tabular}{p{2cm}p{12cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Meaning} \\
+        \midrule
+        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
+        \midrule
+        process tree & structure of process execution\\
+        \midrule
+        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
+        \midrule
+        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:behavioral}
+\end{table}
+
 
 \section{Prior arts}
 Below we list relevant publications where authors applied machine learning algorithm using the data produced by malware analysis tools.
