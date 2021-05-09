@@ -94,24 +94,22 @@ Our intention is in \emph{classification}, we focus on it further.
 
 
 \section{Loss functions for classification}
-The learning part of the whole process consists mainly of function optimization. Our criterion is chosen Loss function. The way of optimizing it may vary for example in case of neural networks we use the output of loss function to be able to update the parameters of the model \cite{JasonBrownlee2020}.
-
-We mention two common functions which are often involved in classification tasks.
+The learning process builds on function optimization. Our criterion is chosen Loss function. Every loss function has its interpretation, and we choose it based on our goals (domain specifically). We mention two standard functions which are often involved in classification tasks.
 
 \subsection{Multinomial logistic loss (multiclass cross entropy)} 
-In this situation we assume that the output of our model are conditional probabilites  $x \in \mathcal{X}$  $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and for each of $n$ examples.
+We assume that the output of our model are conditional probabilites  $x \in \mathcal{X}$  $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and for each of $n$ examples.
 Multiclass cross entropy is defined in \ref{eq:crossent}. 
-
-We can see that the idea behind is that we are minimizing value representing average logarithm of probability of truth class (denoted by $c_i$) assigned by the model, across examples. We want the probability to be the maximum attaineable and $\log$ of value between $0$ and $1$ is negative larger as we are getting closer to $0$. 
 
 \begin{equation} \label{eq:crossent}
     \ell(\theta)=-\frac{1}{n}\sum_{i=1}^{n}\sum_{c \in \mathcal{C}}\mathbbm{1}\{c==c_i\}\log p(c|x;\theta)
 \end{equation}
 
-In multilabel case we use variant of this function sometimes called binary cross entropy. %may mention formula, nice-to-have
+Its idea is that we are minimizing value representing the average logarithm of the probability of true class (denoted by $c_i$) across examples, correctly predicted by the model. We want the probability to be the maximum attainable, and $\log$ of value between $0$ and $1$ is negative and larger as we are getting closer to $0$. 
+
+%In multilabel case, we use a variant of this function, sometimes called binary cross-entropy. %may mention formula, nice-to-have
 
 \subsection{Hinge loss}
-This loss was introduced in \cite{Gentile1998} and its main usage we can find in Support vector machine algorithm. The formula could be seen in \ref{eq:hinge}, where $y=\pm1$ denotes truth label and $\hat{y}$ classifier score.
+This loss was introduced in \cite{Gentile1998} and its primary usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \ref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
 
 \begin{equation} \label{eq:hinge}
     \ell(y)=\max(0,1-\hat{y}\cdot y)
