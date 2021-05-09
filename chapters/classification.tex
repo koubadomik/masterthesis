@@ -116,20 +116,20 @@ This loss was introduced in \cite{Gentile1998} and its primary usage we can find
 \end{equation}
 
 \section{Model Evaluation}
-Based on what we are solving and what we want to compare to we have to choose proper metrics to evaluate our classifier. Majority of those techniques does not depend on type of model we have. The classifier itself is just blackbox which we are evaluating based on classificcation results.
-When we defined learning we also mentioned that learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics which we described further have to be connected strictly with the context. By context we mean on which data it is evaluated e.g. \ accuracy on training set is absolutely different from accuracy on testing set. 
-% \todo{reference bias X variance tradeoff in the beginning of this chapter}
-Evaluation metrics are most often used to measure the quality of the model given hyperparameters, compare to results of different algorithms, tuning early stopping to avoid overfitting or just to demonstrate the performance of the model.
+Based on our domain and goal, we have to choose proper classifier evaluation metrics. The majority of such techniques does not depend on the type of model we have. The classifier itself is just a black box, and we evaluate its predictions (score or discrete class).
+Learning is often divided into two or three phases - \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics have to be connected with the data, e.g. \ accuracy on the training set is different from accuracy on the testing set. 
+% \todo{reference bias X variance tradeoff at the beginning of this chapter}
+Evaluation metrics are most often used to measure the quality of the model. It also might be used to compare the result to another approach. If we tune the model's hyperparameters like the number of iterations or minibatch size, we often monitor accuracy on the validation set. Further, we list a couple of possibilities for classification model evaluation.
 
-\paragraph{Loss function}
-As we defined earlier loss function is the objective with its own meaning and possible interpretation. Loss function value is often monitored directly during the learning process.
+\subsection{Loss function}
+The loss function is the objective with its meaning and possible interpretation. Its value is often monitored directly during the learning process. We might observe loss function value difference between the training set and the validation set as a possible overfitting indicator.
 
 \paragraph{Confusion matrix}
-Most significant metrics are derived from very straight-forward concept of \emph{Confusion matrix}. For our convenience we define confusion matrix for binary classifier. Its generalization is obvious. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example we can introduce classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and oposite examples are called negative.
+The most significant metrics are derived from the concept of \emph{Confusion matrix} (table \ref{tab:confmatrix}. For our convenience, we define a confusion matrix for a binary classifier. Its generalization is just larger, but the idea is the same. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example, we can introduce the classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and opposite examples are negative.
 
 \begin{table}[h]
     \centering
-    \caption{Confusion matrix}
+    \caption{Confusion matrix for binary classifier}
         \begin{tabular}{l|l|c|c|}
         \multicolumn{2}{c}{}&\multicolumn{2}{c}{Ground truth}\\
         \cline{3-4}
@@ -143,7 +143,7 @@ Most significant metrics are derived from very straight-forward concept of \emph
     \label{tab:confmatrix}
   \end{table}
 
-Before deriving basic metrics we have to emphasize that all of them have to be trated in particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of metrics that relevant for our use is in \ref{tab:metrics} \todo{might be in appendix}.
+Before deriving basic metrics, we have to emphasize that all of them have to be treated in a particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of some metrics is in \ref{tab:metrics} \todo{might be in appendix}.
 
 \begin{table}[h]
     \centering
@@ -156,46 +156,44 @@ Before deriving basic metrics we have to emphasize that all of them have to be t
       \textbf{Interpretation}
       \\
       \midrule
-      accuracy & $\frac{TP+TN}{TP+TN+FN+FP}$ & shows the ratio of correctly classified examples to all examples (imbalanced dataset may bias its interpretation)\\
+      accuracy & $\frac{TP+TN}{TP+TN+FN+FP}$ & the ratio of correctly classified examples to all examples (imbalanced dataset may bias its interpretation)\\
       \midrule
-      false positive rate ($FPR$) & $\frac{FP}{FP+TN}$ & shows the ratio of misclassified positive examples to all examples classified positive \\
+      false positive rate ($FPR$) & $\frac{FP}{FP+TN}$ & the ratio of misclassified positive examples to all examples classified positive \\
       \midrule
-      false negative rate ($FNR$) & $\frac{FN}{FN+TP}$ &  shows the ratio of misclassified negative examples to all examples classified negative \\
+      false negative rate ($FNR$) & $\frac{FN}{FN+TP}$ &  the ratio of misclassified negative examples to all examples classified negative \\
       \midrule
-      true positive rate or recall ($TPR$) & $\frac{TP}{TP+FN}$ & shows the ratio of truly classified positive examples to all positive examples  \\
+      true positive rate or recall ($TPR$) & $\frac{TP}{TP+FN}$ & the ratio of truly classified positive examples to all positive examples  \\
       \midrule
-      true negative rate ($TNR$) & $\frac{TN}{TN+FP}$ & shows the ratio of truly classified negative examples to all negative examples \\
+      true negative rate ($TNR$) & $\frac{TN}{TN+FP}$ & the ratio of truly classified negative examples to all negative examples \\
       \midrule
-      precision & $\frac{TP}{TP+FP}$ & shows the ratio of truly classified positive examples to all examples classified as positive \\
+      precision & $\frac{TP}{TP+FP}$ & the ratio of truly classified positive examples to all examples classified as positive \\
       \midrule
-      balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes (imbalanced dataset is less risky here) \\
+      balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes, better for imbalanced datasets \\
       \midrule
-      f1 score & $2 \cdot \frac{precision \dot recall}{precision+recall}$ & good measure if we seek for trade-of between precision and recall (we are not able to tweak both simultaneously), we are able to compare classifiers using that\\
+      f1 score & $2 \cdot \frac{precision \dot recall}{precision+recall}$ & good measure if we seek for trade-of between precision and recall, we migh compare more classifiers using it\\
       \bottomrule
     \end{tabular}
     \end{minipage}
     \label{tab:metrics}
   \end{table}
 
-Very often we can see also curves which are plotted along reported metrics. These plots fits in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data point for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on \emph{y-axis}.
+Very often we can see also curves which are plotted along reported metrics. These plots fit in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data points for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on \emph{y-axis}.
 
-There are many differences and similarities of these two curves but the crucial one is that the \emph{PRC} is better in case of having imbalanced dataset where we have more negative examples and we especially care about positive examples and their predictions. Sometimes we can compensate this even in case of \emph{ROC} curve by setting \emph{logarithm scale} on x-axis.
+There are many differences and similarities between these two curves. The \emph{PRC} is better in the case of an imbalanced dataset where we have a larger number of negative examples, and we especially care about positive examples and their predictions. We can compensate the imbalance even in the case of \emph{ROC} curve by setting \emph{logarithm scale} on the x-axis.
 
-If we need to have single number as performance metric including multiple tresholds we can use \emph{area under the ROC or PR curve}. However it usage have to be careful and strictly in given context.
+If we need to have a single number as a performance metric, including multiple thresholds, we can use the area under the \emph{ROC} or \emph{PR} curve. Usage of that metric has to be careful and strictly related to a given context.
 
-\paragraph{In Cyber Security}
-The main point which we are walking around is the cybersecurity. Some metrics are more important than other in this field. It is crutial to think about domain speciific facts choosing appropriate metric to measure our models's performance.
+\subsection{In Cyber Security}
+Some metrics are more critical than others in cybersecurity. It is crucial to think about domain-specific facts choosing appropriate metric to measure our model's performance.
 
-For example \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. But in general we do not have balanced datasets (same number of positive and negative examples). So the bias we are facing is that if in the dataset consists of 80~\% of positive example then sily classifier classifying only positive class has $accuracy=0.8$. This risk shares all domains but in cyber security we really often face unbalanced datasets. For instance in this article \cite{Hernandez-Callejo2019} we can see usage of \emph{geometrical mean} or in general we can use even \emph{balanced accuracy} to cover even dataset balance or just join negative example into the metric calculation.
+For example, \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. However, a class imbalance is one of the challenges in cybersecurity. If the dataset consists of 80~\% of positive examples, then a classifier predicting only positive class has $accuracy=0.8$. In \cite{Hernandez-Callejo2019}, we can see the usage of \emph{geometrical mean} to deal with that issue. We can also use \emph{balanced accuracy} to cover the dataset's imbalance in the metric calculation.
 
-During Intrusion Detection in cyber security \emph{False negative} examples can be potential security risk for target subject (person, company, state...) so it is often priority number one. On the other hand we \emph{False positive} means false alarm and time of people and of course their trust \cite{owaspintrusion}. So in intrusion detection we have to find optimal point where the detection is useful regarding false negatives but not detecting to many false positives because our solution will not be financialy beneficial - false alarms.
+During Intrusion Detection in cybersecurity \emph{False negative} examples can be a potential security risk for the target subject (person, company, state\dots), it is often priority number one. On the other hand,  \emph{False positive} means false alarm, which costs employee time and their trust in the system \cite{owaspintrusion}. The frequency of malware creation and distribution is large, so even a relatively low false-positive rate can cause the security team to solve something harmless instead of a real risk \cite{Apruzzese2018}. In malware detection, that could also be reinforced by the fact that the protection is just too aggressive. Such results can lead us to recurring expenses /cite{Kubovic2017}. We have to find an optimal point where the model predicts attacks successfully, but still with a low number of false alarms.
 
-Frequency of malware creation and distribution is really high so even quite small false positive rate can cause that the security team is solving something harmless instead of real risk \cite{Apruzzese2018}. In malware detection this could be also reinforced by the fact that the protection is just too aggresive. Such results can lead us into systematic expenses. Answer is again finding tradeoff and combining solutions.\cite{Kubovic2017}
-
-As result, further in this thesis we will work with imbalanced datasets where we have more negative examples. We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC curve with logarithm scale on x-axis}, \emph{PR curve}.
+In the thesis, we will work with imbalanced datasets (more negative examples). We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC} curve with logarithm scale on x-axis, \emph{PR curve}.
 
 \section{Neural Networks}
-In the section about models we refered to different approaches. One specific we would like to discuss more copmrehensively - neural nets. The reason is that our method is building on top of this approach so we want to state the formalism for the rest of the thesis.
+The model which our method build on is the\emph{neural net}. That is why we want to describe it more comprehensively than other models.
 \begin{figure}
     \centering
     \begin{neuralnetwork}[height=4]
@@ -212,32 +210,15 @@ In the section about models we refered to different approaches. One specific we 
     \label{fig:neuralnet}
 \end{figure}
 
-Neural net is discriminative model which is based on \emph{Empirical Risk Minimization} (mention earlier). It is a composition of simple linear or non-linear functions (\emph{neurons}) which are parametrized. Specific neural network architecture is defined by used functions and their count (functions are organized into layers). The architecture implies $\mathcal{H}$ a hypothesis space. Example of general neural net could be seen in \ref{fig:neuralnet}. \todo{describe a little more the picture and maybe even change it}
+A neural net is a discriminative model which is based on \emph{Empirical Risk Minimization}. It is a composition of linear or non-linear functions (\emph{neurons}) which might be parametrized. Specific neural network architecture is defined by used functions and dimensions of their input and output. Functions, their input and output are often demonstrated as layers of a neural net. The architecture implies $\mathcal{H}$ a hypothesis space. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A multilayer perceptron might realize hidden layers with a non-linear activation function. The output layer represents a predicted state. Many functions can be used in a neural net, e.g. / before the output layer is often softmax or sigmoid function to normalize the input into a probability distribution (score). Layers might have parameters, e.g. weight and biases.
 
-The overall goal is to optimize $\ell$ with respect to the parameters of the net. For this task is most often used \emph{gradient descent} optimization technique.
+The overall goal is to optimize $\ell$ with respect to the parameters of the net. Usually, we use \emph{gradient descent} optimization technique.
 
-Usage of the \emph{gradient descent} puts minimal demands on the data we are using which makes this model so popular. We also do not insist on strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions we are using is that they have to be differentiable. The price we are paying is that the optimization guarantees only stationary point ending which could be a \emph{local minimum} or worse a \emph{saddle point}. But applications lead us to the conclusion that in right hands this model may perform really well.
+Usage of the \emph{gradient descent} puts no extra demands on the data we are using. We also do not insist on the strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions is that they have to be differentiable with respect to their inputs and parameters. \emph{Gradient descent} guarantees stationary point convergence, which could be a \emph{global/local minimum} or a \emph{saddle point}. However, applications lead us to conclude that this model may perform well in the right hands.
 
-For the gradient computation is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. The main idea of this algorithm builds on computing derivatives of every function's outputs with respect to its input (functions have to differentiable). Then by applying the \emph{chain rule} we are able to compute how the parametrized layers (not all of them are) influence the loss function. Finally, we might converge to parameters which minimizes loss over training dataset. The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952} as this variant of the original optimization algorithm is feasible even in situation of huge datasets or online learning.
+For the optimization is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. This algorithm allows us effective computation of the derivative of $\ell$ with respect to all parameters of the network and their update. The main idea of this algorithm builds on computing derivatives of every function's output with respect to its input. Then by applying the \emph{chain rule}, we can propagate the information from previous layers (from backwards) and in each parametrized layer update parameters using. Finally, we might converge to parameters that minimize loss over the training dataset. 
 
-% Main advantage of this kind of model is that we do not have assume much about our data. This is main reason why neural nets are used very often nowadays.
-
-% Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. They do not guarantee global maxima as the function we are optimizing does not have to be convex
-% \todo{image}
-% - approach, notation
-% optimization theory, gradient descent, stochastic gradient descent, backprop
-% cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
-% Minibatches (random subsampling...), hyper parameters
-% regularization, standardization techniques and other related techniques
-%     Standardization meaning mean 0 variance 1 and normalization meaning min max scaling
-% types - https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf
-
-% Loss functions and nets used for classification - We can use various, in our case we used logit cross entropy described above. We use softmax as penultimate layer
-
-% https://www.deeplearningbook.org/contents/ml.html - \cite{GoodBengCour16}
-% http://neuralnetworksanddeeplearning.com/chap1.html - \cite{Nielsen2018}
-
-
+The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952}. This variant of the \emph{gradient descent} algorithm is usable even in huge datasets or online learning. Usually, we divide the original training dataset into subsets (we call them \emph{batches} or \emph{minibatches}), and we use them to compute the gradient rather than the whole dataset. That is done for a specified number of iterations. \emph{Batch} is usually randomly subsampled from the training set. The \emph{batch} size and the number of iteration are hyperparameters of the neural net.
 
 \section{Hierarchical structured data classification}
 Real world use cases provide often more complex datasets than just fixed dimension matrices or images. As we mentioned malware analysis data are often stored as JSON files and modelling of such data is our goal. Those files could be formally seen as tree-structured inputs (more generally graphs). In following section we describe two very simple approaches of such data classification and two more complex.
@@ -268,6 +249,74 @@ The natural structure of \emph{JSON} document is a tree which less general examp
 Creation of this framework was motivated by \cite{Pevny2016a}. We will describe it in the next chapter and also its usage during \emph{JSON} modelling.
 
 Another example of structured data modelling motivated in reccurent and recursive neural network is in \cite{Woof2020}. More generally, graph structured data modelling is part of \cite{Henaff2015} or \cite{Borgwardt2005}.
+
+
+\section{\emph{CAPEv2} log}
+There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
+
+\section{Features and states for classification}
+%this has to be put differently or part of it should be moved to classification chapter - at least the modelling reasoning, detail of output should stay here (the table)
+Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
+
+\subsection{States}
+We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
+
+From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
+
+Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
+
+\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
+
+\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
+
+\subsection{Features}
+Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
+
+\begin{table}[h]
+    \centering
+    \caption{Parts of \emph{report.json} behavior}
+    \begin{tabular}{p{2cm}p{12cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Meaning} \\
+        \midrule
+        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
+        \midrule
+        process tree & structure of process execution\\
+        \midrule
+        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
+        \midrule
+        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:behavioral}
+\end{table}
+
+We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
+
+Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
+
+The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
+
+
+
+
+% Main advantage of this kind of model is that we do not have assume much about our data. This is main reason why neural nets are used very often nowadays.
+
+% Neural nets are machine learning phenomenon mainly because its robustness and not so demanding data assumptions. They do not guarantee global maxima as the function we are optimizing does not have to be convex
+% \todo{image}
+% - approach, notation
+% optimization theory, gradient descent, stochastic gradient descent, backprop
+% cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
+% Minibatches (random subsampling...), hyper parameters
+% regularization, standardization techniques and other related techniques
+%     Standardization meaning mean 0 variance 1 and normalization meaning min max scaling
+% types - https://www.ccdcoe.org/uploads/2018/10/Art-19-On-the-Effectiveness-of-Machine-and-Deep-Learning-for-Cyber-Security.pdf
+
+% Loss functions and nets used for classification - We can use various, in our case we used logit cross entropy described above. We use softmax as penultimate layer
+
+% https://www.deeplearningbook.org/contents/ml.html - \cite{GoodBengCour16}
+% http://neuralnetworksanddeeplearning.com/chap1.html - \cite{Nielsen2018}
 
 % \todo{define graph}
 % Both methods are able to generally operate on node-level, edge-level, and graph-level prediction tasks. We aim at graph-level classification (class is predicted for each graph).
@@ -329,55 +378,6 @@ Another example of structured data modelling motivated in reccurent and recursiv
 % % family classification - https://arxiv.org/pdf/1912.11249v1.pdf
 
 % % Recurrent networks - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7178304
-
-
-
-
-There are various experiments involving machine learning approaches with analysis result input. Based on the fact that many of them use \emph{report.json} as primary input \cite{Darshan2016, Dinh2019a, Kim2020, Sethi2019}, we would like to investigate this report firstly. This report includes everything that the sandbox can provide. It also covers most of the storage on the disk, so included information is very comprehensive (see \ref{tab:report}). We are unsure which parts are suitable for our case, so the report is convenient. Compared to the mentioned authors, we have a model that accepts JSON documents.
-
-\section{Features and states for classification}
-%this has to be put differently or part of it should be moved to classification chapter - at least the modelling reasoning, detail of output should stay here (the table)
-Our goal is to train classifier so we need to find appropriate $\mathcal{X}, \mathcal{Y}$ (\emph{features} and \emph{states} as defined in \ref{chap:classification}). Following our statements, we find them in \emph{report.json}. More than one possibilities are stated, we will train models on some of the input data combination/s  based on further conditions.
-
-\subsection{States}
-We know that our samples are malware because of their source, as we mentioned in previous chapter \ref{chap:infrastructure}. So it does not make sense to try \emph{malware X cleanware} classification. The classification classes have to be related to the malware itself, its attributes and behavioural signs.
-
-From the \emph{report.json} we extracted three candidates \emph{malware family}, \emph{signatures}, \emph{malscore}. All those attributes we can see as dependent variables where independent are some behavioural features or a combination of behavioural and static features. 
-
-Assigning \emph{malware family} is a very complex task \cite{Gennari2011}, we often involve the behaviour of the sample and its similarity to other samples. The usual process involves decomposing this task to deterministic detection of specific behaviour and classifying according to their combination. The potential model could attempt to generalise the family assignment process (like in \cite{Rieck2008}) and point out features that could be used in a more complex way than usual deterministic ones. Straightforward thinking about this task is that it is more a clustering task - we need to find families and use them to categorise old, and new samples \cite{Pitolli2017}. Specific malware families are mentioned in chapter \ref{chap:analysis}
-
-\emph{Malware score} has multiple definitions in many papers (\cite{Walker2019, Kumar2014}), and that is a crucial problem of these metrics. Of course, in the CAPEv2 sandbox, we can investigate its implementation, but the future classifier will be dependent on it. On the other hand, potential classifiers could assign scores based on more complex decisions. We could observe where it is against the original human-defined assignment. Nevertheless, this is quite risky because even the original \emph{malscore} assignment is a complex decision consisting of a series of steps. Examining it like a black box should not be the first thing which we want to use. We instead want to use its causes.
-
-\emph{Signatures} most often tells us what sandbox observed, e.g. \ special kind of behaviour, static features\dots We can see them as local detectors which are checking particular feature in the malware analysis result. The potential model could generalise their assignment or even investigate other malicious signs that are often connected with some signatures - find new signatures or existing behaviour correlating with the original signature assignment.
-
-\subsection{Features}
-Following the assumption that our state candidates are related to the behaviour of malware sample, we choose some subset of the original \emph{report.json} which is related to that. We omit static features, state candidates and everything not related to behaviour. Two things remain, network and behaviour part. Our dataset does not have relevant network traffic due to the data collection details mentioned above. We take into consideration only the behaviour part of the original report. Its structure can be seen in \ref{tab:behavioral} and its example in attachment (\ref{app:attach}).
-
-\begin{table}[h]
-    \centering
-    \caption{Parts of \emph{report.json} behavior}
-    \begin{tabular}{p{2cm}p{12cm}} 
-        \toprule
-        \textbf{Entry} &
-        \textbf{Meaning} \\
-        \midrule
-        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
-        \midrule
-        process tree & structure of process execution\\
-        \midrule
-        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
-        \midrule
-        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
-        \bottomrule
-    \end{tabular}
-    \label{tab:behavioral}
-\end{table}
-
-We can use it in one piece or just its parts. We have to be aware of a potential bias like timestamps which are in enhanced and processes parts. We would have to involve some preprocessing in case of using some of them as features.
-
-Technologies used for data pruning and other parts of preprocessing are listed in \ref{app:technologies}. Code is in attachment (\ref{app:attach}).
-
-The goal of this chapter was to describe potential states and features. We know that to train the model, we concentrate on specific parts of \emph{report.json}. We are moving to the model itself.
 
 
 
