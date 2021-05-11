@@ -10,9 +10,9 @@ The motivation example in the original paper \cite{Dietterich1997} is formulated
 
 In the figure \ref{fig:mill} we can see basic idea behind \emph{Mill} problem. The only significant difference regarding the previous chapter is the definition of an \emph{Example}. 
 \paragraph{Example}
-We assume a \emph{supervised} learning setting. Our examples consist of two parts - \emph{bag} $$b$$ and \emph{state} $$y$$. A state was defined earlier and its meaning is the same, but it is related to a bag and sometimes called \emph{bag label}. \emph{Bag} $$b$$ is a set of feature vectors $$x_i\in\mathcal{X}$$, these vectors are called \emph{instances} and usually lives in the standard feature space $$\mathbb{R}^{d}$$. The cardinality of each bag is $$|b| \in \mathbb{N}$$ and can be even zero. We assume $$b \in \mathcal{B}$$ which denotes a \emph{bag space}. \emph{Bag space} might also be seen as $$\mathcal{B} = \mathrm{Fin}(\mathcal{X})$$ which denotes all finite subsets of $$\mathcal{X}$$. We can see a standard learning situation described in chapter \ref{chap:classification} corresponds to a \emph{Mill} problem where holds $$|b| = 1$$.
+We assume a \emph{supervised} learning setting. Our examples consist of two parts - \emph{bag} $b$ and \emph{state} $y$. A state was defined earlier and its meaning is the same, but it is related to a bag and sometimes called \emph{bag label}. \emph{Bag} $b$ is a set of feature vectors $x_i\in\mathcal{X}$, these vectors are called \emph{instances} and usually lives in the standard feature space $\mathbb{R}^{d}$. The cardinality of each bag is $|b| \in \mathbb{N}$ and can be even zero. We assume $b \in \mathcal{B}$ which denotes a \emph{bag space}. \emph{Bag space} might also be seen as $\mathcal{B} = \mathrm{Fin}(\mathcal{X})$ which denotes all finite subsets of $\mathcal{X}$. We can see a standard learning situation described in chapter \ref{chap:classification} corresponds to a \emph{Mill} problem where holds $|b| = 1$.
 
-For the thesis we assume \emph{Mill} classification problem so $$|\mathcal{Y}|$$ is finite (typically binary classification $$\mathcal{Y} \in \{positive, negative\}$$). 
+For the thesis we assume \emph{Mill} classification problem so $|\mathcal{Y}|$ is finite (typically binary classification $\mathcal{Y} \in \{positive, negative\}$). 
 % Some researches and even the original paper has one assumption (sometimes called \emph{Standard assumption}). This assumption is about underlying \emph{instance labels} and their relation to \emph{bag labels}. This assumptions is often relaxed \cite{Xu2003} and that is also our case.
 
 \begin{figure}
@@ -229,32 +229,37 @@ A product model consists of $l$ submodels and one more final mapping $f_p$. Each
 
 As all functions in the tree-structured model are at least piecewise differentiable with respect to all parameters, the backpropagation algorithm is adopted in the overall model optimization. Its adaptation we can find in \cite{Mandlik2020}.
 
-\todo{maybe add image on page 27 in mandlik...}
+% \todo{maybe add image on page 27 in mandlik...}
 
 % schema and matching schema, valid sample
 % Hmill models - try to describe it more briefly and connect it to the original idea by Pevny - do not use many images from mandlik but the original iris and the last one to demonstrate the relation to Pevny, or my simplified version
 
 \subsection{Modelling JSON documents using HMill framework}
-Following our goal to model the collected data using \emph{HMill} model we would like to focus specific use case which is modelling \emph{JSON} documents. Original publication \cite{Mandlik2020} contains even such approach and even experimental results for \emph{IoT device identification} use case. In previous chapter we described several approaches for such data classification, now we describe how the \emph{HMill} framework might be used.
+In the previous chapter, we described several approaches for \emph{JSON} document modelling, here we move on with how the \emph{HMill} framework deals with this problem. The original publication \cite{Mandlik2020} contains even such an approach. The authors presented experimental results for the \emph{IoT device identification} use case, where the data were \emph{JSON} documents.
 
-Assuming that we have a set of \emph{JSON} documents as dataset $\mathcal{T}$ we require one condition to hold. All documents in our dataset have to follow same structure (same schema) which means following:
+Assuming that we have a set of \emph{JSON} documents as dataset $\mathcal{T}$ we require one condition to hold. All documents in our dataset have to follow the same structure (same schema), which means the following:
 \begin{itemize}
     \item Given a fixed position in the tree, we know which keys can be found in this particular position in all documents $d\in\mathcal{T}$.
-    \item Values of the same key at the same position in all documents $d\in\mathcal{T}$ must follow same structure.
-    \item Arrays at the same position in all documents $d\in\mathcal{T}$ must be empty or contain same structured objects.
+    \item Values of the same key at the same position in all documents $d\in\mathcal{T}$ must follow the same structure.
+    \item Arrays at the same position in all documents $d\in\mathcal{T}$ must be empty or contain the same structured objects.
 \end{itemize}
 
-Note that the document can follow same schema even if it is missing some keys. The condition of matching schema might seem limiting but it is very common setup that documents used for single use case follow the same schema. This is true especially for machine generated documents.
+Note that a document can follow the same schema even if it is missing some keys. The matching schema might seem too restrictive, but it is widespread that documents used for a single use case follow the same schema. That is true, especially for machine-generated documents.
 
-\emph{JSON} to \emph{HMill} sample translation is defined on three basic abstract node types. Each leaf of the tree (JSON primitive data types) are transformed into array node $an(h(\dots))$, $h$ denotes mapping to $\mathbb{R}^n$. Mapping $h$ is the same for all leaves at the same position across the dataset and it might be different for different positions. Product data is used to model \emph{JSON} objects. Because product node accepts an ordered set, the keys in the \emph{JSON} object are ordered. Finally, \emph{JSON} arrays are modelled as bag nodes.
+The \emph{JSON} to \emph{HMill} sample translation is defined on three basic abstract node types. Each leaf of the tree (\emph{JSON} primitive data type) is transformed into an array data node $an(h(\dots))$, $h$ denotes mapping to $\mathbb{R}^n$. The mapping $h$ is identical for all leaves at the same position in the tree across the dataset, and it might be different for different positions. The product data node is used to model \emph{JSON} object. Because the product node accepts an ordered set, the keys in the \emph{JSON} object have to be ordered. Finally, \emph{JSON} arrays are modelled as bag data nodes. The translation is demonstrated in the figure \ref{fig:jsonhmill}.
 
-\todo{image of json document in our use case, but the idea is the same like in Mandlik fig 5.4}
+%\todo{image of JSON document I should redraw}
 
-Authors of framework mentioned that the model is taking into game even the structure which exceeds the \emph{flattening} approach. Compared to the rule-based approaches, the framework is able to learn more complex hypotheses because chosen aggregation can substitute various hand-defined rules. The \emph{HMill} framework was used in an IoT device identification use case \cite{Mandlik2020} which was a dataset of \emph{JSON} documents in multinomial classification modelling. Reported accuracy was $96$~\%. Authors experimented even in different setup for general graph inference to demonstrate the generality of \emph{HMill} framework.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{figures/translation.png}
+    \caption{Translation of \emph{JSON} document in \emph{HMill} data nodes (source \cite{Mandlik2020})}
+    \label{fig:jsonhmill}
+\end{figure}
 
-The conclusion of this chapter and maybe the most significant conslusion for our work is that it is possible to use \emph{HMill framework} to classify tree-structured data e.g. \ \emph{JSON} documents. \citeauthor{Mandlik2020} presents convincing results (for example on \emph{device identification} example) and that is why this framework is directly in assignment of this thesis.
+The authors of the framework stated that the model is taking into the game even the structure which exceeds the \emph{flattening} approach. Compared to the rule-based approaches, the framework can learn more complex hypotheses because chosen aggregation can substitute various hand-defined rules. The \emph{HMill} framework was used in the IoT device identification use case \cite{Mandlik2020}, which was a dataset of \emph{JSON} documents modelled for multinomial classification. Reported accuracy is $96$~\%. Authors experimented even in different setup for a general graph inference to demonstrate the generality of the \emph{HMill} framework.
 
-Regardless of quite comprehensive theory which is covered in this part of the thesis, \emph{HMill} framework is still not everything. Our goal is quite cross-cutting and the model we are going to train we want also explain. What we mean by explanation we describe in next chapter.
+Regardless of a comprehensive theory covered in this part of the thesis, the \emph{HMill} framework is still not everything. Our goal is broad, and the model we are going to train, we want also explain. What we mean by an explanation we describe in the next chapter.
 
 %---------------------REMAINING-------------------------------------
 % \todo{I have to mention some citations the theory I built on top of Mandlik and Amores!}
