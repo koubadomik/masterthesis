@@ -112,7 +112,7 @@ In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document,
 \paragraph{Heuristic addition} sorts the elements in the set by heuristic ranking (see below) and adds elements to the subset starting from the largest ranking until the threshold is achieved.
 \paragraph{Random removal} might follow any of the previous methods. It starts with the initial subset, which has already achieved the threshold. It permutes all items in the subset and removes items from the beginning until the evaluation drops below the threshold. If it drops, lastly removed item is added back, and the algorithm continues with a new permutation.
 % \paragraph{Fine tuning}
-\subsection{Minimal subtree adoptation}
+\subsection{Minimal subtree adaptation}
 \paragraph{Flat search} performs subset selection on isolated nodes of the tree. The root is added to the explanation by default. After subset selection is made, all nodes which are not reachable from the root are removed from the explanation. That can be done because they do not impact classification based on the definition of the \emph{HMill} model tree structure.
 \paragraph{Level-by-leve search} performs subset selection on each level of the tree. On each level, it takes into account only nodes whose parents are in the explanation so far.
 
