@@ -100,6 +100,8 @@ The complete dataset has approximately $2,5$~\emph{TB} in compressed form. Extra
 
 Not all sandbox outputs described in \ref{chap:analysis} are presented in each analysis result. The configuration and other conditions determine it.
 
+After examining the histogram of seen signatures, we chose a subset based on their frequency in the training set. We prefered signatures that are implemented in Python for convenient investigation of the original cause. In the \ref{app:signatures}, we can see our candidates, their frequencies in the dataset and additional information, including even the groups described in \ref{chap: classification}.
+
 % The data in such domain are very biased. Sometimes we can see that malware can not be run under the conditions in a guest or is trying to use some \emph{.NET} library and if not found, it kills itself. The fact that we do not have an internet connection can make this bias stronger, so we have to count on it to decide what to use to train the model. We do not want to investigate network activities even if sometimes it contains something (malware attempts).
 
 

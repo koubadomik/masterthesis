@@ -1,45 +1,16 @@
 \chapter{Experimental results} \label{chap:results}
-In this chapter we cover results of \emph{hmill} and \emph{hmill Explainer} experiments, their setup, results and discussion. It is a final part of the thesis.
+In this chapter, we cover our experiments in \emph{HMill} modelling and \emph{HMill} explaining, their setup, results and discussion. As an input we have \emph{JSON} reports containing \emph{behaviour} subtree and \emph{signatures}.
 
-
-
-% \chapter{Modelling classifier} \label{chap:models}
-
-\todo{this reasoning have to be on another place}
-In this chapter, we present trained \emph{hmill} models and their results. Our goal is to demonstrate that it is possible to train such a model and later explain it. We do not aim to strictly perform a long sequence of experiments and compare to prior. Model is just part of our work.
-
-We do not model all variants of features and states mentioned in the previous chapter. We concentrate on at least one working model, and then we move on to model explaining experiments. From \emph{states} and \emph{features} in question we start with our top candidate - \emph{signatures} as states and \emph{behavior log} as features. 
-
-\section{Behaviour as feature vector}
-\todo{this should be on another place, here it should be clean, absordb it in previous chapter}
-After further look at the \emph{behavior} part of \emph{report.json} we start with only \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive, and we would not be able to train the model with the hardware resources we have. Those two should be sufficient for a comprehensive look at malware behaviour. If the model were still too complex to train under our conditions, we would also omit the \emph{enhanced part}. We would mainly lose the information about the order of events because the summary part lists only artefacts (API calls, commands\dots).
-
-\section{Signatures as states}
-Our reasoning about states is based on the fact that the signatures are usually assigned based on some atomic fact, for example, the presence of some API call in the log. Let us call this fact \emph{subject of signature}. It can be one or more patterns seen in the behavioural log. The implementation of signature is deterministically detecting this part and add the signature to the log. We can consider \emph{copies self} signature example. If a specific dropped file that corresponds to the currently analysed one is dropped, the signature is active, and we would find it in \emph{report.json}.
-
-If we choose features where the subjects are presented, we should be able to evaluate the model's explanation. By evaluation, we mean that we can examine the coincidence between the original subject and model explanation. Also, we want to see if the model can generalise the knowledge and maybe come up with some new explanation of particular signature - new better subject. It can also find parts that go with the particular signature's original subject - maybe another malicious behaviour.
-
-More complex labels like malware family or malware score we might explore later. We assume that signatures themselves often support the assignment of those, and it is better to explore the original cause of the whole chain.
-
-After examining the histogram of seen signature in our dataset, we choose a subset based on the frequency. We prefered signatures that are implemented in Python for convenient investigation of the original subject. In the \ref{app:signatures} we can see our candidates and their frequencies in the dataset.
-
-The next task is to investigate the implementation of a particular signature and try to create groups for further conclusion-making. \emph{Python} implementation of each signature processes the output of sandbox and generates boolean values signing that the subject of a particular signature is presented in sample behavioural log. The signature subject can be API calls, file, registry key, process, command, and even more complex. If the signature implementation returns \emph{True}, we observe instance of this signature in the \emph{signatures} part of \emph{report.json}. An example of such a signature item could be seen in \ref{app:signatures}. The most important aside from \emph{name} and \emph{description} is field \emph{data} which sometimes contains signature subject.
-
-We explored two types of grouping aspects. The first is the subject of a particular signature. The second is if we can see this subject in the behavioural log directly. For instance, if the signature implementation uses API calls, the API call list is directly in the log. If it uses the entropy of dropped files, it is not directly in the output. In \ref{app:signatures} we can see a simple example of implementation of \emph{antidebugsetunhandledexceptionfilter} signature, which is just checking the presence of a specific signature.
-More about particular signatures and identified categories could be found in \ref{app:signatures}. 
-
-We distinguish two groups based on the direct presence of the original subject in the feature vector. The reason why we categorise signatures in such a manner is that we would like to connect those categories with the model performance in further discussion. We expect that different categories might have different performance.
 
 \section{Model}
-The objective is to create a binary classifier that predicts the presence of a particular signature. Later, we can train even a multilabel classifier, assigning a set of signatures according to dynamic analysis. However, the binary classification, its performance and its explanations are the most important for us. 
-
-% Multilabel classifier could be seen as multioutput binary model, so if we are able to scale up the hardware resources and its usage using available techniques (multithreading) multilabel model should be easily deriveable from original simle binary classfier.
+described in classification chapter, maybe summarize
 
 Technology stack we used to train \emph{hmill} model is described in \ref{app:technologies}. Important is that we unsuccessfully experimented with multithreading in \emph{Julia} language for gradient computation. The resulting model was trained on one CPU, which a little bit shrank our possibilities.
 
 The first experiments are without reported results because the model was too huge to converge to some significant performance. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip one part of the feature vector - \emph{enhanced} part. So the resulting model is working with \emph{summary} part only. The tighter feature vector is an advantage for further training time. We still know that summary parts include compressed information aiming at (\emph{api calls, files, mutexes, registries, commands}).
 
-The original code of the model is in thesis attachment \ref{app:attach}. It is a standard binary classifier. What is not so ordinary is that the model is a function of the input data (typical for \emph{hmill}). Another important fact is that the \emph{hmill} framework \emph{API} is general, so it is not accepting JSON documents directly. For this purpose, we use \emph{JsonGrinder} library, which can accept an array of JSON documents and produce schema. The schema is then used to create \emph{hmill} structures from each JSON document. Example of a schema, implied extractor and \emph{hmill} model for our data is in attachment (\ref{app:attach}). In our case, each signature has its own training set and even its schema implied by training set examples.
+The original code of the model is in thesis attachment \ref{app:attach}.
+
 
 % \begin{algorithm}
 %   \caption{Hmill model training}\label{algo:hmillbinary}
@@ -145,10 +116,6 @@ Metrics which we are reporting in \ref{tab:models_res} are robust in the case of
 \end{table}
 
 \section{Discussion}
-Original signature implementation is deterministically examining the sandbox output and marking some behaviour as we stated above. The most significant difference between the signatures is if their subject (\emph{api call, file \dots}) is directly among our features or it is not. 
-
-Firstly, let us describe our expectations. Based on this categorisation, we assume that the performance of signatures in the first category is better than the one in the second. We could not be sure that the model would have something according to what it will generalise, but we know that it should consider the subject of the original signature in the first case.
-
 In the case of the first category of signatures, we observe quite consistent performance above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explaining. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its performance is better. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log, so that the assignment might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
 
 Despite some anomalies that we inspect in the next chapter, this signature group's performance is as we expected. 
@@ -176,15 +143,9 @@ Our models classify the presence of signatures. We defined \emph{signature subje
 \section{Explainer}
 We performed two explainig experiments using \emph{ExplainMill.jl} (described in \ref{app:technologies}). 
 
-Explainer code is in attachments (\ref{app:attach}). There is nothing extraordinary we used a similar setup as authors of the tool \cite{Pevny2020}. We extracted a couple of examples from the testing set in each run. We attempted to explain only positive examples, which were truly classified into positive class with confidence above the specified threshold. The confidence threshold we used is $0.99$ for the first run and $0.9$ for the second run. We decreed it by $0.1$ if no results were found in the data subset in both cases. We run the explaining process on each of chosen examples separately.
+Explainer code is in attachments (\ref{app:attach}). We used a similar setup as authors of the tool \cite{Pevny2020}. We extracted a couple of examples from the testing set in each run. We attempted to explain only positive examples, which were truly classified into positive class with confidence above the specified threshold. The confidence threshold we used is $0.99$ for the first run and $0.9$ for the second run. We decreed it by $0.1$ if no results were found in the data subset in both cases. We run the explaining process on each of chosen examples separately.
 
-The authors of the original paper concluded that the \emph{BanzHof values} method shows the best performance, and we followed this setup. We involve no clustering method and \emph{level by level heuristic addition random removal} pruning method (due to problems with the library version compatibility, we did not experiment with other clustering and pruning methods). \todo{Maybe I will add one more experiment with a clustered set of examples.}
-
-We received an explanation for each example as a subset of the original \emph{JSON} report. Usually, we have up to one hundred explanations, which we cannot assess in one piece. That is why we involved some additional aggregations. In our case, we merged all explanations for one signature into one \emph{JSON} file and for each entry computed its frequencies. We assume that the most general formulation of an explanation should be seen repeatedly. 
-
-Post-hoc, we decided to involve two more ideas. First, we counted the frequency of a particular key (name of the field in JSON file, e.g. \ \emph{read files, resolved apis}\dots) in explanations such that for each signature, we see how often a particular key is detected by explainer. We can compare the original signature subject with the most seen key if they coincide.
-
-The second idea is that we compute frequencies of entries seen across the different signature. We assume that in such a way, we could identify some bias that is caused by entries that we see in multiple explanations. Such case we should consider being a too general concept. 
+described in explaining, maybe summarize
 
 All the original outputs and additional aggregations are in attachments (\ref{app:attach}) - merged explanations are in \emph{merged} directory, frequencies of keys are in \emph{freq.json} and merged keys across signatures are in \emph{overall.json}. Parts of results we discuss below.
 
@@ -194,10 +155,6 @@ All the original outputs and additional aggregations are in attachments (\ref{ap
 The size of the original JSON file with only the behavioural part can be hundreds but even thousands of items (averaged \texttildelow~$3000$ but included even the signature part). Average size of explanation is $3-5$ entries (detail could be see in \ref{app:expl}). In case of low performance signatures like \emph{invalidauthenticodesignature} and \emph{packerentropy} we can see even more than $10$ in both runs.
 
 The number of explanations may vary because of the difference between confidence levels of models. In the second run, we attempted to normalize the number of explanations to be $100$ per signature, but we were not successful in some cases because, in a subsample was just not enough such samples.  In \ref{app:expl} we can see the number of explanations for both runs. The frequency of entry in explanations is every time related to the overall number of explanations.
-
-Our expectation regarding explanations is quite specific. Hopefully, we can find the original subject of signature in some cases and even something else which we can see as more general than the original subject. We know that low-performance models (below $70$~\% of balanced accuracy) explanations are not relevant due to low overall confidence, so we skip them in further discussion.
-
-We assume that the explanations will have very high entropy because of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, even if target files might be identical. There are experiments involving some data compression, but we did not use these tool. This problem we reference in the future work section. \todo{If we have time, we can add here the clustering experiment}
 
 We are discussing results after presenting them to expert and having the discussion. The results are often assumptions and hypotheses because we have to anticipate the risks mentioned in \ref{chap:explain}. Especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at observation description more than concluding.
 
