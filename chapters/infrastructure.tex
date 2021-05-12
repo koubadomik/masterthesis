@@ -1,69 +1,70 @@
 \chapter{Infrastucture and data collection} \label{chap:infrastructure}
-This chapter desribes realization of data collection process using \emph{CAPEv2} sandbox, problems we experienced and their solution. Theoretical background is in \ref{chap:analysis}. At the beginning we have data source of malware samples mentioned in the thesis introduction \url{https://bazaar.abuse.ch/}. The output of this task is dataset of dynamic malware analyses. It includes behavioral features and signatures, both input for our \emph{hmill} model.
+This chapter describes the realization of the data collection process using \emph{CAPEv2} sandbox. The sandbox is described in the chapter \ref{chap:analysis}, here we focus on the specific setup, problems we experienced and their solution. In the beginning, we have a data source of malware samples mentioned in the thesis introduction \url{https://bazaar.abuse.ch/}. The output of this task is a dataset of dynamic malware analyses. It includes behavioural features and signatures, both input for our \emph{HMill} model.
 
-Although this chapter is not so long as previous ones because not all troubles are expressible in written text we spent with this task the largest amount of time. All scripts and other outcomes are part of the attachment (\ref{app:attach}) and the most important tools are listed in \ref{app:stack}.
+Although this chapter is shorter than the previous ones, we spent the most significant time on this task. All scripts and other outcomes are part of the attachment (\ref{app:attach}), and the most important tools are listed in \ref{app:stack}.
 
 \section{Host machine}
-The host machine is where the sandbox environment and a virtualization software is running. We knew that analysis of one malware sample take up to five minutes and we would like to have as many samples as possible. That is why we wanted to create distributed run of several host machines. The whole process of host machine initialization is automated by bash script to be able to setup multiple machines. Usefull side effect of this is that the whole process might be reproduced.
+The host machine is where the sandbox environment and virtualization software is running. We know that an analysis of one malware sample takes up to five minutes, and we want to have as many samples as possible. That is why we want to run several distributed host machines. 
 
-The initilization consists of several steps:
+The whole process of a host machine initialization is automated to be able to set up multiple machines. The initialization consists of several steps:
 \begin{itemize}
     \item Install host operating system - recommended Ubuntu
     \item Enable SSH to be able to access remotely
     \item Enable basic security - firewall and supporting tools
-    \item Install virtualization software - recommended KVM Qemu
+    \item Install virtualization software - recommended KVM QEMU
     \item Copy virtual machine images to the host machine
-    \item Sandbox initialization
-    \item Data collection script initilization
+    \item Sandbox initialization and configuration
+    \item Data collection script initialization
 \end{itemize}
 
-To be able to run all steps of the script on multiple machines at once we used network orchestration tool Ansible. We also added some usual management functions - copy new configuration from server and clean the sandbox data.
+To run all steps on multiple machines at once, we used Ansible, a network orchestration tool. We also added some usual management functions - copy new configuration from the server and clean up the sandbox data.
 
-Hardware resources on host machines are 256GB SSD and 16GB RAM sufficient number of virtual machines per one host is four. We experimented with more but there was an overload which might lead to biased analysis results.
+Hardware resources on host machines are 256GB SSD and 16GB RAM, which means that a sufficient number of virtual machines per one host is four. We experimented with more, but there was an overload which might lead to biased analysis results.
 
-Automation of the whole process was accompanied by various issues. These issues were caused mainly by low experience. Sometimes poor documentation was involved. Especially the process of virtual machine images copying was connected with issues of automated snapshot take. Such process needs often manual steps and their automation was very challenging.
-
-We have configured 7 host machines.
+Various issues accompanied the automation of the whole process. Such a process often needs manual steps, and their automation was very challenging. Issues were caused mainly by our low experience. Sometimes poor documentation was involved. Especially the process of the virtual machine images creation and copying was connected with issues. Overall, we have configured seven host machines.
 
 \section{Guest - virtual machines}
-Guest machine denotes the machine where the malware sample is running and where the cape monitor is operating. We used Windows 7 as operating system under CTU in Prague licence. The crucial goal setting up guest machine is that it should look like normal computer which is used. Due to virtualization usage we have to care about sandbox evasion techniques mentioned in \ref{chap:analysis}.
+Guest denotes the machine where the malware sample runs and where the \emph{CAPEv2} monitor is operating. We used Windows 7 as an operating system. The crucial goal of the guest machine is to look like an ordinary computer that is in regular use. Due to virtualization usage, we have to care about sandbox evasion techniques mentioned in \ref{chap:analysis}.
 
-There are two options for anti-evasion setup along with \emph{CAPEv2} sandbox. Firstly, we experimented with vmcloak\footnote{https://github.com/hatching/vmcloak}. We were able to run and use this tool but it supports only VirtualBox which is not recommended by \emph{CAPEv2} contributors because of its performance. Project is also no longer maintained and some functions did not work (taking snapshots). Second option is to use script recommended by sandbox contributors\footnote{https://github.com/doomedraven/Tools/blob/master/Virtualization/kvm-qemu.sh} and perform manual steps in the virtual machine configuration\footnote{https://www.doomedraven.com/2016/05/kvm.html#modifying-kvm-qemu-kvm-settings-for-malware-analysis}. We were not succesful several times because of misconfigurations in low level virtual machine configuration but finally we were able to create several correct images.
+There are two options for anti-evasion setup in \emph{CAPEv2} sandbox. Firstly, we experimented with vmcloak\footnote{https://github.com/hatching/vmcloak}. We were able to run and use this tool. However, it supports only VirtualBox, which is not recommended by \emph{CAPEv2} because of its performance. The project is also no longer maintained, and some functions did not work (taking snapshots). The second option is to use a script recommended by sandbox contributors\footnote{https://github.com/doomedraven/Tools/blob/master/Virtualization/kvm-qemu.sh} and perform manual steps in the virtual machine configuration\footnote{https://www.doomedraven.com/2016/05/kvm.html\#modifying-kvm-qemu-kvm-settings-for-malware-analysis}. After several unsuccessful attempts with misconfigurations in the low-level virtual machine configuration, we were able to create four working images.
 
-The sandbox require disabling firewall and running python on guest machine beside this we added most seen applications like Google Chrome, Firefox, Adobe reader, Spotify\dots We added one private key to C://Users/Administrator/.ssh and one password to google chrome password database. We added random images and documents from the internet.
+The sandbox requires disabling of firewall and running python on the guest machine. We added the most popular applications like Google Chrome, Firefox, Adobe reader, Spotify\dots. We added one private key to C://Users/Administrator/.ssh and one password to the google chrome password database. We downloaded random images and documents from the internet.
 
 \section{Network setup}
-Network is crucial point in dynamic analysis setup. The guest machine has to reach the host machine to stay in touch with the result server. It is also connected to the analysis results directly. We expect that the data might be biased if there is no internet access for the malware sample during the analysis. As an example we can see \emph{dropper} malware type which is reponsible for downloading the sample. That is very significant part of payload extraction.
+The network setup is a crucial point in the dynamic analysis. The guest machine has to reach the host machine to stay in touch with the result server. Secondly, there is an internet connection for the guest, which might be necessary for some malware types. As an example, we can see \emph{dropper}, which is responsible for downloading a payload.
 
-We decided to collect the data under two different conditions - with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). The main reason why we engaged both conditions is that the \emph{internet} is much more difficult to setup and secure and we wanted to start data collection as soon as possible.
+We decided to collect the data under two different conditions - with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). We engaged both because the \emph{internet} is much more difficult to set up and secure, and we wanted to start data collection as soon as possible. Both architectures are figured in the appendix \ref{app:network}.
 
-\emph{None} setup is straightforward option for isolated network between host and guest. This approach requires hostonly interface created in \emph{KVM} virtualization tool. Host and guest are assigned by IP address from the same range. From security point of view, we have to setup firewall of host machine to have only necessary result server port opened for communication in isolated network. This simple architecture can be see in \ref{app:network}.
+\emph{None} setup is a straightforward option for an isolated network between host and guest. This approach requires a host-only interface created in \emph{KVM} virtualization tool. Host and guest are assigned with IP addresses from the same range. From a security point of view, we have to set up a firewall of the host machine. It should accept connections from the isolated network only on the result server's port.
 
 \subsection{Internet}
-The goal of this approach is to provide internet access to the guest machine during the analysis run. For this purpose we prepared VPN connection to the secured network through which all the communication should be forwarded. This is considered as good practise to be able to observe what the samples is doing and to be able to stop it fastly. This secured network we cal \emph{dirty lab}.
+We want to provide internet access to the guest machine during the analysis run. For this purpose, we prepared a VPN connection to the secured network through which all the communication should be forwarded. That is considered a good practice to observe what the samples are doing and be able to stop it fastly. This network we call \emph{dirty lab}.
 
-\emph{CAPEv2} supports VPN connection setup for each guest machine separatedly. We knew that it would be better to have central gateway for all local traffic then connecting each particula guest machines to \emph{dirty lab} but we decided to attept to use native sandbox functions first. After experiencing some issues with \emph{CAPEv2} VPN configuration and an unsuccessful issue reporting we decided to find another custom way. 
+\emph{CAPEv2} supports VPN connection setup for each guest machine separately. We knew that it would be better to have a central gateway for all local traffic than connecting each particular guest machines to \emph{dirty lab}. However, we decided to use native sandbox functions at first. After experiencing some issues with \emph{CAPEv2} VPN configuration and an unsuccessful issue-reporting, we decided to find another custom way. 
 
-The main requirement is the centralization of exit point (gateway) of all the traffic from local network (malicious) to \emph{dirty lab}. The surrounding university network has to be absolutely secured and isolated from malicious traffic. We also need to monitor host machines because of external intrusion and centralize logs from host machines.
+The main requirement is to centralize all the traffic from the local network (malicious) to \emph{dirty lab}. The exit point we call \emph{router}. The surrounding university network has to be secured and isolated from malicious traffic. We also need to monitor host machines because of external intrusion and centralize logs from host machines.
 
-Complete configuration can be seen in \ref{app:network} and its description follows.
+In the following text we use \emph{l2} and \emph{l3} as a designation referring to ISO/OSI model of network communication \cite{Zimmermann1980}. By \emph{l2} we mean communication on the data link layer. Specifically, we mean ethernet/802.11 local networks where MAC (Media access address) is used for device identification. By \emph{l3} we mean IP communication on the network layer. IP addresses are used for device identification in \emph{l3}.
 
-In following text we use \emph{l2} and \emph{l3} as a designation refering to ISO/OSI model of network communication \cite{Zimmermann1980}. By \emph{l2} we mean communication on data link layer, specifically we mean ethernet/802.11 local networks where MAC (Media access address) is used for device identification. By \emph{l3} we mean IP communication on network layer, IP addresses are used for device identification.
+An expert recommended the designed network architecture after a consultation. Its basic idea is to avoid \emph{l3} communication on the local network such that IP address from one range is assigned only to the guest machine and then to the router device. This idea was supported mainly by the \emph{l2} VPN on the local network.
 
-Basic idea of the designed network architecture which was recommended by expert after consultation was to avoid \emph{l3} communication on local network such that IP address is assigned only to interface of guest machine and then to the interface of gateway device. This idea was supported mainly by \emph{l2} VPN on local network.
+The role of the router is to receive the traffic going out of the local network and forward it to the \emph{dirty lab}. It can also monitor and capture the traffic. In \emph{dirty lab}, we were provided with the ipv4 interface only, so the \emph{router} performs network address translation (NAT). \emph{Router} machine is running Ubuntu operating system. It is configured to connect to \emph{dirty lab} using \emph{l3} VPN and to the guest machines using \emph{l2} VPN. In \emph{l2} VPN, \emph{router} is a server and in \emph{l3} VPN, it is a client (server is running in \emph{dirty lab}). \emph{Router} is a virtual machine for fast recovery ability. All logs from the server are sent to the central machine.
 
-The role of gateway device (we call it \emph{router}) is to receive traffic going out of local network and forward it to the \emph{dirty lab}. It can monitor and capture the traffic. We were provided with ipv4 interface only in \emph{dirty lab} so the \emph{router} performs even network address traslation (NAT). \emph{Router} machine is running Ubuntu operating system and it is configured to be able to connect with \emph{dirty lab} using \emph{l3} VPN connection and with the guest machines using \emph{l2} VPN. In \emph{l2} VPN, \emph{router} is the server and in \emph{l3} VPN is a client (server is running in \emph{dirty lab}). \emph{Router} is virtual machine for fast recovery ability. All logs from server are sent to central machine.
+The host machine has to be configured as a client in communication with \emph{router} using \emph{l2} VPN to forward the guest's traffic. The idea of this setup is that all the traffic leaving this device is encapsulated in packets with university network IP addresses. This network is unknown to the guest device where malware is running. From the guest's point of view, the connection between the \emph{router} and \emph{guest} is on \emph{l2}. 
 
-The guest machine have to be configured as a client in communication with \emph{router} using \emph{l2} VPN. The idea of this setup is that all the traffic leaving this device is encapsulated in packets with local network IP addresses of the network unknown to the guest device where malware is running. From guest's point of view this traffic is performed on \emph{l2} with between the \emph{router} and \emph{guest}. Interface for \emph{l2} VPN communication (TAP) is bridged with the original interface which allow communication with guest virtual machine. A connection to the internet from guest machine goes through host machine to the router, from there to dirty lab and finally to the internet and back. There has to be performed addtional setup on host machine besides these listed in case of \emph{none}. Each host machine in distributed cluster has to send all sandbox logs to central syslog server. All machines has to be set up with monitoring tool to detect intrusion\footnote{example https://aide.github.io/}.
+On the host, the interface for \emph{l2} VPN communication (TAP) is bridged with the original interface, which allows communication with the guest virtual machine (originally host-only). 
 
+A connection to the internet from the guest machine goes through the host machine, the router, the dirty lab, and the internet. 
+
+There has to be performed additional setup on host machine besides these listed in case of \emph{none}. Each host machine in distributed cluster has to send all sandbox logs to the central Syslog server. All machines have to be set up with a monitoring tool to detect intrusion\footnote{example https://aide.github.io/}.
 
 \section{Data collection pipeline}
-During data collection using distributed cluster we used following terminology. \emph{Master} is machine which is responsible for sample distribution and it has access to NAS where it stores the analysis results. \emph{Worker} is machine were the sandbox is running (\emph{guest}).
+During the distributed data collection, we used the following terminology. \emph{Master} is a machine responsible for sample distribution, and it has access to the NAS, where it stores analysis results. \emph{Worker} is another name for \emph{host} machine in the context of distribution.
 
-In this section we describe the whole process of data collection from malware sample over its dynamic analysis using clustered \emph{CAPEv2} sandbox guests ending with behavioral features and signatures extraction from \emph{JSON} report. All programs implemented to solve mentioned problems are part of attachment (\ref{app:attach}). Particular steps are automated and their description follows.
+This section describes the whole process of data collection from a malware sample over its dynamic analysis and ending with behavioural features and signatures extracted from the \emph{JSON} report. All programs implemented to solve mentioned problems are part of the attachment (\ref{app:attach}). Particular steps are automated, and their description follows.
 
 \begin{enumerate}
-    \item Download samples from malwareBazaar
+    \item Download samples from the \emph{malwareBazaar}
     \item Filter PE files only
     \item Retrieve additional metadata
     \item Add hashes to database
@@ -76,25 +77,28 @@ In this section we describe the whole process of data collection from malware sa
 
 
 \subsection{Abuse.ch malwareBazaar}
-The place where we downloaded malware sample was abuse.ch\footnote{https://abuse.ch/} specifically its part called malwarebazaar. The main purpose of its usage is free access without any claims. MalwareBazaar is database of malicious (no benign files or Adware) samples where everybody can share and download. In may of 2021 it contains over 325~000 samples. Malware samples are downloaded in compressed form - one archive for every day since the start of the project.
+The place where we downloaded malware samples was abuse.ch\footnote{https://abuse.ch/} specifically its part called \emph{malwarebazaar}. The reason for its usage is its free access without any claims. \emph{MalwareBazaar} is a database of malicious (no benign files or Adware) samples where everybody can share and download. In May of 2021, it contains over 325~000 samples. Malware samples are downloaded in compressed form - one archive for every day since the start of the project.
 
 \subsection{File filtering}
-Our project aims only at PE files described in \ref{chap:analysis}. After decompression of original archives we filter files based on file extension and on file headers. We also filter compressed files and we decompress them and again filter PE files only.
+Our project aims only at PE files described in \ref{chap:analysis}. After decompression of original archives, we filter files based on the file extension and file headers. We also filter compressed files, decompress them and again filter PE files only.
 
 \subsection{Metadata}
-Secondary intention was to obtain some basic metadata about each file to have basic infromation. We were able to gain academical access to VirusTotal API\footnote{https://developers.virustotal.com/v3.0/reference}. We downloaded metadata report for each of our samples. The report contains basic static information like hashes and fuzzy hashes, extracted strings, detections of various antiviruses and even summary of reports of used sandboxes.
+The secondary intention was to obtain some basic metadata about each file to have basic information about each sample. We were able to gain academic access to the VirusTotal API\footnote{https://developers.virustotal.com/v3.0/reference}. We downloaded a metadata report for each of our samples. The report contains basic static information like hashes and fuzzy hashes, extracted strings, detections of various antiviruses and even a summary of reports of used sandboxes.
 
 \subsection{Distributed sandbox}
-After dealing with issues in the host initialization part and even in VPN setup part we also encountered issues during setting up distributed sandbox. \emph{CAPEv2} can orchestrate multiple host machines. It uses distributed mongo database\footnote{https://www.mongodb.com/} combined with script which is run on master machine to check connection to registered worker devices. We spent with configuration of distributed \emph{CAPEv2} large amount of time trying multiple different ways but unsuccesfuly. We decided to implement our own lightweight solution for time reasons.
+After dealing with issues in the host initialization part and even in the VPN setup part, we also encountered issues while setting up the distributed sandbox. \emph{CAPEv2} can orchestrate multiple host machines. It uses distributed mongo database\footnote{https://www.mongodb.com/} combined with a script that is run on the master machine to check the connection to registered worker devices. We spent with the configuration of distributed \emph{CAPEv2} large amount of time trying multiple different ways and following several pieces of advice but unsuccessfully. We decided to implement our lightweight solution for time reasons.
 
-Hashes of our files are stored in database (in our case \emph{JSON} file) with additional attributes. There is a script running on master machine which distributes samples among worker machines using their REST API. After analysis is done there is another script on worker machine which compresses the result and send it back to master. Last script manages coming results and saves them to NAS. Everything is recorded in database.
+Hashes of our files are stored in a database (in our case \emph{JSON} file) with additional attributes. A script runs on the master machine that distributes samples among worker machines using their REST API. After the analysis is done, another script on the worker machine compresses the result and sends it back to the master. The last script manages coming results and saves them to the NAS. Everything is recorded in the database.
 
 \subsection{Results postprocessing}
-For further modelling we need only part of \emph{JSON} log, specifically behavioral features and signatures. That was done in two steps. Firstly, we decompressed analysis result and extracted only \emph{JSON} log. Secondly, we extracted mentioned parts and saved shrinked output. The whole report might have even gigabytes, however shrinked variant have usually tens of megabytes. In shrinked form we could transfer the output to metacenter where model computation took place.
-
+We need only part of \emph{JSON} log, specifically behavioural features and signatures, for further modelling. Its extraction was done in two steps. Firstly, we decompressed the analysis result and extracted only \emph{JSON} log. Secondly, we extracted mentioned parts and saved the shrank output. The whole report might have even gigabytes. However, the shrank variant has usually tens of megabytes. We could transfer the output to the metacentre where the model computation and explanation took place.
 
 \section{Dataset}
-At the moment we start modelling experiments we have dataset consisting of $80000$ different samples after analysis running in \emph{none} network setup. Second network configuration took us several weeks to to deal with and the data collection started later and was slower. The setup with the internet connection and its collected data will be investigated in future work as its collection continues. Complete data have approximately $2,5$~\emph{TB} where the analysis result is compressed. Extracted features and signatures are much smaller (tens of gigabytes). Not all the outputs described in \ref{chap:analysis} are presented in each analasis result.
+When we start modelling experiments, we have a dataset consisting of $80000$ different samples in \emph{none} network setup. The \emph{internet} configuration took us several weeks to deal with, and the data collection started later and was slower. The \emph{internet} data will be investigated in future work as its collection continues. 
+
+The complete dataset has approximately $2,5$~\emph{TB} in compressed form. Extracted features and signatures are much smaller (tens of gigabytes). 
+
+Not all sandbox outputs described in \ref{chap:analysis} are presented in each analysis result. The configuration and other conditions determine it.
 
 % The data in such domain are very biased. Sometimes we can see that malware can not be run under the conditions in a guest or is trying to use some \emph{.NET} library and if not found, it kills itself. The fact that we do not have an internet connection can make this bias stronger, so we have to count on it to decide what to use to train the model. We do not want to investigate network activities even if sometimes it contains something (malware attempts).
 

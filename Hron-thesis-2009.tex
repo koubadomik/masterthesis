@@ -25,6 +25,9 @@
 \usepackage{xcolor}
 \usepackage{neuralnetwork}
 
+%not tested
+% \usepackage{fancyvrb}
+
 
 \setlength\parindent{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,14 +199,14 @@ unicode=true,
 
 	%Chapters
 	\part{Theory and prior}
-	% \include{chapters/introduction.tex}
-	% \include{chapters/analysis.tex}
+	\include{chapters/introduction.tex}
+	\include{chapters/analysis.tex}
 	\include{chapters/classification.tex}
-	% \include{chapters/hmill.tex}
-	% \include{chapters/explain_theory.tex}
+	\include{chapters/hmill.tex}
+	\include{chapters/explain_theory.tex}
 
 	\part{Usecase and experiments}
-	% \include{chapters/infrastructure.tex}
+	\include{chapters/infrastructure.tex}
 	% \include{chapters/results.tex}
 	%\include{chapters/conclusion.tex}
 	
@@ -213,7 +216,8 @@ unicode=true,
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 
 	% APPENDIX
-	\appendix	
+	\appendix
+	% \include{chapters/apendices/network.tex}
 	% \include{chapters/apendices/signatures.tex}
 	% \include{chapters/apendices/models.tex}
 	% \include{chapters/apendices/explanations.tex}
