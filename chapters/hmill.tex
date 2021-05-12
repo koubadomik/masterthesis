@@ -259,6 +259,36 @@ The \emph{JSON} to \emph{HMill} sample translation is defined on three basic abs
 
 The authors of the framework stated that the model is taking into the game even the structure which exceeds the \emph{flattening} approach. Compared to the rule-based approaches, the framework can learn more complex hypotheses because chosen aggregation can substitute various hand-defined rules. The \emph{HMill} framework was used in the IoT device identification use case \cite{Mandlik2020}, which was a dataset of \emph{JSON} documents modelled for multinomial classification. Reported accuracy is $96$~\%. Authors experimented even in different setup for a general graph inference to demonstrate the generality of the \emph{HMill} framework.
 
+
+\section{\emph{CAPEv2} classification}
+The goal of the thesis is to create a classifier that classifies signatures based on behavioural features observed during dynamic analysis.
+
+\subsection{Behavioural features}
+After further look at the \emph{behavior} part of \emph{report.json} and their size we start with \emph{summary} and \emph{enhanced} part. The reason is that other parts are quite comprehensive, and we would not be able to train the model with the hardware resources we have. Those two are sufficient for a comprehensive look at malware behaviour as they include the most important features mentioned in \ref{chap:analysis} (API calls, commands\dots). In \emph{summary} part, we have unordered lists of these features. However, in \emph{enhanced} part, there are sequences of actions with a timestamp.
+
+If the model is still too complex to train under our conditions, we omit the \emph{enhanced}, which is much more sparse and longer than \emph{summary}. We would lose the information about the order of events.
+
+\subsection{Signature classes}
+The signatures are usually assigned based on some atomic fact, such as some API call in the log. Let us call that \emph{true cause} of signature. It can be one or more patterns seen in the behavioural log. The implementation of a signature is deterministically detecting its cause. If the cause is detected, the signature is added to the \emph{JSON} log (see the whole process in \ref{chap:analysis}.
+
+We can consider the \emph{copies self} signature example. If the same file as the analyzed one is among dropped files in the report, we will find \emph{copies self} signature in \emph{report.json}.
+
+An example of a signature entry in original \emph{JSON} log could be seen in \ref{app:signatures}. The most important aside from the \emph{name} and \emph{description} is the field \emph{data} which sometimes contains the cause.
+
+\subsubsection{Categorization}
+For modelling and model explaining, we want to categorize signatures according to two factors. The first is the cause, which creates groups such as API calls, processes, dropped files\dots. The cause is determined according to the signature's implementation (typically in Python). In \ref{app:signatures} we can see a simple example of implementation of \emph{antidebugsetunhandledexceptionfilter} signature, which is just checking the presence of a specific API call.
+
+The second factor is the fact if the cause is directly presented among our features. For instance, if the signature implementation uses API calls, the API call list is directly in the log. If it uses the entropy of dropped files, it is not directly in the output.
+
+The categorization may help us with the structure of the result discussion and further reasoning. We expect that models for different categories might have different accuracy.
+
+Specific signatures for modelling will be chosen according to their frequency in the dataset. All the details about chosen signatures and even mentioned groups will be described in the next part of the thesis.
+
+\subsection{Model}
+We want to train a binary classifier that predicts the presence of a particular signature according to behavioural features.
+
+emph{Hmill} framework API is designed generally, so it is not accepting \emph{JSON} documents directly. For this purpose, we use \emph{JsonGrinder} library, which accepts an array of \emph{JSON} documents and produce \emph{HMill} schema. The schema is then used to create \emph{HMill} abstract data type tree and model. Example of a schema, and implied \emph{HMill} model for our data is in attachment (\ref{app:attach}).
+
 Regardless of a comprehensive theory covered in this part of the thesis, the \emph{HMill} framework is still not everything. Our goal is broad, and the model we are going to train, we want also explain. What we mean by an explanation we describe in the next chapter.
 
 %---------------------REMAINING-------------------------------------

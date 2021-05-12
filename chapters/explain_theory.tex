@@ -129,12 +129,28 @@ Game theoretical approaches in feature extraction which uses \emph{Shapley value
 A sampling algorithm is used to approximate Banzhaf values \cite{Bachrach2010}. There are two values stored for each subtree in the \emph{JSON} document. The classifier's average confidence in coalitions includes the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running a more significant number of iterations, the approximation of Banzhaf values for each subtree is the difference between the two values stored in it. Banzhaf values approximation is used as subtree ranking. If we do not fix the seed, the explanation is stochastic and might be unstable regarding the number of iterations and the output.
 
 \subsection{Prior}
-Authors in \cite{Pevny2020} present qualitative and quantitative analysis for different \emph{HMill} explainer setup. The best result regarding the computational time and size of explanation was reported for the Banzhaf values-based heuristic addition approach combined with Level-by-level search.
+Authors in \cite{Pevny2020} present qualitative and quantitative analysis for different \emph{HMill} explainer setup. The best result regarding the computational time and size of explanation was reported for the Banzhaf values-based heuristic addition approach combined with Level-by-level search. We will use this setup.
 
 \section{Other methods for structured data}
 We mentioned three alternative techniques for \emph{JSON} modelling in previous chapters - rules, flattening and graph neural nets. Flattening is a technique of feature engineering more than modelling. Rules are usually transparent, so their interpretability is straightforward. Examples of graph neural nets explaining can be found in \cite{Ying2019, Huang2020} 
 
 The first part of the thesis addressed the essential theoretical background. It covers the basics of malware analysis, machine learning and especially the \emph{HMill} framework and the \emph{HMill} Explainer. In the following part, we describe our setup, results and discussion.
+
+\section{\emph{CAPEv2} explaining}
+In the chapter \ref{chap:classification}, we introduced two factors according to which we categorize signatures.
+
+We expect that explanation of the model, the cause of which is in the report, should be a set containing this cause. As an example, we expect that if the original signature's cause is a specific API call, it should be presented in the explanation of the binary classifier for this signature. As authors of \emph{HMill} explainer mentioned, we hope that the explanation contains even something new. In other words, we expect that we could observe explanations that contain entries that are not the original cause, but they might reasonably substitute it - they are connected with the same effects. It is also possible to meet new signatures in explanations because all samples are malicious and the model might generalize based on different similarities.
+
+We want to explain at least one hundred samples for each classifier to observe repeatedly seen parts. We choose positive samples because we want to explain the positive class predictions. Samples are chosen based on the output confidence of the model as described earlier.
+
+\subsection{Additions}
+Due to the fact that \emph{HMill} explainer usually process sample by sample, one hundred explanations means one hundred \emph{JSON} files. This amount is still hard to interpret, and that is why we involved three additional ideas.
+
+We merged all explanations for one signature into one \emph{JSON} file and for each entry computed a number of occurrences across explanations. We assume that the most general formulation of an explanation should be seen repeatedly. 
+
+We also counted the frequency of each particular key (name of the field in JSON file, e.g. \ \emph{read files, resolved apis}\dots) in explanations such that for each signature, we see how often a particular key is detected by the explainer. We can compare the original signature's cause with the most seen key if they coincide.
+
+The last idea is that we compute frequencies of entries seen across different signatures. We assume that in such a way, we could identify some bias that is caused by entries that we see in multiple explanations. Such case we should consider being a too general concept.
 
 
 % %%------------------------------------------------------------------------------------

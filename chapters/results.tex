@@ -136,6 +136,14 @@ In the explanation chapter, we should examine different categories of signatures
 %---------------------
 
 % \chapter{Explaining model} \label{chap:expex}
+
+we explain only positive examples
+
+The authors of the original paper concluded that the \emph{BanzHof values} method shows the best performance, and we followed this setup. We involve no clustering method and \emph{level by level heuristic addition random removal} pruning method (due to problems with the library version compatibility, we did not experiment with other clustering and pruning methods).
+
+We know that low-performance models (below $70$~\% of balanced accuracy) explanations are not relevant due to low overall confidence, so we skip them in further discussion.
+
+
 The final part of this thesis is to follow the results of the previous chapter about models and their performance. We want to examine their explanations using \emph{hmill} explainer \cite{Pevny2020} which we described in \ref{chap:explain}. We address one of the goals: to identify artefacts corresponding to different malware behaviour. As artefacts, we can see whatever is among the features of our model. 
 
 Our models classify the presence of signatures. We defined \emph{signature subject} as the fact which the original signature implementation is using for its detection (see \ref{chap:models}). The list of signatures with their subjects is in \ref{app:signatures}. The main question in this chapter is if the original subject correlates or coincides with the model explanation. Another thing that should not be overlooked is the signature part in \emph{report.json} where we can also compare its data part to the explanation. An example of detected signature is in \ref{app:signatures}. Those two and the performance of models from \ref{chap:models} are building blocks of our further discussion.
