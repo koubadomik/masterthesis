@@ -46,9 +46,9 @@
 \usepackage[
 pdftitle={\WorkTitle},				% nastaví v informacích o pdf název
 pdfauthor={\FirstandFamilyName},	% nastaví v informacích o pdf autora
-colorlinks=true,					% před tiskem doporučujeme nastavit na false, aby odkazy a url nebyly šedé při ČB tisku
+colorlinks=false,					% před tiskem doporučujeme nastavit na false, aby odkazy a url nebyly šedé při ČB tisku
 breaklinks=true,
-urlcolor=red,
+urlcolor=black,
 citecolor=black,
 linkcolor=black,
 unicode=true,
@@ -168,7 +168,7 @@ unicode=true,
 
  	%Abstract 
 	\abstractpage
-The goal of the thesis was to perform dynamic malware analysis of portable executable files and create a dataset of analysis reports. Further, we aimed at statistical modelling of collected data and evaluation of models. Lastly, we intended to explain the model's predictions using statistical methods and discuss the result. We used \emph{CAPEv2} sandbox for malware analysis and implemented a pipeline that downloads malware samples, distributes them among multiple sandbox instances and collects results. We used \emph{JSON} report as the input to the modelling part. We decided to model the dependency of malware signatures on behavioural features like API calls, dropped files and processes. The causality of signatures is transparent because their Python implementation can be examined. That is convenient for further model and explanation evaluation. We used \emph{HMill} framework, which can model tree-structured data like \emph{JSON} documents. The structure of the data is involved in the model, not only extracted values. \emph{HMll} framework has better scalability than alternatives. For model explaining, we used \emph{HMill Explainer}. Its method is based on a minimal subtree selection problem using \emph{Banzaf} values as a subtree evaluation metric. We collected $80000$ malware analysis samples, from which we extracted \emph{JSON} reports. A binary classifier was trained for each of chosen signatures in the data set. Based on the type of signature, the classifiers have different performance, but nine out of twelve shows results above 90\% of balanced accuracy. We examined the implementation of each signature to see its actual cause in the report. Reported accuracy shows that the model can generalize even in more complex situations than we expected. Original behavioural reports used as features might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observation evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. The realization of the whole pipeline from a malware sample to model and its explanation was successful. We reported and discussed all results. We also mention particular issues which we faced and ideas for future work. All programs are part of the attachment of the thesis. \
+The goal of the thesis was to perform dynamic malware analysis of portable executable files and create a dataset of analysis reports. Further, we aimed at statistical modelling of collected data and evaluation of models. Lastly, we intended to explain the model's predictions using statistical methods and discuss the result. We used \emph{CAPEv2} sandbox for malware analysis and implemented a pipeline that downloads malware samples, distributes them among multiple sandbox instances and collects results. We used \emph{JSON} report as the input to the modelling part. We decided to model the dependence of malware signatures on behavioural features like API calls, dropped files and processes. The causality of signatures is transparent because their Python implementation can be examined. That is convenient for further model and explanation evaluation. We used \emph{HMill} framework, which can model tree-structured data like \emph{JSON} documents. The structure of the data is involved in the model, not only extracted values. \emph{HMll} framework has better scalability than alternatives. For model explaining, we used \emph{HMill Explainer}. Its method is based on a minimal subtree selection problem using \emph{Banzaf} values as a subtree evaluation metric. We collected $80000$ malware analysis samples, from which we extracted \emph{JSON} reports. A binary classifier was trained for each of chosen signatures in the data set. Based on the type of signature, the classifiers have different performance, but nine out of twelve shows results above 90\% of balanced accuracy. We examined the implementation of each signature to see its actual cause in the report. Reported accuracy shows that the model can generalize even in more complex situations than we expected. Original behavioural reports used as a feature set might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observation evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. The realization of the whole pipeline from a malware sample to model and its explanation was successful. We reported and discussed all results. We also mention particular issues which we faced and ideas for future work. All programs are part of the attachment of the thesis. \
 	
 	\vspace{5mm}
 
@@ -208,15 +208,12 @@ The goal of the thesis was to perform dynamic malware analysis of portable execu
 	\part{Experiments}
 	\include{chapters/infrastructure.tex}
 	\include{chapters/results.tex}
-	%\include{chapters/conclusion.tex}
+	\include{chapters/conclusion.tex}
 	
-	%just to play with latex
-	%\include{chapters/sandbox.tex}
-	
-
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 
 	% APPENDIX
 	\appendix
+	\include{chapters/apendices/metrics.tex}
 	\include{chapters/apendices/cape.tex}
 	\include{chapters/apendices/network.tex}
 	\include{chapters/apendices/signatures.tex}
@@ -227,34 +224,9 @@ The goal of the thesis was to perform dynamic malware analysis of portable execu
 	\include{chapters/acronyms.tex}
 	%Biblio
 	% \bibliographystyle{alpha}
-	% \bibliographystyle{csplainnat}
-	% bibliographystyle{plain}
-	% \bibliographystyle{psc}
-	% \bibliographystyle{apalike}
 	\bibliographystyle{abbrv}
 	{
 	\bibliography{bib/Master_thesis}
 	}
-
-	% \chapter{Obsah přiloženého CD}
-	% \textbf{\large Tato příloha je povinná pro každou práci. Každá práce musí totiž obsahovat přiložené CD. Viz dále.}
-
-	% Může vypadat například takto. Váš seznam samozřejmě bude odpovídat typu vaší práce. (viz \cite{infodp}):
-
-	% \begin{figure}[h]
-	% \begin{center}
-	% \includegraphics[width=14cm]{figures/seznamcd}
-	% \caption{Seznam přiloženého CD --- příklad}
-	% \label{fig:seznamcd}
-	% \end{center}
-	% \end{figure}
-
-	% Na GNU/Linuxu si strukturu přiloženého CD můžete snadno vyrobit příkazem:\\ 
-	% \verb|$ tree . >tree.txt|\\
-	% Ve vzniklém souboru pak stačí pouze doplnit komentáře.
-
-	% Z \textbf{README.TXT} (případne index.html apod.)  musí být rovněž zřejmé, jak programy instalovat, spouštět a jaké požadavky mají tyto programy na hardware.
-
-	% Adresář \textbf{text}  musí obsahovat soubor s vlastním textem práce v PDF nebo PS formátu, který bude později použit pro prezentaci diplomové práce na WWW.
 
 \end{document}

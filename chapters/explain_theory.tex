@@ -1,5 +1,5 @@
 \chapter{Model explaining} \label{chap:expth}
-In the following chapter, we describe model explainability definition and techniques used in practice. Finally, we give details on \emph{HMill} explainer, which we use in our experiments.
+In the following chapter, we describe model explainability definition and techniques used in practice. Finally, we give details on \emph{HMill} explainer, which we use in our experiments. At the very end, we describe our use case of signature's binary classifier explanation.
 
 In the case of complex models, we often want to explain their predictions to be sure about their reliability. The model explainability is crucial in critical systems, e.g. health, transport. However, if we want to use our models and want people to believe them, we should explain their predictions. We should demonstrate that the predictions are not based on random correlations in the training data. In \cite{Pevny2020}, authors identified that their model is classifying mainly according to the timestamp field in the original sample, which was different for malware and cleanware samples. That was an obvious mistake because this detail is not the difference between malware and cleanware. It is just the difference between analysis conditions.
 

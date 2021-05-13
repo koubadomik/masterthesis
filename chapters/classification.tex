@@ -47,12 +47,7 @@ Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathc
 
 If $p(x,y)$ would be known our learning process would find optimal prediction strategy by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. Usually, it is unknown and we have to involve some kind of approximation (learning algorithm) to find best attaineable strategy using drawn data.
 
-Assume $\mathcal{T}^m$ being set of examples for supervised learning. We can distinguish two basic learning approaches.
-\begin{enumerate}
-    \itemsep0em 
-    \item \emph{Discriminative learning}
-    \item \emph{Generative learning}
-\end{enumerate}
+Assume $\mathcal{T}^m$ being set of examples for supervised learning. We can distinguish two basic learning approaches - \emph{Discriminative learning}, \emph{Generative learning}.
 
 In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approximate \emph{expected risk} with \emph{empirical risk} (\ref{eq:emploss}).
 

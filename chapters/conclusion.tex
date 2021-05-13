@@ -1,30 +1,34 @@
 \chapter{Conclusions} \label{chap:concl}
-The main objective of this thesis was to design pipeline which has malware dataset as input and machine learning model and its explanationas as output. The whole process was motivated by the desiderata of high performance model intepretability to achieve greater compliance of machine learning and cybersecurity.
+The main objective of this thesis was to design a pipeline that has a malware dataset as input and a machine learning model and its explanation as output. The whole process was motivated by high accuracy model interpretability to achieve greater compliance of machine learning and cybersecurity.
 
-We set up eight physical machines with the \emph{CAPEv2} sandbox in two different setup - with internet and without internet connection. Using the open source sandbox and our own programs we collected dynamic malware analyses for $80 000$ malware samples retrieved from \url{https://bazaar.abuse.ch/}. We reported problems which we experienced during collection process and the whole setup including our own code.
+We set up eight physical machines with the \emph{CAPEv2} sandbox in two different setups - with internet and without internet connection. Using the open-source sandbox and our programs, we collected dynamic malware analyses for $80 000$ malware samples retrieved from \url{https://bazaar.abuse.ch/}. We reported problems experienced during the data collection process and the description of the whole setup, including our code.
 
-We used \emph{JSON} reports of sandbox as input for \emph{Hierarchical multiple instance} framework \cite{Mandlik2020}. We used this framework because of its ability to model \emph{JSON} documents. The classfication model features are behavioral parts of original \emph{JSON} log and as classes we used malware behaviour signatures also included in original report. We created binary classifier for each signature we chose (overall $12$). We observed how the model performs on each signature based on complexity of original signature python implementation. Nine classfiers have balanced accuracy more than $91\%$, remaining three do not have significant performance. We reported and discussed particular results.
+We used \emph{JSON} reports of sandbox as an input for \emph{Hierarchical multiple instance} framework \cite{Mandlik2020}. We used this framework because of its ability to model \emph{JSON} documents. The classification model features are behavioural parts, and predicted classes are malware signatures, both included in the original \emph{JSON} report. 
+To evaluate our models better, we investigated the original signature's implementation and found out their true cause. We created a binary classifier for each of chosen signatures (overall 12). We observed how each model performs in the context of the true cause, which was or was not among the model's features. Nine classifiers have a balanced accuracy of more than $90\%$. We reported and discussed particular results.
+%The remaining three do not have significant accuracy. We expected one of them to have better accuracy because its true cause was among the features. The last two had more complex causes, which were not directly among features. 
 
-Despite the greater amount of work we faced during the sandboxing task, we managed to meet goals of this thesis. Theory background and method are summarized in the first part of the thesis. The setup, experienced problems, results and their discussion are in the second part. We wanted our experiment to be repeatable so source code and other related technical stuff are in attachment of this thesis \ref{app:attach}.
+Finally, we experimented with the model explaining. Original behavioural reports used as a feature set might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observation evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. We reported and discussed all results.
 
-\subsection*{Future work}
+Despite the significant amount of work we faced during the sandboxing, we managed to meet the goals of this thesis. Theory background and method are summarized in the first part of the thesis. The setup, experienced problems, results and their discussion are in the second part. We wanted our experiment to be repeatable, so the source code and other technicalities are in the attachment of this thesis.
 
-\todo{formulate}
+% \subsection*{Future work}
 
-The performance of presented models is really good regarding the measures which we presented. \emph{Hmill} should be examined under different conditions just to see the conditions under which the model is not performing well. This should lead to better understanding of generalization and even explanation. \emph{Hmill} should be very important in cyber security application due to the fact that it is able to operate \emph{JSON} files which are quite usual format of data it not totally unstructured. Based on our experiments we draw the conclusion that explanation is very important for future work because models is created for the actual data and it is very complex to observe particular models and believe very good precision which it is performing with.
+% \todo{formulate}
 
-future work should aim to better explanation (maybe not per sample) and also on clustering and pruning methods to avoid the randomness in explanation result
+% The performance of presented models is really good regarding the measures which we presented. \emph{Hmill} should be examined under different conditions just to see the conditions under which the model is not performing well. This should lead to better understanding of generalization and even explanation. \emph{Hmill} should be very important in cyber security application due to the fact that it is able to operate \emph{JSON} files which are quite usual format of data it not totally unstructured. Based on our experiments we draw the conclusion that explanation is very important for future work because models is created for the actual data and it is very complex to observe particular models and believe very good precision which it is performing with.
 
-
-We assume that the explanations have very high entrophy because of high entrophy of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, there are experiments involving some kind of data compression but we did not use these tool. So we might not identify the same entries which in reality are the same. This problem we reference in future work section.
-
-We have some of results which were mentioned in \ref{chap:infrastructure}. At the time we start following reasoning we have proper amount of the data without internet access because the setup is straight-forward and easier. The setup with the internet connection and its collected data will be investigated in the future work as its collection continues. 
+% future work should aim to better explanation (maybe not per sample) and also on clustering and pruning methods to avoid the randomness in explanation result
 
 
-Multilabel
-Looking back on this part of experimenting we know that the problem might have been even in hyper parameter choice. But tighter feature vector was advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
+% We assume that the explanations have very high entrophy because of high entrophy of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, there are experiments involving some kind of data compression but we did not use these tool. So we might not identify the same entries which in reality are the same. This problem we reference in future work section.
 
-We assume that the explanations will have very high entropy because of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, even if target files might be identical. There are experiments involving some kind of data compression but we did not use these tool. This problem we reference in future work section.
+% We have some of results which were mentioned in \ref{chap:infrastructure}. At the time we start following reasoning we have proper amount of the data without internet access because the setup is straight-forward and easier. The setup with the internet connection and its collected data will be investigated in the future work as its collection continues. 
+
+
+% Multilabel
+% Looking back on this part of experimenting we know that the problem might have been even in hyper parameter choice. But tighter feature vector was advantage for further training time and we still know that summary parts include compressed information which we are aiming at (\emph{api calls, files, mutexes, registries, commands}).
+
+% We assume that the explanations will have very high entropy because of the model input. In principle \emph{C://Programs/app.exe} is something else than \emph{C://Programs2/app.exe}, even if target files might be identical. There are experiments involving some kind of data compression but we did not use these tool. This problem we reference in future work section.
 
 
 %  We went from one physical machine with Linux on it to dataset and model and it explanation, which was the goal of this thesis. The thesis is quite wide and not aiming at particular part of the process...
