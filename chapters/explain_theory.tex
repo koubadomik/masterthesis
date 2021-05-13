@@ -27,7 +27,7 @@ This definition of the \emph{interpretation} is quite vague because human readab
 
 A different point of view on understandability is to look at the available time which the user (human) is available or allowed to spend on understanding the explanation \cite{Guidotti2018}. Then we can check the complexity or quality of the explanation by measuring the time to understand the explanation. However, we have to control the level of background knowledge of the person performing the interpretation \cite{Guidotti2018}.
 
-Authors of \citet{Montavon2018} address the main bias in \emph{interpretability} is that the majority of the model evaluation metrics works with the model as with a black box. Sufficient information for evaluation is just a set of predicted labels (or class probabilities) and ground-truth labels. Often, we do not observe model parameters, hyperparameters, model hypothesis space \dots. 
+Authors of \cite{Montavon2018} address the main bias in \emph{interpretability} is that the majority of the model evaluation metrics works with the model as with a black box. Sufficient information for evaluation is just a set of predicted labels (or class probabilities) and ground-truth labels. Often, we do not observe model parameters, hyperparameters, model hypothesis space \dots. 
 
 Another problem is that there are situations that are not easily transferable to a numerical form, e.g. \ real-valued vector. Examples we can find in ethics or legality. Interpretability of such concepts is not ambiguous even in the world without machine learning.
 
@@ -48,7 +48,11 @@ In \cite{Lipton2016} authors present a comprehensive insight into interpretabili
 Trust is the first term which is very complicated even due to its interpretation. We might build trust in the model's performance, so the better the model is, the more trustworthy and maybe more interpretable it is. However, we need high-performance models in such a case, and we might have no other questions. The situation is more complex in the sense that we need to examine the whole context. By context, we mean the accuracy on specific examples, e.g. \ unseen examples or examples where people can classify with high precision. The overall trust might be based on the model flexibility in different situations, and what is more important that we should evaluate the trust repeatedly.
 
 \subsection{Causality X Correlation}
-Correlation of two random variables $X,Y$ is defined as $\rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand, causality is defined as relation between $X$ (a cause) which contributes to the production of $Y$ (an effect), $X,Y$ might be events, processes, states, objects or generally random variables.
+Correlation of two random variables $X,Y$ is defined in \ref{eq:corr}, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand, causality is defined as relation between $X$ (a cause) which contributes to the production of $Y$ (an effect), $X,Y$ might be events, processes, states, objects or generally random variables.
+
+\begin{equation} \label{eq:corr}
+    \rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
+\end{equation}
 
 Every statistician was instructed about situations where the data show us results we want to see. That might be demonstrated in examples that should be so absurd that nobody can take it seriously. For example, the divorce rate in Maine correlates with per capita consumption of margarine between 2000 and 2009 \footnote{http://www.tylervigen.com/spurious-correlations}. However, we have to remember that the underlying process generating the data is assumed to be random no matter how complex it can be. We must not forget that the researcher is making assumptions and choosing what data are modelled. The statistical model itself should not serve as an argument for cause and effect relation between modelled variables. If we want to conclude causality, we should involve other experiments and research in the particular domain to uncover the generating process itself. Correlation is easily measurable, and a conclusion about it is based only on its calculation. More on this topic can be found in \cite{Kenny1979}.
 
@@ -83,6 +87,7 @@ Post-hoc interpretability has a different goal than the previous approach. It ca
 There are several techniques for post-hoc interpretation. Their list follows.
 
 \begin{itemize}
+    \itemsep0em 
     \item \emph{Text explanation} - We still assume that we cannot assign textual interpretation by hand because that might mean that our model is transparent. However, we might automate the inference of a textual form. We can train another model which maps the prediction of the original model to its textual explanation. An example of such an approach is in \cite{Krening2017}, where authors trained a reinforcement model to perform a particular task and a second model to explain its decisions.
     \item \emph{Visualization} - Images and other visual outputs are considered very straightforward for human understanding. We often involve dimensionality reduction and other techniques to display the situation in two or three dimensions, such as \cite{Pearson1901}. An example of a visualization of neural net explanation using heatmap can be found in \cite{Zeiler2013}.
     \item \emph{Local explanations} - This approach is about explaining specific parts of the training set, e.g. \ specific samples. It might find parts of a sample that contribute to the prediction the most. An example might be saliency map usage for neural nets \cite{Simonyan2014}. It is important to emphasize that the explanation has to be treated in a specific context, i.e. \ the saliency map might change drastically even if the example was changed only slightly.
@@ -103,22 +108,33 @@ The goal of \emph{HMill} explainer is to find a minimal subset of the input samp
 In following text, we assume \emph{HMill} binary classification model being a black box decomposed only to two function $h$ and $f$. The first function is $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and the output $v\in\mathbb{R}^{m}$ represents the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is than classified by $f(h(d))=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to the positive class.
 
 \subsection{Explainer steps}
-The basic idea builds on top of the sub-tree selection problem solution. Our problem is a specific case of subtree selection. It can be formulated such that for a given tree $T$, an expensive evaluation function $r(t)=q$ ($q\in\mathbb{R}$) and a threshold $\tau\in\mathbb{R}$, we want to find subtree $t$ with minimal number of nodes such that $r(t)\grq\tau$. 
+The basic idea builds on top of the sub-tree selection problem solution. Our problem is a specific case of subtree selection. It can be formulated such that for a given tree $T$, an expensive evaluation function $r(t)=q$ ($q\in\mathbb{R}$) and a threshold $\tau\in\mathbb{R}$, we want to find subtree $t$ with minimal number of nodes such that $r(t)\geq\tau$. 
 
 In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document, and the evaluation function is $f$, which outputs the confidence that the document belongs to a positive class. The authors introduced several sub-set selection methods, which is a less general case of subtree problem. It is not possible to adopt subset selection methods in subtree problems directly. Firstly, we have to decide if we need to maintain the tree structure of the result or not. Authors mention two solutions to deal with this problem - first, ignoring the structure and second, exploiting it.
 
 \subsection{Subset selection}
-\paragraph{Greedy addition} starts with an empty subset and in each step adds a new item until the threshold is achieved. Each new item is chosen such that the gain in the evaluation function is maximal across all elements which are not in the subset.
-\paragraph{Heuristic addition} sorts the elements in the set by heuristic ranking (see below) and adds elements to the subset starting from the largest ranking until the threshold is achieved.
-\paragraph{Random removal} might follow any of the previous methods. It starts with the initial subset, which has already achieved the threshold. It permutes all items in the subset and removes items from the beginning until the evaluation drops below the threshold. If it drops, lastly removed item is added back, and the algorithm continues with a new permutation.
-% \paragraph{Fine tuning}
+\emph{Greedy addition} starts with an empty subset and in each step adds a new item until the threshold is achieved. Each new item is chosen such that the gain in the evaluation function is maximal across all elements which are not in the subset.
+
+\emph{Heuristic addition} sorts the elements in the set by heuristic ranking (see below) and adds elements to the subset starting from the largest ranking until the threshold is achieved.
+
+\emph{Random removal} might follow any of the previous methods. It starts with the initial subset, which has already achieved the threshold. It permutes all items in the subset and removes items from the beginning until the evaluation drops below the threshold. If it drops, lastly removed item is added back, and the algorithm continues with a new permutation.
+% \emph{Fine tuning}
 \subsection{Minimal subtree adaptation}
-\paragraph{Flat search} performs subset selection on isolated nodes of the tree. The root is added to the explanation by default. After subset selection is made, all nodes which are not reachable from the root are removed from the explanation. That can be done because they do not impact classification based on the definition of the \emph{HMill} model tree structure.
-\paragraph{Level-by-leve search} performs subset selection on each level of the tree. On each level, it takes into account only nodes whose parents are in the explanation so far.
+\emph{Flat search} performs subset selection on isolated nodes of the tree. The root is added to the explanation by default. After subset selection is made, all nodes which are not reachable from the root are removed from the explanation. That can be done because they do not impact classification based on the definition of the \emph{HMill} model tree structure.
+
+\emph{Level-by-leve search} performs subset selection on each level of the tree. On each level, it takes into account only nodes whose parents are in the explanation so far.
 
 \subsection{Subtree ranking}
 \subsubsection{Model gradient ranking}
-This approach is based on the high absolute value of gradients for the most significant parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient $gr=\frac{\partial f(h(d))}{\partial h(c)} \in \mathbb{R}^m$ of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a small change in the embedding of a specific subtree influences the model's prediction. Calculation of gradient ranking $r$ of a particular subtree follows: $r(c)=|\sum_{i=1}^{m}gr_i|$.
+This approach is based on the high absolute value of gradients for the most significant parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient (\ref{eq:grad}) of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a small change in the embedding of a specific subtree influences the model's prediction. Computation of gradient ranking $r$ of a particular subtree follows: \ref{eq:grad2}.
+
+\begin{equation} \label{eq:grad}
+    gr=\frac{\partial f(h(d))}{\partial h(c)} \in \mathbb{R}^m
+\end{equation}
+
+\begin{equation} \label{eq:grad2}
+    r(c)=|\sum_{i=1}^{m}gr_i|
+\end{equation}
 
 \subsubsection{GNN explainer mask ranking}
 This method is originally designed to explain \emph{GNN} models by \cite{Ying2019}. The main idea is to use this explainer for the graph created by \emph{JSON} subtrees and edges between them. Explainer uses a mask $m=\mathbb{R}^{|\mathcal{E}|}$, where $|\mathcal{E}|$ denotes all edges between the subtrees and their predecessors in a \emph{JSON} document and $m_i\in[0,1]$. This mask represents how much information is passed along each edge during the update step of GNNs. Suppose the explainer is asked to explain a classification decision on a particular subtree. In that case, the mask is optimized using stochastic gradient descent to maximize the probability of correct classification on that subtree. After the optimization, the explainer suggests $k$ edges with the largest values as an explanation. The value of $k$ should be properly tuned because the explanation does not have to be classified to the same class as the original sample if $k$ is fixed in advance $k$. The values of the mask might be used as ranking in \emph{HMill} explainer.

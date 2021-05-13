@@ -1,13 +1,14 @@
 \chapter{Infrastucture and data collection} \label{chap:infrastructure}
-This chapter describes the realization of the data collection process using \emph{CAPEv2} sandbox. The sandbox is described in the chapter \ref{chap:analysis}, here we focus on the specific setup, problems we experienced and their solution. In the beginning, we have a data source of malware samples mentioned in the thesis introduction \url{https://bazaar.abuse.ch/}. The output of this task is a dataset of dynamic malware analyses. It includes behavioural features and signatures, both input for our \emph{HMill} model.
+This chapter describes the realization of the data collection process using \emph{CAPEv2} sandbox. The sandbox is described in the chapter \ref{chap:analysis}, here we focus on the specific setup, problems we experienced and their solution. In the beginning, we have a data source of malware samples mentioned in the thesis introduction https://bazaar.abuse.ch/. The output of this task is a dataset of dynamic malware analyses. It includes behavioural features and signatures, both input for our \emph{HMill} model.
 
-Although this chapter is shorter than the previous ones, we spent the most significant time on this task. All scripts and other outcomes are part of the attachment (\ref{app:attach}), and the most important tools are listed in \ref{app:stack}.
+Although this chapter is shorter than the previous ones, we spent the most significant time on this task. All scripts and other outcomes are part of the attachment (\ref{app:attach}), and the most important tools are listed in \ref{app:technologies}.
 
 \section{Host machine}
 The host machine is where the sandbox environment and virtualization software is running. We know that an analysis of one malware sample takes up to five minutes, and we want to have as many samples as possible. That is why we want to run several distributed host machines. 
 
 The whole process of a host machine initialization is automated to be able to set up multiple machines. The initialization consists of several steps:
 \begin{itemize}
+    \itemsep0em 
     \item Install host operating system - recommended Ubuntu
     \item Enable SSH to be able to access remotely
     \item Enable basic security - firewall and supporting tools
@@ -64,6 +65,7 @@ During the distributed data collection, we used the following terminology. \emph
 This section describes the whole process of data collection from a malware sample over its dynamic analysis and ending with behavioural features and signatures extracted from the \emph{JSON} report. All programs implemented to solve mentioned problems are part of the attachment (\ref{app:attach}). Particular steps are automated, and their description follows.
 
 \begin{enumerate}
+    \itemsep0em 
     \item Download samples from the \emph{malwareBazaar}
     \item Filter PE files only
     \item Retrieve additional metadata
@@ -100,7 +102,7 @@ The complete dataset has approximately $2,5$~\emph{TB} in compressed form. Extra
 
 Not all sandbox outputs described in \ref{chap:analysis} are presented in each analysis result. The configuration and other conditions determine it.
 
-After examining the histogram of seen signatures, we chose a subset based on their frequency in the training set. We prefered signatures that are implemented in Python for convenient investigation of the original cause. In the \ref{app:signatures}, we can see our candidates, their frequencies in the dataset and additional information, including even the groups described in \ref{chap: classification}.
+After examining the histogram of seen signatures, we chose a subset based on their frequency in the training set. We prefered signatures that are implemented in Python for convenient investigation of the original cause. In the \ref{app:signatures}, we can see our candidates, their frequencies in the dataset and additional information, including even the groups described in chapter \ref{chap:classification}.
 
 % The data in such domain are very biased. Sometimes we can see that malware can not be run under the conditions in a guest or is trying to use some \emph{.NET} library and if not found, it kills itself. The fact that we do not have an internet connection can make this bias stronger, so we have to count on it to decide what to use to train the model. We do not want to investigate network activities even if sometimes it contains something (malware attempts).
 

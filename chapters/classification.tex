@@ -26,6 +26,7 @@ A hypothesis is defined as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output o
 \paragraph{Example}
 Assume usual situation that before the learning we receive set of examples to learn from. Based on what we receive we can distinguish between several types of learning. This thesis works with \emph{supervised} case.\
 \begin{enumerate}
+    \itemsep0em 
     \item \emph{Supervised learning} - example denotes pair $(x,y)$, where $x\in \mathcal{X}$ and $y\in \mathcal{Y}$
     \item \emph{Unsupervised learning} - example denotes $x\in \mathcal{X}$
     \item \emph{Semi-supervised learning} - each example could be one of the possibilities above
@@ -48,6 +49,7 @@ If $p(x,y)$ would be known our learning process would find optimal prediction st
 
 Assume $\mathcal{T}^m$ being set of examples for supervised learning. We can distinguish two basic learning approaches.
 \begin{enumerate}
+    \itemsep0em 
     \item \emph{Discriminative learning}
     \item \emph{Generative learning}
 \end{enumerate}
@@ -68,14 +70,14 @@ In our work, we are using \emph{discriminative} models, namely neural networks.
 \paragraph{Discriminative learning algorithm}
 The learning algorithm is a realization of the learning process. The input of this process is training examples and additional parameters (often called hyperparameters). Its output is usually a statistical model of the data ($h$). A statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model}, by its hyperparameters and parameters optimized during the learning process, e.g. \ weights, biases. Given observed sample $x$, the model can provide prediction  $\hat{y}$. The quality of its predictions is conditioned mainly by the number of training examples and choice of $\mathcal{H}$ (hypotheses class), which is often connected to the algorithm we choose. 
 
-We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{\mathcal{m}})-R(h_{\mathcal{H}})$ where $R(h_{\mathcal{m}})$ denotes risk learned from training data, it is caused by the drawn data.
+We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{m})-R(h_{\mathcal{H}})$ where $R(h_{m})$ denotes risk learned from training data, it is caused by the drawn data.
 
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true but machine learning algorithm could be much more efficient (this is kind of motivation of our work)
 
 \section{Machine learning tasks}
 \paragraph{Regression}
-States $y \in \mathcal{Y}$ are continuous-valued tensor in this case, most often $\mathcal{y} \in \mathbb{R}^{n}$. For example, features might be outputs of static and dynamic vulnerabilities detectors and network traffic records, and the state is a risk score represented as real-value (\cite{Jaganathan2015}).
+States $y \in \mathcal{Y}$ are continuous-valued tensor in this case, most often $y \in \mathbb{R}^{n}$. For example, features might be outputs of static and dynamic vulnerabilities detectors and network traffic records, and the state is a risk score represented as real-value (\cite{Jaganathan2015}).
 
 \paragraph{Classification}
 In this case, $y \in \mathcal{Y}$ is categorical vector, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman}. If $\mathcal{C}$ is $2$, than we call the task \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to not mutually exclusive classes at once, that is called \emph{multi-label classification} or \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated e.g. \ we can classify into class hierarchy \cite{zhang2020dive}.
@@ -135,7 +137,7 @@ The most significant metrics are derived from the concept of \emph{Confusion mat
         \cline{3-4}
         \multicolumn{2}{c|}{}&Positive&Negative\\
         \cline{2-4}
-        \multirow{2}{*}{Classified}& Positive & True positive ($TP$) & False negative($FP$)\\
+        \multirow{2}{*}{Classified}& Positive & True positive ($TP$) & False positive($FP$)\\
         \cline{2-4}
         & Negative & False negative ($FN$) & True negative ($TN$)\\
         \cline{2-4}
@@ -143,41 +145,9 @@ The most significant metrics are derived from the concept of \emph{Confusion mat
     \label{tab:confmatrix}
   \end{table}
 
-Before deriving basic metrics, we have to emphasize that all of them have to be treated in a particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of some metrics is in \ref{tab:metrics} \todo{might be in appendix}.
+Before deriving basic metrics, we have to emphasize that all of them have to be treated in a particular context. The most important condition is the overall balance of the dataset - the ratio of positive and negative examples. List of some metrics is in \ref{tab:metrics}.
 
-\begin{table}[h]
-    \centering
-    \caption{Classifier evaluation metrics}
-    \begin{minipage}{\linewidth}
-    \begin{tabular}{lcp{5cm}}
-      \toprule
-      \textbf{Metric} &
-      \textbf{Formula} &
-      \textbf{Interpretation}
-      \\
-      \midrule
-      accuracy & $\frac{TP+TN}{TP+TN+FN+FP}$ & the ratio of correctly classified examples to all examples (imbalanced dataset may bias its interpretation)\\
-      \midrule
-      false positive rate ($FPR$) & $\frac{FP}{FP+TN}$ & the ratio of misclassified positive examples to all examples classified positive \\
-      \midrule
-      false negative rate ($FNR$) & $\frac{FN}{FN+TP}$ &  the ratio of misclassified negative examples to all examples classified negative \\
-      \midrule
-      true positive rate or recall ($TPR$) & $\frac{TP}{TP+FN}$ & the ratio of truly classified positive examples to all positive examples  \\
-      \midrule
-      true negative rate ($TNR$) & $\frac{TN}{TN+FP}$ & the ratio of truly classified negative examples to all negative examples \\
-      \midrule
-      precision & $\frac{TP}{TP+FP}$ & the ratio of truly classified positive examples to all examples classified as positive \\
-      \midrule
-      balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes, better for imbalanced datasets \\
-      \midrule
-      f1 score & $2 \cdot \frac{precision \dot recall}{precision+recall}$ & good measure if we seek for trade-of between precision and recall, we migh compare more classifiers using it\\
-      \bottomrule
-    \end{tabular}
-    \end{minipage}
-    \label{tab:metrics}
-  \end{table}
-
-Very often we can see also curves which are plotted along reported metrics. These plots fit in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data points for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on \emph{y-axis}.
+Very often, we can see also curves which are plotted along reported metrics. These plots fit in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data points for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on \emph{y-axis}.
 
 There are many differences and similarities between these two curves. The \emph{PRC} is better in the case of an imbalanced dataset where we have a larger number of negative examples, and we especially care about positive examples and their predictions. We can compensate the imbalance even in the case of \emph{ROC} curve by setting \emph{logarithm scale} on the x-axis.
 
@@ -231,11 +201,12 @@ This approach deals with the data structure itself, which have not fixed dimensi
 
 The motivation of more complex techniques is that the data structure keeps some information, and it is worth trying to model even the structure, not only the data.
 
-\emph{Graph neural networks}
+\subsection{Graph neural networks}
 Let us firstly define graph $\mathcal{G}=(\mathcal{V},\mathcal{E})$, where $\mathcal{V}$ denotes a finite set of vertices and $\mathcal{E}\subseteq\binom{\mathcal{V}}{2}$ for indirected graphs or $\mathcal{E}\subseteq\mathcal{V}\times\mathcal{V}$ for directed graph denotes a finite set of edges. 
 
 Graph neural network was introduced in \cite{Scarselli2009}, and it is a suitable model for problems represented by a graph (directed or undirected). Initial setup is that the problem representation is $G(\mathcal{V},\mathcal{E})$ where each vertex is associated with its embedded value $v_i$, where $i\in\{1,\dots,|\mathcal{V}|\}$ denotes index of vertex in graph. By an embedded value, we usually mean representation of vertex information in $\mathbb{R}^m$. The output of a graph neural net is typically the same structured graph (same edges and vertices) with optimized $v_i$. The output graph might be used in various ways - calculate the loss for the next iteration, calculate an aggregation of all values, interpretation of particular $v_i$. Usual tasks for graph neural network is node selection, node classification or graph classification. Each iteration of a graph neural net consists of three steps:
 \begin{itemize}
+    \itemsep0em
     \item Compute a message for each of chosen pairs $(v_i,v_j)$ of vertices (might be all pairs, just neighbouring or other) using values from the previous iteration
     \item Aggregate messages for each vertex $i$ by an aggregation function
     \item Update $v_i$ using aggregated message for $i\in\{1,\dots,|\mathcal{V}|\}$

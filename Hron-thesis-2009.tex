@@ -49,8 +49,8 @@ pdfauthor={\FirstandFamilyName},	% nastaví v informacích o pdf autora
 colorlinks=true,					% před tiskem doporučujeme nastavit na false, aby odkazy a url nebyly šedé při ČB tisku
 breaklinks=true,
 urlcolor=red,
-citecolor=blue,
-linkcolor=blue,
+citecolor=black,
+linkcolor=black,
 unicode=true,
 ]
 {hyperref}								% pro zobrazování "prokliknutelných" linků 
@@ -168,7 +168,7 @@ unicode=true,
 
  	%Abstract 
 	\abstractpage
-	In this thesis we focus process of malware classification based on behavioral analysis - sandboxing. We design pipeline which collect malware samples from defined sources, train classifier, evaluate and perform prediction explanation. The main goal is to implement whole process report results and address problems which we indentify. As malware sample source we used https://bazaar.abuse.ch/ and for its analysis we used sandbox CAPEv2. We use distributed setup of the sandbox run which we implement and the dataset has $80000$ samples. From the sandbox log we extract json report and its behavior part we use to train binary classifiers. As labels we use the presence of specific signature which are also in beahvior log. We use \emph{hierarchival multiple instance learning} model which is designed to solve even tree-structured data input (like JSON documents) as we can see from the prior work. The model itself is built based on input data structure and the underlying model are artificial neural nets. Based on the type of signature the classifiers have different performance but majority of them shows results above 95\% AUC. We discuss result in the case of each particular signature. Finally we examine the predictions of the classifier using \emph{hmill explaniner} which is tool designed to use statistical method to derive subsample from original sample which has the strongest contribution to resulting prediction of classifier. The results show us that explanation sometime correlate with the original signature implementation and even with our intuition. On the other hand we do not take the confounding variable existence lightly and we discuss results with sufficient distance. Main issue here is big data entrophy which causes big variance in explanations which are performed per sample. So each sample could be explained in very different way than another despite using the same classifier. \
+The goal of the thesis was to perform dynamic malware analysis of portable executable files and create a dataset of analysis reports. Further, we aimed at statistical modelling of collected data and evaluation of models. Lastly, we intended to explain the model's predictions using statistical methods and discuss the result. We used \emph{CAPEv2} sandbox for malware analysis and implemented a pipeline that downloads malware samples, distributes them among multiple sandbox instances and collects results. We used \emph{JSON} report as the input to the modelling part. We decided to model the dependency of malware signatures on behavioural features like API calls, dropped files and processes. The causality of signatures is transparent because their Python implementation can be examined. That is convenient for further model and explanation evaluation. We used \emph{HMill} framework, which can model tree-structured data like \emph{JSON} documents. The structure of the data is involved in the model, not only extracted values. \emph{HMll} framework has better scalability than alternatives. For model explaining, we used \emph{HMill Explainer}. Its method is based on a minimal subtree selection problem using \emph{Banzaf} values as a subtree evaluation metric. We collected $80000$ malware analysis samples, from which we extracted \emph{JSON} reports. A binary classifier was trained for each of chosen signatures in the data set. Based on the type of signature, the classifiers have different performance, but nine out of twelve shows results above 90\% of balanced accuracy. We examined the implementation of each signature to see its actual cause in the report. Reported accuracy shows that the model can generalize even in more complex situations than we expected. Original behavioural reports used as features might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observation evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. The realization of the whole pipeline from a malware sample to model and its explanation was successful. We reported and discussed all results. We also mention particular issues which we faced and ideas for future work. All programs are part of the attachment of the thesis. \
 	
 	\vspace{5mm}
 
@@ -179,7 +179,7 @@ unicode=true,
 	\noindent
 	\chapter*{Abstrakt}
 	\noindent
-	In this thesis we focus process of malware classification based on behavioral analysis - sandboxing. We design pipeline which collect malware samples from defined sources, train classifier, evaluate and perform prediction explanation. The main goal is to implement whole process report results and address problems which we indentify. As malware sample source we used https://bazaar.abuse.ch/ and for its analysis we used sandbox CAPEv2. We use distributed setup of the sandbox run which we implement and the dataset has $80000$ samples. From the sandbox log we extract json report and its behavior part we use to train binary classifiers. As labels we use the presence of specific signature which are also in beahvior log. We use \emph{hierarchival multiple instance learning} model which is designed to solve even tree-structured data input (like JSON documents) as we can see from the prior work. The model itself is built based on input data structure and the underlying model are artificial neural nets. Based on the type of signature the classifiers have different performance but majority of them shows results above 95\% AUC. We discuss result in the case of each particular signature. Finally we examine the predictions of the classifier using \emph{hmill explaniner} which is tool designed to use statistical method to derive subsample from original sample which has the strongest contribution to resulting prediction of classifier. The results show us that explanation sometime correlate with the original signature implementation and even with our intuition. On the other hand we do not take the confounding variable existence lightly and we discuss results with sufficient distance. Main issue here is big data entrophy which causes big variance in explanations which are performed per sample. So each sample could be explained in very different way than another despite using the same classifier.
+The goal of the thesis was to perform dynamic malware analysis of portable executable files and create a dataset of analysis reports. Further, we aimed at statistical modelling of collected data and evaluation of models. Lastly, we intended to explain the model's predictions using statistical methods and discuss the result. We used \emph{CAPEv2} sandbox for malware analysis and implemented a pipeline that downloads malware samples, distributes them among multiple sandbox instances and collects results. We used \emph{JSON} report as the input to the modelling part. We decided to model the dependency of malware signatures on behavioural features like API calls, dropped files and processes. The causality of signatures is transparent because their Python implementation can be examined. That is convenient for further model and explanation evaluation. We used \emph{HMill} framework, which can model tree-structured data like \emph{JSON} documents. The structure of the data is involved in the model, not only extracted values. \emph{HMll} framework has better scalability than alternatives. For model explaining, we used \emph{HMill Explainer}. Its method is based on a minimal subtree selection problem using \emph{Banzaf} values as a subtree evaluation metric. We collected $80000$ malware analysis samples, from which we extracted \emph{JSON} reports. A binary classifier was trained for each of chosen signatures in the data set. Based on the type of signature, the classifiers have different performance, but nine out of twelve shows results above 90\% of balanced accuracy. We examined the implementation of each signature to see its actual cause in the report. Reported accuracy shows that the model can generalize even in more complex situations than we expected. Original behavioural reports used as features might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observation evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. The realization of the whole pipeline from a malware sample to model and its explanation was successful. We reported and discussed all results. We also mention particular issues which we faced and ideas for future work. All programs are part of the attachment of the thesis.
 
 	\vspace{5mm}
 
@@ -205,9 +205,9 @@ unicode=true,
 	\include{chapters/hmill.tex}
 	\include{chapters/explain_theory.tex}
 
-	\part{Usecase and experiments}
+	\part{Experiments}
 	\include{chapters/infrastructure.tex}
-	% \include{chapters/results.tex}
+	\include{chapters/results.tex}
 	%\include{chapters/conclusion.tex}
 	
 	%just to play with latex
@@ -217,19 +217,21 @@ unicode=true,
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 
 	% APPENDIX
 	\appendix
-	% \include{chapters/apendices/network.tex}
-	% \include{chapters/apendices/signatures.tex}
-	% \include{chapters/apendices/models.tex}
-	% \include{chapters/apendices/explanations.tex}
-	% \include{chapters/apendices/stack.tex}
-	% \include{chapters/apendices/attachments.tex}
-	% \include{chapters/acronyms.tex}
+	\include{chapters/apendices/cape.tex}
+	\include{chapters/apendices/network.tex}
+	\include{chapters/apendices/signatures.tex}
+	\include{chapters/apendices/models.tex}
+	\include{chapters/apendices/explanations.tex}
+	\include{chapters/apendices/stack.tex}
+	\include{chapters/apendices/attachments.tex}
+	\include{chapters/acronyms.tex}
 	%Biblio
-	\bibliographystyle{alpha}
-	%\bibliographystyle{csplainnat}
-	%bibliographystyle{plain}
+	% \bibliographystyle{alpha}
+	% \bibliographystyle{csplainnat}
+	% bibliographystyle{plain}
 	% \bibliographystyle{psc}
-	%\bibliographystyle{apalike}
+	% \bibliographystyle{apalike}
+	\bibliographystyle{abbrv}
 	{
 	\bibliography{bib/Master_thesis}
 	}

@@ -1,7 +1,9 @@
+\chapter{Results} \label{chap:results}
+
 In this chapter, we cover our experiments in \emph{HMill} modelling and explaining, their setup, results and discussion. From previous chapter, we have a dataset \emph{JSON} reports containing \emph{behaviour} part and \emph{signatures}.
 
 \section{Model}
-We described our motivation in the first part of the thesis. Details about modelling are mainly at the end of \ref{chap:hmil}. Here we summarize only experiments.
+We described our motivation in the first part of the thesis. Details about modelling are mainly at the end of chapter \ref{chap:hmill}. Here we summarize only experiments.
 
 \subsection{Details}
 \subsubsection{Hyperparameters}
@@ -50,7 +52,7 @@ Results of the experiment could be seen in \ref{tab:models_res}. The table is di
 
 \begin{table}[h]
   \centering
-  \caption{Models performance (values rounded for 3 decimal spaces, P denotes positive examples ratio in our dataset)}
+  \caption{Model performance (values rounded for 3 decimal spaces, P denotes positive examples ratio in our dataset)}
   % \begin{tabular}{p{5cm}p{3cm}p{3cm}p{3cm}} 
   \begin{tabular}{lllll}
       \toprule
@@ -93,17 +95,17 @@ Results of the experiment could be seen in \ref{tab:models_res}. The table is di
 There are also some other metrics and visualizations in \ref{app:models}.
 
 \subsection{Discussion}
-\subsubsection{Signature with the cause in report}
-In the case of the first category of signatures, we observe quite consistent performance above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explaining. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its performance is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log by hand, so that the prediction might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
+\subsubsection*{Signature with the cause in report}
+In the case of the first category of signatures, we observe quite consistent balanced accuracy above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explaining. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its accuracy is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log by hand, so that the prediction might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
 
 Despite a single anomaly, this signature group shows reasonable accuracy, as we expected.
 
-\subsubsection{Signature without the cause in report}
-The second group behaves more unexpectedly because the performance in 3 of 5 cases is above $90$~\%. Signature \emph{antisandboxsleep} uses API calls in a more complex way, so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR}. However, its overall accuracy is still high. \emph{Stealthnetwork} should look at the network activity, which is not among the features. The excellent performance of these signatures arouses our interest in the explaining part. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy}, the accuracy is significantly lower than in other cases, as we expected. Overall, the first group has statistically better performance than the second one as we expected.
+\subsubsection*{Signature without the cause in report}
+The second group behaves more unexpectedly because the accuracy in 3 of 5 cases is above $90$~\%. Signature \emph{antisandboxsleep} uses API calls in a more complex way, so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR}. However, its overall accuracy is still high. \emph{Stealthnetwork} should look at the network activity, which is not among the features. The excellent accuracy of these models arouses our interest in the explaining part. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy}, the accuracy is significantly lower than in other cases, as we expected. Overall, the first group has statistically better accuracy than the second one as we expected.
 
 We also performed several experiments with a more general multilabel classifier, but we did not observe convergence with our computational resources.
 
-This chapter concludes that we can train \emph{HMill} classifier to classify the presence of a particular signature based on the summary part of the behavioural log from \emph{CAPEv2} sandbox. This classifier has a significant performance of more than $90\%$ as balanced accuracy for most signatures, which is sufficient for further explaining experiments. Such models should have strong confidence to choose some samples for explainer (\ref{chap:explain}). 
+This chapter concludes that we can train \emph{HMill} classifier to classify the presence of a particular signature based on the summary part of the behavioural log from \emph{CAPEv2} sandbox. This classifier has a significant accuracy of more than $90\%$ as balanced accuracy for most signatures, which is sufficient for further explaining experiments. Such models should have strong confidence to choose some samples for explainer (\ref{chap:expth}). 
 
 
 %---------------------
@@ -123,9 +125,9 @@ The number of explanations may vary because of the difference between confidence
 All the original outputs and additional aggregations are in attachments (\ref{app:attach}) - merged explanations are in \emph{merged} directory, frequencies of keys are in \emph{freq.json} and merged keys across signatures are in \emph{overall.json}. Some statistics about explanations can be found in \ref{app:expl}.
 
 \subsection{Discussion}
-The size of the original JSON file with only the behavioural part can be hundreds but even thousands of items (averaged \texttildelow~$3000$ but included even the signature part). The average size of the explanation is $3-5$ entries.
+The size of the original JSON file with only the behavioural part can be hundreds but even thousands of items (average is around $3000$ but included even the signature part). The average size of the explanation is 3--5 entries.
 
-We discuss results after presenting them to an expert and having a discussion. We formulate assumptions or hypotheses. We have to anticipate the risks mentioned in \ref{chap:explain}, especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at observation description more than concluding.
+We discuss results after presenting them to an expert and having a discussion. We formulate assumptions or hypotheses. We have to anticipate the risks mentioned in \ref{chap:expth}, especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at observation description more than concluding.
 
 \subsubsection*{antidebug setunhandledexceptionfilter}
 The most seen keys in explanations are \emph{read keys, resolved APIs, executed commands}. It includes even API calls, which are the signature cause. Among entries, the most seen are \emph{kernel32.dll.IsProcessorFeaturePresent} (153/377) API and \emph{DisableUserModeCallbackFilter} (34/377) registry key. Those are presented in other explanations once and twice, so it does not look like something too general but also not unique. The registry key is related to exceptions, and the original API call is also related to them.
@@ -134,10 +136,10 @@ The most seen keys in explanations are \emph{read keys, resolved APIs, executed 
 The most seen keys in explanations are \emph{write files, executed commands, delete files} and the first is seen in all explanations, and it also coincides with the original cause. Among entries the most seen are \emph{ikkzowxr.exe} (13/100) file, \emph{WerFault.exe} (13/100) file and \emph{StikyNot yakuza} mutex. The first file is prevalent across different signatures. The mutex is also seen more than one time in explanations.
 
 \subsubsection*{deletes self}
-The most seen keys in explanations are \emph{deleted files, write files, executed commands}. The first is seen in all explanations, but the original signature cause is API calls. Here we can see some generalization because the original signature does not check deleted files directly. However, the model is using it with high performance. We also checked if this trend is not seen in more cases, but this is unique that all explanations include deleted files.
+The most seen keys in explanations are \emph{deleted files, write files, executed commands}. The first is seen in all explanations, but the original signature cause is API calls. Here we can see some generalization because the original signature does not check deleted files directly. However, the model is using it with high accuracy. We also checked if this trend is not seen in more cases, but this is unique that all explanations include deleted files.
 
 \subsubsection*{enumerates running processes}
-The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was API calls.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The performance of this classifier is significant, but we cannot generalize to a more specific subset using our explanation.
+The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was API calls.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The accuracy of this classifier is significant, but we cannot generalize to a more specific subset using our explanation.
 
 \subsubsection*{stealth timeout}
 The most seen keys in explanations are \emph{executed commands, files} which does not include the original API calls section. Among entries the most seen is \emph{DisableUserModeCallbackFilter} (11/78) registry. Nevertheless, the situation is the same as in the previous case. We are not able to generalize more.
@@ -169,7 +171,7 @@ In several cases, we cannot identify any direct cause of the model's high accura
 
 \hfill \break
 
-After organizing theory in \ref{chap:explain}, we are cautious. Explaining is a complicated field. We summarized its challenges. We can not be sure about the output, especially using \emph{post hoc} explanation per sample. The computation of \emph{Banzhaf values} and randomness of the input causes that explanation is a random variable too. 
+After organizing theory in \ref{chap:expth}, we are cautious. Explaining is a complicated field. We summarized its challenges. We can not be sure about the output, especially using \emph{post hoc} explanation per sample. The computation of \emph{Banzhaf values} and randomness of the input causes that explanation is a random variable too. 
 
 Nevertheless, our observation evidence that some models strongly involve original causes. That leads us to future work. The main interest should be improving aggregation of particular explanations, too general explanation detection (across classes) and confounding variable detection. It is noteworthy that our \emph{post hoc} explanation should perform better with more extensive datasets. However, also the \emph{transparency} approaches should be added to the game. 
 

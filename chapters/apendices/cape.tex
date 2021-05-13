@@ -1,0 +1,111 @@
+\chapter{\emph{CAPEv2} sandbox details} \label{app:cape}
+
+\subsection*{List of file types}
+\begin{itemize}
+    \itemsep0em 
+    \item PE files
+    \item DLL files
+    \item PDF documents
+    \item Microsoft Office documents
+    \item URLs and HTML files (even internet explorer behaviour after opening some URL)
+    \item PHP scripts
+    \item CPL files
+    \item Visual Basic scripts
+    \item ZIP files
+    \item Java JAR or applets
+    \item Python files 
+    \item PowerShell scripts
+    \item Microsoft windows installer
+    \item Generic binary data such as shellcodes
+  \end{itemize}
+
+\newpage
+
+  \subsection*{Output}
+  \begin{table}[h]
+    \centering
+    \caption{CAPEv2 Sandbox output}
+    \begin{tabular}{p{2cm}p{6cm}p{6cm}} 
+        \toprule
+        \textbf{Output} &
+        \textbf{Description} \\
+        \midrule
+        pcap report & network traffic record (packet sequences) \\
+        \midrule
+        memory dump & dump of RAM (its analysis results could be also presented) \\
+        \midrule
+        bingraph & mechanism that discovers metamorphic malware \cite{Kwon2012}\\
+        \midrule
+        behavioral log & raw logs of api calls and other (usually in \emph{BSON} format) \\
+        \midrule
+        dropped files & all dropped files unchanged in separate directory \\
+        \midrule
+        CAPE, procdump & other extracted payload in separate directory \\
+        \midrule
+        reports & JSON report and possibly other reports  \\
+        \midrule
+        screenshots & taken during analysis  \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:sandbox-out}
+  \end{table}
+
+  \begin{table}[h]
+    \centering
+    \caption{Parts of \emph{report.json}}
+    \begin{tabular}{p{4cm}p{10cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Note} \\
+        \midrule
+        statistics & time statistics for particular part of malware analysis \\
+        \midrule
+        info & sandbox details (machine, category, used module, timeout\dots) \\
+        \midrule
+        debug & sandbox debug log \\
+        \midrule
+        target &  info about examined sample\\
+        \midrule
+        CAPE & extracted payload info \\
+        \midrule
+        behaviour & processes, mutexes, commands and other behavioural attributes \\
+        \midrule
+        deduplicated shots & screenshot summary \\
+        \midrule
+        network & network traffic report (domains, tcp, udp\dots) \\
+        \midrule
+        static analysis & results per file \\
+        \midrule
+        strings & extracted strings \\
+        \midrule
+        suricata &  output of suricata network detection tool (\url{https://suricata.readthedocs.io/en/latest/quickstart.html})\\
+        \midrule
+        malfamily tag &  malware family detection result\\
+        \midrule
+        malscore &  malicious score\\
+        \midrule
+        signatures &  list of signatures detected by sandbox \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:report}
+  \end{table}
+
+  \begin{table}[h]
+    \centering
+    \caption{Behaviour parts of \emph{report.json}}
+    \begin{tabular}{p{2cm}p{12cm}} 
+        \toprule
+        \textbf{Entry} &
+        \textbf{Meaning} \\
+        \midrule
+        processes & list of processes related to malware execution with details (api names, arguments\dots) \\
+        \midrule
+        process tree & structure of process execution\\
+        \midrule
+        summary & list of occured files, registry keys, mutexes, executed commands, api calls \\
+        \midrule
+        enhanced & comprehensive log of events during malware execution including parameters and timestamps and other\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:behavioral}
+\end{table}

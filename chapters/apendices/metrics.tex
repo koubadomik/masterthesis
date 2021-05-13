@@ -1,0 +1,33 @@
+\chapter{Classifier performance measures} \label{app:metrics}
+
+\begin{table}[h]
+    \centering
+    \caption{Classifier evaluation metrics}
+    \begin{minipage}{\linewidth}
+    \begin{tabular}{lcp{5cm}}
+      \toprule
+      \textbf{Metric} &
+      \textbf{Formula} &
+      \textbf{Interpretation}
+      \\
+      \midrule
+      accuracy & $\frac{TP+TN}{TP+TN+FN+FP}$ & the ratio of correctly classified examples to all examples (imbalanced dataset may bias its interpretation)\\
+      \midrule
+      false positive rate ($FPR$) & $\frac{FP}{FP+TN}$ & the ratio of misclassified positive examples to all examples classified positive \\
+      \midrule
+      false negative rate ($FNR$) & $\frac{FN}{FN+TP}$ &  the ratio of misclassified negative examples to all examples classified negative \\
+      \midrule
+      true positive rate or recall ($TPR$) & $\frac{TP}{TP+FN}$ & the ratio of truly classified positive examples to all positive examples  \\
+      \midrule
+      true negative rate ($TNR$) & $\frac{TN}{TN+FP}$ & the ratio of truly classified negative examples to all negative examples \\
+      \midrule
+      precision & $\frac{TP}{TP+FP}$ & the ratio of truly classified positive examples to all examples classified as positive \\
+      \midrule
+      balanced accuracy &$\frac{TNR+TPR}{2}$ & shows average performance balanced for both classes, better for imbalanced datasets \\
+      \midrule
+      f1 score & $2 \cdot \frac{precision \dot recall}{precision+recall}$ & good measure if we seek for trade-of between precision and recall, we migh compare more classifiers using it\\
+      \bottomrule
+    \end{tabular}
+    \end{minipage}
+    \label{tab:metrics}
+  \end{table}
