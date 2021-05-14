@@ -1,14 +1,14 @@
 \chapter{Technologies} \label{app:technologies}
-Our technology stack is quite broad, in lists below we divide technologies into two groups based on what we did use it for. We do not mention standard linux tools like \emph{shell scripts}, \emph{ssh} etc. The main part of our experimenting we spent working on Ubuntu 20.04.
+Our technology stack is quite broad, in the lists below, we divide the tools into two groups based on what we did use it for. We do not mention standard Linux tools like \emph{shell scripts}, \emph{ssh} etc. The main part of our experimenting we spent working on Ubuntu 20.04.
 
-In the process we usualy worked with a lot of tools we mention only those which had significant impact in our work.
+In the process we usually worked with a lot of tools, we mention only those which had a significant impact in our work.
 
 
 \section*{Sandboxing and infrastructure}
 \subsection*{Capev2 with community signatures}
-A malware sandboxing tool which provides us environment to retrieve malware analysis which we used for further modelling. 
+A malware sandboxing tool which provides us an environment to retrieve malware analysis which we used for further modelling. 
 
-There are several relevant sources here are the most important:
+There are several relevant sources, here are the most important:
 \begin{itemize}
   \itemsep0em 
   \item Public instance - https://capesandbox.com/
@@ -18,7 +18,7 @@ There are several relevant sources here are the most important:
 \end{itemize}
 
 \subsection*{Virtualization}
-Virtualization of sandbox machines, router machine and other related stuff was ensured by following tools:
+Virtualization of sandbox machines, router machine, and other related stuff was ensured by the following tools:
 \begin{itemize}
   \itemsep0em 
   \item \emph{Kernel-based Virtual Machine} - https://www.linux-kvm.org
@@ -41,13 +41,13 @@ Virtualization of sandbox machines, router machine and other related stuff was e
 \end{itemize}
 
 \subsection*{Programming}
-For programming tasks in infrastructure part we used \emph{Python 3} (see in \ref{app:attach}).
+For programming tasks in the infrastructure part we used \emph{Python 3} (see in \ref{app:attach}).
 \subsection*{Others}
 We are really pleased that we could use \emph{pafish} (https://github.com/a0rtega/pafish) as a testing malware sample, we used it many times\dots
 
 \section*{Data and machine learning}
 \subsection*{Julia}
-For programming tasks in this part we used \emph{Julia} language - https://julialang.org/. Julia has many advantages regarding maily performance comparing to Python which could be considered as alternative. But we do not aspire to advocate this language, programming environment was mainly determined by the \emph{hmill} framework which is quite young and its first implementation is in this language by \cite{Mandlik2020}. List of the most important libraries used and their versions follows:
+For programming tasks in this part we used \emph{Julia} language - https://julialang.org/. Julia has many advantages regarding maily performance comparing to Python which could be considered as alternative. But we do not aspire to advocate this language, programming environment was mainly determined by the \emph{hmill} framework which is quite young and its first implementation is in this language by \cite{Mandlik2020}. List of the most important libraries used and their versions:
 \begin{itemize}
   \itemsep0em 
   \item \emph{JsonGrinder.jl} - \cite{Pevny2019} (v2.1.4)
