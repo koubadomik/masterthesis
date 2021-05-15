@@ -4,13 +4,9 @@
 \usepackage[utf8]{inputenc} 			% utf8 kódování vstupu 
 \usepackage[square, numbers]{natbib}	% sazba pouzite literatury
 \usepackage{fancyhdr}					% tisk hlaviček a patiček stránek
-% \usepackage{nomencl} 					% umožňuje snadno definovat zkratky a jejich seznam
 \usepackage[acronym]{glossaries}
-
 \usepackage{charter}					% font
 \usepackage{pdfpages}					% inserting pdfs
-% \usepackage[chapter]{easy-todo}
-% \usepackage{todonotes}
 \usepackage{pgfplots}
 \usepackage{dirtytalk}
 \usepackage{amsfonts}
@@ -24,9 +20,6 @@
 \usepackage{pgf-pie}
 \usepackage{xcolor}
 \usepackage{neuralnetwork}
-
-%not tested
-% \usepackage{fancyvrb}
 
 
 \setlength\parindent{0pt}
@@ -51,7 +44,7 @@ breaklinks=true,
 urlcolor=black,
 citecolor=black,
 linkcolor=black,
-unicode=true,
+unicode=true
 ]
 {hyperref}								% pro zobrazování "prokliknutelných" linků 
 
@@ -66,8 +59,8 @@ unicode=true,
 \setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % příkazy šablony
-\let\oldUrl\url				% url adresy budou zobrazeny: <url> 
-\renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
+% \let\oldUrl\url				% url adresy budou zobrazeny: <url> 
+% \renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
 \newtheorem{definition}{Definition}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
@@ -156,7 +149,7 @@ unicode=true,
 	% Acknowledgements 
 	\acknowledgements
 	\noindent
-	My deepest gratitude goes to my supervisor, doc.~Ing.~Tomáš Pevný,~Ph.D. for giving me advice and helping me overcome struggles during this journey. I also sincerely thank to doc.~Mgr.~Branislav Bošanský,~Ph.D., Ing.~Thorsten Sick and Ing. Josef Liška for their advice and encouragement. Finally, I wish to extend my special thanks to my family.
+	My deepest gratitude goes to my supervisor, doc.~Ing.~Tomáš Pevný,~Ph.D. for giving me advice and helping me overcome struggles during this journey. I also sincerely thank doc.~Mgr.~Branislav Bošanský,~Ph.D., Ing.~Thorsten Sick and Ing. Josef Liška for their advice and encouragement. Finally, I wish to extend my special thanks to my family.
 
 	\noindent\rule{\textwidth}{0.4pt}
 
@@ -198,8 +191,9 @@ The goal of the thesis was to perform dynamic malware analysis of portable execu
 	\mainbodystarts
 
 	%Chapters
-	\part{Theory and prior}
 	\include{chapters/introduction.tex}
+	
+	\part{Theory and prior}
 	\include{chapters/analysis.tex}
 	\include{chapters/classification.tex}
 	\include{chapters/hmill.tex}

@@ -1,4 +1,4 @@
-\chapter{Attachments of thesis} \label{app:attach}
+\chapter{Attachments} \label{app:attach}
 \section*{Code}
 \begin{table}[h]
     \centering
@@ -6,23 +6,23 @@
         \toprule
         \textbf{INFRASTRUCTURE} \\
         \midrule
-        init\textunderscore cape\textunderscore machine.py &
-        setup new machine with \emph{Ubuntu 20.04} with cape sandbox and all requirements like \emph{kvm}, network security \\
+        init\textunderscore cape\textunderscore machine.sh &
+        set up a new machine with \emph{Ubuntu 20.04} with the sandbox and all requirements like \emph{KVM}, network security \\
         \midrule
         ansible\textunderscore init\textunderscore cape.yml &
-        setup multiple machines at one time using ansible\\
+        set up multiple machines at one time using ansible\\
         \midrule
         fetch\textunderscore samples.py &
-        fetch malware samples from defined sources online \\
+        fetch malware samples from defined sources (abuse.ch) \\
         \midrule
         fetch\textunderscore metadata.py &
-        fetch for already retrieved samples from defined sources\\
+        fetch metadata for already retrieved samples from defined sources (VirusTotal)\\
         \midrule
         filter\textunderscore samples.py &
         filter retrieved samples by filetype\\
         \midrule
         distribute\textunderscore samples.py &
-        distribute samples to analyse on multiple instances of \emph{CAPEv2} sandbox\\
+        distribute samples on multiple instances of \emph{CAPEv2} sandbox\\
         \midrule
         collect\textunderscore results.py &
         collect results of analyses\\
@@ -31,10 +31,10 @@
         aggregate results of analyses on master machine\\
         \midrule
         dbutils.py &
-        create new samples in db of files (for us json file was sufficient) and other tools for maintenance\\
+        create new samples in database and other tools for database maintenance\\
         \midrule
         dbs/filedb.json &
-        example of json database of samples\\
+        example of json database of files\\
         \midrule
         dbs/machinedb.json &
         example of json database of physical machines in cluster \\
@@ -80,7 +80,7 @@
   \end{itemize}
 
   \section*{Data}
-  In attachment we can find also example of many time referenced \emph{report.json} and example \emph{HMill} schemata, extractor and model in text form.
+  In attachment we can also find an example of many time referenced \emph{report.json} and an example of \emph{HMill} schemata, extractor and model in text form.
 
 % Infrastructure
 % init-cape.sh - OK

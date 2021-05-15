@@ -1,7 +1,7 @@
 \chapter{Malware analysis} \label{chap:analysis}
 A particular goal of this thesis is to create a dataset of dynamic malware analysis samples. In this chapter, we define the basic notions of malware, PE file and malware analysis. We describe \emph{CAPEv2} sandbox and its output. We also address some cybersecurity challenges and refer to prior arts.
 
-\section{Data cybersecurity challenges}
+\section{Cybersecurity challenges}
 We address the challenges that we find essential, and we refer to the ones listed in \cite{Amit2019}. The authors of that paper also list available datasets for specific kinds of machine learning tasks in cybersecurity.
 
 There are terabytes of data every second in cybersecurity - cloud, IoT, and general network traffic\dots. Supervised machine learning is generally more reliable than unsupervised, so we want these data to be labelled. However, the detection itself has to be fast. The most significant is the ability to detect zero-day attacks and malware variants based on similar attributes. Repeated observations might not be possible because modern malware is flexible. As an example, we can see analysis evasion techniques \cite{Afianian2018}. A significant concern is also bias in the data itself caused by multiple factors - size, noise, sensibility to minor deviations. For instance, if we run several malware samples in a sandbox that has access to the internet and the malware can access its public IP address, the bias might be caused by the geographical location of the edge router. That is something that could ruin our dataset. Another kind of bias is encryption, as mentioned in the thesis introduction.
@@ -35,7 +35,7 @@ According to \cite{AVATLASM39:online} the most seen types on Windows operating s
 \section{File formats}
 Malware is defined very generally, and it is not limited to a specific file format. We can find various file types - Portable executable, Portable Document Format, Microsoft office formats, HTML, Archives and many others. According to \cite{AVATLASM39:online} Portable Executable (PE) files are the most seen on Windows machines.
 
-\subsection{PE}
+\subsection{Portable Executable}
 The portable executable is a file format mainly for executables, object code and data-link libraries (DLLs). It is specific for Windows operation system. For 32-bit, we use the format PE32 and for 64-bit is PE32+. Its complete description is provided by Microsoft \cite{PEFormat89:online}. Description of the essential parts follows.
 
 The PE file includes information necessary for Windows operating system (specifically the dynamic linker) to map the file into memory \cite{Gibert2020}. Usual file extensions are \emph{.exe, .dll, .sys}. It consists of two main parts - \emph{Header} and \emph{Sections} (see \ref{fig:pe}). 
@@ -133,7 +133,7 @@ Examples of existing solutions for sandbox environment orchestration are:
   \item Joe Sandbox - https://www.joesandbox.com/
 \end{itemize}
 
-\subsection{Sandbox evasion techniques}
+\subsubsection*{Sandbox evasion techniques}
 As we mentioned earlier, the creators of malware know how it is examined. They might involve evasion techniques to detect the sandbox. Malware might delay its execution to overcome the timeout of most sandboxes (usually up to half an hour). It often checks the unlikely storage size, version, and other information overlooked during the virtual machine setup. It might detect a low number of CPU cores and other environment details before dropping a payload. If the sandbox runs on a device with GUI, malware can try user interaction detection \cite{Evolutio45:online}. A comprehensive description of sandbox evasion techniques can be found in \cite{Afianian2018} and this blog post \cite{Chailytko2019} is describing how we can defeat them.
 
 \section{CAPEv2}
@@ -210,7 +210,7 @@ The list of raw data processing modules:
 
 A Signature might isolate some unique behaviour, identify some malware family or type, and spot significant modifications performed in the system. The signature report consists of an identifier, description, severity, category, and other related information.
 
-\subsection{Analysis}
+\subsection{Analysis flow}
 A target file upload might be performed using CLI utility of \emph{CAPEv2}, using the Web interface,  Python API or REST API.
 
 If a file is uploaded \emph{CAPEv2} saves it to the database. Multiple options could be configured for each analysis - used package, machine to run on, network setup, timeout, priority, and multiple additional options. We can run only network analysis or only static analysis. The \emph{scheduler} keeps track of pending tasks and runs them. The process of execution is managed by \emph{analysis manager}. In case of running a new analysis, \emph{analysis manager} informs the \emph{result server}. When the analysis is running, the \emph{analyzer, monitor}, configuration and the sample file are uploaded to the \emph{guest} using \emph{agent}. \emph{Agent} starts the \emph{analyzer}, run the sample and injects \emph{monitor} to that. The \emph{analyzer} and \emph{monitor} sends results to the \emph{result server}. After the analysis stops or timeout passes, \emph{analysis manager} stops the machine. The collected analysis results are forwarded to \emph{processing modules}. Results are stored in the chosen formats and saved to the database \cite{CuckooSa10:online}. The whole flow can be seen in figure \ref{fig:capeflow}.
@@ -223,14 +223,14 @@ If a file is uploaded \emph{CAPEv2} saves it to the database. Multiple options c
 \end{figure}
 
 
-\subsection{Network}
+\subsection{Network setup options}
 \emph{CAPEv2} provides multiple possibilities for \emph{guest} network setup which could be configured per analysis. 
 
 In the case of \emph{None} routing, the machine is isolated. The only connection is the one with the result server. Additionally, there is \emph{Drop} routing when all the traffic is actively dropped (a more aggressive option). 
 
 Other options provide internet connection (in some sense). \emph{Internet} routing is full internet access through specified interface. We can also forward the traffic through another gateway, i.e. \emph{VPN}, \emph{SOCKS5} proxy\footnote{example tool https://github.com/RicoVZ/socks5man} or \emph{Tor}\footnote{https://www.torproject.org/}. Last option is to use network simulation like \emph{INetSim}\footnote{https://www.inetsim.org/}.
 
-\subsection{Other}
+\subsection{Other features}
 One of the crucial features of \emph{CAPEv2} is the debugger, so we can also perform non-interactive dynamic code analysis. It allows dynamic anti-evasion bypasses such as \emph{Guloader, Ursnif} or \emph{Zloader} uses.
 
 \emph{CAPE} means \emph{Config And Payload Extraction}. The main motivation behind its creation was malware payload extraction, for which it uses techniques like Process injection, Decompression of executable modules in memory or extraction of executable modules. \emph{CAPEv2} automatically creates a process dump for each process that effectively detects the basic packers.
@@ -255,7 +255,7 @@ The \emph{CAPEv2} report usually has tens of megabytes but sometimes even gigaby
 
 \section{Prior arts}
 Below we list relevant publications where the authors applied a machine learning algorithm to the data produced by malware analysis tools.
-\subsubsection{Static features}
+\subsubsection*{Static features}
 \begin{itemize}
   \itemsep0em 
   \item Strings - \cite{Lee2011}
@@ -264,7 +264,7 @@ Below we list relevant publications where the authors applied a machine learning
   \item Statically extracted API function calls - \cite{Ahmadi2016}
 \end{itemize}
 
-\subsubsection{Dynamic features}
+\subsubsection*{Dynamic features}
 \begin{itemize}
   \itemsep0em 
   \item Registry - \cite{Ghiasi2015}

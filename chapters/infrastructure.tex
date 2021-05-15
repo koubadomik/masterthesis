@@ -24,8 +24,8 @@ Hardware resources on host machines are 256GB SSD and 16GB RAM, which means that
 
 Various issues accompanied the automation of the whole process. Such a process often needs manual steps, and their automation is very challenging. Issues were caused mainly by our low experience. Sometimes poor documentation was involved. Especially the process of virtual machine images creation and copying was connected with issues. Overall, we have configured seven host machines.
 
-\section{Guest - virtual machines}
-Guest denotes the machine where the malware sample runs and where the \emph{CAPEv2} monitor operates. We used Windows 7 as an operating system. The crucial goal of the guest machine is to look like an ordinary computer that is in regular use. Due to the virtualization usage, we have to care about the sandbox evasion techniques mentioned in \ref{chap:analysis}.
+\section{Guest machine}
+Guest denotes the virtual machine where the malware sample runs and where the \emph{CAPEv2} monitor operates. We used Windows 7 as an operating system. The crucial goal of the guest machine is to look like an ordinary computer that is in regular use. Due to the virtualization usage, we have to care about the sandbox evasion techniques mentioned in \ref{chap:analysis}.
 
 There are two options for anti-evasion setup in \emph{CAPEv2} sandbox. Firstly, we experimented with vmcloak\footnote{https://github.com/hatching/vmcloak}. We were able to run and use this tool. However, it supports only VirtualBox, which is not recommended by \emph{CAPEv2} because of its performance. The project is also no longer maintained, and some functions did not work (taking snapshots). The second option is to use a script recommended by sandbox contributors\footnote{https://github.com/doomedraven/Tools/blob/master/Virtualization/kvm-qemu.sh} and perform manual steps in the virtual machine configuration\footnote{https://www.doomedraven.com/2016/05/kvm.html\#modifying-kvm-qemu-kvm-settings-for-malware-analysis}. After several unsuccessful attempts with misconfigurations in the low-level virtual machine configuration, we were able to create four working images.
 
@@ -36,6 +36,7 @@ The network setup is a crucial point in the dynamic analysis. The guest machine 
 
 We decided to collect the data under two different conditions - with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). We engaged both because the \emph{internet} is much more difficult to set up and secure, and we wanted to start data collection as soon as possible. Both architectures are figured in the appendix \ref{app:network}.
 
+\subsection{None}
 \emph{None} setup is a straightforward option for an isolated network between host and guest. This approach requires a host-only interface created in \emph{KVM} virtualization tool. Host and guest are assigned with IP addresses from the same range. From a security point of view, we have to set up a firewall on the host machine. It should accept connections from the isolated network only on the result server's port.
 
 \subsection{Internet}
@@ -92,10 +93,10 @@ After dealing with issues in the host initialization part and even in the VPN se
 
 Hashes of our files are stored in a database (in our case \emph{JSON} file) with additional attributes. A script runs on the master machine that distributes samples among worker machines using their REST API. After the analysis is done, another script on the worker machine compresses the result and sends it back to the master. The last script manages the coming results and saves them to the NAS. Everything is recorded in the database.
 
-\subsection{Results postprocessing}
+\subsection{Result postprocessing}
 We need only part of \emph{JSON} log, specifically behavioural features and signatures, for further modelling. Its extraction was done in two steps. Firstly, we decompressed the analysis result and extracted only \emph{JSON} log. Secondly, we extracted the mentioned parts and saved the shrank output. The whole report might have even gigabytes. However, the shrank variant has usually tens of megabytes. We could transfer the output to the metacentre where the model computation and explanation took place.
 
-\section{Dataset}
+\section{Collected dataset}
 When we start modelling experiments, we have a dataset consisting of $80000$ different samples in \emph{none} network setup. The \emph{internet} configuration took us several weeks to deal with, and the data collection started later and was slower. The \emph{internet} data will be investigated in future work as its collection continues. 
 
 The complete dataset has approximately $2,5$~\emph{TB} in compressed form. Extracted features and signatures are much smaller (tens of gigabytes). 

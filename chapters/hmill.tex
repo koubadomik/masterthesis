@@ -9,7 +9,7 @@ At first, let us describe and define the problem of \emph{Multiple instance lear
 The motivation example in the original paper \cite{Dietterich1997} is formulated in the following way. Imagine we have keys and one door, and some of the keys unlock the door, and some do not. Note that we do not have access to the door. We get the keys with labels. In standard learning, our goal is to learn a classification model, which consumes a key and outputs if it can open the door. However, in \emph{multiple instance learning} setting, we receive the whole key chains with various keys. Each chain is assigned with a label showing if it contains a key opening the door or not. Our goal is to learn a classification model, which consumes a key chain and outputs if it can open the door. We should not check every single key.
 
 In the figure \ref{fig:mill} we can see the basic idea behind \emph{Mill} problem ($I_i$ denote instance). The only significant difference regarding the previous chapter is the definition of an \emph{Example}. 
-\paragraph{Example}
+\subsection*{Example}
 We assume a \emph{supervised} learning setting. Our examples consist of two parts - \emph{bag} $b$ and \emph{state} $y$. A state was defined earlier and its meaning is the same, but it is related to a bag and sometimes called \emph{bag label}. \emph{Bag} $b$ is a set of feature vectors $x_i\in\mathcal{X}$, these vectors are called \emph{instances} and usually lives in the standard feature space $\mathbb{R}^{d}$. The cardinality of each bag is $|b| \in \mathbb{N}$ and can be even zero. We assume $b \in \mathcal{B}$ which denotes a \emph{bag space}. \emph{Bag space} might also be seen as $\mathcal{B} = \mathrm{Fin}(\mathcal{X})$ which denotes all finite subsets of $\mathcal{X}$. We can see a standard learning situation described in chapter \ref{chap:classification} corresponds to a \emph{Mill} problem where holds $|b| = 1$.
 
 For the thesis we assume \emph{Mill} classification problem so $|\mathcal{Y}|$ is finite (typically binary classification $\mathcal{Y} \in \{positive, negative\}$). 
@@ -58,7 +58,7 @@ For the thesis we assume \emph{Mill} classification problem so $|\mathcal{Y}|$ i
     \label{fig:mill}
 \end{figure}
 
-\section{\emph{Mill} problem solutions}
+\section{Mill problem solution}
 The goal of the \emph{HMill} learning process is identical to that in the standard setting. This section describes three general approaches (paradigms) of solving a \emph{HMill} problem. They are formulated in \cite{Amores2013} as \emph{Instance-Space, Bag-Space} and \emph{Embedded-Space} paradigm.
 
 \subsection{Instance-Space paradigm}
@@ -265,7 +265,7 @@ The \emph{JSON} to \emph{HMill} sample translation is defined on three basic abs
 The authors of the framework stated that the model takes into the game even the document's structure which exceeds the \emph{flattening} approach. Compared to the rule-based approaches, the framework can learn more complex hypotheses because chosen aggregation can substitute various hand-defined rules. The \emph{HMill} framework was used in the IoT device identification use case \cite{Mandlik2020}, which was a dataset of \emph{JSON} documents modelled for multinomial classification. Reported accuracy is $96$~\%. Authors experimented even in different setup for a general graph inference to demonstrate the generality of the \emph{HMill} framework.
 
 
-\section{\emph{CAPEv2} classification}
+\section{CAPEv2 classification}
 The thesis aims to create a classifier that classifies signatures based on behavioural features observed during the dynamic analysis.
 
 \subsection{Behavioural features}

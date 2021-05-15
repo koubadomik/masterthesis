@@ -1,7 +1,7 @@
 \chapter{Malware classification} \label{chap:classification}
 In this chapter, we describe the machine learning background, which is important for further model description. We cover basic terms in machine learning, cybersecurity context and models for hierarchically structured data (\emph{JSON}). All of these are the background for our target experiments in modelling.
 
-\section{Classification}
+\section{Machine learning}
 \say{Learning is a search through the space of possible hypotheses for one that will perform well, even on new examples beyond the training set. To measure the accuracy of a hypothesis, we give it a test set of distinct examples from the training set.} \cite{Russell2009}
 
 As we can see in the quote, the essentials of machine learning can be described concisely and elegantly. On the other hand, the crux is its mathematical base. The most considerable challenge in machine learning theory is the formal framework and point of view, which the authors consider. Firstly, we would like to put our method into context.
@@ -11,19 +11,19 @@ After a brief look into several sources, we can find varied kinds of machine lea
 In statistical machine learning, we aim to optimize the predictive function to fit our training data and perform sufficiently on testing data. It is done using statistical tools such as \emph{maximum likelihood estimation} and many others. On the opposite, we can see symbolic learning where we are more interested in symbolic knowledge representation, often human-readable. This approach is older and sometimes called \emph{GOFAI} - Good Old-Fashioned Artificial Intelligence \cite{Haugeland1985}. This kind of learning is not going through such a massive upswing as the statistical branch nowadays. Let us define the basic terms based on \cite{Franc2020}.
 
 % \todo{we should define machine learning algorithm and model and how it relates to the hypothesis itself}
-
-\paragraph{Sample - independent variable set}
+\subsection{Definitions}
+\subsubsection*{Sample - independent variable set}
 By sample, we mean a collection of features which tends to be represented as $x\in\mathbb{R}^{n}$, where $x_i$ is often called feature and $x$ is called sample or feature vector \cite{GoodBengCour16}. We can also generalize this definition for tensors.
 
 Generally, we can see object features as $x \in \mathcal{X}$, where $\mathcal{X}$ could be a set of categorical variables, scalars, real-valued vectors, sequences, images, graphs, structured formats (\emph{JSON}) and much more. We might involve a feature extraction process to get to the real-valued vectors mentioned above.
 
-\paragraph{States, classes - dependent variable set}
+\subsubsection*{States, classes - dependent variable set}
 By state, we mean the subject of our prediction, often represented as $y \in \mathcal{Y}$, where $\mathcal{Y}$ is often called \emph{state space}. That could be whatever we enumerated by $\mathcal{X}$ (images, documents, vectors\dots). They also tend to be represented as real-valued or discrete vectors. States are sometimes also called labels or targets. We focus on classification tasks, so we call them classes.
 
-\paragraph{Prediction strategy, hypothesis}
+\subsubsection*{Prediction strategy, hypothesis}
 A hypothesis is defined as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy (state estimation) we denote as $h(x)=\hat{y}$ on the contrary real state we denote as above just $y$.
 
-\paragraph{Example}
+\subsubsection*{Example}
 Assume the usual situation that before learning, we receive a set of examples to learn from. Based on what we receive, we can distinguish between several types of learning. This thesis works with \emph{supervised} case.\
 \begin{enumerate}
     \itemsep0em 
@@ -35,10 +35,10 @@ We are usually working with the set of examples that we later divide into differ
 
 The crucial assumption is that $X, Y$ are random variables related by unknown joint p.d.f $p(x,y)$. This assumption makes the whole learning process reasonable because we assume the relation between variables. We also assume that we can draw i.i.d. examples from this p.d.f.
 
-\paragraph{Loss function}
+\subsubsection*{Loss function}
 Loss function denotes the objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(\hat{y}))$ and use some aggregation (mean) to retrieve one value. The result shows us the loss function value for the whole set.
 
-\paragraph{Learning}
+\subsubsection*{Learning}
 Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\ref{eq:exploss}).
 
 \begin{equation} \label{eq:exploss}
@@ -62,7 +62,7 @@ Optimal strategy is denoted by $h_{\mathcal{T}}^*(x)=\operatorname*{argmin}_{{h}
 
 In our work, we are using \emph{discriminative} models, namely neural networks.
 
-\paragraph{Discriminative learning algorithm}
+\subsubsection*{Discriminative learning algorithm}
 The learning algorithm is a realization of the learning process. The input of this process is training examples and additional parameters (often called hyperparameters). Its output is usually a statistical model of the data ($h$). A statistical model is often defined by its type, e.g. \ \emph{neural net} or \emph{linear regression model}, by its hyperparameters and parameters optimized during the learning process, e.g. \ weights, biases. Given observed sample $x$, the model can provide prediction  $\hat{y}$. The quality of its predictions is conditioned mainly by the number of training examples and choice of $\mathcal{H}$ (hypotheses class), which is often connected to the algorithm we choose. 
 
 We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{m})-R(h_{\mathcal{H}})$ where $R(h_{m})$ denotes the risk learned from training data, it is caused by the drawn data.
@@ -70,11 +70,11 @@ We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true, but machine learning algorithm could be much more efficient (this is the motivation of our work)
 
-\section{Machine learning tasks}
-\paragraph{Regression}
+\subsection{Machine learning tasks}
+\subsubsection*{Regression}
 States $y \in \mathcal{Y}$ are continuous-valued tensor in this case, most often $y \in \mathbb{R}^{n}$. For example, features might be the outputs of static and dynamic detectors and network traffic records, and the state is a risk score represented as real-value (\cite{Jaganathan2015}).
 
-\paragraph{Classification}
+\subsubsection*{Classification}
 In this case, $y \in \mathcal{Y}$ is categorical vector, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman}. If $\mathcal{C}$ is $2$, than we call the task \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to not mutually exclusive classes at once, that is called \emph{multi-label classification} or \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, e.g. \ we can classify into a class hierarchy \cite{zhang2020dive}.
 
 Given $x$ classifier outputs $\hat{y}$ which is an encoded class or probability distribution over classes \cite{GoodBengCour16}. An example of such distribution might be the popular \emph{softmax} layer in neural networks. This distribution might be later interpreted and used during evaluation and further analysis. We have to determine predictions of such classifier because we have real values instead of discrete classes. That is often done by setting \emph{treshold}. If the result is above the specified threshold, it is in the positive class and vice versa.
@@ -93,9 +93,9 @@ Our intention is in \emph{classification}, we focus on it further.
 \section{Loss functions for classification}
 The learning process builds on function optimization. Our criterion is the chosen loss function. Every loss function has its interpretation, and we choose it based on our goals (domain specifically). We mention two standard functions which are often involved in classification tasks.
 
-\subsection{Multinomial logistic loss (multiclass cross entropy)} 
+\subsection*{Multinomial logistic loss} 
 We assume that the outputs of our model are conditional probabilites  $x \in \mathcal{X}$  $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and for each of $n$ examples.
-Multiclass cross entropy is defined in \ref{eq:crossent}. 
+Multiclass cross entropy is defined in \ref{eq:crossent}. This loss function is sometimes called \emph{multiclass cross entropy}.
 
 \begin{equation} \label{eq:crossent}
     \ell(\theta)=-\frac{1}{n}\sum_{i=1}^{n}\sum_{c \in \mathcal{C}}\mathbbm{1}\{c==c_i\}\log p(c|x;\theta)
@@ -105,7 +105,7 @@ Its idea is to minimize values representing the average logarithm of the probabi
 
 %In multilabel case, we use a variant of this function, sometimes called binary cross-entropy. %may mention formula, nice-to-have
 
-\subsection{Hinge loss}
+\subsection*{Hinge loss}
 This loss was introduced in \cite{Gentile1998} and its primary usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \ref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
 
 \begin{equation} \label{eq:hinge}
@@ -118,10 +118,10 @@ Learning is often divided into two or three phases - \emph{training}, \emph{test
 % \todo{reference bias X variance tradeoff at the beginning of this chapter}
 Evaluation metrics are most often used to measure the quality of the model. It also might be used to compare the result to another approach. If we tune the model's hyperparameters like the number of iterations or minibatch size, we often monitor accuracy on the validation set. Furthermore, we list a couple of possibilities for classification model evaluation.
 
-\subsection{Loss function}
+\subsection*{Loss function}
 The loss function is the objective with its meaning and possible interpretation. Its value is often monitored directly during the learning process. We might observe the loss function value difference between the training set and the validation set as a possible overfitting indicator.
 
-\paragraph{Confusion matrix}
+\subsection*{Confusion matrix}
 The most significant metrics are derived from the concept of \emph{Confusion matrix} (table \ref{tab:confmatrix}. For our convenience, we define a confusion matrix for a binary classifier. Its generalization is just larger, but the idea is the same. Common problems in binary classification are formulated in the way that $y \in \{positive, negative\}$. As an example, we can introduce the classification that a patient has cancer or not. All $(x,y)$ where $y=positive$ we call positive examples and the opposite examples are negative.
 
 \begin{table}[h]
@@ -148,7 +148,7 @@ There are many differences and similarities between these two curves. The \emph{
 
 If we need to have a single number as a performance metric, including multiple thresholds, we can use the area under the \emph{ROC} or \emph{PR} curve. Usage of that metric has to be careful and strictly related to a given context.
 
-\subsection{In Cyber Security}
+\subsection*{Cyber Security context}
 Some metrics are more critical than others in cybersecurity. It is crucial to think about domain-specific facts choosing appropriate metric to measure our model's performance.
 
 For example, \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. However, a class imbalance is one of the challenges in cybersecurity. If the dataset consists of 80~\% of positive examples, then a classifier predicting only positive class has $accuracy=0.8$. In \cite{Hernandez-Callejo2019}, we can see the usage of \emph{geometrical mean} to deal with that issue. We can also use \emph{balanced accuracy} to cover the dataset's imbalance in the metric calculation.

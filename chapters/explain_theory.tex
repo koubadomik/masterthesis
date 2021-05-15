@@ -141,7 +141,7 @@ Game theoretical approaches in feature extraction which uses \emph{Shapley value
 
 A sampling algorithm is used to approximate Banzhaf values \cite{Bachrach2010}. There are two values stored for each subtree in the \emph{JSON} document. The classifier's average confidence in coalitions includes the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running a more significant number of iterations, the approximation of Banzhaf values for each subtree is the difference between the two values stored in it. Banzhaf values approximation is used as the subtree ranking. If we do not fix the seed, the explanation is stochastic and might be unstable regarding the number of iterations and the output.
 
-\subsection{Prior}
+\subsection{Results}
 Authors in \cite{Pevny2020} present qualitative and quantitative analysis for different \emph{HMill} explainer setups. The best result regarding the computational time and size of explanation was reported for the Banzhaf values-based heuristic addition approach combined with Level-by-level search. We will use this setup.
 
 \section{Other methods for structured data}
@@ -149,7 +149,7 @@ We mentioned three alternative techniques for \emph{JSON} modelling in the previ
 
 The first part of the thesis addressed the essential theoretical background. It covers the basics of malware analysis, machine learning, and especially the \emph{HMill} framework and the \emph{HMill} Explainer. In the following part, we describe our setup, results, and discussion.
 
-\section{\emph{CAPEv2} explaining}
+\section{CAPEv2 explaining}
 In the chapter \ref{chap:classification}, we introduced two factors according to which we categorize signatures.
 
 We expect that explanation of the model, the cause of which is in the report, should be a set containing this cause. As an example, we expect that if the original signature's cause is a specific API call, it should be presented in the explanation of the binary classifier for this signature. As authors of \emph{HMill} explainer mentioned, we hope that the explanation contains even something new. In other words, we expect that we could observe explanations that contain entries that are not the original cause. However, they might reasonably substitute it - they are connected to the same effects. It is also possible to meet new signatures because all samples are malicious and the model might generalize based on different similarities in the training set.
