@@ -9,16 +9,16 @@ The host machine is where the sandbox environment and virtualization software is
 The whole process of a host machine initialization is automated to be able to set up multiple machines. The initialization consists of several steps:
 \begin{itemize}
     \itemsep0em 
-    \item Install host operating system - recommended Ubuntu
+    \item Install host operating system --- recommended Ubuntu
     \item Enable SSH to be able to access remotely
-    \item Enable basic security - firewall and supporting tools
-    \item Install virtualization software - recommended KVM QEMU
+    \item Enable basic security --- firewall and supporting tools
+    \item Install virtualization software --- recommended KVM QEMU
     \item Copy virtual machine images to the host machine
     \item Sandbox initialization and configuration
     \item Data collection script initialization
 \end{itemize}
 
-To run all steps on multiple machines at once, we used Ansible, a network orchestration tool. We also added some usual management functions - copy the new configuration from the server and clean up the sandbox data.
+To run all steps on multiple machines at once, we used Ansible, a network orchestration tool. We also added some usual management functions --- copy the new configuration from the server and clean up the sandbox data.
 
 Hardware resources on host machines are 256GB SSD and 16GB RAM, which means that a sufficient number of virtual machines per one host is four. We experimented with more, but there was an overload which might lead to biased analysis results.
 
@@ -34,7 +34,7 @@ The sandbox requires disabling the firewall and running Python on the guest mach
 \section{Network setup}
 The network setup is a crucial point in the dynamic analysis. The guest machine has to reach the host machine to stay in touch with the result server. Secondly, there is an internet connection for the guest, which might be necessary for some malware types. As an example, we can see \emph{dropper}, which is responsible for downloading a payload.
 
-We decided to collect the data under two different conditions - with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). We engaged both because the \emph{internet} is much more difficult to set up and secure, and we wanted to start data collection as soon as possible. Both architectures are figured in the appendix \ref{app:network}.
+We decided to collect the data under two different conditions --- with internet connection (denoted by \emph{internet}) and without (denoted by \emph{none}). We engaged both because the \emph{internet} is much more difficult to set up and secure, and we wanted to start data collection as soon as possible. Both architectures are figured in the appendix \ref{app:network}.
 
 \subsection{None}
 \emph{None} setup is a straightforward option for an isolated network between host and guest. This approach requires a host-only interface created in \emph{KVM} virtualization tool. Host and guest are assigned with IP addresses from the same range. From a security point of view, we have to set up a firewall on the host machine. It should accept connections from the isolated network only on the result server's port.
@@ -80,7 +80,7 @@ This section describes the whole process of data collection from a malware sampl
 
 
 \subsection{Abuse.ch malwareBazaar}
-The place where we downloaded malware samples was abuse.ch\footnote{https://abuse.ch/} specifically its part called \emph{malwarebazaar}. The reason for its usage is its free access without any claims. \emph{MalwareBazaar} is a database of malicious (no benign files or adware) samples where everybody can share and download. In May of 2021, it contains over 325~000 samples. Malware samples are downloaded in compressed form - one archive for every day since the start of the project.
+The place where we downloaded malware samples was abuse.ch\footnote{https://abuse.ch/} specifically its part called \emph{malwarebazaar}. The reason for its usage is its free access without any claims. \emph{MalwareBazaar} is a database of malicious (no benign files or adware) samples where everybody can share and download. In May of 2021, it contains over 325~000 samples. Malware samples are downloaded in compressed form --- one archive for every day since the start of the project.
 
 \subsection{File filtering}
 Our project aims only at PE files described in \ref{chap:analysis}. After decompression of the original archives, we filter the files based on the file extension and file headers. We also filter the compressed files, decompress them, and again filter PE files only.
@@ -121,7 +121,7 @@ After examining the histogram of seen signatures, we chose a subset based on the
 % Complete description of the output of the sandbox is in appendix \todo{reference}.
 % Description what everything we have at the end for every single sample, size of dataset (GB and number of samples)...
 % Try to compare to another public dataset with the attributes and mention that using this way is quite universal
-% What we have X what the docs says (caused our misconfiguration...) - https://cuckoo.readthedocs.io/en/latest/usage/results/ (reference cuckoo book)
+% What we have X what the docs says (caused our misconfiguration...) --- https://cuckoo.readthedocs.io/en/latest/usage/results/ (reference cuckoo book)
 
 % \chapter{Data structure, features and states} \label{chap:data}
 
@@ -131,7 +131,7 @@ After examining the histogram of seen signatures, we chose a subset based on the
 % using nas storage and so on...
 
 
-% First phase of our work is about running chosen sandbox to capture sigificant number of analysis results for further use. This task could be divided into two subtask - building infrastructure and data collection. Due to the fact that we would like to collect more than $50 000$ samples and usual analysis take $5$ minutes we will need more than one active instance so the distribution is another challenge.
+% First phase of our work is about running chosen sandbox to capture sigificant number of analysis results for further use. This task could be divided into two subtask --- building infrastructure and data collection. Due to the fact that we would like to collect more than $50 000$ samples and usual analysis take $5$ minutes we will need more than one active instance so the distribution is another challenge.
 
 
 % Download samples from abuse
