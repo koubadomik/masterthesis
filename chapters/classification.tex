@@ -21,7 +21,7 @@ Generally, we can see object features as $x \in \mathcal{X}$, where $\mathcal{X}
 By state, we mean the subject of our prediction, often represented as $y \in \mathcal{Y}$, where $\mathcal{Y}$ is often called \emph{state space}. That could be whatever we enumerated by $\mathcal{X}$ (images, documents, vectors\dots). They also tend to be represented as real-valued or discrete vectors. States are sometimes also called labels or targets. We focus on classification tasks, so we call them classes.
 
 \subsubsection*{Prediction strategy, hypothesis}
-A hypothesis is defined as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy (state estimation) we denote as $h(x)=\hat{y}$ on the contrary real state we denote as above just $y$.
+A prediction strategy is defined as $h:\mathcal{Y} \rightarrow \mathcal{X}$. The output of prediction strategy we denote as $h(x)=\hat{y}$. On the contrary hte real state we denote by $y$.
 
 \subsubsection*{Example}
 Assume the usual situation that before learning, we receive a set of examples to learn from. Based on what we receive, we can distinguish between several types of learning. This thesis works with \emph{supervised} case.\
@@ -31,23 +31,23 @@ Assume the usual situation that before learning, we receive a set of examples to
     \item \emph{Unsupervised learning} --- example denotes $x\in \mathcal{X}$
     \item \emph{Semi-supervised learning} --- each example could be one of the possibilities above
 \end{enumerate}
-We are usually working with the set of examples that we later divide into different subsets, e.g., \ \emph{training testing and validation sets}. \
+We are usually working with the set of examples that we later divide into different subsets, e.g., \ \emph{training, testing, and validation sets}. \
 
-The crucial assumption is that $X, Y$ are random variables related by unknown joint p.d.f $p(x,y)$. This assumption makes the whole learning process reasonable because we assume the relation between variables. We also assume that we can draw i.i.d. examples from this p.d.f.
+The crucial assumption is that $X, Y$ are random variables related by unknown joint p.d.f\footnote{Probability Density Function} $p(x,y)$. This assumption makes the whole learning process reasonable because we assume the relation between the variables. We also assume that we can draw i.i.d.\footnote{identically independently distributed} examples from this p.d.f.
 
 \subsubsection*{Loss function}
-Loss function denotes the objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(\hat{y}))$ and use some aggregation (mean) to retrieve one value. The result shows us the loss function value for the whole set.
+Loss function denotes the objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(x))$ and use some aggregation (mean) to get one value for the whole set of examples.
 
 \subsubsection*{Learning}
 Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\ref{eq:exploss}).
 
 \begin{equation} \label{eq:exploss}
-    R(h)=\mathbb{E}_{(x,y) \sim p}\ell(Y,h(X))=\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,x)\ell(y,h(x))
+    R(h)=\mathbb{E}_{(x,y) \sim p}\ell(Y,h(X))=\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,y)\ell(y,h(x))
 \end{equation}
 
-If $p(x,y)$ would be known our learning process would find optimal prediction strategy by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. Usually, it is unknown and we have to involve an approximation (learning algorithm) to find the best attainable strategy using drawn data.
+If $p(x,y)$ is known, optimal prediction strategy would be denoted by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. In practise, it is unknown and we have to involve an approximation (learning algorithm) to find the best attainable strategy using drawn data.
 
-Assume $\mathcal{T}^m$ being a set of examples for supervised learning. We can distinguish two basic learning approaches --- \emph{Discriminative learning}, \emph{Generative learning}.
+Assume $\mathcal{T}^m$ is a set of examples for supervised learning. We can distinguish two basic learning approaches --- \emph{Discriminative learning}, \emph{Generative learning}.
 
 In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approximate \emph{expected risk} with \emph{empirical risk} (\ref{eq:emploss}).
 
@@ -56,16 +56,16 @@ In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approxi
     T}\ell(y,h(x))
 \end{equation}
 
-Optimal strategy is denoted by $h_{\mathcal{T}}^*(x)=\operatorname*{argmin}_{{h}'\in \mathcal{H}}R_{\mathcal{T}(h)}$. Algorithms using this approach are, for instance, linear regression, support vector machine, and neural networks (with back-propagation).
+Optimal strategy is denoted by $h_{\mathcal{T}}^*(x)=\operatorname*{argmin}_{{h}'\in \mathcal{H}}R_{\mathcal{T}(h)}$. Models trained using this approach are, for instance, linear regression, support vector machine, and neural networks.
 
-\emph{Generative learning} assumes that true p.d.f. $p(x,y)$ is part of some parametrized family of distributions. Task for our algorithm is to localize point estimate of parameters $\theta$ based on $\mathcal{T}$. It might be done by \emph{MLE} or \emph{Bayes inference rule}.
+\emph{Generative learning} assumes that true p.d.f. $p(x,y)$ is part of some parametrized family of distributions. Task for our algorithm is to localize point estimate of parameters $\theta$ based on $\mathcal{T}$.
 
 In our work, we are using \emph{discriminative} models, namely neural networks.
 
-\subsubsection*{Discriminative learning algorithm}
-The learning algorithm is a realization of the learning process. The input of this process is training examples and additional parameters (often called hyperparameters). Its output is usually a statistical model of the data ($h$). A statistical model is often defined by its type, e.g., \ \emph{neural net} or \emph{linear regression model}, by its hyperparameters and parameters optimized during the learning process, e.g., \ weights, biases. Given observed sample $x$, the model can provide prediction  $\hat{y}$. The quality of its predictions is conditioned mainly by the number of training examples and choice of $\mathcal{H}$ (hypotheses class), which is often connected to the algorithm we choose. 
+% \subsubsection*{Discriminative learning algorithm}
+% The learning algorithm is a realization of the learning process. The input of this process is training examples and additional parameters (often called hyperparameters). Its output is usually a statistical model of the data ($h$). A statistical model is often defined by its type, e.g., \ \emph{neural net} or \emph{linear regression model}, by its hyperparameters and parameters optimized during the learning process, e.g., \ weights, biases. Given observed sample $x$, the model can provide prediction  $\hat{y}$. The quality of its predictions is conditioned mainly by the number of training examples and choice of $\mathcal{H}$ (hypotheses class), which is often connected to the algorithm we choose. 
 
-We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}}-R^*)$  is caused by choice of $\mathcal{H}$ (choice of algorithm), $R(h_{\mathcal{H}}$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{m})-R(h_{\mathcal{H}})$ where $R(h_{m})$ denotes the risk learned from training data, it is caused by the drawn data.
+We distinguish two types of error. \emph{Approximation error} $R(h_{\mathcal{H}})-R^*$  is caused by choice of $\mathcal{H}$ (choice of model), $R(h_{\mathcal{H}})$ denotes best attainable risk using only hypotheses from $\mathcal{H}$. \emph{Estimation error} $R(h_{m})-R(h_{\mathcal{H}})$ where $R(h_{m})$ denotes the risk learned from training data.
 
 % \todo{challenges train, test, validation and hyperparameters, overfitting, underfitting 5.2 in \cite{GoodBengCour16}, maybe we can mention examples Here we can find something else https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ - \cite{JasonBrownlee2020}}
 % % SURELY MENTION RETRAIN PROBLEM AND reason that this is true, but machine learning algorithm could be much more efficient (this is the motivation of our work)
@@ -77,7 +77,7 @@ States $y \in \mathcal{Y}$ are continuous-valued tensor in this case, most often
 \subsubsection*{Classification}
 In this case, $y \in \mathcal{Y}$ is categorical vector, in most cases $y \in \{1,\dots,\mathcal{C}\}$, where $\{1,\dots,\mathcal{C}\}$ is encoding for real world values like \emph{man} and \emph{woman}. If $\mathcal{C}$ is $2$, than we call the task \emph{binary classification} and if $\mathcal{C}>2$ we call it \emph{multiclass classification}. We can classify to not mutually exclusive classes at once, that is called \emph{multi-label classification} or \emph{multiple output model} \cite{murphy2013machine}. Classification could be even more complicated, e.g., \ we can classify into a class hierarchy \cite{zhang2020dive}.
 
-Given $x$ classifier outputs $\hat{y}$ which is an encoded class or probability distribution over classes \cite{GoodBengCour16}. An example of such distribution might be the popular \emph{softmax} layer in neural networks. This distribution might be later interpreted and used during evaluation and further analysis. We have to determine predictions of such classifier because we have real values instead of discrete classes. That is often done by setting \emph{treshold}. If the result is above the specified threshold, it is in the positive class and vice versa.
+Given $x$ classifier outputs $\hat{y}$ which is an encoded class or probability distribution over classes \cite{GoodBengCour16}. An example of such distribution might be the output of \emph{softmax} activation function in neural network. This distribution might be later interpreted and used during evaluation and further analysis. We have to determine predictions of such classifier because we have real values instead of discrete classes. In case of a binary classification, the discretization is often done by setting a \emph{treshold}. If the result is above the specified threshold, it is in the positive class and vice versa.
 
 An example of a classification task could be malware classification using the well-known classification algorithm SVM \cite{Kruczkowski2014}.
 
@@ -85,28 +85,29 @@ An example of a classification task could be malware classification using the we
 
 Anomaly detection is a frequent problem in cybersecurity, where we are interested in detecting what is not matching the usual pattern. That might be related to an unsupervised learning task where we can use algorithms like Expectation Maximization \cite{Dempster1977}. For example, in this paper \cite{IglesiasVazquez2014} we can see the anomaly detection of network traffic data.
 
-Examples of discriminative classification learning algorithms are --- Support vector machine, Decision trees, Logistic regression, neural nets, generative - Naive Bayes, Fisher's linear discriminant.
+Examples of discriminative classification learning algorithms are --- Support vector machine, Decision trees, Logistic regression, neural nets.
 
 Our intention is in \emph{classification}, we focus on it further.
 
 
 \section{Loss functions for classification}
-The learning process builds on function optimization. Our criterion is the chosen loss function. Every loss function has its interpretation, and we choose it based on our goals (domain specifically). We mention two standard functions which are often involved in classification tasks.
+The learning process builds on function optimization. Our criterion is the chosen loss function. Every loss function has its interpretation, and we choose it based on our goals (domain specific). We mention two standard functions which are often involved in classification tasks.
 
 \subsection*{Multinomial logistic loss} 
-We assume that the outputs of our model are conditional probabilites  $x \in \mathcal{X}$  $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and for each of $n$ examples.
+We assume that the outputs of our model are conditional probabilites $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and each of $n$ examples. The model's parameters are denoted by $\theta$.
 Multiclass cross entropy is defined in \ref{eq:crossent}. This loss function is sometimes called \emph{multiclass cross entropy}.
 
 \begin{equation} \label{eq:crossent}
     \ell(\theta)=-\frac{1}{n}\sum_{i=1}^{n}\sum_{c \in \mathcal{C}}\mathbbm{1}\{c==c_i\}\log p(c|x;\theta)
 \end{equation}
 
-Its idea is to minimize values representing the average logarithm of the probability of the actual class (denoted by $c_i$) across examples, correctly predicted by the model. We want the probability to be the maximum attainable, and $\log$ of value between $0$ and $1$ is negative and larger as we are getting closer to $0$. 
+Its idea is to minimize values representing the average logarithm of the probability of the actual class (denoted by $c_i$) across examples, correctly predicted by the model. 
+% We want the probability to be the maximum attainable, and $\log$ of value between $0$ and $1$ is negative and larger as we are getting closer to $0$. 
 
 %In multilabel case, we use a variant of this function, sometimes called binary cross-entropy. %may mention formula, nice-to-have
 
 \subsection*{Hinge loss}
-This loss was introduced in \cite{Gentile1998} and its primary usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \ref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
+This loss was introduced in \cite{Gentile1998} and its well-known usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \ref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
 
 \begin{equation} \label{eq:hinge}
     \ell(y)=\max(0,1-\hat{y}\cdot y)
@@ -114,9 +115,9 @@ This loss was introduced in \cite{Gentile1998} and its primary usage we can find
 
 \section{Model Evaluation}
 Based on our domain and goal, we have to choose proper classifier evaluation metrics. The majority of such techniques do not depend on the type of model we have. The classifier itself is just a black box, and we evaluate its predictions (score or discrete class).
-Learning is often divided into two or three phases --- \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics have to be connected with the data, e.g., \ accuracy on the training set is different from accuracy on the testing set. 
+Learning is often divided into two or three phases --- \emph{training}, \emph{testing} (sometimes \emph{validation}). Metrics are connected to the data, e.g., \ accuracy on the training set is different from accuracy on the testing set. 
 % \todo{reference bias X variance tradeoff at the beginning of this chapter}
-Evaluation metrics are most often used to measure the quality of the model. It also might be used to compare the result to another approach. If we tune the model's hyperparameters like the number of iterations or minibatch size, we often monitor accuracy on the validation set. Furthermore, we list a couple of possibilities for classification model evaluation.
+Evaluation metrics are most often used to measure the quality of the model. It also might be used to compare the results of different approaches. If we tune the model's hyperparameters, we often monitor accuracy on the validation set. Furthermore, we list a couple of possibilities for classification model evaluation.
 
 \subsection*{Loss function}
 The loss function is the objective with its meaning and possible interpretation. Its value is often monitored directly during the learning process. We might observe the loss function value difference between the training set and the validation set as a possible overfitting indicator.
@@ -144,7 +145,7 @@ Before deriving basic metrics, we have to emphasize that they have to be treated
 
 Very often, we can see also curves which are plotted along reported metrics. These plots fit in situation when we are trying to compare multiple classifiers. Most seen are \emph{ROC} (described in \cite{Fawcett2006}) and \emph{PRC} (described in \cite{Flach2015}). Data points for these two curves are collected by iterating over possible \emph{treshold} values and for each we calculate specific metric. In case of \emph{ROC} metrics are \emph{FPR} on x-axis and \emph{TPR} on y-axis. In case of \emph{PRC} metrics are \emph{TPR} (sometimes \emph{recall}) on x-axis and \emph{precision} on y-axis.
 
-There are many differences and similarities between these two curves. The \emph{PRC} is better in the case of an imbalanced dataset where we have a larger number of negative examples, and we especially care about positive examples and their predictions. We can compensate the imbalance even in the case of \emph{ROC} curve by setting \emph{logarithm scale} on the x-axis.
+The \emph{PRC} is better in the case of an imbalanced dataset where we have a larger number of negative examples, and we especially care about positive examples and their predictions. We can compensate the imbalance even in the case of \emph{ROC} curve by setting \emph{logarithm scale} on the x-axis.
 
 If we need to have a single number as a performance metric, including multiple thresholds, we can use the area under the \emph{ROC} or \emph{PR} curve. Usage of that metric has to be careful and strictly related to a given context.
 
@@ -153,12 +154,12 @@ Some metrics are more critical than others in cybersecurity. It is crucial to th
 
 For example, \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. However, a class imbalance is one of the challenges in cybersecurity. If the dataset consists of 80~\% of positive examples, then a classifier predicting only positive class has $accuracy=0.8$. In \cite{Hernandez-Callejo2019}, we can see the usage of \emph{geometrical mean} to deal with that issue. We can also use \emph{balanced accuracy} to cover the dataset's imbalance in the metric calculation.
 
-During Intrusion Detection in cybersecurity \emph{False negative} examples can be a potential security risk for the target subject (person, company, state\dots), it is often priority number one. On the other hand,  \emph{False positive} means false alarm, which costs employee time and trust in the system \cite{owaspintrusion}. The frequency of malware creation and distribution is significant, so even a relatively low false-positive rate can cause the security team to solve something harmless instead of a real risk \cite{Apruzzese2018}. In malware detection, that could also be reinforced by the fact that the protection is too aggressive. Such results can lead us to recurring expenses /cite{Kubovic2017}. We have to find an optimal point where the model predicts attacks successfully, but still with a low number of false alarms.
+During Intrusion Detection in cybersecurity \emph{False negative} examples can be a potential security risk for the target subject (person, company, state\dots), it is often priority number one. On the other hand,  \emph{False positive} means false alarm, which costs employee time and trust in the system \cite{owaspintrusion}. The frequency of malware creation and distribution is significant, so even a relatively low false-positive rate can cause the security team to solve something harmless instead of a real risk \cite{Apruzzese2018}. In malware detection, that could also be reinforced by the fact that the protection is too aggressive. Such results can lead us to recurring expenses \cite{Kubovic2017}. We have to find an optimal point where the model predicts attacks successfully, but still with a low number of false alarms.
 
 In the thesis, we will work with imbalanced datasets (more negative examples). We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC} curve with logarithm scale on x-axis, \emph{PR curve}.
 
 \section{Neural Networks}
-The model which our method build on is the\emph{neural net}. That is why we want to describe it more comprehensively than other models.
+% Our model uses \emph{neural net}. That is why we want to describe it more comprehensively than other models.
 \begin{figure}
     \centering
     \begin{neuralnetwork}[height=4]
@@ -175,21 +176,23 @@ The model which our method build on is the\emph{neural net}. That is why we want
     \label{fig:neuralnet}
 \end{figure}
 
-A neural net is a discriminative model which is based on \emph{Empirical Risk Minimization}. It is a composition of linear or nonlinear functions (\emph{neurons}) which might be parametrized. Specific neural network architecture is defined by used functions and dimensions of their input and output. Functions, their input and output are often demonstrated as layers of a neural net. The architecture implies $\mathcal{H}$ a hypothesis space. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A multilayer perceptron might realize hidden layers with a nonlinear activation function. The output layer represents a predicted state. Many functions can be used in a neural net, e.g., / before the output layer is often a softmax or sigmoid function to normalize the input into a probability distribution (score). Layers might have parameters, e.g., weight and biases.
+A neural net is a discriminative model which is based on \emph{Empirical Risk Minimization}. It is a composition of linear or nonlinear functions which might be parametrized. Specific neural network architecture is defined by used functions and dimensions of their input and output. Functions, their input and output are often demonstrated as layers of a neural net. The architecture implies $\mathcal{H}$ a hypothesis class. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A multilayer perceptron might realize hidden layers with a nonlinear activation function. The output layer represents a predicted state. Many functions can be used in a neural net, e.g., before the output layer is often a softmax or sigmoid activation function to normalize the input into a probability distribution (score). Layers might have parameters, e.g., weight and biases.
 
 The overall goal is to optimize $\ell$ with respect to the parameters of the net. Usually, we use \emph{gradient descent} optimization techniques.
 
-Usage of the \emph{gradient descent} puts no extra demands on the data we are using. We also do not insist on the strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions is that they have to be differentiable with respect to their inputs and parameters. \emph{Gradient descent} guarantees stationary point convergence, which could be a \emph{global/local minimum} or a \emph{saddle point}. However, applications lead us to conclude that this model may perform well in the right hand.
+Usage of the \emph{gradient descent} puts no extra demands on the data we are using. We also do not insist on the strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions is that they have to be (at least piecewise) differentiable with respect to their inputs and parameters. 
+% \emph{Gradient descent} guarantees stationary point convergence, which could be a \emph{global/local minimum} or a \emph{saddle point}. 
+% However, applications lead us to conclude that this model may perform well in the right hand.
 
-For the optimization is used \emph{backpropagation algorithm} \cite{Rumelhart1988}. This algorithm allows us effective computation of the derivative of $\ell$ with respect to all parameters of the network and their update. The main idea of this algorithm builds on computing derivatives of every function's output with respect to its input. Then by applying the \emph{chain rule}, we can propagate the information from previous layers (from backward) and in each parametrized layer update parameters using. Finally, we might converge to parameters that minimize loss over the training dataset. 
+\emph{Backpropagation algorithm} is used for the effective gradient computation \cite{Rumelhart1988}. This algorithm allows us effective computation of the derivative of $\ell$ with respect to all parameters of the network and their update. The main idea of this algorithm builds on computing derivatives of every function's output with respect to its input. Then by applying the \emph{chain rule}, we can propagate the information from previous layers (from backward) and in each parametrized layer update parameters using. Finally, we might converge to parameters that minimize loss over the training dataset. 
 
-The parameter's update is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952}. This variant of the \emph{gradient descent} algorithm is usable even in huge datasets or online learning. Usually, we divide the original training dataset into subsets (we call them \emph{batches} or \emph{minibatches}), and we use them to compute the gradient rather than the whole dataset. That is done for a specified number of iterations. \emph{Batch} is usually randomly subsampled from the training set. The \emph{batch} size and the number of iterations are hyperparameters of the neural net.
+The optimization is most often done by \emph{stochastic gradient descent} \cite{Kiefer1952}. This variant of the \emph{gradient descent} algorithm is usable even in huge datasets or online learning. Usually, we divide the original training dataset into subsets (we call them \emph{batches} or \emph{minibatches}), and we use them to compute the gradient rather than the whole dataset. That is done for a specified number of iterations. \emph{Batch} is usually randomly subsampled from the training set. The \emph{batch} size and the number of iterations are hyperparameters of the neural net.
 
 \section{Tree-structured data classification}
 Real-world use cases often provide more complex datasets than just fixed dimension matrices or images. As we mentioned, malware analysis data are stored as JSON files and modelling of such data is our goal. Those files could be formally seen as tree-structured inputs (more generally graphs). In the following section, we describe two straightforward approaches of data classification and two more sophisticated.
 
 \subsection{Rules}
-An example of a rule might be that if we observe a specific value in a specific key part in the document, e.g., \ \lstinline|{"api_calls": "DeleteFileA"}|, we classify the current document to a specific class, e.g., \ \emph{dropper}. The logic might be more complex. We can count a score aggregating more information about the current document and classify the document according to the score. As an example of such a rule-based approach, we can see malware signatures mentioned in the previous chapter. Their implementation deterministically checks some property of the original \emph{JSON} report and perform binary classification (\emph{positive} --- the signature is added to the report, \emph{negative} --- the signature is not added to the report).
+An example of a rule might be that if we observe a specific value in a specific key part in the document, e.g., \ \lstinline|{"api_calls": "DeleteFileA"}|, we classify the current document to a specific class, e.g., \ \emph{dropper}. The logic might be more complex. We can count a score aggregating more information about the current document and classify the document according to the score. As an example of such a rule-based approach, we can see malware signatures mentioned in the previous chapter. Their implementation deterministically checks some property of the original \emph{JSON} report and performs binary classification (\emph{positive} --- the signature is added to the report, \emph{negative} --- the signature is not added to the report).
 
 \subsection{Flattening}
 This approach deals with the data structure itself, which has no fixed dimensions. It is more a feature engineering technique than a learning approach. Each document might contain a different number of keys in a different order, and the size of arrays may vary. Using flattening, we find a mapping/procedure which allows vectorization of each document. The target learning algorithm is used on the flattened dataset.
