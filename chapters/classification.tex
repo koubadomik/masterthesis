@@ -39,7 +39,7 @@ The crucial assumption is that $X, Y$ are random variables related by unknown jo
 Loss function denotes the objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(x))$ and use some aggregation (mean) to get one value for the whole set of examples.
 
 \subsubsection*{Learning}
-Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\ref{eq:exploss}).
+Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\eqref{eq:exploss}).
 
 \begin{equation} \label{eq:exploss}
     R(h)=\mathbb{E}_{(x,y) \sim p}\ell(Y,h(X))=\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,y)\ell(y,h(x))
@@ -49,7 +49,7 @@ If $p(x,y)$ is known, optimal prediction strategy would be denoted by $h^*(x)=\o
 
 Assume $\mathcal{T}^m$ is a set of examples for supervised learning. We can distinguish two basic learning approaches --- \emph{Discriminative learning}, \emph{Generative learning}.
 
-In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approximate \emph{expected risk} with \emph{empirical risk} (\ref{eq:emploss}).
+In \emph{Discriminative learning} we assume $h^* \in \mathcal{H}$ and we approximate \emph{expected risk} with \emph{empirical risk} (\eqref{eq:emploss}).
 
 \begin{equation} \label{eq:emploss}
     R_{\mathcal{T}}(h)= \frac{1}{|\mathcal{T}|} \sum_{(x,y) \in \mathcal
@@ -95,7 +95,7 @@ The learning process builds on function optimization. Our criterion is the chose
 
 \subsection*{Multinomial logistic loss} 
 We assume that the outputs of our model are conditional probabilites $p(c|x;\theta)$ for each class $c \in \mathcal{C}$ and each of $n$ examples. The model's parameters are denoted by $\theta$.
-Multiclass cross entropy is defined in \ref{eq:crossent}. This loss function is sometimes called \emph{multiclass cross entropy}.
+Multiclass cross entropy is defined in \eqref{eq:crossent}. This loss function is sometimes called \emph{multiclass cross entropy}.
 
 \begin{equation} \label{eq:crossent}
     \ell(\theta)=-\frac{1}{n}\sum_{i=1}^{n}\sum_{c \in \mathcal{C}}\mathbbm{1}\{c==c_i\}\log p(c|x;\theta)
@@ -107,7 +107,7 @@ Its idea is to minimize values representing the average logarithm of the probabi
 %In multilabel case, we use a variant of this function, sometimes called binary cross-entropy. %may mention formula, nice-to-have
 
 \subsection*{Hinge loss}
-This loss was introduced in \cite{Gentile1998} and its well-known usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \ref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
+This loss was introduced in \cite{Gentile1998} and its well-known usage we can find in the Support vector machine algorithm. The formula could be seen in the figure \eqref{eq:hinge}, where $y\in\mathcal{Y}=\{\pm1\}$ denotes truth label and $\hat{y}$ classifier's score.
 
 \begin{equation} \label{eq:hinge}
     \ell(y)=\max(0,1-\hat{y}\cdot y)
@@ -155,7 +155,9 @@ Some metrics are more critical than others in cybersecurity. It is crucial to th
 % For example, \emph{accuracy} used in this article \cite{Ghanaei2016} may make sense because authors are interested just in the positive examples. 
 The class imbalance is one of the challenges in cybersecurity. If the dataset consists of 80~\% of positive examples, then a classifier predicting only positive class has $accuracy=0.8$. In \cite{Hernandez-Callejo2019}, we can see the usage of \emph{geometrical mean} to deal with that issue. We can also use \emph{balanced accuracy} to cover the dataset's imbalance in the metric calculation.
 
-During Intrusion Detection in cybersecurity \emph{False negative} examples can be a potential security risk for the target subject (person, company, state\dots), it is often priority number one. On the other hand,  \emph{False positive} means false alarm, which costs employee time and trust in the system \cite{owaspintrusion}. The frequency of software creation is significant, so even a relatively low false-positive rate can cause the security team to solve something harmless instead of a real risk \cite{Apruzzese2018}. In malware detection, that could also be reinforced by the fact that the protection is too aggressive. Such results can lead us to recurring expenses \cite{Kubovic2017}. We have to find an optimal point where the model predicts attacks successfully, but still with a low number of false alarms.
+During Intrusion Detection in cybersecurity \emph{False negative} examples can be a potential security risk for the target subject (person, company, state\dots), it is often priority number one. On the other hand,  \emph{False positive} means false alarm, which costs employee time and trust in the system \cite{owaspintrusion}. The frequency of software creation is significant, so even a relatively low false-positive rate can cause the security team to solve something harmless instead of a real risk \cite{Apruzzese2018}. In malware detection, that could also be reinforced by the fact that the protection is too aggressive. Such results can lead us to recurring expenses \cite{Kubovic2017}. In such case, we can \emph{ROC} curve with \emph{logarithm scale} on the x-axis to observe even small false positive rate. Note that to observe statistically significant estimate of small positive rate our dataset has to be sufficiently large.
+
+To sum up, we have to find an optimal point where the model predicts attacks successfully, but still with a low number of false alarms.
 
 In the thesis, we will work with imbalanced datasets (more negative examples). We use several metrics mentioned above especially \emph{balanced accuracy}, \emph{ROC} curve with logarithm scale on x-axis, \emph{PR curve}.
 
@@ -177,7 +179,7 @@ In the thesis, we will work with imbalanced datasets (more negative examples). W
     \label{fig:neuralnet}
 \end{figure}
 
-A neural net is a discriminative model which is based on \emph{Empirical Risk} minimization (\ref{eq:emploss}). It is a composition of linear or nonlinear functions which might be parametrized. Specific neural network architecture is defined by used functions and dimensions of their input and output. Functions, their input and output are often demonstrated as layers of a neural net. The architecture implies $\mathcal{H}$ a hypothesis class. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A \emph{multilayer perceptron} described in \cite{Russell2009} with a nonlinear activation function might realize hidden layers. The output layer represents a predicted state. Many functions can be used in a neural net, e.g., before the output layer is often a softmax or sigmoid activation function to normalize the input into a probability distribution (score). Layers might have parameters, e.g., weight and biases.
+A neural net is a discriminative model which is based on \emph{Empirical Risk} minimization (\eqref{eq:emploss}). The neural network is a parametric function created by composing simple functions. Specifically, $nn(x) = g_1(g_2(g_3(\dots(g_n(x,\theta_n),\dots;\theta_1)$, where each $g_n$ has the form $\sigma(W * x + b)$ and $\theta$ denotes parameters $(W,b)$. Functions, their input and output are often demonstrated as layers of a neural net. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A \emph{multilayer perceptron} described in \cite{Russell2009} with a nonlinear activation function might realize hidden layers. The output layer represents a predicted state. Many functions can be used in a neural net, e.g., before the output layer is often a softmax or sigmoid activation function to normalize the input into a probability distribution (score). Layers might have parameters, e.g., weight and biases.
 
 The overall goal is to optimize $\ell$ with respect to the parameters of the net. Usually, we use \emph{gradient descent} optimization techniques.
 
@@ -213,7 +215,7 @@ Graph neural network was introduced in \cite{Scarselli2009}, and it is a suitabl
 
 Assuming that all functions in the net are at least piecewise differentiable with respect to their parameters, we can use the stochastic gradient descent optimization approach.
 
-The natural structure of \emph{JSON} document is a tree which is a less general example of a graph. If we want to classify documents, we can use GNNs to solve the graph classification task (the solution is briefly described in \cite{Pevny2020}).
+The natural structure of \emph{JSON} document is a tree which is a less general example of a graph. Thus in theory, GNNs can be used for classification of JSONs, yet the approach might be unnecessary computationaly expensive \cite{Pevny2020}.
 
 \subsection{HMill framework}
 In our experiments, we aim specifically at the hierarchical multiple instance learning (\emph{HMill}) framework defined in \cite{Mandlik2020} because it uses the structure of the input for model computation. The authors proposed a use case of \emph{JSON} modelling with good results, and we would like to demonstrate the framework's performance on more complex data. In comparison to GNNs approach, \emph{HMill} model has better scalability \cite{Mandlik2020}. 

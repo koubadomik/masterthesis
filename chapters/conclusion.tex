@@ -1,6 +1,8 @@
 \chapter{Conclusions} \label{chap:concl}
 The main objective of this thesis was to design a pipeline that has a malware dataset as input and a machine learning model and its explanation as output. The whole process was motivated by high accuracy model interpretability to achieve greater compliance of machine learning and cybersecurity.
 
+Theory background and methods are summarized in the first part of the thesis. The setup, experienced problems, results, and their discussion are in the second part.
+
 We set up eight physical machines with the \emph{CAPEv2} sandbox in two different setups --- with internet and without internet connection. Using the open-source sandbox and our programs, we collected dynamic malware analyses for 80~000 malware samples retrieved from MalwareBazaar\footnote{https://bazaar.abuse.ch/}. We reported the problems experienced during the data collection process and the description of the whole setup, including our code.
 
 We used \emph{JSON} reports of sandbox as an input for \emph{Hierarchical multiple instance} framework \cite{Mandlik2020}. We used this framework because of its ability to model \emph{JSON} documents. The classification model features are behavioural parts, and predicted classes are malware signatures, both included in the original \emph{JSON} report. 
@@ -8,7 +10,7 @@ To evaluate our models better, we investigated the original signature's implemen
 
 Finally, we experimented with the model explaining. Original behavioural reports used as a feature set might have even hundreds of entries. However, the explainer provided $3-5$ entries as an explanation for each of the nine models. Our observations evidence that some models strongly involve the original signature's cause. There are cases where the model used different behavioural features with high accuracy. We reported and discussed all results.
 
-Despite the significant amount of work we faced during the sandboxing, we managed to meet the goals of this thesis. Theory background and methods are summarized in the first part of the thesis. The setup, experienced problems, results, and their discussion are in the second part. We wanted our experiments to be repeatable, so the source code and other technicalities are in the attachment of this thesis.
+Despite the significant amount of work we faced during the sandboxing, we managed to meet the goals of this thesis. We wanted our experiments to be repeatable, so the source code and other technicalities are in the attachment of this thesis.
 
 \section*{Future work}
 

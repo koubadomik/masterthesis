@@ -37,7 +37,9 @@ In the table \ref{tab:hyperparams}, we can see the model's hyperparameters and o
 Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations}. Data used in their case were of a much smaller scale (\emph{device id}) which could be the reason for the larger \emph{minibatch size}. The smaller \emph{number of iterations} is caused by resource and time limitations. However, we observed reasonable convergence. We checked overfitting by monitoring the difference between accuracy on training and testing data. They did not differ significantly.
 
 \subsubsection{Experiments}
-We performed experiments with different feature sets. The first experiments are without reported results because the model was too large to converge to some significant accuracy. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip one part of the feature vector --- \emph{enhanced} part. So the resulting model is working with \emph{summary} part only.  We expected that could happen as we described in \ref{chap:hmill}. The tighter feature vector was an advantage for further training time.
+We performed experiments with different feature sets. The first experiment used both \emph{enhanced} and \emph{summary} parts as input vector for the model. Due to the input size the model was too large to converge to some significant accuracy. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip the larger part of the feature vector --- \emph{enhanced} part. This part contains series of events with a lot of redundancies and additional data as function parameters. Each event has its own object so the information is much sparser.
+
+The resulting model is working with \emph{summary} part only.  We expected that could happen as we described in \ref{chap:hmill}. The tighter feature vector was an advantage for further training time.
 
 For evaluation, we chose the metrics following the chapter \ref{chap:classification} where we mentioned classifiers in the cybersecurity field and their pitfalls.
 
@@ -140,6 +142,9 @@ The most seen keys in explanations are \emph{deleted files, write files, execute
 \subsubsection*{enumerates running processes}
 The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was API calls.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The accuracy of this classifier is significant, but we cannot generalize to a more specific subset using our explanation.
 
+The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover.
+
+
 \subsubsection*{stealth timeout}
 The most seen keys in explanations are \emph{executed commands, files} which does not include the original API calls section. Among entries the most seen is \emph{DisableUserModeCallbackFilter} (11/78) registry. Nevertheless, the situation is the same as in the previous case. We are not able to generalize more.
 
@@ -159,6 +164,8 @@ The most seen keys in explanations are \emph{write files, executed commands, mut
 The most seen keys in explanations are \emph{keys, files}. The original cause (network) is not presented in the input at all. It looks like registry keys play a significant role. However, neither in the case of registry keys, we can not find any redundancy.
 
 \hfill \break
+
+\textbf{I would put parts of this to the individual cases and summarizes it again as you did. It might be easier for the reader, as he will see the individual explanations of explanations in the context.}
 
 In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). There is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files}. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted and appear even among deleted files. However, the model generalized to that which should not be overlooked. A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation.
 

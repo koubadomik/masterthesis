@@ -61,7 +61,7 @@ For the thesis we assume \emph{Mill} classification problem so $|\mathcal{Y}|$ i
 The goal of the multiple instance learning process is identical to that in the standard setting. This section describes three general approaches (paradigms) of solving a \emph{HMill} problem. They are formulated in \cite{Amores2013} as \emph{Instance-Space, Bag-Space} and \emph{Embedded-Space} paradigm.
 
 \subsection{Instance-Space paradigm}
-An algorithm in this group infers an \emph{instance-based} classifier $f(x) \in \{1,0\}$ that classifies each instance $x$ in the training set. \emph{Bag-based} classifier is constructed in the way shown in \ref{eq:bagsclas}, where $x_i$ are instances in the bag $b$, $\circ$ denotes an algorithm-specific aggregation operator and $Z$ denotes an optional normalization factor. As we stated earlier, \emph{bag} labels are part of the training set but \emph{instance labels} are not. We have to make some assumptions about the relation between \emph{bag} and \emph{instance} labels, if we want to use the method building on Instance-space paradigm.
+An algorithm in this group infers an \emph{instance-based} classifier $f(x) \in \{1,0\}$ that classifies each instance $x$ in the training set. \emph{Bag-based} classifier is constructed in the way shown in \eqref{eq:bagsclas}, where $x_i$ are instances in the bag $b$, $\circ$ denotes an algorithm-specific aggregation operator and $Z$ denotes an optional normalization factor. As we stated earlier, \emph{bag} labels are part of the training set but \emph{instance labels} are not. We have to make some assumptions about the relation between \emph{bag} and \emph{instance} labels, if we want to use the method building on Instance-space paradigm.
 
 \begin{equation} \label{eq:bagsclas}
     F(b)=\frac{f(x_1)\circ f(x_2)\circ\dots\circ f(x_N)}{Z}
@@ -77,7 +77,7 @@ Previous methods tend to look over the fact that the bag label might be influenc
 
 \emph{Collective assumption} states that \say{all instances in a bag contribute equally to the bag’s label} \cite{Xu2003}. Methods usually use a training set of instances which is constructed such that each instance inherits its bag's label.
 
-This training set might be used to get an instance-level classifier. A basic approach is to use the SIL algorithm \cite{Bunescu2007}, which train the mentioned instance-level classifier using SVM. The bag-level classifier is obtained by \ref{eq:collass}. Another method is Wrapper MI \cite{Frank2003}.
+This training set might be used to get an instance-level classifier. A basic approach is to use the SIL algorithm \cite{Bunescu2007}, which train the mentioned instance-level classifier using SVM. The bag-level classifier is obtained by \eqref{eq:collass}. Another method is Wrapper MI \cite{Frank2003}.
 
 \begin{equation} \label{eq:collass}
     F(b)=\frac{1}{|b|}\sum_{x\in b}f(x)
@@ -88,7 +88,7 @@ In this setup, we treat the whole bag to learn the classifier. The discriminant 
 
 \emph{Bag space} is non-vectorial, but we are able to define a distance function $D(b_1,b_2)$, where $b_1$, $b_2$ are bags and the result is representing a measure of their similarity (or distance). Then we can use standard distance-based classifiers such as K-NN.
 
-Assume instances live in \emph{d-dimensional} space such as $\mathbb{R}^{d}$. We can see them as points, so a bag is a set of points. The problem of computing the distance between two sets of points is well studied. An example of distance function is the minimal Hausdorff distance \ref{eq:haus}, which denotes the distance between the closest points of bags $b_1$ and $b_2$ \cite{Wang2000}. We can also use kernel functions $K(b_1,b_2)$ which provide similarity between bags. An example of such kernel might be \ref{eq:kernel}, where $k(x,y)$  denotes instance-level kernel (linear, polynomial\dots) and $p$ is related to the size of the largest bag (in practise found by cross-validation) \cite{Gartner2002}.
+Assume instances live in \emph{d-dimensional} space such as $\mathbb{R}^{d}$. We can see them as points, so a bag is a set of points. The problem of computing the distance between two sets of points is well studied. An example of distance function is the minimal Hausdorff distance \eqref{eq:haus}, which denotes the distance between the closest points of bags $b_1$ and $b_2$ \cite{Wang2000}. We can also use kernel functions $K(b_1,b_2)$ which provide similarity between bags. An example of such kernel might be \eqref{eq:kernel}, where $k(x,y)$  denotes instance-level kernel (linear, polynomial\dots) and $p$ is related to the size of the largest bag (in practise found by cross-validation) \cite{Gartner2002}.
 
 \begin{equation} \label{eq:haus}
     D(b_1,b_2)=\min_{x_1\in b_1, x_2\in b_2}||x_1-x_2||

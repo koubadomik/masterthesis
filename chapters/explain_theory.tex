@@ -47,7 +47,7 @@ Trust is the first term which is very complicated even due to its interpretation
 However, accuracy of the model is not the only metric we should consider. The situation is more complex in the sense that we need to examine the whole context. By context, we mean the accuracy on specific examples, e.g., \ unseen examples or examples where people can classify with high precision. We should also evaluate the accuracy repeatedly in time.
 
 \subsection{Causality X Correlation}
-Correlation of two random variables $X,Y$ is defined in \ref{eq:corr}, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand, causality is defined as the relation between $X$ (a cause), which contributes to the production of $Y$ (an effect), $X, Y$ might be events, processes, states, objects or generally random variables.
+Correlation of two random variables $X,Y$ is defined in \eqref{eq:corr}, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand, causality is defined as the relation between $X$ (a cause), which contributes to the production of $Y$ (an effect), $X, Y$ might be events, processes, states, objects or generally random variables.
 
 \begin{equation} \label{eq:corr}
     \rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
@@ -125,7 +125,7 @@ In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document,
 
 \subsection{Subtree ranking}
 \subsubsection{Model gradient ranking}
-This approach is based on the high absolute value of gradients for the most significant parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient vector (\ref{eq:grad}) of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a small change in the embedding of a specific subtree influences the model's prediction. Computation of the gradient ranking of a particular subtree is absolute value of sum of items in resulting the gradient vector.
+This approach is based on the high absolute value of gradients for the most significant parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient vector (\eqref{eq:grad}) of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a small change in the embedding of a specific subtree influences the model's prediction. Computation of the gradient ranking of a particular subtree is absolute value of sum of items in resulting the gradient vector.
 
 \begin{equation} \label{eq:grad}
     \frac{\partial f(h(d))}{\partial h(c)} \in \mathbb{R}^m
@@ -155,6 +155,8 @@ The first part of the thesis addressed the essential theoretical background. It 
 
 \section{CAPEv2 explaining}
 In the chapter \ref{chap:classification}, we introduced two factors according to which we categorize signatures.
+
+\textbf{This paragraph nicely explains, what you are after. You might put it even to introduction / motivation. - maybe I should create one more paragraph in motivation and summarize this and previous chapter ending}
 
 We expect that explanation of the model, the cause of which is in the report, should be a set containing this cause. As an example, we expect that if the original signature's cause is a specific API call, it should be presented in the explanation of the binary classifier for this signature. As authors of \emph{HMill} explainer mentioned, we hope that the explanation contains even something new. In other words, we expect that we could observe explanations that contain entries that are not the original cause. However, they might reasonably substitute it --- they are connected to the same effects. It is also possible to meet new signatures because all samples are malicious and the model might generalize based on different similarities in the training set.
 
