@@ -28,13 +28,13 @@ In the table \ref{tab:hyperparams}, we can see the model's hyperparameters and o
       \midrule
       optimizer & \emph{ADAM} \cite{Kingma2014}\\
       \midrule
-      loss function & \emph{logit cross entrophy} (\ref{chap:classification})\\
+      loss function & \emph{logit cross entropy} (\ref{chap:classification})\\
       \bottomrule
   \end{tabular}
   \label{tab:hyperparams}
 \end{table}
 
-Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations}. Data used in their case were of a much smaller scale (\emph{device id}) which could be the reason for the larger \emph{minibatch size}. The smaller \emph{number of iterations} is caused by resource and time limitations. However, we observed reasonable convergence.  We checked overfitting by monitoring the difference between accuracy on training and testing data. They do not differ significantly.
+Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations}. Data used in their case were of a much smaller scale (\emph{device id}) which could be the reason for the larger \emph{minibatch size}. The smaller \emph{number of iterations} is caused by resource and time limitations. However, we observed reasonable convergence. We checked overfitting by monitoring the difference between accuracy on training and testing data. They did not differ significantly.
 
 \subsubsection{Experiments}
 We performed experiments with different feature sets. The first experiments are without reported results because the model was too large to converge to some significant accuracy. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip one part of the feature vector --- \emph{enhanced} part. So the resulting model is working with \emph{summary} part only.  We expected that could happen as we described in \ref{chap:hmill}. The tighter feature vector was an advantage for further training time.
@@ -42,7 +42,7 @@ We performed experiments with different feature sets. The first experiments are 
 For evaluation, we chose the metrics following the chapter \ref{chap:classification} where we mentioned classifiers in the cybersecurity field and their pitfalls.
 
 \subsubsection{Technicalities}
-In the \ref{app:technologies}, we describe the technical background for \emph{HMill} model training and evaluation, such as libraries and programming languages. We unsuccessfully experimented with multithread gradient computation. The resulting model was trained on one CPU, which a little shrank our possibilities. However, there were basic linear algebra subprograms (BLAS) involved in the matrix multiplication.
+In the \ref{app:technologies}, we describe the technical background for \emph{HMill} model training and evaluation, such as libraries and programming languages. We unsuccessfully experimented with multi-threadded gradient computation. The resulting model was trained on one CPU, which a little shrank our possibilities. However, there were basic linear algebra subprograms (BLAS) involved in the matrix multiplication, which was multi-threadded.
 
 The code of the model is in the thesis attachment \ref{app:attach}.
 
@@ -95,7 +95,7 @@ There are also some other metrics and visualizations in \ref{app:models}.
 
 \subsection{Discussion}
 \subsubsection*{Signature with the cause in report}
-In the first category of signatures, we observe quite consistent balanced accuracy above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explaining. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its accuracy is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log by hand. Its prediction might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
+In the first category of signatures, we observe quite consistent balanced accuracy above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explanation. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its accuracy is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log by hand. Its prediction might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
 
 Despite a single anomaly, this signature group shows reasonable accuracy, as we expected.
 
