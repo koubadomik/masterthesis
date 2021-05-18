@@ -133,39 +133,57 @@ We discuss the results after presenting them to an expert and having a discussio
 \subsubsection*{antidebug setunhandledexceptionfilter}
 The most seen keys in explanations are \emph{read keys, resolved APIs, executed commands}. It includes even API calls, which are the signature cause. Among entries, the most seen are \emph{kernel32.dll.IsProcessorFeaturePresent} (153/377) API and \emph{DisableUserModeCallbackFilter} (34/377) registry key. Those are presented in other explanations once and twice, so it does not look like something too general but also not unique. The registry key is related to exceptions, and the original API call is also related to them.
 
+In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
+
 \subsubsection*{copies self}
 The most seen keys in explanations are \emph{write files, executed commands, delete files} and the first is seen in all explanations, and it also coincides with the original cause. Among entries the most seen are \emph{ikkzowxr.exe} (13/100) file, \emph{WerFault.exe} (13/100) file and \emph{StikyNot yakuza} mutex. The first file is prevalent across different signatures. The mutex is also seen more than one time in explanations.
+
+In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
+
 
 \subsubsection*{deletes self}
 The most seen keys in explanations are \emph{deleted files, write files, executed commands}. The first is seen in all explanations, but the original signature cause is API calls. Here we can see some generalization because the original signature does not check the deleted files directly. However, the model is using it with high accuracy. We also checked if this trend is not seen in more cases, but this is unique that all explanations include deleted files.
 
+here is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files}. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted and appear even among deleted files. 
+
 \subsubsection*{enumerates running processes}
 The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was API calls.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The accuracy of this classifier is significant, but we cannot generalize to a more specific subset using our explanation.
 
-The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover.
+The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover. In particular cases, we can see several situations. 
 
 
 \subsubsection*{stealth timeout}
 The most seen keys in explanations are \emph{executed commands, files} which does not include the original API calls section. Among entries the most seen is \emph{DisableUserModeCallbackFilter} (11/78) registry. Nevertheless, the situation is the same as in the previous case. We are not able to generalize more.
 
+The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover. In particular cases, we can see several situations. 
+
 \subsubsection*{uses windows utilities}
 The most seen key in explanations is \emph{executed commands} which is included in each explanation, and it coincides with the original cause, which is commands. The most frequent commands are \emph{netsh, schtasks.exe}.
+
+In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
 
 \subsubsection*{removes zoneid ads}
 The most seen keys in explanations are \emph{delete files, keys}. The first is seen in each explanation, but the original signature is using API calls. We are not able to identify specific redundancies, but we identified one great conformity. The original signature implementation includes following \emph{\dots .endswith(":Zone.Identifier")} so it is detecting end of API call argument and even \emph{.startswith("DeleteFile")} is detecting the name of API starting with a specific string. These two facts perfectly correlate with our explanations.
 
+The most significant observation is in \emph{removes zoneid ads}. We can see that the model mainly uses the same entries as the original signature (with the same suffix). That should also be considered as a clue that the model generalizes the right way.
+
 \subsubsection*{antisandbox sleep}
 The most seen keys in explanations are \emph{write keys, keys, read keys} which does not correspond to the original cause. The most seen entries is \emph{HKEY CURRENT USER/\dots} (63/100) registry key. We see this registry key in the case of two signatures. We do not see a direct relation between this key and the original cause. It might be something more general.
+
+In several cases, we cannot identify any direct cause of the model's high accuracy (e.g., \ \emph{antisandbox sleep}) because the explanation is ambiguous.
 
 \subsubsection*{dropper}
 The most seen keys in explanations are \emph{write files, executed commands, mutexes}. The first is presented in all explanations. The second is not only in negligible fraction. The original cause is not trivial but dropped files are there, which corresponds to the first key. Among entries, the most seen is \emph{IESQMMUTEX0208} (28/71) mutex, but this mutex was mentioned earlier as too general.
 
+In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). Partially!!
+
 \subsubsection*{stealth network}
 The most seen keys in explanations are \emph{keys, files}. The original cause (network) is not presented in the input at all. It looks like registry keys play a significant role. However, neither in the case of registry keys, we can not find any redundancy.
 
+A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation.
+
 \hfill \break
 
-\textbf{I would put parts of this to the individual cases and summarizes it again as you did. It might be easier for the reader, as he will see the individual explanations of explanations in the context.}
 
 In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). There is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files}. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted and appear even among deleted files. However, the model generalized to that which should not be overlooked. A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation.
 

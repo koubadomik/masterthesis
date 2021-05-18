@@ -273,7 +273,7 @@ After further look at the \emph{behavior} part of \emph{report.json} and their s
 If the model is still too complex to train under our conditions, we omit the \emph{enhanced}, which is much more sparse and longer than \emph{summary}. We would lose the information about the order of events.
 
 \subsection{Signature classes}
-The signatures are usually assigned based on some atomic fact, such as some API calls in the log. Let us call that \emph{true cause} of signature, as in this thesis they are considered a ground truth. It can be one or more patterns seen in the behavioural log. The implementation of a signature is deterministically detecting its cause. If the cause is detected, the signature is added to the \emph{JSON} log (see the whole process in \ref{chap:analysis}.
+The signatures are usually assigned by sandbox based on some atomic fact, such as some API calls in the log. Let us call that \emph{true cause} of signature, as in this thesis they are considered a ground truth. It can be one or more patterns seen in the behavioural log. The implementation of a signature is deterministically detecting its cause. If the cause is detected, the signature is added to the \emph{JSON} log (see the whole process in \ref{chap:analysis}.
 
 We can consider the \emph{copies self} signature example. If the same file as the analyzed one is among dropped files in the report, we will find \emph{copies self} signature in \emph{report.json}.
 

@@ -15,4 +15,11 @@ Despite the significant amount of work we faced during the sandboxing, we manage
 Regarding the implementation, both the realization of the whole pipeline as well as its explanation is considered successful, we further discussed and reported all of the results. In addition, we mention individual/specific issues faced during the work along with ideas for future work.
 
 \section*{Future work}
+The sandbox \emph{CAPEv2} does not include native support for extensive data collection since it is designed as a tool for malware analysis more than for machine learning experiments. Because our solution consisted of many manual steps, it is worth adding some out-of-box solution for a clustered sandbox run to collect larger datasets. This solution might be based on the existing parts of the sandbox, which did not work for us. It can also be built on top of our lightweight tools. The main issue is to make it more user friendly for everyday use in machine learning.
+
+\emph{HMill} models showed good accuracy, and the framework should be part of other experiments with complex data like ours. There should also be larger datasets of dynamic analysis reports with different signatures and malware samples, such as the one with the \emph{internet} data which we did not use eventually. Multilabel classification might be involved in the signature prediction as well. 
+
+The data quality in the cybersecurity domain should not be overlooked, e.g., an additional effort in redundancy/noise reduction in reports. That is also related to precisely controlled conditions during the malware analysis.
+
+The framework creates the model directly from the \emph{JSON} data which is very convenient for the model explanation. We can retrieve the explanation directly as a human-readable \emph{JSON} document. This capability should be examined in different situations, emphasizing practical applications, e.g., new signatures extraction, zero-days, and interpretability for cybersecurity professionals.  Addressed challenges like causality detection or spurious correlation should also be taken into account.
 

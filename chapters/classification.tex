@@ -218,14 +218,7 @@ Assuming that all functions in the net are at least piecewise differentiable wit
 The natural structure of \emph{JSON} document is a tree which is a less general example of a graph. Thus in theory, GNNs can be used for classification of JSONs, yet the approach might be unnecessary computationaly expensive \cite{Pevny2020}.
 
 \subsection{HMill framework}
-In our experiments, we aim specifically at the hierarchical multiple instance learning (\emph{HMill}) framework defined in \cite{Mandlik2020} because it uses the structure of the input for model computation. The authors proposed a use case of \emph{JSON} modelling with good results, and we would like to demonstrate the framework's performance on more complex data. In comparison to GNNs approach, \emph{HMill} model has better scalability \cite{Mandlik2020}. 
-
-You should put more context to here.
-
-* HMIL was specifically designed for tree-structured methods
-* HMIL is computationally efficient, since single pass over the data is sufficient (unlike in GNN where you need multiple passes)
-* A universal approximation theorem has been proven, which shows that HMIL can approximate any continuous (measurable) function from the space of JSONs to R^n.
-* With respect to the above, we believe HMIL is more suited for the problem.
+In our experiments, we aim specifically at the hierarchical multiple instance learning (\emph{HMill}) framework defined in \cite{Mandlik2020} because it was specifically for tree-structured data and it uses the structure of the input for the model optimization. The authors proposed a use case of \emph{JSON} modelling with good results, and we would like to demonstrate the framework's performance on more complex data. In comparison to GNNs approach, \emph{HMill} model has better scalability and it is computationally efficient, since single pass over the data is sufficient (unlike in GNN where you need multiple passes) \cite{Mandlik2020}. Authors adopted and proved the universal approximation theorem \cite{Hornik1991} to the \emph{HMill} situation which shows that \emph{HMill} can approximate any continuous (measurable) function from the space of \emph{JSON} documents to $R^n$. With respect to mentioned facts, we believe HMIL is more suited for the problem.
 
 The creation of this framework was motivated by \cite{Pevny2016a}. We will describe it in the next chapter.
 
