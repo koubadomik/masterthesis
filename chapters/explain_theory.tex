@@ -1,9 +1,7 @@
 \chapter{Model explaining} \label{chap:expth}
 In the following chapter, we describe the model explainability definition and techniques used in practice. Finally, we give details on \emph{HMill} explainer, which we use in our experiments. At the very end, we describe our use case of signature's binary classifier explanation.
 
-In the case of complex models, we often want to explain their predictions to be sure about their reliability. The model explainability is crucial in critical systems, e.g., health, transport. However, if we want to use our models and want people to believe them, we should explain their predictions. We should demonstrate that the predictions are not based on random correlations in the training data. In \cite{Pevny2020}, authors identified that their model classifies mainly according to the timestamp field in the original sample, which was different for malware and cleanware samples. That was an obvious mistake because this detail is not the difference between malware and cleanware. It is just the difference between analysis conditions.
-
-% The famous quote by George E.P. Box: \say{All models are wrong but some of them are useful} motivates a question \emph{What kind of model is useful?} We should start with simple models (e.g., linear regression) and incrementally test more complex models. This approach may prevent us from overfitting the model on the training data, and so it keeps the model general enough. However, there is another reason. Simpler models are also better understandable, and sometimes people can evaluate their predictions by hand. That is not possible in the case of modern neural nets with millions of parameters. Maybe our first question should be: \emph{Why should we trust the model?} \cite{Ribeiro2016}.
+In the case of complex models, we often want to explain their predictions to be sure about their reliability. The model explainability is crucial in critical systems, e.g., health, transport. If we want to use our models and want people to believe them, we should explain their predictions and demonstrate that they are not based on random correlations in the training data. For example, in \cite{Pevny2020}, authors identified that their model classifies mainly according to the timestamp field in the original sample, which was different for malware and cleanware samples. That was an obvious mistake because this detail is not the difference between malware and cleanware but between analysis conditions.
 
 In May 2018, General Data Protection Regulation (GDPR) became law. It has innovative clauses on automated decision-making and, to some extent, even the right of its explanation. All individuals might enforce to obtain \say{meaningful explanations of the logic involved} when automated decision making takes place \cite{Guidotti2018}. That is a significant scientific challenge in the field where we face such a great boom regarding the statistical model's performance and a disproportionately weak understanding of its behaviour. As an example, we can see the neural net generalization, which is still very challenging for us \cite{Zhang2016}.
 
@@ -12,7 +10,7 @@ Techniques of interpretation and explaining are growing in popularity as a tool 
 \section{Definition}
 Based on \cite{Montavon2018} we define two essential terms.
 \begin{definition}
-An \emph{iterpretation} is the mapping $\mathcal{Y}\rightarrow\mathcal{D}$, where $\mathcal{Y}$ is a \emph{state space} (defined in \ref{chap:classification}, e.g., \ real-valued vectors, sequences\dots,  $\mathcal{D}$ denotes a domain which is human-readable and understandable (image, heatmap, sequence of words\dots).
+An \emph{iterpretation} is the mapping $\mathcal{Y}\rightarrow\mathcal{D}$, where $\mathcal{Y}$ is a \emph{state space} (defined in \ref{chap:classification}, e.g., real-valued vectors or sequences,  $\mathcal{D}$ denotes a domain which is human-readable and understandable (image, heatmap, sequence of words, etc.).
 \end{definition}
 % Furthermore, we assume the domain to be the same as the feature space $\mathcal{X}$. It means that if we classify images, the interpretation would be an image.
 
@@ -21,30 +19,28 @@ An \emph{iterpretation} is the mapping $\mathcal{Y}\rightarrow\mathcal{D}$, wher
 An \emph{explanation} $e \in \mathcal{X}$ is a subset $e$ of sample $x$ that contributed for the predicted state $h(x)=\hat{y} \in \mathcal{Y}$, or contributed significantly more than other members of $x$.
 \end{definition}
 
-We often express the explanations as the original feature vector with a relevance score vector, e.g., \ real-valued vector of the same dimension as the input, where positive items indicate relevant features and zeros irrelevant \cite{Montavon2018}.
+We often express the explanation as the original feature vector with a relevance score vector, e.g., real-valued vector of the same dimension as the input, where positive items indicate relevant features and zeros indicate irrelevant ones \cite{Montavon2018}.
 
-This definition of the \emph{interpretation} is quite vague because human readability and understandability is not something to measure or observe precisely. On the other hand, the explanation is a little bit more specific. As an example, we can see the task where we aim to select part of the original feature vector responsible for the majority of probability accumulated in the output (e.g., \ softmax output). This output might be interpretable by human, or we have to find another mapping to an interpretable domain, e.g., \ $\mathbb{R}^{n}\rightarrow\mathcal{X}$. For instance, if we get an explanation of network classifying images, we might get a real-valued matrix. However, we translate it back to the image with highlighted pixels to be better understood. \cite{Lapuschkin2015, Simonyan2014, Landecker2013}. If our subject would be natural language processing, the explanation might be a highlighted text \cite{Arras2017, Li2016}.
+This definition of the \emph{interpretation} is quite vague because human readability and understandability is not something to measure or observe precisely. On the other hand, the explanation is a little bit more specific. For example, we can see the task where we aim to select part of the original feature vector responsible for most probability accumulated in the output, e.g., softmax output. This output might be interpretable by human, or we have to find another mapping to an interpretable domain, e.g., \ $\mathbb{R}^{n}\rightarrow\mathcal{X}$. For instance, if we get an explanation of network classifying images, we might get a real-valued matrix. However, we translate it back to the image with highlighted pixels to be better understood. \cite{Lapuschkin2015, Simonyan2014, Landecker2013}. If our subject would be natural language processing, the explanation might be a highlighted text \cite{Arras2017, Li2016}.
 
-A different point of view on understandability is looking at the available time that the user (human) is available or allowed to spend on understanding the explanation \cite{Guidotti2018}. Then we can check the complexity or quality of the explanation by measuring the time to understand the explanation. However, we have to control the person's background knowledge performing the interpretation \cite{Guidotti2018}.
+A different perspective of understandability is looking at the available time that the user (human) is available or allowed to spend on the explanation understanding \cite{Guidotti2018}. Then we can check the complexity or quality of the explanation by measuring the time to understand the explanation. However, we have to control the person's background knowledge performing the interpretation \cite{Guidotti2018}.
 
-Authors of \cite{Montavon2018} address the primary bias in \emph{interpretability} is that the majority of the model evaluation metrics works with the model as with a black box. Sufficient information for evaluation is just a set of predicted labels (or class probabilities) and ground-truth labels. Often, we do not observe model parameters, hyperparameters, model hypothesis space \dots. 
+Authors of \cite{Montavon2018} address that the primary bias in \emph{interpretability} is that the majority of the model evaluation metrics works with the model as with a black box. Sufficient information for the evaluation is just a set of predicted labels (or class probabilities) and ground-truth labels. Often, we do not observe model parameters, hyperparameters, model hypothesis space, etc. 
 
-Another problem is that some situations are not easily transferable to a numerical form, e.g., \ real-valued vectors. Examples we can find in ethics or legality. Interpretability of such concepts is ambiguous even in the world without machine learning.
+Another problem is that some situations are not easily transferable to a numerical form, e.g., real-valued vectors. Examples we can find in ethics or legality. Interpretability of such concepts is ambiguous even in the world without machine learning.
 
 \section{Categorization}
 Based on \cite{Guidotti2018}, and \cite{Lipton2016}, there are several aspects according to which we can categorize the model explaining.
 
-If we know the model we are explaining and investigate its functioning, parameters, and other details during the learning process, we speak about white box explaining --- often called \emph{transparency}. In this case, the goal of explanation might be to answer the question \emph{How does the model work?}. On the other hand, if we examine the model's output without considering what model is used and how it works, we speak about black box explaining --- often called \emph{post-hoc} explanation. In this case, the question is \emph{What else can the model tell us?}.
+If we know the model we are explaining and investigate its functioning, parameters, and other details during the learning process, we speak about the white box explaining --- often called \emph{transparency}. In this case, the goal of explanation might be to answer the question \emph{How does the model work?}. On the other hand, if we examine the model's output without considering what model is used and how it works, we speak about black box explaining --- often called \emph{post-hoc} explanation. In this case, the question is \emph{What else can the model tell us?}.
 
-Based on the scope of interpretation, we may distinguish two categories. \emph{Global interpretability} means that we can interpret all predictions. We know interpretation $f$: $\forall y \in \mathcal{Y}$, $\exists i \in \mathcal{D}$ $f: y\mapsto i$. In other words, the interpretation is mapping (or relation), and if the model is globally interpretable, this mapping is \emph{serial} (also called \emph{left-total}). On the other hand, \emph{local interpretability} means that we can interpret only some, so the relation is not \emph{serial}.
+Based on the scope of interpretation, we may distinguish two categories. \emph{Global interpretability} means that we can interpret all predictions. We know interpretation $f$: $\forall y \in \mathcal{Y}$, $\exists i \in \mathcal{D}$ $f: y\mapsto i$. In other words, the interpretation is mapping (or relation), and if the model is globally interpretable, this mapping is \emph{serial} (also called \emph{left-total}). On the other hand, \emph{local interpretability} means that we can interpret only some predictions, so the relation is not \emph{serial}.
 
 \section{Explanability desiderata}
-In \cite{Lipton2016} authors present a comprehensive insight into interpretability research and interpretable model properties. We list some of them.
+In \cite{Lipton2016}, authors present a comprehensive insight into interpretability research and interpretable model properties. We list some of them below.
 
 \subsection{Trust}
-Trust is the first term which is very complicated even due to its interpretation. We might build trust in the model's performance, so the better the model is, the more trustworthy. 
-
-However, accuracy of the model is not the only metric we should consider. The situation is more complex in the sense that we need to examine the whole context. By context, we mean the accuracy on specific examples, e.g., \ unseen examples or examples where people can classify with high precision. We should also evaluate the accuracy repeatedly in time.
+Trust is the first term which is very complicated even due to its own interpretation. We might build trust in the model's performance, so the better the model is, the more trustworthy. However, the accuracy of the model is not the only metric we should consider. The situation is more complex in the sense that we need to examine the whole context. By context, we mean the accuracy on specific examples, e.g., unseen examples or examples where people can classify with high precision. We should also evaluate the accuracy repeatedly in time.
 
 \subsection{Causality X Correlation}
 Correlation of two random variables $X,Y$ is defined in \eqref{eq:corr}, where $cov(X,Y)$ denotes covariance and $\sigma$ standard deviation. On the other hand, causality is defined as the relation between $X$ (a cause), which contributes to the production of $Y$ (an effect), $X, Y$ might be events, processes, states, objects or generally random variables.
@@ -53,18 +49,18 @@ Correlation of two random variables $X,Y$ is defined in \eqref{eq:corr}, where $
     \rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
 \end{equation}
 
-Every statistician was instructed about situations where the data show us the results we want to see. That might be demonstrated in examples that should be so absurd that nobody can take it seriously. For example, the divorce rate in Maine correlates with the per capita consumption of margarine between 2000 and 2009 \footnote{http://www.tylervigen.com/spurious-correlations}. However, we have to remember that the underlying process generating the data is assumed to be random no matter how complex it can be. We must not forget that the researcher is making assumptions and choosing what data are modelled. The statistical model itself should not serve as an argument for the cause and effect relation between modelled variables. If we want to conclude causality, we should involve other experiments and research in the particular domain to uncover the generating process itself. Correlation is easily measurable, and a conclusion about it is based only on its calculation. More on this topic can be found in \cite{Kenny1979}.
+Every statistician was instructed about situations where the data show us the results we want to see. That might be demonstrated in examples that should be so absurd that nobody can take it seriously. For example, the divorce rate in Maine correlates with the per capita consumption of margarine between 2000 and 2009 \footnote{http://www.tylervigen.com/spurious-correlations}. Those correlations are often called \emph{spurious}. However, we have to remember that the underlying process generating the data is assumed to be random no matter how complex it can be. We must not forget that the researcher is making assumptions and choosing what data are modelled. The statistical model itself should not serve as an argument for the cause and effect relation between modelled variables. If we want to conclude causality, we should involve other experiments and research in the particular domain to uncover the generating process itself. On the other hand, the correlation is easily measurable, and a conclusion about it is based only on its calculation. More on this topic can be found in \cite{Kenny1979}.
 
-Even if we observe the correlation and know that the relationship is not random, it is difficult to conclude the cause and effect. One of the possible reasons might be a confounding variable. It is the variable influencing both features and states of our model. If such a variable exists, we might falsely conclude causality, although the confounder causes the correlation. More on this topic can be found in \cite{Skelly2012}.
+Even if we observe the correlation and know that the relationship is not random, it is difficult to conclude the cause and effect. One of the possible reasons might be a confounding variable. It is a variable influencing both features and states of our model. If such a variable exists, we might falsely conclude causality, although the confounder causes the correlation. More on this topic can be found in \cite{Skelly2012}.
 
 \subsection{Transferability}
-We split our data randomly in the usual setup and create a training and testing set. Then we estimate the generalization error by observing the difference between training and testing error. However, regarding the model deployment, we should observe its behaviour in practice. It might face different situations or, even worse, its deployment might influence the domain itself. The difference between training and real data might be caused by the solid assumptions we make but cannot meet. This trend refers to the robust statistic field where we face the problem of assumption violation \cite{Erceg-Hurn2008}.
+In a usual setup, we split our data randomly and create a training and testing set. Then we estimate the generalization error by observing the difference between training and testing error. However, regarding the model deployment, we should observe its behaviour in practice. It might face different situations or, even worse, its deployment might influence the domain itself. The difference between training and real data might be caused by the solid assumptions we make but cannot meet. This trend refers to the robust statistics field where we face the problem of assumption violation \cite{Erceg-Hurn2008}.
 
 \subsection{Informativness}
-This point is about the model's ability to extend human intuition and knowledge by pointing out the most important parts of comprehensive inputs. It can also provide a stronger overview of the space we are examining, e.g., \ provide some similarity measure on our examples. That might be a very challenging task in gaining labelled data using unsupervised or semisupervised learning.
+This point is about the model's ability to extend human intuition and knowledge by pointing out the most important parts of comprehensive inputs. It can also provide a stronger overview of the space we are examining, e.g., provide some similarity measure on our examples, which might be essential for gaining labelled data using unsupervised or semisupervised learning.
 
 \subsection{Fair and ethical decision making}
-If we want algorithms making autonomous decisions under our control and being of our interest, we need to interpret its decisions. That is a very significant issue because we need to deal with the fact that artificial intelligence is much more capable of making fast and precise decisions than humans. It is not clear if we do not degrade the capabilities of artificial intelligence by trying to understand it. However, it is necessary because we have already used it against each other, e.g., \cite{Boldyreva2018}. By adopting GDPR, we face this challenge even for legal reasons. The field of ethics in AI \cite{Siau2020} is an inexhaustible well of challenges beginning with autonomous driving and ending with absolute manipulation of a mass of people.
+If we want algorithms making autonomous decisions under our control and being of our interest, we need to interpret its decisions. That is a very significant issue because we need to deal with the fact that artificial intelligence is much more capable of making fast and precise decisions than humans. It is not clear if we do not degrade artificial intelligence capabilities by trying to understand it. However, it is necessary because we have already used it against each other, e.g., \cite{Boldyreva2018}. By adopting GDPR, we face this challenge even for legal reasons. The field of ethics in AI \cite{Siau2020} is an inexhaustible well of challenges beginning with autonomous driving and ending with absolute manipulation of a mass of people.
 
 \section{Interpretable model}
 As we mentioned, we can distinguish two basic types of explanation according to our goal --- \emph{transparency} and \emph{post-hoc}.
@@ -72,16 +68,16 @@ As we mentioned, we can distinguish two basic types of explanation according to 
 \subsection{Transparency}
 Authors in \cite{Lipton2016} refer to several attributes which can be treated during a particular model's \emph{transparency} research --- \emph{simulatability, decomposability} and \emph{algorithmic transparency}.
 
-By \emph{simulatability} is meant that the model prediction can be simulated by a human in a reasonable amount of time given the model parameters and input example. This capability is closely connected with the model complexity. That might seem like it is about the type of model such that we can say that decision trees are better interpretable than neural nets. The truth is that simpler models like linear regression or decision trees tend to be better interpretable, but it is because they are usually involved in straightforward use cases. On the other hand, simulatability is strictly determined by a limited amount of human cognition. That leads us to conclude that a very complex decision tree is not more transparent than a lightweight neural net.
+By \emph{simulatability} is meant that the model prediction can be simulated by a human in a reasonable amount of time given the model parameters and input example. This capability is closely connected with the model complexity. That might seem like it is about the type of model such that we can say that, e.g., decision trees are better interpretable than neural nets. The truth is that simpler models like linear regression or decision trees tend to be better interpretable, but it is because they are usually involved in straightforward use cases. On the other hand, simulatability is strictly determined by a limited amount of human cognition. That leads us to conclude that a very complex decision tree is not more transparent than a lightweight neural net.
 
-\emph{Decomposability} stands for the ability that each input, parameter and calculation admits an intuitive explanation. The input interpretability throws out the game majority of models where dimensionality reduction and other feature engineering are involved. The interpretation of parameters and calculation might be a human-readable description of decision tree nodes. The opposite might be a large amount of weight and biases in a neural net.
+\emph{Decomposability} stands for the ability that each input, parameter and calculation admits an intuitive explanation. The input interpretability throws out the game majority of models where dimensionality reduction and other feature engineering techniques are involved. The interpretation of parameters and calculations might be a human-readable description of decision tree nodes, and the opposite might be a large number of weights and biases in a neural net.
 
 The last notion of \emph{algorithmic transparency} is about observing the learning algorithm and its mathematical background. The algorithm has to be fully explorable using mathematical tools. For example, in the linear model, the shape of the error surface can be understood, and we can prove that the training process will converge to a unique solution. On the other hand, heuristic algorithms used in deep models like \emph{stochastic gradient descent} can not be fully observed, and we cannot be sure about its adaptation in a new use case.
 
 Examples of a model with a significant level of transparency are linear/logistic regression, decision trees, KNN, Rule-based learners, and generative additive models. More on this topic can be found in \cite{Arrieta2019}.
 
 \subsection{Post-hoc}
-Post-hoc interpretability has a different goal than the previous approach. It can extract more information from the model. It might help us gain new overall knowledge or understand what is in the input that causes such a prediction. This technique can be used to interpret opaque (not transparent) models without examining their complex logic.
+Post-hoc interpretability has a different goal than the previous approach. It can extract more information from the model and help us gain new overall knowledge or understand what is in the input that causes such a prediction. This technique can be used to interpret opaque (not transparent) models without examining their complex logic.
 
 There are several techniques for post-hoc interpretation. Their list follows.
 
@@ -89,10 +85,10 @@ There are several techniques for post-hoc interpretation. Their list follows.
     \itemsep0em 
     \item \emph{Text explanation} --- We still assume that we cannot assign textual interpretation by hand because that might mean that our model is transparent. However, we might automate the inference of a textual form. We can train another model which maps the prediction of the original model to its textual explanation. An example of such an approach is in \cite{Krening2017}, where authors trained a reinforcement model to perform a particular task and a second model to explain its decisions.
     \item \emph{Visualization} --- Images and other visual outputs are considered very straightforward for human understanding. We often involve dimensionality reduction and other techniques to display the situation in two or three dimensions, such as \cite{Pearson1901}. An example of a visualization of neural net explanation using heatmap can be found in \cite{Zeiler2013}.
-    \item \emph{Local explanations} --- This approach is about explaining specific parts of the training set, e.g., \ specific samples. It might find the parts of a sample that contribute to the prediction the most. An example might be saliency map usage for neural nets \cite{Simonyan2014}. It is important to emphasize that the explanation has to be treated in a specific context, i.e. \ the saliency map might change drastically even if the example was changed only slightly.
-    \item \emph{Explanations by example} --- Usually, if the teacher explains the theory with a running example, especially in mathematics, there is a much greater chance that many students would understand. The principle is the same in the model explanation by example. The model can provide such an explanation along with prediction, i.e. \ prediction and a set of examples which are similar  \cite{Caruana1999}. We might involve a clustering algorithm.
+    \item \emph{Local explanations} --- This approach explains specific parts of the training set, e.g.,  specific samples. It might find the parts of a sample that contribute to the prediction the most. An example might be the saliency map used for neural nets \cite{Simonyan2014}. It is important to emphasize that the explanation has to be treated in a specific context, i.e., the saliency map might change drastically even if the example was changed only slightly.
+    \item \emph{Explanations by example} --- Usually, if the teacher explains the theory with a running example, especially in mathematics, there is a much greater chance that many students would understand. The principle is the same in the model explanation by example. The model can provide such an explanation along with predictions, e.g., prediction and a set of examples which are similar  \cite{Caruana1999}. We might involve a clustering algorithm.
     \item \emph{Explanations by simplification} --- This approach aims at model simplification while maintaining its performance.
-    \item \emph{Feature relevance explanation} --- We aim at scoring the input variables. Variables are later compared based on their scores, and we can conclude which variables are the most important for a particular prediction.
+    \item \emph{Feature relevance explanation} --- We aim at scoring the input variables, which are later compared based on their scores, and we can conclude which variables are the most important for a particular prediction.
 \end{itemize}
 
 This kind of explaining is used with SVM, where we can see model simplification or local explanations. Other significant models are neural nets and their variations, where we see feature relevance and visualization techniques. Examples can be found in \cite{Arrieta2019}.
@@ -100,16 +96,16 @@ This kind of explaining is used with SVM, where we can see model simplification 
 Another example of a general model explaining is in \cite{Alvarez-Melis2018}, where authors focus on self-explaining models. Other sources might be \cite{Strumbelj2013,Robnik-Sikonja2008,Montavon2018}.
 
 \section{Explaining HMill models}
-Our model can model tree-structured data --- \emph{JSON} documents as stated in the previous chapter. This section describes an explanation method for \emph{HMill} models proposed and demonstrated in \cite{Pevny2020}. Introduced explainer attempts to explain structured \emph{HMill} model. It uses a post-hoc explanation approach with \emph{feature relevance explanation}. So far, it is the only known approach of \emph{HMill} model explanation.
+Our model can model tree-structured data --- \emph{JSON} documents, as stated in the previous chapter. This section describes an explanation method for \emph{HMill} models proposed and demonstrated in \cite{Pevny2020}. Introduced explainer attempts to explain structured \emph{HMill} model. It uses a post-hoc approach with \emph{feature relevance explanation}. So far, it is the only known approach of \emph{HMill} model explanation.
 
 The goal of \emph{HMill} explainer is to find a minimal subset of the input sample (\emph{JSON} subtree), which is classified to the same class as the original sample. We can identify what parts of the original \emph{JSON} are the most relevant. It might also improve our understanding of the domain-specific knowledge, as the authors state.
 
-In the following text, we assume \emph{HMill} binary classification model being a black box decomposed only to two function $h$ and $f$. The first function is $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and the output $v\in\mathbb{R}^{m}$ represents the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is then classified by $f(h(d))=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to the positive class.
+In the following text, we assume an \emph{HMill} binary classification model being a black box decomposed only to two function $h$ and $f$. The first function is $h(d)=v$ where $d$ is \emph{JSON} document or its subtree and the output $v\in\mathbb{R}^{m}$ represents the embedded sample (all abstract model nodes are evaluated but the root). The embedded sample is then classified by $f(h(d))=c$, where $f$ denotes final abstract model node evaluation function and $c$ confidence that $d$ belongs to the positive class.
 
 \subsection{Explainer steps}
 The basic idea builds on top of the subtree selection problem solution. Our problem is a specific case of subtree selection. It can be formulated such that for a given tree $T$, an expensive evaluation function $r(t)=q$ ($q\in\mathbb{R}$) and a threshold $\tau\in\mathbb{R}$, we want to find subtree $t$ with minimal number of nodes such that $r(t)\geq\tau$. 
 
-In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document, and the evaluation function is $f$, which outputs the confidence that the document belongs to a positive class. The authors introduced several subset selection methods, which is a less general case of subtree problem. It is not possible to adopt subset selection methods in subtree problems directly. Firstly, we have to decide if we need to maintain the tree structure of the result or not. The authors mention two solutions to deal with this problem: first, ignoring the structure and exploiting it.
+In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document, and the evaluation function is $f$, which outputs the confidence that the document belongs to a positive class. The authors introduced several subset selection methods, which is a less general case of subtree problem. It is not possible to adopt subset selection methods in subtree problems directly. Firstly, we have to decide if we need to maintain the tree structure of the result or not. The authors mention two solutions to deal with this problem: first, ignoring the structure and the second, exploiting it.
 
 \subsection{Subset selection}
 \emph{Greedy addition} starts with an empty subset and in each step adds a new item until the threshold is achieved. Each new item is chosen such that the gain in the evaluation function is maximal across all elements which are not in the subset.
@@ -121,11 +117,11 @@ In the case of \emph{HMill} explainer, the input tree is a \emph{JSON} document,
 \subsection{Minimal subtree adaptation}
 \emph{Flat search} performs subset selection on isolated nodes of the tree. The root is added to the explanation by default. After subset selection is made, all nodes which are not reachable from the root are removed from the explanation. That can be done because they do not impact classification based on the definition of the \emph{HMill} model tree structure.
 
-\emph{Level-by-level search} performs subset selection on each level of the tree. On each level, it takes into account only nodes whose parents are in the explanation so far.
+\emph{Level-by-level search} performs subset selection on each level of the tree. It takes into account only nodes whose parents are in the explanation so far.
 
 \subsection{Subtree ranking}
 \subsubsection{Model gradient ranking}
-This approach is based on the high absolute value of gradients for the most significant parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient vector (\eqref{eq:grad}) of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a small change in the embedding of a specific subtree influences the model's prediction. Computation of the gradient ranking of a particular subtree is absolute value of sum of items in resulting the gradient vector.
+This approach is based on the absolute value of gradients for the parts of the input. That is adopted even in the case of a saliency map of image processing neural net. The crucial idea is to compute the gradient vector (\eqref{eq:grad}) of the model with respect to the embedding of a particular subtree $c$ of a particular sample $d$. Alternatively, we want to examine how much a slight change in the embedding of a specific subtree influences the model's prediction. Computation of the gradient ranking of a particular subtree is the absolute value of the sum of items in the resulting gradient vector. Note that $h(d)$ is originally a function of $h(c)$, which is not obvious from \eqref{eq:grad}. However, if it was not, the derivative would be zero.
 
 \begin{equation} \label{eq:grad}
     \frac{\partial f(h(d))}{\partial h(c)} \in \mathbb{R}^m
@@ -136,171 +132,35 @@ This approach is based on the high absolute value of gradients for the most sign
 % \end{equation}
 
 \subsubsection{GNN explainer mask ranking}
-This method is originally designed to explain \emph{GNN} models by \cite{Ying2019}. The main idea is to use this explainer for the graph created by \emph{JSON} subtrees and edges between them. Explainer uses a mask $m=\mathbb{R}^{|\mathcal{E}|}$, where $|\mathcal{E}|$ denotes all edges between the subtrees and their predecessors in a \emph{JSON} document and $m_i\in[0,1]$. This mask represents how much information is passed along each edge during the update step of GNNs. Suppose the explainer is asked to explain a classification decision on a particular subtree. In that case, the mask is optimized using stochastic gradient descent to maximize the probability of correct classification on that subtree. After the optimization, the explainer suggests $k$ edges with the largest values as an explanation. The value of $k$ should be properly tuned because the explanation does not have to be classified to the same class as the original sample if $k$ is fixed in advance $k$. The values of the mask might be used as ranking in \emph{HMill} explainer.
+This method is originally designed to explain \emph{GNN} models \cite{Ying2019}. The main idea is to use this explainer for the graph created by \emph{JSON} subtrees and edges between them. Explainer uses a mask $m=\mathbb{R}^{|\mathcal{E}|}$, where $|\mathcal{E}|$ denotes all edges between the subtrees and their predecessors in a \emph{JSON} document and $m_i\in[0,1]$. This mask represents how much information is passed along each edge during the update step of GNNs. Suppose the explainer is asked to explain a classification decision on a particular subtree. In that case, the mask is optimized using stochastic gradient descent to maximize the probability of correct classification on that subtree. After the optimization, the explainer suggests $k$ edges with the largest values as an explanation. The value of $k$ should be properly tuned because the explanation does not have to be classified to the same class as the original sample if $k$ is fixed in advance. The values of the mask might be used as ranking in \emph{HMill} explainer.
 
 \subsubsection{Banzhaf values}
 Game theoretical approaches in feature extraction which uses \emph{Shapley values} and \emph{Banhaf values} can be found in \cite{Afghah2018}. Both come from the cooperative game theory. They are related to the metric of how much a certain player contributes to various coalitions on average. In feature extraction, the Banzhaf value might describe interdependency among the extracted features and their relevancy to the target class. On the other hand, \emph{shapley value} might be used to show the contribution of a particular feature in improving the classification accuracy when all possible coalitions of features are considered. In the case of \emph{HMill} explainer, the authors used Bazhaf values. 
 
-A sampling algorithm is used to approximate Banzhaf values \cite{Bachrach2010}. There are two values stored for each subtree in the \emph{JSON} document. The classifier's average confidence in coalitions includes the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running a more significant number of iterations, the approximation of Banzhaf values for each subtree is the difference between the two values stored in it. Banzhaf values approximation is used as the subtree ranking. If we do not fix the seed, the explanation is stochastic and might be unstable regarding the number of iterations and the output.
+A sampling algorithm is used to approximate Banzhaf values \cite{Bachrach2010}. There are two values stored for each subtree in the \emph{JSON} document -- the classifier's average confidence in coalitions which includes the subtree and the average confidence of coalitions that do not. Coalitions are generated randomly. After running more iterations, the approximation of Banzhaf values for each subtree is the difference between the two values stored in it. Banzhaf values approximation is used as the subtree ranking in \emph{HMill} explainer. If we do not fix the seed, the explanation is stochastic and might be unstable regarding the number of iterations and the output.
 
 \subsection{Results}
 Authors in \cite{Pevny2020} present qualitative and quantitative analysis for different \emph{HMill} explainer setups. The best result regarding the computational time and size of explanation was reported for the Banzhaf values-based heuristic addition approach combined with Level-by-level search. We will use this setup.
 
 \section{Other methods for structured data}
-We mentioned three alternative techniques for \emph{JSON} modelling in the previous chapters --- rules, flattening and graph neural nets. Flattening is a technique of feature engineering more than modelling. It might be difficult to explain, as an general explanation algorithm stops at the flattened features and cannot explain flattening functions. That refers back to weak decomposability of such methods.
+We mentioned three alternative techniques for \emph{JSON} modelling in the previous chapters --- rules, flattening, and GNNs. Flattening is a technique of feature engineering more than modelling. It might be challenging to explain its predictions, as a general explanation algorithm stops at the flattened features and cannot explain the flattening functions. That refers to the weak decomposability of such methods mentioned earlier.
 
-Rules are usually transparent, so their interpretability is straightforward. Examples of graph neural net explaining can be found in \cite{Ying2019, Huang2020} 
+Rules are usually transparent, so their interpretability is straightforward. Finally, examples of graph neural net explaining can be found in \cite{Ying2019, Huang2020} 
 
-The first part of the thesis addressed the essential theoretical background. It covers the basics of malware analysis, machine learning, and especially the \emph{HMill} framework and the \emph{HMill} Explainer. In the following part, we describe our setup, results, and discussion.
+% The first part of the thesis addressed the essential theoretical background. It covers the basics of malware analysis, machine learning, and especially the \emph{HMill} framework and the \emph{HMill} Explainer. In the following part, we describe our setup, results, and discussion.
 
 \section{CAPEv2 explaining}
 In the chapter \ref{chap:classification}, we introduced two factors according to which we categorize signatures.
 
-We expect that explanation of the model, the cause of which is in the report, should be a set containing this cause. As an example, we expect that if the original signature's cause is a specific API call, it should be presented in the explanation of the binary classifier for this signature. As authors of \emph{HMill} explainer mentioned, we hope that the explanation contains even something new. In other words, we expect that we could observe explanations that contain entries that are not the original cause. However, they might reasonably substitute it --- they are connected to the same effects. It is also possible to meet new signatures because all samples are malicious and the model might generalize based on different similarities in the training set.
+We expect that explanation of the model, the cause of which is in the report, should be a set containing this cause. As an example, we expect that if the original signature's cause is a specific API call, it should be presented in the explanation of the binary classifier for this signature. As authors of \emph{HMill} explainer mentioned, we hope that the explanation contains even something new. In other words, we expect that we could observe explanations that contain entries that are not the original cause. However, they might reasonably substitute it --- they are connected to the same effects. It is also possible to identify new signatures because all samples are malicious and the model might generalize based on different similarities in the training set.
 
-We want to explain at least one hundred samples for each classifier to observe repeatedly seen parts. We choose positive samples because we want to explain the positive class predictions. Samples are chosen based on the output confidence of the model as described earlier.
+We want to explain at least one hundred samples for each classifier to observe repeatedly seen parts. We choose positive samples because we want to explain the positive class predictions.
 
 \subsection{Additions}
 Since \emph{HMill} explainer usually process sample by sample, one hundred explanations mean one hundred \emph{JSON} files. This quantity is still hard to interpret, and that is why we involved three additional ideas.
 
-We merged all explanations for one signature into one \emph{JSON} file and for each entry computed a number of occurrences across explanations. We assume that the most general formulation of an explanation should be seen repeatedly. 
+We merged all explanations for one signature into a one \emph{JSON} file and for each entry computed a number of occurrences across explanations. We assume that the most general formulation of an explanation should be seen repeatedly. 
 
-We also counted the frequency of each particular key (name of the field in JSON file, e.g., \ \emph{read files, resolved apis}\dots) in explanations such that for each signature, we see how often the explainer detects a particular key. We can compare the original signature's cause with the most seen key if they coincide.
+We also counted the frequency of each particular key (name of the field in JSON file, e.g., \ \emph{read files, resolved apis}) in explanations such that for each signature, we see how often the explainer detects a particular key. We can compare the original signature's cause with the most seen key.
 
-The last idea is that we compute the frequencies of entries seen across different signatures. We assume that in such a way, we could partially identify the bias that is caused by the entries that we see in multiple explanations. In such a case, it should be considered too general.
-
-
-% %%------------------------------------------------------------------------------------
-% Finding an explanation of \emph{HMill} model has two phases - subtree ranking and subtree selection. In the first phase all subtrees are heuristically ranked to reflect their importance for the final classification. Secondly, subtrees of a sample are searched through and evaluated by the model to find minimal explanation. There are multiple approaches adopted by authors for both phases. 
-
-
-% Clustering and explanation of sample and batch - nice-to-have
-
-
-% \todo{list Desiderata of Interpretability Research and summarize each and try to connect it to cyber security (examples, especially in case of huge data, huge entrophy and causality X Correlation tradeoff)}
-% \todo{make up some images, for example demostration of confounding variable}
-
-% ○ How to detect that we are predictiong based on some confounding variable
-% philozophy - Causality X Correlation - cite some literature
-% The book of why, Judea Pearl
-
-
-% \cite{Lipton2016}
-% 4.4. Post-hoc interpretations can potentially mislead
-% We caution against blindly embracing post-hoc notions of
-% interpretability, especially when optimized to placate subjective demands. In such cases, one might - deliberately or
-% not - optimize an algorithm to present misleading but plausible explanations. As humans, we are known to engage in
-% this behavior, as evidenced in hiring practices and college
-% admissions. Several journalists and social scientists have
-% demonstrated that acceptance decisions attributed to virtues
-% like leadership or originality often disguise racial or gender
-% discrimination (Mounk, 2014). In the rush to gain acceptance for machine learning and to emulate human intelligence, we should be careful not to reproduce pathological
-% behavior at scale.
-
-% \cite{Guidotti2018} \todo{nice-to-have are another desiderata below}
-% Desiderata of an Interpretable Model
-% An interpretable model is required to provide an explanation. Thus, to realize an interpretable
-% model, it is necessary to take into account the following list of desiderata, which are mentioned
-% by a set of papers in the state of art [5, 28, 32, 45]:
-% • Interpretability: to which extent the model and/or its predictions are human understandable. The most addressed discussion is related to how the interpretability can be measured.
-% In Reference [32] a component for measuring the interpretability is the complexity of the
-% predictive model in terms of the model size. According to the literature, we refer to interpretability also with the name comprehensibility.
-% • Accuracy: to which extent the model accurately predicts unseen instances. The accuracy
-% of a model can be measured using evaluation measures like the accuracy score, the F1-
-% score [118], and so on. Producing an interpretable model maintaining competitive levels of
-% accuracy is the most common target among the papers in the literature.
-% • Fidelity: to which extent the model is able to accurately imitate a black-box predictor. The
-% fidelity captures how much is good an interpretable model in the mimic of the behavior of
-% a black-box. Similarly to the accuracy, the fidelity is measured in terms of accuracy score,
-% F1-score, and so on, but with respect to the outcome of the black box.
-
-
-
-% Nice-to-have:
-% \cite{Mittelstadt2019}
-% section about Human explanations are selective - just to philozophy it a little bit
-
-
-
-% \todo{Summarize MillExplainer - \cite{Pevny2020}}
-% Two main steps
-%     sub-trees in a sample are heuristically ranked to reflect their importance for the final classification
-%     subtrees of a sample are searched throughand evaluated by the model in order to find the minimalexplanation
-% Summarize mentioned ways
-% Summarize conclusions and results
-%     Conclusion The best way are Banzhaf values
-
-% address somehow the significance of confidence of neural net and what does it mean
-
-% \todo{could be good to formulate pseudocode of the explainer also}
-
-% Our target is explanation of \emph{HMill} model because it is also model we are about to use. In this section we will introduce solution proposed in \cite{Pevny2020} and we will reference other solutions which were presented on models capable consuming \emph{JSON} documents.
-
-% If we do not specify we assume binary classification setup.
-
-% As mentioned earlier we assume two main models capable processing tree-structured data. Those are \emph{Graph Neural Nets} and \emph{HMill}. Both methods described below are based on indentifying subset of original feature vector set (graph, tree-structured document) which has crucial role during prediction itself (in our case classification). \todo{connect to the theory above}
-
-
-
-% Alternative model for structured data if 
-% \todo{First shortly about gnn explainer and their results - https://cs.stanford.edu/people/jure/pubs/gnnexplainer-neurips19.pdf - \cite{Ying2019}, https://arxiv.org/pdf/2001.06216.pdf \cite{Huang2020}- adaptation of LIME in graph neural networks (which also can solve our problem theoretically)}
-
-
-% If we need inspiration for this chapter - here https://arxiv.org/pdf/1910.10045v1.pdf
-
-% \section{Explanation techniques}
-% \citet{Guidotti2018} further categorize explanation techniques into several groups based on the basic princeple:
-% \todo{summarize the categories below, and we should also reference it in hmill explaining section also, what we use}
-% We further categorize in the subsections the various methods with respect to the type of interpretable explanator:
-% • Decision Tree (DT) or Single Tree. It is commonly recognized that decision tree is one of
-% the more interpretable and easily understandable models, primarily for global, but also for
-% local, explanations. Indeed, a very widespread technique for opening the black box is the
-% so-called “single-tree approximation.”
-% • Decion Rules (DR) or Rule Based Explanator. Decision rules are among the more human understandable techniques. There exist various types of rules (illustrated in Section 3.3). They
-% are used to explain the model, the outcome and also for the transparent design. We remark
-% the existence of techniques for transforming a tree into a set of rules.
-% • Features Importance (FI). A very simple but effective solution acting as either global or local
-% explanation consists in returning as explanation the weight and magnitude of the features
-% used by the black box. Generally the feature importance is provided by using the values of
-% the coefficients of linear models used as interpretable models.
-% • Saliency Mask (SM). An efficient way of pointing out what causes a certain outcome, especially when images or texts are treated, consists in using “masks” visually highlighting the
-% determining aspects of the record analyzed. They are generally used to explain deep neural
-% networks and can be viewed as a visual representation of FI.
-% • Sensitivity Analysis (SA). It consists of evaluating the uncertainty in the outcome of a black
-% box with respect to different sources of uncertainty in its inputs. It is generally used to
-% develop visual tools for model inspection.
-% • Partial Dependence Plot (PDP). These plots help in visualizing and understanding the relationship between the outcome of a black box and the input in a reduced feature space.
-% • Prototype Selection (PS). This explanator consists in returning, together with the outcome,
-% an example very similar to the classified record, to make clear which criteria the prediction
-% was returned. A prototype is an object that is representative of a set of similar instances and
-% is part of the observed points, or it is an artifact summarizing a subset of them with similar
-% characteristics.
-% • Activation Maximization (AM). The inspection of neural networks and deep neural network
-% can be carried out also by observing which are the fundamental neurons activated with respect to particular input records, i.e., to look for input patterns that maximize the activation
-% of a certain neuron in a certain layer. AM can be viewed also as the generation of an input
-% image that maximizes the output activation (also called adversarial generation).
-
-
-
-% \cite{Guidotti2018} \todo{check consistency of my definition and theirs, maybe extend my to match and cite}
-% Definition 4.1 (Model Explanation Problem). Given a black box predictor b and a set of instances
-% X, the model explanation problem consists in finding an explanation E ∈ E, belonging to a humaninterpretable domain E, through an interpretable global predictor cд = f (b,X) derived from the
-% black box b and the instances X using some process f (·, ·). An explanation E ∈ E is obtained
-% through cд, if E = εд (cд,X) for some explanation logic εд (·, ·), which reasons over cд and X.
-
-% Notes:
-% Two main phases I think which are model explaing using some method and second is intepretation - human understandable
-% post-hoc intepretability X directly model interpretability
-% Explaining model X explaining particular predictions
-% local X global explanation
-% correlation X causality
-% definitions - basic terms (like for instance concept, math formalism...)
-
-% Previous connection
-% - Hmill models and their explanation
-% Way through this chapter
-% - Explaining in general
-% - Explaining mill and hmill
-% - Prior
-% Next connection
-% - Next should be little summary of first part of thesis
+The last idea is that we compute the frequencies of entries seen across different signatures. We assume that in such a way, we could partially identify the bias that is caused by the entries that we see in multiple explanations across signatures. In such a case, it should be considered too general.
