@@ -38,13 +38,17 @@ The crucial assumption is that $X, Y$ are random variables related by unknown jo
 Loss function denotes the objective of our optimization task during learning, $\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}^{+}$. Usually, we compute its value for each particular example $\ell(y, h(x))$ and use some aggregation, e.g., mean, to get one value for the whole set of examples.
 
 \subsubsection*{Learning}
-Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk}(\eqref{eq:exploss}).
+Main consequence of the assumption about randomness of $\mathcal{X}$ and $\mathcal{Y}$ is that $h(x)$ and $\ell(Y,h(X))$ are also random variables. This fact allows us definition of \emph{expected risk} \eqref{eq:exploss}.
 
 \begin{equation} \label{eq:exploss}
     R(h)=\mathbb{E}_{(x,y) \sim p}\ell(Y,h(X))=\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,y)\ell(y,h(x))
 \end{equation}
 
-If $p(x,y)$ is known, optimal prediction strategy would be denoted by $h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')$. In practise, it is unknown and we have to involve an approximation (learning algorithm) to find the best attainable strategy using drawn data.
+\begin{equation} \label{eq:optimal}
+    h^*(x)=\operatorname*{argmin}_{{y}'\in \mathcal{Y}}\sum_{y\in\mathcal{Y}}p(y|x)\ell(y,{y}')
+\end{equation}
+
+If $p(x,y)$ is known, optimal prediction strategy would be denoted by \eqref{eq:optimal}. In practise, it is unknown and we have to involve an approximation (learning algorithm) to find the best attainable strategy using drawn data.
 
 Assume $\mathcal{T}^m$ is a set of examples for supervised learning. We can distinguish two basic learning approaches --- \emph{Discriminative learning}, \emph{Generative learning}.
 
@@ -171,7 +175,7 @@ In the thesis, we will work with imbalanced datasets (more negative examples). W
     \label{fig:neuralnet}
 \end{figure}
 
-A neural net is a discriminative model which is based on \emph{Empirical Risk} minimization \eqref{eq:emploss}. The neural network is a parametric function created by composing simple functions. Specifically, $nn(x) = g_1(g_2(g_3(\dots(g_n(x,\theta_n),\dots;\theta_1)$, where each $g_n$ has the form $\sigma(W * x + b)$ and $\theta$ denotes parameters $(W,b)$. Functions, their input and output are often demonstrated as layers of a neural net. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A \emph{multilayer perceptron} described in \cite{Russell2009} with a nonlinear activation function might realize hidden layers. The output layer represents a predicted state. Many functions are used in neural nets, e.g., before the output layer is often a softmax or sigmoid activation function to normalize the input into a probability distribution (score). The overall goal is to optimize $\ell$ with respect to the parameters of the net. Usually, we use \emph{gradient descent} optimization technique.
+A neural net is a discriminative model which is based on \emph{Empirical Risk} minimization \eqref{eq:emploss}. The neural network is a parametric function created by composing simple functions. Specifically, $nn(x) = g_1(g_2(g_3(\dots(g_n(x,\theta_n),\dots;\theta_1)$, where each $g_n$ has the form $\sigma(Wx + b)$ and $\theta$ denotes parameters $(W,b)$. Functions, their input and output are often demonstrated as layers of a neural net. An example of a general neural net could be seen in \ref{fig:neuralnet}. The input layer represents items of the feature vector. A \emph{multilayer perceptron} described in \cite{Russell2009} with a nonlinear activation function might realize hidden layers. The output layer represents a predicted state. Many functions are used in neural nets, e.g., before the output layer is often a softmax or sigmoid activation function to normalize the input into a probability distribution (score). The overall goal is to optimize $\ell$ with respect to the parameters of the net. Usually, we use \emph{gradient descent} optimization technique.
 
 Usage of the \emph{gradient descent} puts no extra demands on the data we are using. We also do not insist on the strict convexity of the function we are optimizing (the function does not have to have one global \emph{minimum}). The assumption about all functions is that they have to be (at least piecewise) differentiable with respect to their inputs and parameters. 
 

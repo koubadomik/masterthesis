@@ -106,7 +106,7 @@ Dynamic analyses techniques allow us to examine a running malware sample. The is
   \itemsep0em 
   \item Processes --- process activity, subprocesses, etc.
   \item File system --- dropped files, removed files, etc.
-  \item Registry keys --- read/write operations with Windows registry keys, including read/written data
+  \item Registry keys --- read/write operations with Windows registry keys, including read and written data
   \item Network activity monitoring --- outgoing and incoming traffic
   \item API calls --- external library of an operating system which is called by the malware sample, essentially everything what the malware performs should be expressed in the list of API calls
   \item Mutexes --- flags which are usually created by a thread to avoid another thread from writing to a specific resource at the same time, they are also used by malware for interprocess communication, e.g., the indication of the malware presence on the victim machine
@@ -272,7 +272,7 @@ Below we list relevant publications where the authors applied a machine learning
 \begin{itemize}
   \itemsep0em 
   \item Strings ---  \cite{Lee2011}
-  \item N-grams (analysis of byte subsequences of length $N$ from the original binary) ---  \cite{Fuyong2017}
+  \item N-grams (analysis of byte subsequences of length N from the original binary) ---  \cite{Fuyong2017}
   \item Entropy of a malware file ---  \cite{Wojnowicz2018}
   \item Statically extracted API function calls ---  \cite{Ahmadi2016}
 \end{itemize}
