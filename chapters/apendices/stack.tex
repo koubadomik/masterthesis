@@ -1,19 +1,15 @@
 \chapter{Technology} \label{app:technologies}
-Our technology stack is quite broad, in the lists below, we divide the tools into two groups based on what we did use it for. We do not mention standard Linux tools like \emph{shell scripts}, \emph{ssh} etc. The main part of our experimenting we spent working on Ubuntu 20.04.
-
-In the process we usually worked with a lot of tools, we mention only those which had a significant impact in our work.
+Our technology stack is quite broad, in the lists below, we divide the tools into two groups based on what we did use it for. We do not mention standard Linux tools like \emph{shell scripts}, \emph{ssh} etc. We mention only those which had a significant impact on our work.
 
 
 \section*{Sandboxing and infrastructure}
 \subsection*{Capev2 with community signatures}
-A malware sandboxing tool which provides us an environment to retrieve malware analysis which we used for further modelling. 
-
 There are several relevant sources, here are the most important:
 \begin{itemize}
   \itemsep0em 
   \item Public instance --- https://capesandbox.com/
   \item Opensource project ---  https://github.com/kevoreilly/CAPEv2 (under GNU General Public License v3.0)
-  \item Community extensions (e.g., \ signature implementation)
+  \item Community extensions --- https://github.com/kevoreilly/community
   \item Documentation --- https://capev2.readthedocs.io/en/latest/
 \end{itemize}
 
@@ -43,11 +39,11 @@ Virtualization of sandbox machines, router machine, and other related stuff was 
 \subsection*{Programming}
 For programming tasks in the infrastructure part we used \emph{Python 3} (see in \ref{app:attach}).
 \subsection*{Others}
-We are really pleased that we could use \emph{pafish} (https://github.com/a0rtega/pafish) as a testing malware sample, we used it many times\dots
+We are really pleased that we could use \emph{pafish} (https://github.com/a0rtega/pafish) as a testing malware sample, we used it many times.
 
 \section*{Data and machine learning}
 \subsection*{Julia}
-For programming tasks in this part we used \emph{Julia} language --- https://julialang.org/. Julia has many advantages regarding maily performance comparing to Python which could be considered as alternative. But we do not aspire to advocate this language, programming environment was mainly determined by the \emph{hmill} framework which is quite young and its first implementation is in this language by \cite{Mandlik2020}. List of the most important libraries used and their versions:
+For programming tasks in this part we used \emph{Julia} language --- https://julialang.org/. Julia has many advantages regarding maily performance compared to Python which could be considered as alternative. But we do not aspire to advocate this language, programming environment was mainly determined by the \emph{HMill} framework which is implemented in this language by \cite{Mandlik2020}. List of the most important used libraries and their versions:
 \begin{itemize}
   \itemsep0em 
   \item \emph{JsonGrinder.jl} --- \cite{Pevny2019} (v2.1.4)
@@ -57,25 +53,3 @@ For programming tasks in this part we used \emph{Julia} language --- https://jul
 \end{itemize}
 \subsection*{Computing grid system}
 For resource-demanding computation we used CESNET metacenter (mentioned in acknowledgements) --- https://www.metacentrum.cz/en/Sluzby/Grid/index.html.
-
-
-  %-----------------------------------------
-% Technology - Julia (I think I should add this in some appendix, summarize it and reference all sources used)
-%   - describe why and basic features and advantages and cons
-%   - Also all different codes, documented, refactored list even important libraries used in Julia
-
-% JsonGrinder (even a little bit describe function)
-% \emph{EvalMetrics.jl}
-
-% Divide it in parts according to what we did with the infrastructure
-
-  % Used technologies (in appendix)
-%   - previous
-%   - ExplainMill
-%   (reference all the repositories - even cuckoo comminity)
-
-% \todo{among appendices technologie add even (Technical background, used metascenter archicture...) and even the script
-% - used technologies - add to appendix as in previous chapter
-%   - \todo{reference JsonGrinder, Mill, EvalMetrics...}
-%   - reference, describe functioning
-% In each case, what it is, link, what we used it for

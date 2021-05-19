@@ -4,7 +4,7 @@ The split in the table \ref{tab:sigdet} denotes two groups of signatures describ
 %   \item Directly in \emph{report.json} in parts \emph{summary, enhanced}
 %   \item Not directly in \emph{report.json} in parts \emph{summary, enhanced} (some clues might be presented, but the direct information is not there)
 % \end{itemize}
-Signature entry in the original report can be seen in \ref{lst:signature_example}. Implementation of signatures could be seen on https://github.com/kevoreilly/community and example is in \ref{lst:signatureimpl}.
+Signature entry in the original report can be seen in \ref{lst:signature_example}. Implementation of signatures could be seen on https://github.com/kevoreilly/community and an example is in \ref{lst:signatureimpl}.
 
 \newpage
 
@@ -17,40 +17,40 @@ Signature entry in the original report can be seen in \ref{lst:signature_example
     \textbf{Signature} &
     \textbf{Description} &
     \textbf{Cause} &
-    \textbf{P~[\%]\footnote[1]{positive examples ratio in our dataset ($80000$ samples)}}
+    \textbf{P~[\%]\footnote[1]{positive examples ratio in our dataset (80000 samples)}}
     \\
     \midrule
     antidebug setunhandledexceptionfilter & filters api call \emph{SetUnhandledExceptionFilter}, which enables an application to supersede the top-level exception handler of each thread of a process  (source https://docs.microsoft.com/)  & API CALLS & $45$ \\
     \midrule
-    copiesself & detects that currently analysed file copies itself & Dropped files & $18$ \\
+    copiesself & detects that currently analysed file copies itself & DROPPED FILES & $18$ \\
     \midrule
-    deletesself & detects that currently analysed file deletes/move itself or directory where placed, examining parameters of calls & API CALLS, basic file attributes (path\dots) & $27$ \\
+    deletesself & detects that currently analysed file deletes/move itself or directory where placed, examining parameters of the call & API CALLS, basic file attributes & $27$ \\
     \midrule
-    enumerates running processes & detects more than five process detail listing, saves \emph{pids} in data part & API CALLS & $16$ \\
+    enumerates running processes & detects more than five process detail listings, saves \emph{pids} in the data part & API CALLS & $16$ \\
     \midrule
-    stealthtimeout & detects sequence of api calls which seems like expiration check and soon exit & API CALLS & $21$ \\
+    stealthtimeout & detects a sequence of API calls which seems like expiration check and premature exit & API CALLS & $21$ \\
     \midrule
-    useswindowsutilities & detect usage of usual windows utilities (\emph{attrib, copy, dir, echo, erase\dots}) & COMMANDS & $18$ \\
+    useswindowsutilities & detects usage of usual windows utilities (\emph{attrib, copy, dir, echo, erase\dots}) & COMMANDS & $18$ \\
     \midrule
-    removeszoneidads & detects attempts to remove evidence of file downloaded from internet by examining parameters of api calls& API CALLS & $28$ \\
+    removeszoneidads & detects attempts to remove an evidence of file downloaded from the internet by examining parameters of API calls& API CALLS & $28$ \\
     \midrule[0.3pt]
     \midrule[0.3pt]
     antisandboxsleep & detects attempts to delay the analysis task, saves \emph{pids} and time to data part & TIME, API CALLS & $39$ \\
     \midrule
-    dropper & detect dropping of binary and its execution & PROCESSES, DROPPED FILES & $15$ \\
+    dropper & detects dropping of a binary and its execution & PROCESSES, DROPPED FILES & $15$ \\
     \midrule
-    invalid authenticode signature & detects authenticode signature is invalid & STATIC, DROPPED FILES & $36$ \\
+    invalid authenticode signature & detects that the authenticode signature is invalid & STATIC, DROPPED FILES & $36$ \\
     \midrule
-    packerentropy & detects encrypted or compressed data using entrophy calculation & STATIC & $22$ \\
+    packerentropy & detects encrypted or compressed data using entropy calculation & STATIC & $22$ \\
     \midrule
-    stealthnetwork & detects network activity which is not detected in api calls & NETWORK & $66$ \\
+    stealthnetwork & detects network activity which is not expressed in API calls & NETWORK & $66$ \\
     \bottomrule
   \end{tabular}
   \end{minipage}
   \label{tab:sigdet}
 \end{table}
 
-\begin{lstlisting}[language=json, caption={Example of \emph{signature} part entries in \emph{report.json}},captionpos=b, label={lst:signature_example}]
+\begin{lstlisting}[language=json, caption={Example of signature part entry in \emph{report.json}},captionpos=b, label={lst:signature_example}]
   {
     "name": "dead_connect",
     "description": "Attempts to connect to a dead IP:Port (1 unique times)",
