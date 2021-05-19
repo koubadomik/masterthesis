@@ -6,25 +6,25 @@ We described our motivation in the first part of the thesis. Details about model
 
 \subsection{Details}
 \subsubsection{Hyperparameters}
-We build on previous experiments on \cite{Mandlik2020} where the author published even the hyperparameter set in \emph{device identification} example, which we used as our initial setup.
+We build on previous experiments in \cite{Mandlik2020} where the authors published even used hyperparameters in the \emph{device identification} example, which we used as our initial setup.
 
 In the table \ref{tab:hyperparams}, we can see the model's hyperparameters and other training-independent facts that we used.
 
 \begin{table}[h]
   \centering
-  \caption{Hyperparameters of \emph{hmill} model}
+  \caption{Hyperparameters of \emph{HMill} model}
   \begin{tabular}{p{6cm}p{8cm}} 
       \toprule
       \textbf{Parameter} &
       \textbf{Value} \\
       \midrule
-      samples & $80000$ (1:1 testing and training) \\
+      samples & 80000 (1:1 testing and training) \\
       \midrule
-      minibatch size & $1000$ (random subsampled from training set in each iteration)\\
+      minibatch size & 1000 \\
       \midrule
-      hidden units (neurons)& $20$\\
+      hidden units (neurons) & 20\\
       \midrule
-      iterations & $120$\\
+      iterations & 120\\
       \midrule
       optimizer & \emph{ADAM} \cite{Kingma2014}\\
       \midrule
@@ -34,26 +34,26 @@ In the table \ref{tab:hyperparams}, we can see the model's hyperparameters and o
   \label{tab:hyperparams}
 \end{table}
 
-Difference from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations}. Data used in their case were of a much smaller scale (\emph{device id}) which could be the reason for the larger \emph{minibatch size}. The smaller \emph{number of iterations} is caused by resource and time limitations. However, we observed reasonable convergence. We checked overfitting by monitoring the difference between accuracy on training and testing data. They did not differ significantly.
+The difference of our parameters from \cite{Mandlik2020} is \emph{minibatch size} and \emph{number of iterations}. Data used in their case were of a much smaller scale which could be the reason for the larger \emph{minibatch size}. The smaller \emph{number of iterations} is caused by resource and time limitations. We checked overfitting by monitoring the difference between accuracy on training and testing data. They did not differ significantly.
 
 \subsubsection{Experiments}
-We performed experiments with different feature sets. The first experiment used both \emph{enhanced} and \emph{summary} parts as input vector for the model. Due to the input size the model was too large to converge to some significant accuracy. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip the larger part of the feature vector --- \emph{enhanced} part. This part contains series of events with a lot of redundancies and additional data as function parameters. Each event has its own object so the information is much sparser.
+We performed experiments with different feature sets. The first experiment used both \emph{enhanced} and \emph{summary} parts as an input vector for the model. Due to the input size, the model was too large to converge to some significant accuracy. We were not able to train it on hardware and with thread limitations in a feasible time. This reality led us to skip the larger part of the feature vector --- \emph{enhanced} part. This part contains a series of events with many redundancies and additional data, e.g., function parameters. Each event has its own object, so the information is much sparser than in the \emph{summary} part.
 
-The resulting model is working with \emph{summary} part only.  We expected that could happen as we described in \ref{chap:hmill}. The tighter feature vector was an advantage for further training time.
+The resulting model is working with \emph{summary} part only.  We expected that could happen as we described in \ref{chap:hmill}. The tighter feature vector was an advantage for the training time.
 
 For evaluation, we chose the metrics following the chapter \ref{chap:classification} where we mentioned classifiers in the cybersecurity field and their pitfalls.
 
 \subsubsection{Technicalities}
-In the \ref{app:technologies}, we describe the technical background for \emph{HMill} model training and evaluation, such as libraries and programming languages. We unsuccessfully experimented with multi-threadded gradient computation. The resulting model was trained on one CPU, which a little shrank our possibilities. However, there were basic linear algebra subprograms (BLAS) involved in the matrix multiplication, which was multi-threadded.
+In the \ref{app:technologies}, we describe the technical background for \emph{HMill} model training and evaluation, such as libraries and programming languages. We unsuccessfully experimented with multi-threaded gradient computation. The resulting model was trained on one CPU, which shrank our possibilities a little. However, basic linear algebra subprograms (BLAS) were involved in the matrix multiplication and were multi-threaded.
 
 The code of the model is in the thesis attachment \ref{app:attach}.
 
 \subsection{Results}
-Results of the experiment could be seen in \ref{tab:models_res}. The table is divided into two groups based on the categories presented in \ref{chap:hmill}. In the table, we also include a percentage of positive examples for the reader to see the balance and assess the \emph{FNR} and \emph{FPR}.
+Results of the experiment could be seen in \ref{tab:models_res}. The table is divided into two groups based on the categories presented in \ref{chap:hmill}. In the table, we also include a percentage of positive examples for the reader to see the balance of the dataset and assess the \emph{FNR} and \emph{FPR}.
 
 \begin{table}[h]
   \centering
-  \caption{Model performance (values rounded for 3 decimal spaces, P denotes positive examples ratio in our dataset)}
+  \caption{Model performance (values are rounded off to three decimal digits, P denotes positive examples ratio in our dataset)}
   % \begin{tabular}{p{5cm}p{3cm}p{3cm}p{3cm}} 
   \begin{tabular}{lllll}
       \toprule
@@ -97,16 +97,16 @@ There are also some other metrics and visualizations in \ref{app:models}.
 
 \subsection{Discussion}
 \subsubsection*{Signature with the cause in report}
-In the first category of signatures, we observe quite consistent balanced accuracy above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explanation. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the current file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determining according to API calls and not dropped files which could cause that its accuracy is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log by hand. Its prediction might be more tricky. The main cause of low accuracy is, in this case, \emph{FPR}.
+In the first category of signatures, we observe quite consistent balanced accuracy above $95$~\%. Signature \emph{copiesself} has $92$~\%, which is still sufficient for explanation. This deviation could be caused by the fact that the original signature is examining dropped files and checking if the analyzed file is among them. Nevertheless, the filename varies, so the entropy might be very high and might cause big \emph{FNR}. Signature \emph{deletesself} might have similar issues, but it is determined according to API calls and not dropped files which could cause that its accuracy is better than the previous. The only significant outlier in this group is \emph{stealthtimeout} signature which examines a sequence of API calls that could be quite complicated. After going through some files where this signature was presented, we could not identify the particular API calls in the original log even by hand. Its prediction might be more tricky. The main cause of low balanced accuracy is, in this case, \emph{FPR}.
 
 Despite a single anomaly, this signature group shows reasonable accuracy, as we expected.
 
 \subsubsection*{Signature without the cause in report}
-The second group behaves more unexpectedly because the accuracy in 3 of 5 cases is above $90$~\%. Signature \emph{antisandboxsleep} uses API calls in a more complex way, so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR}. However, its overall accuracy is still high. \emph{Stealthnetwork} should look at the network activity, which is not among the features. The excellent accuracy of these models arouses our interest in the explaining part. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy}, the accuracy is significantly lower than in other cases, as we expected. Overall, the first group has statistically better accuracy than the second one as we expected.
+The second group behaves more unexpectedly because the accuracy in three of five cases is above $90$~\%. Signature \emph{antisandboxsleep} uses API calls in a more complex way, so the original classifier may involve these. \emph{Dropper} has significantly larger \emph{FNR}. However, its overall accuracy is still high. \emph{Stealthnetwork} should look at the network activity, which is not among the features. The excellent accuracy of these models arouses our interest in the explaining part. In cases of \emph{invalidauthenticodesignature} and \emph{packerentropy}, the accuracy is significantly lower than in other cases, as we expected. Overall, the first group has statistically better accuracy than the second one, as we expected.
 
 We also performed several experiments with a more general multilabel classifier, but we did not observe convergence with our computational resources.
 
-This chapter concludes that we can train \emph{HMill} classifier to classify the presence of a particular signature based on the summary part of the behavioural log from \emph{CAPEv2} sandbox. This classifier has a significant accuracy of more than $90\%$ as balanced accuracy for most signatures, which is sufficient for further explaining experiments. Such models should have strong confidence to choose some samples for explainer (\ref{chap:expth}). 
+This part concludes that we can train \emph{HMill} classifier to classify the presence of a particular signature based on the summary part of the behavioural report from \emph{CAPEv2} sandbox. This classifier has a significant accuracy of more than $90\%$ as balanced accuracy for most selected signatures, which is sufficient for further explaining experiments because such models should have strong confidence.
 
 
 %---------------------
@@ -114,89 +114,65 @@ This chapter concludes that we can train \emph{HMill} classifier to classify the
 \subsection{Details}
 The motivation and expectations regarding the model explaining are described in \ref{chap:expth}.
 
-We performed two explaining experiments using \emph{ExplainMill.jl} (described in \ref{app:technologies}). We explain all models with a balanced accuracy above $70$~\%.  The rest is not relevant due to its low overall confidence.
+We performed two explaining experiments using \emph{ExplainMill.jl} (described in \ref{app:technologies}). We explained all models with a balanced accuracy above $70$~\%.  The rest is not relevant due to its low overall confidence.
 
-We use \emph{Banzhaf} values as a subtree ranking method followed \emph{heuristic addition} subset selection. As an adaptation for the minimal subtree problem, we use \emph{level by level} search. \emph{Random removal} was involved.
+We used \emph{Banzhaf} values as a subtree ranking method followed by the \emph{Heuristic addition} subset selection. \emph{Level-by-level} search was used as an adaptation for the minimal subtree problem. \emph{Random removal} was also involved.
 
-Explainer code is in attachments (\ref{app:attach}). We used a similar setup as authors of the tool \cite{Pevny2020}. We extracted a couple of examples from the testing set in each run. We attempted to explain only positive examples, which were truly classified into the positive class with confidence above the specified threshold. The confidence threshold we used is $0.99$ for the first run and $0.9$ for the second run. We decreased it by $0.1$ if no results were found in the data subset. We run the explainer on each of the chosen examples separately. We also used the additions described in chapter \ref{chap:expth}.
+Explainer code is in attachments (\ref{app:attach}). We used a similar setup as authors of the tool \cite{Pevny2020}. We extracted several examples from the testing set in each run. We attempted to explain only positive examples, which were truly classified into the positive class with confidence above the specified threshold. The confidence threshold we used is $0.99$ for the first run and $0.9$ for the second run. We decreased it by $0.1$ if no results were found in the data subset. We run the explainer on each of the chosen examples separately. We also used our additions described in chapter \ref{chap:expth}.
 
-The number of explanations may vary because of the difference between the confidence levels of models. In the second run, we attempted to normalize the number of explanations to be $100$ per signature, but we still were not successful in some cases.  In \ref{app:expl} we can see the number of explanations for both runs.
+The number of explanations may vary because of the difference between the confidence levels of models. In the second run, we attempted to normalize the number of explanations to be 100 per signature, but we still were not successful in some cases.  In \ref{app:expl}, we can see the number of explanations for both runs and other details.
 
 \subsection{Results}
-All original outputs and additional aggregations are in attachments (\ref{app:attach}) --- merged explanations are in \emph{merged} directory, frequencies of keys are in \emph{freq.json} and merged keys across signatures are in \emph{overall.json}. Some statistics about the explanations can be found in \ref{app:expl}.
+All original outputs and additional aggregations are in attachments (\ref{app:attach}) --- merged explanations are in \emph{merged} directory, frequencies of keys are in \emph{freq.json} and merged keys across the signatures are in \emph{overall.json}. Some statistics about the explanations can be found in \ref{app:expl}.
 
 \subsection{Discussion}
-The size of the original JSON file with only the behavioural part can be hundreds but even thousands of items (average is around $3000$ but included even the signature part). The average size of the explanation is 3--5 entries.
+The size of the original JSON file with only the behavioural part can be hundreds but even thousands of entries (average is around $3000$ but included even the signature part). The average size of the explanation is 3--5 entries.
 
-We discuss the results after presenting them to an expert and having a discussion. We formulate assumptions or hypotheses. We have to anticipate the risks mentioned in \ref{chap:expth}, especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at the observation description more than concluding.
+We formulated the following discussion of the results after presenting them to an expert. We formulate assumptions or hypotheses because we have to anticipate the risks mentioned in the chapter \ref{chap:expth}, especially the \emph{causality X correlation} problem and the \emph{confounding variable existence}. We are aiming at the observation description more than concluding.
 
 \subsubsection*{antidebug setunhandledexceptionfilter}
-The most seen keys in explanations are \emph{read keys, resolved APIs, executed commands}. It includes even API calls, which are the signature cause. Among entries, the most seen are \emph{kernel32.dll.IsProcessorFeaturePresent} (153/377) API and \emph{DisableUserModeCallbackFilter} (34/377) registry key. Those are presented in other explanations once and twice, so it does not look like something too general but also not unique. The registry key is related to exceptions, and the original API call is also related to them.
-
-In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
+The most seen keys are \emph{read keys, resolved APIs, executed commands}. It includes even API calls, which are the signature cause. Among entries, the most seen are \emph{kernel32.dll.IsProcessorFeaturePresent} (153/377) API and \emph{DisableUserModeCallbackFilter} (34/377) registry key. Those are presented in other explanations once and twice, so it does not look like something too general but also not unique. The registry key is related to exceptions, and the original API call is also related to them.
 
 \subsubsection*{copies self}
-The most seen keys in explanations are \emph{write files, executed commands, delete files} and the first is seen in all explanations, and it also coincides with the original cause. Among entries the most seen are \emph{ikkzowxr.exe} (13/100) file, \emph{WerFault.exe} (13/100) file and \emph{StikyNot yakuza} mutex. The first file is prevalent across different signatures. The mutex is also seen more than one time in explanations.
-
-In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
-
+The most seen keys in explanations are \emph{write files, executed commands, delete files} and the first is seen in all explanations, and it also coincides with the original cause, which might be a clue that the model uses what is expected, and its generalization goes the right way. Among entries the most seen are \emph{ikkzowxr.exe} (13/100) file, \emph{WerFault.exe} (13/100) file and \emph{StikyNot yakuza} mutex. The first file is prevalent across different signatures. The mutex is also seen more than one time in explanations.
 
 \subsubsection*{deletes self}
-The most seen keys in explanations are \emph{deleted files, write files, executed commands}. The first is seen in all explanations, but the original signature cause is API calls. Here we can see some generalization because the original signature does not check the deleted files directly. However, the model is using it with high accuracy. We also checked if this trend is not seen in more cases, but this is unique that all explanations include deleted files.
-
-here is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files}. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted and appear even among deleted files. 
+The most seen keys in explanations are \emph{deleted files, write files, executed commands}. The first is seen in all explanations. Here we can see some generalization because the original signature does not check the deleted files directly. It uses the API call to detect the file removal. However, the model uses deleted files with high accuracy. We also checked if this trend is not seen in more cases, but this is unique that all explanations include deleted files. This example is unique because the causal relation is straightforward, i.e., the API call causes that the file is deleted, and it appears among the deleted files. 
 
 \subsubsection*{enumerates running processes}
-The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was API calls.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The accuracy of this classifier is significant, but we cannot generalize to a more specific subset using our explanation.
-
-The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover. In particular cases, we can see several situations. 
-
+The most seen keys in explanations are \emph{executed commands, mutexes, read keys}. These do not include the original cause, which was the API call.  Among entries, the most seen is \emph{"IESQMMUTEX0208"} (17/84) mutex, but this mutex is quite common. The accuracy of this classifier is significant, but we cannot generalize to a more specific subset using our explanations.
 
 \subsubsection*{stealth timeout}
-The most seen keys in explanations are \emph{executed commands, files} which does not include the original API calls section. Among entries the most seen is \emph{DisableUserModeCallbackFilter} (11/78) registry. Nevertheless, the situation is the same as in the previous case. We are not able to generalize more.
-
-The reason might be a spurious correlation you have mentioned in some section (refer) earlier. Without larger data / some methods for causality detection, this might be impossible to discover. In particular cases, we can see several situations. 
+The most seen keys in explanations are \emph{executed commands, files} which does not include the original cause --- API call. The most seen entry is \emph{DisableUserModeCallbackFilter} (11/78) registry. Nevertheless, the situation is the same as in the previous case. We are not able to generalize more.
 
 \subsubsection*{uses windows utilities}
-The most seen key in explanations is \emph{executed commands} which is included in each explanation, and it coincides with the original cause, which is commands. The most frequent commands are \emph{netsh, schtasks.exe}.
-
-In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}).
+The most seen key in explanations is \emph{executed commands} which is included in each explanation, and it coincides with the original cause. The most frequent commands are \emph{netsh, schtasks.exe}. This case is another clue that the model uses what is expected, and its generalization might go the right way.
 
 \subsubsection*{removes zoneid ads}
-The most seen keys in explanations are \emph{delete files, keys}. The first is seen in each explanation, but the original signature is using API calls. We are not able to identify specific redundancies, but we identified one great conformity. The original signature implementation includes following \emph{\dots .endswith(":Zone.Identifier")} so it is detecting end of API call argument and even \emph{.startswith("DeleteFile")} is detecting the name of API starting with a specific string. These two facts perfectly correlate with our explanations.
-
-The most significant observation is in \emph{removes zoneid ads}. We can see that the model mainly uses the same entries as the original signature (with the same suffix). That should also be considered as a clue that the model generalizes the right way.
+The most seen keys are \emph{delete files, keys}. The first is seen in each explanation, but the original signature is using API calls. We are not able to identify specific redundant entries, but we identified one great conformity. The original signature implementation includes following \emph{\dots .endswith(":Zone.Identifier")} so it is detecting end of API call argument and even \emph{.startswith("DeleteFile")} is detecting the name of API starting with a specific string. These two facts perfectly correlate with our explanations, where the majority of deleted files includes \emph{:Zone.Identifier} suffix.
 
 \subsubsection*{antisandbox sleep}
-The most seen keys in explanations are \emph{write keys, keys, read keys} which does not correspond to the original cause. The most seen entries is \emph{HKEY CURRENT USER/\dots} (63/100) registry key. We see this registry key in the case of two signatures. We do not see a direct relation between this key and the original cause. It might be something more general.
-
-In several cases, we cannot identify any direct cause of the model's high accuracy (e.g., \ \emph{antisandbox sleep}) because the explanation is ambiguous.
+The most seen keys in explanations are \emph{write keys, keys, read keys} which does not correspond to the original cause. The most seen entry is \emph{HKEY CURRENT USER/\dots} (63/100) registry key. We see this registry key in the case of two signatures. We do not see a direct relation between this key and the original cause.
 
 \subsubsection*{dropper}
 The most seen keys in explanations are \emph{write files, executed commands, mutexes}. The first is presented in all explanations. The second is not only in negligible fraction. The original cause is not trivial but dropped files are there, which corresponds to the first key. Among entries, the most seen is \emph{IESQMMUTEX0208} (28/71) mutex, but this mutex was mentioned earlier as too general.
 
-In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). Partially!!
-
 \subsubsection*{stealth network}
-The most seen keys in explanations are \emph{keys, files}. The original cause (network) is not presented in the input at all. It looks like registry keys play a significant role. However, neither in the case of registry keys, we can not find any redundancy.
-
-A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation.
+The most seen keys in explanations are \emph{keys, files}. The original cause (network) is not presented in the input at all. It looks like registry keys play a significant role. However, neither in the case of registry keys we can not find specific redundant entries.
 
 \hfill \break
-
-
-In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). There is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files}. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted and appear even among deleted files. However, the model generalized to that which should not be overlooked. A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation.
+In particular cases, we can see several situations. Sometimes the model explanations correspond to the original cause. That is a clue that the model uses what we expected, and its generalization might go the right way (e.g., \ \emph{copies self}). There is even a particular case where the original cause does not fit, but the explanations logically correlate with it. In the case of \emph{deletes self}, we see key \emph{deleted files} in all cases. However, the original signature is detecting the same thing, but according to \emph{api calls}. This example is unique because the causality is straightforward. The API call causes that the file is deleted, and it appears among deleted files. However, the model generalized to that which should not be overlooked. A different case is \emph{stealth network} where we do not see a direct cause of the fact that registry keys are often used in the explanation, even though they are not the original cause.
 
 Choosing the most used key is one way, but the second is investigating particular entries (specific calls, files, mutexes\dots). It is challenging to interpret them and connect them to specific causes because their variance is enormous, as we expected. The most significant observation is in \emph{removes zoneid ads}. We can see that the model mainly uses the same entries as the original signature (with the same suffix). That should also be considered as a clue that the model generalizes the right way.
 
-Using our method, we were able to identify too general parts of explanations. We can see mutexes that are presented very often across different model's explanations. They might be considered confounding variables. Then also, some files are repeatedly seen in reports. Both play a significant role in detecting a particular family or classifying malware/cleanware, but they should not be used to identify particular behaviour.
+Using our method, we were able to identify too general parts of explanations. We can see mutexes that are presented very often across different model's explanations. They might be considered confounding variables, as well as some files that are repeatedly seen in reports. Both play a significant role in detecting a particular family or classifying malware/cleanware, but they should not be used to identify particular behaviour.
 
-In several cases, we cannot identify any direct cause of the model's high accuracy (e.g., \ \emph{antisandbox sleep}) because the explanation is ambiguous.
+In several cases, we cannot identify any direct cause of the model's high accuracy (e.g., \ \emph{antisandbox sleep}) because the explanation is ambiguous. The reason might be a spurious correlation mentioned in the chapter \ref{chap:expth}. Without a more extensive dataset or some methods for causality detection, this might be impossible to discover.
 
 \hfill \break
 
-After organizing theory in \ref{chap:expth}, we are cautious. Explaining is a complicated field. We summarized its challenges. We can not be sure about the output, especially using \emph{post hoc} explanation per sample. The computation of \emph{Banzhaf values} and randomness of the input causes the explanation to be a random variable. 
+After organizing theory in \ref{chap:expth}, we are cautious. Explaining is a complicated field with many challenges. We can not be sure about the output, especially using \emph{post hoc} explanation per sample. The computation of \emph{Banzhaf values} and randomness of the input causes the explanation to be a random variable as well. 
 
-Nevertheless, our observations evidence that some models strongly involve original causes. That leads us to future work. The main interest should be improving the aggregation of particular explanations, detecting too general concepts (across classes), and confounding variable detection. It is noteworthy that our \emph{post hoc} explanation should perform better with more extensive datasets. However, also the \emph{transparency} approaches should be added to the game. 
+Nevertheless, our observations indicate that some models strongly involve original causes in their predictions. That leads us to future work where the main interest should be improving the aggregation of particular explanations, detecting too general concepts (across classes), and confounding variable detection. It is noteworthy that our \emph{post hoc} explanation should perform better with more extensive datasets. However, also the \emph{transparency} approaches should be taken into account. 
 
-Suppose we can make the explanation more accessible to the client (e.g., \ security engineer). In that case, there is a significant chance for \emph{HMill} models to be used during malware analysis in real-world applications. The main reason is their high accuracy and their ability to process standard data formats. Of course, more complex examples, broader datasets, and further testing have to be involved.
+Suppose we can make the explanation more accessible to the client, e.g., a security engineer. In that case, there is a significant chance for \emph{HMill} models to be used during malware analysis in real-world applications. The main reason is their high accuracy and their ability to process standard data formats like \emph{JSON} document and provide an explanation in the same form. Of course, more complex examples, broader datasets, and further testing have to be involved.
